@@ -670,8 +670,36 @@ def load_templates(folder=TEMPLATES):
     return {"welcome": rd("welcome.json"), "automation": rd("abandoned_cart.json"), "form": rd("popup.json")}
 
 
+WESERV = "https://images.weserv.nl/?url="
+
+
+def _weserv(src, params):
+    from urllib.parse import quote
+    return WESERV + quote(src, safe="") + params
+
+
+def neutral_images(brand):
+    """Replace images hosted on our GitHub Pages with an image-CDN URL that points
+    to the client's own original file (no trace of this tool in the editor)."""
+    b = copy.deepcopy(brand)
+    ours = lambda u: isinstance(u, str) and ".github.io/" in u
+    logo = b.get("logo") or {}
+    src = logo.get("source_url")
+    if ours(logo.get("url")) and src and src.startswith("http"):
+        recolored = logo.get("recolored") or any("colorat închis" in w for w in b.get("warnings") or [])
+        logo["url"] = _weserv(src, "&trim=10&w=600&output=png" + ("&filt=negate" if recolored else ""))
+    for p in b.get("products") or []:
+        if ours(p.get("image")) and str(p.get("source_image", "")).startswith("http"):
+            p["image"] = _weserv(p["source_image"], "&w=600&h=600&fit=contain&cbg=white&output=jpg&q=85")
+    ban = b.get("banner") or {}
+    if ours(ban.get("url")) and str(ban.get("source_url", "")).startswith("http"):
+        ban["url"] = _weserv(ban["source_url"], "&w=1300&output=jpg&q=85")
+    return b
+
+
 def generate(brand, out_dir, templates=None):
     templates = templates or load_templates()
+    brand = neutral_images(brand)
     os.makedirs(out_dir, exist_ok=True)
     slug = brand["slug"]
     files = {

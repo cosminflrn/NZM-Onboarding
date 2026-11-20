@@ -513,7 +513,7 @@ class Scraper:
             disp_w = min(200, w, int(round(70 * w / h)) if h else 200)
             disp_w = max(disp_w, min(120, w))
             return ({"url": public, "source_url": url if not url.startswith("inline-svg:") else "inline-svg",
-                     "width": w, "height": h, "display_width": disp_w, "found_by": src},
+                     "width": w, "height": h, "display_width": disp_w, "found_by": src, "recolored": recolored},
                     dom)
         self.warnings.append("Logo: nu am găsit logo-ul — am păstrat placeholderul din template.")
         return None, []
