@@ -102,6 +102,7 @@
   <form id="edForm" class="grid" onsubmit="return false"></form>
 </dialog>
 
+<script src="config.js"></script>
 <script src="bee-preview.js"></script>
 <script>
 // =============================================================== config
@@ -109,7 +110,8 @@ const FALLBACK = { owner: "cosminflrn", repo: "NZM-Onboarding" };
 const onPages = location.hostname.endsWith("github.io");
 const OWNER = onPages ? location.hostname.split(".")[0] : FALLBACK.owner;
 const REPO = onPages ? (location.pathname.split("/")[1] || FALLBACK.repo) : FALLBACK.repo;
-const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+const PROXY = (window.NZM_PROXY || "").replace(/\/$/, "");
+const API = `${PROXY ? PROXY + "/gh" : "https://api.github.com"}/repos/${OWNER}/${REPO}`;
 const PUBLIC_BASE = `https://${OWNER}.github.io/${REPO}`;
 const RAW_BASE = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/docs`;
 const WF = "onboarding.yml";
@@ -125,11 +127,12 @@ $("repoName").textContent = `${OWNER}/${REPO}`;
 $("patLink").href = "https://github.com/settings/personal-access-tokens/new";
 
 // =============================================================== GitHub API
-let TOKEN = localStorage.getItem("nzm_token") || "";
+let TOKEN = PROXY ? "proxy" : (localStorage.getItem("nzm_token") || "");
 async function gh(path, opts = {}) {
   const r = await fetch(path.startsWith("http") ? path : API + path, {
     ...opts,
-    headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${TOKEN}`, "X-GitHub-Api-Version": "2022-11-28", ...(opts.headers || {}) },
+    headers: PROXY ? { Accept: "application/vnd.github+json", ...(opts.headers || {}) }
+      : { Accept: "application/vnd.github+json", Authorization: `Bearer ${TOKEN}`, "X-GitHub-Api-Version": "2022-11-28", ...(opts.headers || {}) },
   });
   if (!r.ok) {
     let msg = r.status + "";
@@ -151,16 +154,18 @@ async function readFile(path, as = "json") {           // path relative to docs/
 const b64 = (s) => btoa(unescape(encodeURIComponent(s)));
 
 async function checkToken() {
+  if (PROXY) $("tokBtn").style.display = "none";
   if (!TOKEN) { $("setup").style.display = ""; $("who").textContent = "neconfigurat"; return false; }
   try {
     const repo = await ghJson("");
     const ok = repo.permissions && repo.permissions.push;
     $("who").textContent = ok ? "✓ conectat" : "token fără drept de scriere";
-    $("setup").style.display = ok ? "none" : "";
+    $("setup").style.display = ok || PROXY ? "none" : "";
+    if (!ok && PROXY) alert("Intermediarul nu are drept de scriere pe repo — verifică tokenul din Cloudflare.");
     return ok;
   } catch (e) {
-    $("who").textContent = "token invalid / expirat";
-    $("setup").style.display = "";
+    $("who").textContent = PROXY ? "intermediar indisponibil" : "token invalid / expirat";
+    $("setup").style.display = PROXY ? "none" : "";
     return false;
   }
 }

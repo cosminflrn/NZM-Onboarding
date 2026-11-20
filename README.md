@@ -12,7 +12,7 @@ Dai linkul unui site, primești 3 fișiere gata de importat în contul Newsman a
 
 Totul se face din pagina **https://cosminflrn.github.io/NZM-Onboarding/**:
 
-1. **Prima dată pe un calculator:** pagina îți cere un token GitHub (pașii sunt afișați acolo, durează 1 minut). Tokenul rămâne doar în browser.
+1. Pagina merge pentru oricine are linkul, fără cont sau token, după ce se configurează o dată intermediarul Cloudflare ([worker/README.md](worker/README.md)). Fără intermediar, pagina cere fiecărui utilizator un token GitHub.
 2. Pui linkul site-ului (opțional: nume brand, cod discount, email expeditor) → **Generează**. Vezi progresul în pagină.
 3. În 1–2 minute clientul apare în listă: **Previzualizare**, descărcare **.zip** sau fișier cu fișier.
 4. Importi fișierele în Newsman. **Deschide fiecare email o dată în editor și dă Save**, ca Newsman să regenereze HTML-ul din design.
@@ -65,4 +65,4 @@ python -m nzm regen docs/clients/magazin-ro/brand.json
 
 - **Settings → Pages →** Source: *Deploy from a branch*, Branch: `main`, folder `/docs`.
 - **Settings → Actions → General → Workflow permissions:** *Read and write*.
-- Fiecare coleg își creează un token fine-grained pe acest repo cu **Actions: Read and write** și **Contents: Read and write**.
+- Intermediarul Cloudflare: vezi [worker/README.md](worker/README.md).
