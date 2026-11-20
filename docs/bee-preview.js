@@ -51,7 +51,7 @@
         .map((k) => fields[k]).filter((x) => x && !x.removeFromLayout));
       const html = rows.filter((r) => r.length).map((r) => `<div style="display:flex;gap:8px;margin:6px 0">${r.map((x) => {
         if (x.type === "submit") return `<button style="flex:1;border:0;background:${btn.backgroundColor};color:${btn.color};border-radius:${btn["border-radius"]};padding:10px 20px;font-weight:bold">${esc(x.attributes.value || "Trimite")}</button>`;
-        if (x.type === "checkbox") return `<label style="font-size:12px;text-align:left"><input type="checkbox"> ${(x.label || "").replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')}</label>`;
+        if (x.type === "checkbox") return `<label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;text-align:left;flex:1"><input type="checkbox" style="margin:2px 0 0;flex:none"><span>${(x.label || "").replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')}</span></label>`;
         return `<input placeholder="${esc((x.attributes || {}).placeholder || x.label)}" style="flex:1;background:${fld.backgroundColor};border:0;border-radius:${fld["border-radius"]};padding:10px 20px">`;
       }).join("")}</div>`).join("");
       return wrap(html);

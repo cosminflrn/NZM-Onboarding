@@ -117,6 +117,9 @@ class Patcher:
                     tag = re.sub(r"max-width:\s*\d+px", f"max-width:{self.logo_w}px", tag)
                     tag = re.sub(r"(?<![-\w])width:\s*\d+px", f"width:{self.logo_w}px", tag)
                     tag = re.sub(r'alt="[^"]*"', f'alt="{esc(self.b["name"])}"', tag)
+                    if self.kind == "form" and "margin-bottom" not in tag:
+                        tag = re.sub(r'style="', 'style="margin-bottom:20px;', tag, count=1) if 'style="' in tag \
+                            else tag.replace("<img", '<img style="margin-bottom:20px"', 1)
                     return tag
                 s = re.sub(r"<img\b[^>]*" + re.escape(pid) + r"[^>]*>", img_tag, s)
                 s = re.sub(r"https?://[^\s\"'<>()\\]*?/" + re.escape(pid), self.logo_url, s)
@@ -228,6 +231,8 @@ def fix_bee(page, brand, patch):
                 cs["class"] = "center fixedwidth"
                 cs["width"] = f'{logo["display_width"]}px'
                 st = d.setdefault("style", {})
+                if patch.kind == "form":
+                    st["padding-bottom"] = "20px"
                 for side in ("top", "bottom", "left", "right"):
                     if st.get(f"padding-{side}", "0px") in ("0px", "0", ""):
                         st[f"padding-{side}"] = "10px"
