@@ -1,0 +1,84 @@
+{
+  "url": "https://alunis.ro/",
+  "domain": "alunis.ro",
+  "slug": "alunis-ro",
+  "platform": "wordpress",
+  "name": "Aluniș",
+  "contact": {
+    "phone": "+40 736 732 588",
+    "phone_href": "tel:+40736732588",
+    "email": "rezervari@alunis.ro"
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/AlunisRetreat",
+    "instagram": "https://www.instagram.com/alunis_retreat"
+  },
+  "links": {
+    "home": "https://alunis.ro/",
+    "cart": "https://alunis.ro/",
+    "terms": "https://alunis.ro/termeni-conditii/",
+    "privacy": "https://alunis.ro/politica-gdpr-regulament/",
+    "contact": "https://alunis.ro/contact",
+    "promo": null,
+    "menu": [
+      {
+        "label": "ATELIERE ȘI ACTIVITĂȚI",
+        "url": "https://alunis.ro/ateliere-si-activitati/"
+      },
+      {
+        "label": "DRUMEȚII & ATRACȚII",
+        "url": "https://alunis.ro/drumetii-atractii/"
+      },
+      {
+        "label": "ECHIPA",
+        "url": "https://alunis.ro/echipa/"
+      }
+    ]
+  },
+  "logo": {
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-a944c29a.png",
+    "source_url": "https://alunis.ro/wp-content/uploads/2026/05/Kit-Identitate-Vizuala-no-background_e-1.avif",
+    "width": 388,
+    "height": 112,
+    "display_width": 200,
+    "found_by": "img"
+  },
+  "banner": null,
+  "colors": {
+    "accent": "#9e7e52",
+    "accent_original": "#9e7e52",
+    "accent_text": "#ffffff",
+    "dark": "#221b11",
+    "light": "#f5f2ee",
+    "muted": "#7a7670",
+    "candidates": [
+      "#9e7e52",
+      "#d9534f",
+      "#5cb85c",
+      "#5bc0de",
+      "#f0ad4e",
+      "#caad86"
+    ],
+    "logo_colors": [
+      "#e4e4e4"
+    ]
+  },
+  "products": [],
+  "options": {
+    "discount_code": "",
+    "sender_email": "rezervari@alunis.ro",
+    "sender_name": "Aluniș"
+  },
+  "warnings": [
+    "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
+    "Logo: logo-ul găsit (https://alunis.ro/wp-content/uploads/2026/05/Kit-Identitate-Vizuala-no-backgroun) pare alb/transparent; verifică dacă se vede pe fundal alb.",
+    "Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.",
+    "Produse: am găsit doar 0 din 3; restul rămân placeholder."
+  ],
+  "fetch_log": [
+    "404 https://alunis.ro/wp-json/wc/store/v1/products?per_page=40",
+    "404 https://alunis.ro/sitemap.xml",
+    "404 https://alunis.ro/sitemap_index.xml"
+  ],
+  "generated_at": "2026-11-20 14:30 UTC"
+}
