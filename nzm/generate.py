@@ -599,6 +599,8 @@ def strip_discount(page):
                 else:
                     keep.append(m)
             col["modules"] = keep
+    # drop rows left empty (the discount banner row)
+    page["page"]["rows"] = [r for r in page["page"]["rows"] if any(c["modules"] for c in r["columns"])]
     # the removed discount banner left the greeting glued to the top bar
     for row in page["page"]["rows"]:
         for col in row["columns"]:
