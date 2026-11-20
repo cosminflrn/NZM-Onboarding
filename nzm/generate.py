@@ -494,9 +494,26 @@ def build_automation(brand, tpl):
             for act in trig.get("actions", []):
                 if act.get("action_type") == "send_email" and act.get("subject") in NO_DISCOUNT_SUBJECTS:
                     act["subject"], act["preheader"] = NO_DISCOUNT_SUBJECTS[act["subject"]]
-    for draft in data["draft_meta"]["meta"].values():
+    drafts = sorted(data["draft_meta"]["meta"].values(), key=lambda d: d["trigger_id"])
+    first = drafts[0]
+    logo_row = copy.deepcopy(json.loads(first["params"]["json"])["page"]["rows"][0])
+    logo_row_html = first_row_html(first["html"])
+    for draft in drafts:
         params = draft["params"]
         page = json.loads(params["json"])
+        if draft is not first and not any(pid in params["json"][:20000] for pid in LOGO_IDS[2:3]):
+            # emails 2-3 have no header logo: reuse the header row of email 1
+            row = copy.deepcopy(logo_row)
+            row["uuid"] = new_uuid()
+            for c in row["columns"]:
+                c["uuid"] = new_uuid()
+                for m in c["modules"]:
+                    m["uuid"] = new_uuid()
+            page["page"]["rows"].insert(0, row)
+            if logo_row_html:
+                i = draft["html"].find('<table class="row row-1"')
+                if i != -1:
+                    draft["html"] = draft["html"][:i] + logo_row_html + draft["html"][i:]
         if no_code:
             strip_discount(page)
             draft["html"] = strip_discount_html(draft["html"])
@@ -536,6 +553,19 @@ def _one_paragraph(block_html, text):
     return out[:first_end] + re.sub(r"<p\b[^>]*>.*?</p>", "", out[first_end:], flags=re.S)
 DISCOUNT_TEXT_RE = re.compile(r"CODDISCOUNT|codul tau|Foloseste\s+codul|Dar stim ca|reducere daca", re.I)
 DISCOUNT_IMG_RE = re.compile(r"nu-uita-de-discount|aplica-acum-codul")
+
+
+def first_row_html(h):
+    """Return the balanced <table class="row row-1"...>...</table> of a BEE email."""
+    start = h.find('<table class="row row-1"')
+    if start == -1:
+        return ""
+    depth, pos = 0, start
+    for m in re.finditer(r"<table\b|</table>", h[start:]):
+        depth += 1 if m.group(0).startswith("<table") else -1
+        if depth == 0:
+            return h[start:start + m.end()]
+    return ""
 
 
 def strip_discount(page):
