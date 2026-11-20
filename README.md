@@ -23,7 +23,7 @@ Totul se face din pagina **https://cosminflrn.github.io/NZM-Onboarding/**:
 
 Câmpuri utile în `brand.json`:
 - `logo.url`, `logo.display_width` – logo-ul și lățimea lui în email (px)
-- `banner.url` – bannerul din welcome (`null` = imaginea generică „Bine ai venit”)
+- `banner.url` – bannerul găsit pe site; în welcome se folosește doar dacă pui `options.use_site_banner: true` (implicit rămâne imaginea „Bine ai venit”)
 - `colors.accent` (butoane, bare), `colors.dark` (header/footer, text), `colors.light` (fundaluri deschise), `colors.muted`
 - `contact.phone`, `contact.email`, `socials.*`, `links.*` (`cart`, `terms`, `privacy`, `menu`…)
 - `products` – cele 3 produse din welcome (`name`, `url`, `image`, `price`)
@@ -44,7 +44,7 @@ Câmpuri utile în `brand.json`:
 
 - **Pop-up:** plicul → logo, culorile butonului/textului, linkul de termeni din checkbox, iconițele social din pagina de mulțumire, numele formularului.
 - **Welcome:** logo, meniu cu linkuri reale, banner (+ titlul „Bine ai venit!” scris ca text), blocul de discount → rând de 3 produse (discountul rămâne doar dacă ai dat un cod), telefon/email, social, copyright, culori.
-- **Coș abandonat:** doar emailurile – logo, culori, social, telefon, linkurile „#” (Finalizează comanda → coș, Termeni, Confidențialitate), footer, `CODDISCOUNT` (dacă ai dat cod), expeditor. Pașii automatizării rămân neatinși.
+- **Coș abandonat:** doar emailurile; fără cod de discount, blocurile cu cod și imaginile de discount sunt scoase, iar subiectele emailurilor 2–3 devin fără discount; – logo, culori, social, telefon, linkurile „#” (Finalizează comanda → coș, Termeni, Confidențialitate), footer, `CODDISCOUNT` (dacă ai dat cod), expeditor. Pașii automatizării rămân neatinși.
 
 Imaginile convertite sunt găzduite pe GitHub Pages (`docs/clients/<site>/assets/`); restul sunt luate direct de pe site-ul clientului. Dacă vrei să nu depinzi de ele, încarcă-le în managerul de imagini Newsman.
 

@@ -44,6 +44,10 @@ SOCIAL_NAMES = {"facebook": "Facebook", "instagram": "Instagram", "tiktok": "Tik
 DISCOUNT_PLACEHOLDER = "CODDISCOUNT"
 
 
+def use_site_banner(brand):
+    return bool((brand.get("options") or {}).get("use_site_banner"))
+
+
 def esc(s):
     return htmlmod.escape(s or "", quote=True)
 
@@ -66,7 +70,7 @@ class Patcher:
         logo = brand.get("logo") or {}
         self.logo_url = logo.get("url")
         self.logo_w = logo.get("display_width") or 160
-        banner = brand.get("banner") or {}
+        banner = (brand.get("banner") or {}) if use_site_banner(brand) else {}
         self.banner_url = banner.get("url")
 
     # -- links
@@ -211,7 +215,7 @@ def mtype(m):
 def fix_bee(page, brand, patch):
     """Structural changes valid for every Beefree page."""
     logo = brand.get("logo") or {}
-    banner = brand.get("banner") or {}
+    banner = (brand.get("banner") or {}) if use_site_banner(brand) else {}
     for row, col, m in modules(page):
         t = mtype(m)
         d = m["descriptor"]
@@ -351,7 +355,7 @@ def build_welcome(brand, tpl):
 
     # 2. banner: the generic image has "Bine ai venit!" baked in; a site banner
     #    does not, so add the welcome title as text above it.
-    if brand.get("banner"):
+    if brand.get("banner") and use_site_banner(brand):
         i, row, m = find_row(lambda m: mtype(m) == "image" and "bine-ai-venit" in m["descriptor"]["image"]["src"])
         if row:
             title = make_text(text_proto, text_wrap([
@@ -480,9 +484,20 @@ def build_automation(brand, tpl):
                 if opts.get("sender_email"):
                     act["from_email"] = opts["sender_email"]
                 act["from_name"] = opts.get("sender_name") or brand["name"]
+    no_code = not opts.get("discount_code")
+    if no_code:
+        for trig in data["triggers"].values():
+            for act in trig.get("actions", []):
+                if act.get("action_type") == "send_email" and act.get("subject") in NO_DISCOUNT_SUBJECTS:
+                    act["subject"], act["preheader"] = NO_DISCOUNT_SUBJECTS[act["subject"]]
     for draft in data["draft_meta"]["meta"].values():
         params = draft["params"]
         page = json.loads(params["json"])
+        if no_code:
+            strip_discount(page)
+            draft["html"] = strip_discount_html(draft["html"])
+            if draft.get("automation_subject") in NO_DISCOUNT_SUBJECTS:
+                draft["automation_subject"] = NO_DISCOUNT_SUBJECTS[draft["automation_subject"]][0]
         fix_bee(page, brand, patch)
         page = deep_map(page, patch)
         new_json = json.dumps(page, ensure_ascii=False, separators=(",", ":"))
@@ -496,6 +511,55 @@ def build_automation(brand, tpl):
         draft["text"] = patch(draft["text"])
     doc["exported_at"] = int(time.time())
     return doc
+
+
+NO_DISCOUNT_SUBJECTS = {
+    "Ai de la noi 10% discount la finalizarea comenzii!": ("Produsele tale te așteaptă în coș!",
+                                                          "Le-am păstrat pentru tine, dar nu știm cât timp mai sunt pe stoc."),
+    "Nu uita de reducerea ta!": ("Ultima amintire: coșul tău te așteaptă",
+                                 "Finalizează comanda cât produsele sunt încă disponibile."),
+}
+TOPBAR_TEXT = "Produsele tale te așteaptă!"
+DISCOUNT_TEXT_RE = re.compile(r"CODDISCOUNT|codul tau|Foloseste\s+codul|Dar stim ca|reducere daca", re.I)
+DISCOUNT_IMG_RE = re.compile(r"nu-uita-de-discount|aplica-acum-codul")
+
+
+def strip_discount(page):
+    """Remove the discount code blocks from an automation email (Beefree JSON)."""
+    for row in page["page"]["rows"]:
+        for col in row["columns"]:
+            mods, keep = col["modules"], []
+            has_code = any(mtype(m) == "text" and "CODDISCOUNT" in m["descriptor"]["text"]["html"] for m in mods)
+            for m in mods:
+                t = mtype(m)
+                h = m["descriptor"].get("text", {}).get("html", "") if t == "text" else ""
+                if t == "text" and re.search(r"\d+%\s*discount", h):
+                    m["descriptor"]["text"]["html"] = re.sub(r"(<p\b[^>]*>).*?(</p>)", rf"\g<1><strong>{TOPBAR_TEXT}</strong>\g<2>", h, count=1, flags=re.S)
+                    m["descriptor"]["text"]["html"] = re.sub(r"</p>\s*<p\b[^>]*>.*?</p>", "</p>", m["descriptor"]["text"]["html"], flags=re.S)
+                    keep.append(m)
+                elif t == "text" and DISCOUNT_TEXT_RE.search(re.sub(r"<[^>]+>", " ", h)):
+                    continue
+                elif t == "image" and DISCOUNT_IMG_RE.search(m["descriptor"]["image"].get("src", "")):
+                    continue
+                elif t == "divider" and has_code and "dotted" in m["descriptor"]["divider"]["style"].get("border-top", ""):
+                    continue
+                else:
+                    keep.append(m)
+            col["modules"] = keep
+
+
+def strip_discount_html(h):
+    """Same as strip_discount, on the rendered HTML (flat BEE text/image block tables)."""
+    inner = r"(?:(?!<table).)*?"
+    def drop(pattern):
+        nonlocal h
+        h = re.sub(r'<table class="(?:text_block|image_block)[^"]*"' + inner + pattern + inner + r"</table>", "", h, flags=re.S)
+    def topbar(m):
+        return re.sub(r"(<p\b[^>]*>).*?(</p>)", rf"\g<1><strong>{TOPBAR_TEXT}</strong>\g<2>", m.group(0), count=1, flags=re.S)
+    h = re.sub(r'<table class="text_block[^"]*"' + inner + r"\d+%(?:\s|&nbsp;|<[^>]+>)*discount" + inner + r"</table>", topbar, h, flags=re.S)
+    for pat in [r"CODDISCOUNT", r"Foloseste\s*(?:<[^>]+>\s*)*codul", r"Dar stim ca", r"reducere(?:\s|<[^>]+>)*daca", r"nu-uita-de-discount", r"aplica-acum-codul"]:
+        drop(pat)
+    return h
 
 
 # ================================================================ popup form
