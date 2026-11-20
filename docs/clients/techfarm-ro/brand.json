@@ -1,0 +1,108 @@
+{
+  "url": "https://www.techfarm.ro/",
+  "domain": "techfarm.ro",
+  "slug": "techfarm-ro",
+  "platform": "gomag",
+  "name": "techfarm.ro",
+  "contact": {
+    "phone": "1 0745643424",
+    "phone_href": "tel:0745643424",
+    "email": "vanzari@techfarm.ro"
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/profile.php",
+    "tiktok": "https://www.tiktok.com/@techfarm_agro"
+  },
+  "links": {
+    "home": "https://www.techfarm.ro/",
+    "cart": "https://www.techfarm.ro/cos-de-cumparaturi",
+    "terms": "https://www.techfarm.ro/promo",
+    "privacy": "https://www.techfarm.ro/politica-de-confidentialitate",
+    "contact": "https://www.techfarm.ro/date-contact",
+    "promo": "https://www.techfarm.ro/promo",
+    "menu": [
+      {
+        "label": "UTILAJE AGRICOLE",
+        "url": "https://www.techfarm.ro/utilaje-agricole"
+      },
+      {
+        "label": "BALOTIERE",
+        "url": "https://www.techfarm.ro/balotiere"
+      },
+      {
+        "label": "PROMOŢII",
+        "url": "https://www.techfarm.ro/promo"
+      }
+    ]
+  },
+  "logo": {
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
+    "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo-mare-techfarm4509.png",
+    "width": 300,
+    "height": 71,
+    "display_width": 200,
+    "found_by": "img",
+    "recolored": false
+  },
+  "banner": {
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/banner-a3591b49.jpg",
+    "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/banner/bannere-principale-carusel-4-4668.jpg",
+    "width": 1920,
+    "height": 800
+  },
+  "colors": {
+    "accent": "#a78a25",
+    "accent_original": "#fed139",
+    "accent_text": "#ffffff",
+    "dark": "#000000",
+    "light": "#fffaeb",
+    "muted": "#666666",
+    "candidates": [
+      "#fed139",
+      "#286090",
+      "#337ab7",
+      "#0c9c48",
+      "#ec971f",
+      "#ef8e9f"
+    ],
+    "logo_colors": [
+      "#0c9c48",
+      "#3ca86c",
+      "#d8f0e4",
+      "#9cd8b4",
+      "#6cc090",
+      "#f0d884"
+    ]
+  },
+  "products": [
+    {
+      "name": "Dezmiriștitor Combinat Versatill Tractat | Ovlac | Techfarm Agro",
+      "url": "https://www.techfarm.ro/dezmiristitoare/dezmiristitor-combinat-tractat-versatill.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-bf74987b.jpg",
+      "price": "",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/dezmiristitor-combinat-versatill-purtat-copie-711562.png"
+    },
+    {
+      "name": "Semănătoare Păioase TRISEM 2110 Disc Dublu | Sola Spania",
+      "url": "https://www.techfarm.ro/semanatori-paioase/semanatoare-de-paioase-trisem-2110-disc-dublu.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-7d168d34.jpg",
+      "price": "",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-trisem-2110-disc-dublu-863243.jpg"
+    },
+    {
+      "name": "SEMANATOARE PROSEM K GEA ELEKTRA",
+      "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-prosem-k-elektra-gea.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-a8d6a7a3.jpg",
+      "price": "75.000,00 €",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/original/semanatoare-prosem-k-gea-elektra-149075.webp"
+    }
+  ],
+  "options": {
+    "discount_code": "",
+    "sender_email": "vanzari@techfarm.ro",
+    "sender_name": "techfarm.ro"
+  },
+  "warnings": [],
+  "fetch_log": [],
+  "generated_at": "2026-11-20 15:04 UTC"
+}

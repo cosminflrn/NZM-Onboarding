@@ -1,0 +1,27 @@
+# techfarm.ro (techfarm.ro)
+
+Generat: 2026-11-20 15:04 UTC  ·  Platformă: gomag
+
+## Ce am găsit
+
+- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png
+- **Banner:** https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/banner-a3591b49.jpg
+- **Culori:** accent `#a78a25` · închis `#000000` · deschis `#fffaeb`
+- **Telefon:** 1 0745643424
+- **Email:** vanzari@techfarm.ro
+- **Social:** [facebook](https://www.facebook.com/profile.php), [tiktok](https://www.tiktok.com/@techfarm_agro)
+- **Meniu:** [UTILAJE AGRICOLE](https://www.techfarm.ro/utilaje-agricole), [BALOTIERE](https://www.techfarm.ro/balotiere), [PROMOŢII](https://www.techfarm.ro/promo)
+- **Coș:** https://www.techfarm.ro/cos-de-cumparaturi · **Termeni:** https://www.techfarm.ro/promo · **Confidențialitate:** https://www.techfarm.ro/politica-de-confidentialitate
+- **Produse:** [Dezmiriștitor Combinat Versatill Tractat | Ovlac | Techfarm Agro](https://www.techfarm.ro/dezmiristitoare/dezmiristitor-combinat-tractat-versatill.html), [Semănătoare Păioase TRISEM 2110 Disc Dublu | Sola Spania](https://www.techfarm.ro/semanatori-paioase/semanatoare-de-paioase-trisem-2110-disc-dublu.html), [SEMANATOARE PROSEM K GEA ELEKTRA](https://www.techfarm.ro/utilaje-agricole/semanatoare-prosem-k-elektra-gea.html)
+- **Cod discount:** — (welcome fără discount; în automatizare rămâne CODDISCOUNT)
+- **Expeditor automatizare:** techfarm.ro <vanzari@techfarm.ro>
+
+## De verificat
+
+- nimic special
+
+## Fișiere
+
+- `techfarm-ro__1-Pop-up-abonare.json`
+- `techfarm-ro__2-Welcome.json`
+- `techfarm-ro__3-Automatizare-cos-abandonat.json`
