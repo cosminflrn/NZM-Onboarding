@@ -1,0 +1,90 @@
+{
+  "url": "https://yesswimming.ro/",
+  "domain": "yesswimming.ro",
+  "slug": "yesswimming-ro",
+  "platform": "wordpress",
+  "name": "Club Sportiv Yes Swimming",
+  "contact": {
+    "phone": "TELEFON 0739 652 493",
+    "phone_href": "tel:0739652493",
+    "email": "contact@yesswimming.ro"
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/clubsportivnatatie",
+    "instagram": "https://www.instagram.com/clubsportivnatatie",
+    "tiktok": "https://www.tiktok.com/@yesswimming",
+    "youtube": "https://www.youtube.com/@YesSwimming"
+  },
+  "links": {
+    "home": "https://yesswimming.ro/",
+    "cart": "https://yesswimming.ro/",
+    "terms": null,
+    "privacy": "https://yesswimming.ro/politica-de-confidentialitate/",
+    "contact": "https://yesswimming.ro/contact/",
+    "promo": null,
+    "menu": [
+      {
+        "label": "PROGRAM →",
+        "url": "https://yesswimming.ro/program/"
+      },
+      {
+        "label": "COTIZAȚII →",
+        "url": "https://yesswimming.ro/cotizatii/"
+      },
+      {
+        "label": "ANTRENORI →",
+        "url": "https://yesswimming.ro/antrenori/"
+      }
+    ]
+  },
+  "logo": {
+    "url": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+    "source_url": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+    "width": 487,
+    "height": 487,
+    "display_width": 120,
+    "found_by": "img",
+    "recolored": false
+  },
+  "banner": null,
+  "colors": {
+    "accent": "#fc3030",
+    "accent_original": "#fc3030",
+    "accent_text": "#ffffff",
+    "dark": "#0d1b2a",
+    "light": "#ffeaea",
+    "muted": "#6e767f",
+    "candidates": [
+      "#fc3030",
+      "#c8102e",
+      "#0d3151",
+      "#0785c6",
+      "#00a7d5",
+      "#fc6060"
+    ],
+    "logo_colors": [
+      "#fc3030",
+      "#fc4848",
+      "#fcd8d8",
+      "#fc6060",
+      "#fcc0c0",
+      "#fca8a8"
+    ]
+  },
+  "products": [],
+  "options": {
+    "discount_code": "",
+    "sender_email": "contact@yesswimming.ro",
+    "sender_name": "Club Sportiv Yes Swimming"
+  },
+  "warnings": [
+    "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
+    "Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.",
+    "Produse: am găsit doar 0 din 3; restul rămân placeholder."
+  ],
+  "fetch_log": [
+    "404 https://yesswimming.ro/wp-json/wc/store/v1/products?per_page=40",
+    "404 https://yesswimming.ro/sitemap_index.xml"
+  ],
+  "generated_at": "2026-11-20 15:04 UTC"
+}

@@ -1,5 +1,30 @@
 [
  {
+  "slug": "yesswimming-ro",
+  "name": "Club Sportiv Yes Swimming",
+  "domain": "yesswimming.ro",
+  "url": "https://yesswimming.ro/",
+  "generated_at": "2026-11-20 15:04 UTC",
+  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+  "colors": {
+   "accent": "#fc3030",
+   "dark": "#0d1b2a",
+   "light": "#ffeaea"
+  },
+  "warnings": [
+   "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
+   "Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.",
+   "Produse: am găsit doar 0 din 3; restul rămân placeholder."
+  ],
+  "products": 0,
+  "files": [
+   "yesswimming-ro__1-Pop-up-abonare.json",
+   "yesswimming-ro__2-Welcome.json",
+   "yesswimming-ro__3-Automatizare-cos-abandonat.json",
+   "yesswimming-ro__newsman-import.zip"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
