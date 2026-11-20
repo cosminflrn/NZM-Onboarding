@@ -490,10 +490,19 @@ class Scraper:
             dom = I.dominant_colors(im)
             # white logos (made for dark headers) are invisible on white emails
             light_logo = not dom or all(C.luminance(c) > 0.7 for c, _ in dom[:2])
-            if light_logo and score < 70:
-                self.warnings.append(f"Logo: logo-ul găsit ({url[:80]}) pare alb/transparent; verifică dacă se vede pe fundal alb.")
+            recolored = False
+            if light_logo and im.mode in ("RGBA", "LA", "P"):
+                # white logo made for a dark header: paint it dark so it shows on white emails
+                rgba = im.convert("RGBA")
+                dark = I.Image.new("RGBA", rgba.size, (34, 34, 34, 255))
+                dark.putalpha(rgba.split()[-1])
+                im = dark
+                recolored = True
+                self.warnings.append("Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică.")
+            elif light_logo:
+                self.warnings.append(f"Logo: logo-ul găsit ({url[:80]}) pare alb; verifică dacă se vede pe fundal alb.")
             # email-safe: keep original if PNG/JPG/GIF and not SVG, otherwise host a PNG
-            if fmt in I.EMAIL_SAFE and not url.startswith("inline-svg:") and im.size == orig_size:
+            if fmt in I.EMAIL_SAFE and not recolored and not url.startswith("inline-svg:") and im.size == orig_size:
                 public = url
             else:
                 im2 = im.copy()
