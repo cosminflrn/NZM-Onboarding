@@ -227,6 +227,10 @@ def fix_bee(page, brand, patch):
                 cs = d.setdefault("computedStyle", {})
                 cs["class"] = "center fixedwidth"
                 cs["width"] = f'{logo["display_width"]}px'
+                st = d.setdefault("style", {})
+                for side in ("top", "bottom", "left", "right"):
+                    if st.get(f"padding-{side}", "0px") in ("0px", "0", ""):
+                        st[f"padding-{side}"] = "10px"
             elif banner.get("url") and any(pid in src for pid in BANNER_IDS):
                 d["image"].update({"src": banner["url"], "alt": brand["name"], "href": brand["links"]["home"],
                                    "width": f'{banner["width"]}px', "height": f'{banner["height"]}px', "target": "_blank"})
@@ -520,6 +524,16 @@ NO_DISCOUNT_SUBJECTS = {
                                  "Finalizează comanda cât produsele sunt încă disponibile."),
 }
 TOPBAR_TEXT = "Produsele tale te așteaptă!"
+REPLACE_TEXTS = [  # (pattern in the discount paragraph, new text)
+    (r"Discountul(?:\s|<[^>]+>)*tau(?:\s|<[^>]+>)*expira", "Produsele din coșul tău sunt încă rezervate pentru tine, dar nu pentru mult timp. Finalizează comanda cât sunt pe stoc!"),
+    (r"reducere(?:\s|<[^>]+>)*daca", "Stocurile sunt limitate, așa că îți recomandăm să finalizezi comanda cât mai curând."),
+]
+
+
+def _one_paragraph(block_html, text):
+    out = re.sub(r"(<p\b[^>]*>).*?(</p>)", rf"\g<1>{text}\g<2>", block_html, count=1, flags=re.S)
+    first_end = out.find("</p>") + 4
+    return out[:first_end] + re.sub(r"<p\b[^>]*>.*?</p>", "", out[first_end:], flags=re.S)
 DISCOUNT_TEXT_RE = re.compile(r"CODDISCOUNT|codul tau|Foloseste\s+codul|Dar stim ca|reducere daca", re.I)
 DISCOUNT_IMG_RE = re.compile(r"nu-uita-de-discount|aplica-acum-codul")
 
@@ -537,6 +551,10 @@ def strip_discount(page):
                     m["descriptor"]["text"]["html"] = re.sub(r"(<p\b[^>]*>).*?(</p>)", rf"\g<1><strong>{TOPBAR_TEXT}</strong>\g<2>", h, count=1, flags=re.S)
                     m["descriptor"]["text"]["html"] = re.sub(r"</p>\s*<p\b[^>]*>.*?</p>", "</p>", m["descriptor"]["text"]["html"], flags=re.S)
                     keep.append(m)
+                elif t == "text" and any(re.search(pat, h) for pat, _ in REPLACE_TEXTS):
+                    new = next(txt for pat, txt in REPLACE_TEXTS if re.search(pat, h))
+                    m["descriptor"]["text"]["html"] = _one_paragraph(h, new)
+                    keep.append(m)
                 elif t == "text" and DISCOUNT_TEXT_RE.search(re.sub(r"<[^>]+>", " ", h)):
                     continue
                 elif t == "image" and DISCOUNT_IMG_RE.search(m["descriptor"]["image"].get("src", "")):
@@ -546,6 +564,13 @@ def strip_discount(page):
                 else:
                     keep.append(m)
             col["modules"] = keep
+    # the removed discount banner left the greeting glued to the top bar
+    for row in page["page"]["rows"]:
+        for col in row["columns"]:
+            for m in col["modules"]:
+                if mtype(m) == "text" and re.search(r">\s*Buna[!,]", m["descriptor"]["text"]["html"]):
+                    m["descriptor"]["style"]["padding-top"] = "30px"
+                    return
 
 
 def strip_discount_html(h):
@@ -557,7 +582,22 @@ def strip_discount_html(h):
     def topbar(m):
         return re.sub(r"(<p\b[^>]*>).*?(</p>)", rf"\g<1><strong>{TOPBAR_TEXT}</strong>\g<2>", m.group(0), count=1, flags=re.S)
     h = re.sub(r'<table class="text_block[^"]*"' + inner + r"\d+%(?:\s|&nbsp;|<[^>]+>)*discount" + inner + r"</table>", topbar, h, flags=re.S)
-    for pat in [r"CODDISCOUNT", r"Foloseste\s*(?:<[^>]+>\s*)*codul", r"Dar stim ca", r"reducere(?:\s|<[^>]+>)*daca", r"nu-uita-de-discount", r"aplica-acum-codul"]:
+    for pat, txt in REPLACE_TEXTS:
+        h = re.sub(r'<table class="text_block[^"]*"' + inner + pat + inner + r"</table>",
+                   lambda m, txt=txt: _one_paragraph(m.group(0), txt), h, flags=re.S)
+    def pad_greeting(m):
+        td = m.group(1)
+        if 'style="' in td:
+            td = re.sub(r"padding-top:\s*\d+px;?", "", td)
+            td = td.replace('style="', 'style="padding-top:30px;', 1)
+        else:
+            td = td.replace('class="pad"', 'class="pad" style="padding-top:30px"')
+        return td + m.group(2)
+    h = re.sub(r'(<td class="pad"[^>]*>)(' + inner + r">\s*Buna[!,])", pad_greeting, h, count=1, flags=re.S)
+    nt = r"(?:(?!</table>).)*?"
+    h = re.sub(r'<table class="divider_block[^"]*"' + nt + r"<table" + nt + r"dotted #000(?:000)?\b" + nt + r"</table>" + nt + r"</table>",
+               "", h, flags=re.S | re.I)
+    for pat in [r"CODDISCOUNT", r"Dar stim ca", r"nu-uita-de-discount", r"aplica-acum-codul"]:
         drop(pat)
     return h
 
