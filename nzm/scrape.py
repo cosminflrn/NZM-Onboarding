@@ -693,7 +693,11 @@ class Scraper:
             if im is None or im.width < 150:
                 continue
             p["source_image"] = p["image"]
-            p["image"] = self.assets.save(I.square(im, 600), "product", "JPEG")
+            ratio = im.width / max(1, im.height)
+            # keep the shop's own image when an email client can show it as is;
+            # only convert/square (and host) WebP/AVIF or very tall/wide images
+            if not (fmt in ("JPEG", "PNG") and 0.8 <= ratio <= 1.25):
+                p["image"] = self.assets.save(I.square(im, 600), "product", "JPEG")
             out.append(p)
             if len(out) >= want:
                 break
