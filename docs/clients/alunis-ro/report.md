@@ -1,10 +1,10 @@
 # Aluniș (alunis.ro)
 
-Generat: 2026-11-20 14:30 UTC  ·  Platformă: wordpress
+Generat: 2026-11-20 14:33 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
-- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-a944c29a.png
+- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png
 - **Banner:** — (imaginea generică)
 - **Culori:** accent `#9e7e52` · închis `#221b11` · deschis `#f5f2ee`
 - **Telefon:** +40 736 732 588
@@ -19,7 +19,7 @@ Generat: 2026-11-20 14:30 UTC  ·  Platformă: wordpress
 ## De verificat
 
 - Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.
-- Logo: logo-ul găsit (https://alunis.ro/wp-content/uploads/2026/05/Kit-Identitate-Vizuala-no-backgroun) pare alb/transparent; verifică dacă se vede pe fundal alb.
+- Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică.
 - Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.
 - Produse: am găsit doar 0 din 3; restul rămân placeholder.
 
