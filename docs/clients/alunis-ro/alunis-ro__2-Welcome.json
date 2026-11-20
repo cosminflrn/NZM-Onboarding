@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795185220,
+	"exported_at": 1795185519,
 	"data": {
 		"page": {
 			"body": {
@@ -123,7 +123,11 @@
 											"width": "388px"
 										},
 										"style": {
-											"width": "100%"
+											"width": "100%",
+											"padding-top": "10px",
+											"padding-bottom": "10px",
+											"padding-left": "10px",
+											"padding-right": "10px"
 										}
 									},
 									"locked": false,
@@ -433,7 +437,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-text",
-									"uuid": "bad177d9-57f9-4171-b74d-83b6083450cb"
+									"uuid": "a79a71dd-9745-4f60-90e2-a273cf451fbb"
 								}
 							],
 							"style": {
@@ -514,7 +518,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-image",
-									"uuid": "35024a20-dc1e-4882-8a52-3962902f8b48"
+									"uuid": "10af9fbb-331e-4e88-9101-9f1aea28b1de"
 								},
 								{
 									"descriptor": {
@@ -541,7 +545,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-text",
-									"uuid": "b772df55-83f6-413e-86bf-00fd8d96c682"
+									"uuid": "1f2aa7a2-e55f-4a77-b06d-926a5cd6345b"
 								},
 								{
 									"descriptor": {
@@ -568,7 +572,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-text",
-									"uuid": "605ca7d7-ba14-414e-8f38-aab40ad63f9f"
+									"uuid": "438b2802-6300-4e8c-9019-18d5a11aa8cb"
 								},
 								{
 									"descriptor": {
@@ -612,7 +616,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-button",
-									"uuid": "41854bf1-8d0e-475f-984f-b0df47da58ef"
+									"uuid": "ce5eda70-c899-43d6-9193-dd623a8d9d7f"
 								}
 							],
 							"style": {
@@ -626,7 +630,7 @@
 								"padding-right": "0px",
 								"padding-top": "5px"
 							},
-							"uuid": "d30e2bac-fd70-41c6-90b8-6ac1406e7e27"
+							"uuid": "d602657f-f2fd-4aa9-b080-f26facf4f16f"
 						},
 						{
 							"grid-columns": 4,
@@ -657,7 +661,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-image",
-									"uuid": "0effad17-f7cf-422e-8bb3-c432b1ceeea2"
+									"uuid": "3c23dc6a-d32e-47a1-accd-4afa39c63d90"
 								},
 								{
 									"descriptor": {
@@ -684,7 +688,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-text",
-									"uuid": "f32fbb9e-e429-432b-8982-9e0783c54128"
+									"uuid": "8461ec77-4426-4cf0-8e24-31274aa7575b"
 								},
 								{
 									"descriptor": {
@@ -711,7 +715,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-text",
-									"uuid": "2533fc30-385f-43e4-8d63-ba5c39c5f576"
+									"uuid": "fbe5b310-bc1e-44f3-b8f3-9d48d75980f2"
 								},
 								{
 									"descriptor": {
@@ -755,7 +759,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-button",
-									"uuid": "bd07378c-1241-4dec-a91a-38eb88ddf16e"
+									"uuid": "20dbadc8-ca71-457b-bce6-64ba65a26671"
 								}
 							],
 							"style": {
@@ -769,7 +773,7 @@
 								"padding-right": "0px",
 								"padding-top": "5px"
 							},
-							"uuid": "53458945-da23-4c96-934e-4b9f3bd3fce7"
+							"uuid": "8cec3c20-eafd-447c-9c09-8851d9e98ba5"
 						},
 						{
 							"grid-columns": 4,
@@ -800,7 +804,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-image",
-									"uuid": "f78fbaf8-7219-4aaf-8d7a-7ad0612358e7"
+									"uuid": "0b37375a-7a42-4d33-b7cd-d97b7ca9e979"
 								},
 								{
 									"descriptor": {
@@ -827,7 +831,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-text",
-									"uuid": "a6c12229-d8eb-4783-bfa2-eef345aae70b"
+									"uuid": "026a4cdd-af8b-428c-aecf-71b86f7a956b"
 								},
 								{
 									"descriptor": {
@@ -854,7 +858,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-text",
-									"uuid": "ad5ee62d-a332-4ece-923f-e40dfbe80eaa"
+									"uuid": "561ccf12-7b73-402f-aff7-340f303ee85e"
 								},
 								{
 									"descriptor": {
@@ -898,7 +902,7 @@
 									},
 									"locked": false,
 									"type": "mailup-bee-newsletter-modules-button",
-									"uuid": "3b20a9d3-4ad5-4e2c-a1bd-e417eb4c4879"
+									"uuid": "eab46cac-2706-41ff-92ec-52943f0c68f9"
 								}
 							],
 							"style": {
@@ -912,7 +916,7 @@
 								"padding-right": "0px",
 								"padding-top": "5px"
 							},
-							"uuid": "21363c1c-a54e-4351-8148-4de836ad40ed"
+							"uuid": "546f05e0-feac-4003-b78b-6a794e66cb52"
 						}
 					],
 					"container": {
@@ -946,7 +950,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "2b9200f0-a587-4f71-a0ff-fcc1f71f348a"
+					"uuid": "ace958eb-e5dd-4c9b-a913-f3ea3631f2c8"
 				},
 				{
 					"columns": [
@@ -1009,7 +1013,7 @@
 								"padding-right": "0px",
 								"padding-top": "5px"
 							},
-							"uuid": "4ba5e1e8-458f-47c7-8ea2-f9633ab225ee"
+							"uuid": "a87cfac3-53bb-4356-adeb-28fe127c636e"
 						}
 					],
 					"container": {
@@ -1043,7 +1047,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "def5a20f-6274-4eaa-954f-e69d27edc40a"
+					"uuid": "7756ef0f-954b-4904-9bbd-03cc75cbf390"
 				},
 				{
 					"columns": [
@@ -1194,7 +1198,7 @@
 										"iconsList": {
 											"icons": [
 												{
-													"id": "d9c0903b-ba76-4238-99cc-41aa50658142",
+													"id": "7ccc889e-a13b-44e2-998d-2394d6f577d9",
 													"image": {
 														"alt": "Facebook",
 														"href": "https://www.facebook.com/AlunisRetreat",
@@ -1208,7 +1212,7 @@
 													"type": "follow"
 												},
 												{
-													"id": "6b9ed9a6-a2e6-4518-a530-59773e1ad933",
+													"id": "da23aaae-2e72-4fea-adaf-20bcc87a7a61",
 													"image": {
 														"alt": "Instagram",
 														"href": "https://www.instagram.com/alunis_retreat",
