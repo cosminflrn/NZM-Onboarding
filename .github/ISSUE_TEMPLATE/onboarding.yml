@@ -1,0 +1,27 @@
+name: Onboarding client nou
+description: Generează pop-up, welcome și automatizare coș abandonat pentru un site
+title: "Onboarding: "
+labels: ["onboarding"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Link site
+      placeholder: https://magazin.ro
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Nume brand (opțional)
+      description: Lasă gol ca să fie luat de pe site.
+  - type: input
+    id: discount
+    attributes:
+      label: Cod discount (opțional)
+      description: Dacă e completat, apare în welcome și înlocuiește CODDISCOUNT în automatizare.
+  - type: input
+    id: sender_email
+    attributes:
+      label: Email expeditor (opțional)
+      description: Expeditorul mailurilor din automatizare (trebuie validat în contul Newsman). Gol = emailul găsit pe site.

@@ -1,0 +1,819 @@
+"""Extract brand data (logo, banner, colors, contact, socials, links, products) from a shop."""
+import json
+import random
+import re
+from collections import defaultdict
+from urllib.parse import urljoin, urlparse
+
+from bs4 import BeautifulSoup
+
+from . import colors as C
+from . import images as I
+from .net import Fetcher, absolute, same_site
+
+SOCIAL_PATTERNS = {
+    "facebook": re.compile(r"^https?://(www\.|m\.|web\.)?(facebook|fb)\.(com|me)/(?!sharer|share|dialog|plugins|tr\b|tr\?|login|policy)[^?#]+", re.I),
+    "instagram": re.compile(r"^https?://(www\.)?instagram\.com/(?!p/|explore|accounts|share)[^?#]+", re.I),
+    "tiktok": re.compile(r"^https?://(www\.)?tiktok\.com/@[^?#]+", re.I),
+    "youtube": re.compile(r"^https?://(www\.)?youtube\.com/(channel/|c/|user/|@)[^?#]+", re.I),
+    "linkedin": re.compile(r"^https?://([a-z]{2,3}\.)?linkedin\.com/(company|in|school)/[^?#]+", re.I),
+    "pinterest": re.compile(r"^https?://([a-z]{2,3}\.)?pinterest\.[a-z.]+/(?!pin/create)[^?#]+", re.I),
+    "twitter": re.compile(r"^https?://(www\.)?(twitter|x)\.com/(?!intent|share|home)[^?#]+", re.I),
+}
+
+BAD_IMG_WORDS = re.compile(
+    r"anpc|\bsal\b|sal-|sol-|\bsol\b|netopia|mobilpay|visa|mastercard|maestro|payu|euplatesc|stripe|paypal|gls|fan-?courier|"
+    r"sameday|cargus|dpd|trusted|badge|google-?play|app-?store|ecommerce-?europe|gpec|placeholder|loader|spinner|flag|"
+    r"lazy|blank|pixel|spacer|icon-|/icons?/|payment|card", re.I)
+
+FRAMEWORK_DEFAULTS = {  # colors present on many sites that are rarely the brand
+    "#007bff", "#0d6efd", "#17a2b8", "#28a745", "#198754", "#dc3545", "#ffc107", "#6c757d", "#0dcaf0",
+    "#96588a", "#7f54b3", "#720eec", "#cf2e2e", "#ff6900", "#fcb900", "#7bdcb5", "#00d084", "#8ed1fc",
+    "#0693e3", "#9b51e0", "#f78da7", "#abb8c3", "#2271b1", "#135e96", "#3858e9", "#1e73be", "#0073aa",
+    "#4285f4", "#1877f2", "#3b5998", "#1da1f2", "#e4405f", "#25d366", "#ff0000", "#00ff00", "#0000ff",
+}
+
+PROMO_RE = re.compile(r"reducer|promo|ofert|outlet|sale\b|lichidar|black ?friday|discount|campani|clearance", re.I)
+TERMS_RE = re.compile(r"termen|condi[tț]i|terms|tc\b", re.I)
+PRIVACY_RE = re.compile(r"confiden[tț]ialitat|privacy|gdpr|prelucrarea datelor|protec[tț]ia datelor|cookie", re.I)
+CONTACT_RE = re.compile(r"^contact|contacteaz|contact\b", re.I)
+CART_HREF_RE = re.compile(r"/(cart|cos|cosul|cos-de-cumparaturi|cos-cumparaturi|basket|shopping-cart|checkout/cart|cosul-meu)(/|\?|$|\.html)", re.I)
+MENU_SKIP_RE = re.compile(
+    r"cont|account|login|logare|autentific|inregistr|register|cos\b|co[sș]ul|cart|wishlist|favorit|caut|search|contact|"
+    r"blog|despre|about|track|urmar|retur|faq|intrebari|ajutor|help|livrare|termen|confiden|gdpr|anpc|newsletter|compar|"
+    r"magazin(e)?\b|store locator|limba|lang|lei\b|ron\b|eur\b", re.I)
+PRODUCT_HREF_RE = re.compile(r"/(produs|produse|product|products|p|item|shop)/[^/]+|-p\d+|/\d{3,}[-/]|-\d{3,}\.html$|\.html$|/pd/", re.I)
+NOT_PRODUCT_HREF_RE = re.compile(r"categor|/collections/[^/]+/?$|/c/|/brand|/blog|/tag/|/pagina|/page/|/cont|/account|/cart|/cos\b|/checkout|/wishlist|/compare|/search|\?|#", re.I)
+
+
+def soup_of(html):
+    return BeautifulSoup(html or "", "html.parser")
+
+
+def text_of(el):
+    return re.sub(r"\s+", " ", el.get_text(" ", strip=True)) if el else ""
+
+
+def classes_chain(el, depth=4):
+    """class+id strings of an element and some ancestors (lowercase)."""
+    parts = []
+    cur = el
+    for _ in range(depth):
+        if cur is None or not getattr(cur, "attrs", None) and cur.name is None:
+            break
+        if getattr(cur, "attrs", None):
+            parts.append(" ".join(cur.get("class", []) if isinstance(cur.get("class"), list) else [str(cur.get("class", ""))]))
+            parts.append(str(cur.get("id", "")))
+        cur = cur.parent
+    return " ".join(parts).lower()
+
+
+def in_tag(el, names, depth=12):
+    cur = el.parent
+    for _ in range(depth):
+        if cur is None:
+            return False
+        if cur.name in names:
+            return True
+        cls = " ".join(cur.get("class", [])) if cur.get("class") else ""
+        ident = cur.get("id", "") or ""
+        for n in names:
+            if re.search(rf"(^|[\s_-]){n}([\s_-]|$)", f"{cls} {ident}".lower()):
+                return True
+        cur = cur.parent
+    return False
+
+
+def best_from_srcset(srcset):
+    best, best_w = None, -1
+    for part in (srcset or "").split(","):
+        bits = part.strip().split()
+        if not bits:
+            continue
+        w = 0
+        if len(bits) > 1:
+            m = re.match(r"(\d+)(w|x)", bits[1])
+            if m:
+                w = int(m.group(1)) * (1000 if m.group(2) == "x" else 1)
+        if w > best_w:
+            best, best_w = bits[0], w
+    return best
+
+
+def img_url(tag, base):
+    for attr in ("data-src", "data-lazy-src", "data-original", "data-lazy", "data-srcset", "srcset", "src"):
+        v = tag.get(attr)
+        if not v or v.startswith("data:"):
+            continue
+        if "srcset" in attr or ("," in v and " " in v.strip()):
+            v = best_from_srcset(v)
+        u = absolute(base, v)
+        if u:
+            return u
+    return None
+
+
+# ----------------------------------------------------------------- JSON-LD
+
+def jsonld_items(soup):
+    items = []
+    for s in soup.find_all("script", type=lambda t: t and "ld+json" in t):
+        raw = s.string or s.get_text() or ""
+        raw = re.sub(r"[\x00-\x1f]", " ", raw)
+        try:
+            data = json.loads(raw)
+        except ValueError:
+            continue
+        stack = [data]
+        while stack:
+            d = stack.pop()
+            if isinstance(d, list):
+                stack.extend(d)
+            elif isinstance(d, dict):
+                items.append(d)
+                for k in ("@graph", "itemListElement", "mainEntity", "item"):
+                    if k in d:
+                        stack.append(d[k])
+    return items
+
+
+def ld_type(d):
+    t = d.get("@type", "")
+    return [x.lower() for x in (t if isinstance(t, list) else [t]) if isinstance(x, str)]
+
+
+def ld_image(v):
+    if isinstance(v, list):
+        v = v[0] if v else None
+    if isinstance(v, dict):
+        v = v.get("url") or v.get("contentUrl")
+    return v if isinstance(v, str) else None
+
+
+def ld_price(d):
+    offers = d.get("offers")
+    if isinstance(offers, list):
+        offers = offers[0] if offers else None
+    if not isinstance(offers, dict):
+        return None, None
+    price = offers.get("price") or offers.get("lowPrice")
+    if price is None and isinstance(offers.get("priceSpecification"), dict):
+        price = offers["priceSpecification"].get("price")
+    if isinstance(offers.get("offers"), list) and price is None and offers["offers"]:
+        price = offers["offers"][0].get("price")
+    return price, offers.get("priceCurrency")
+
+
+def fmt_price(price, currency=None, domain=""):
+    try:
+        p = float(str(price).replace(" ", "").replace(",", ".")) if not isinstance(price, (int, float)) else float(price)
+    except (TypeError, ValueError):
+        return str(price) if price else ""
+    s = f"{p:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    cur = (currency or "").upper()
+    if cur in ("RON", "LEI") or (not cur and domain.endswith(".ro")):
+        return f"{s} lei"
+    if cur == "EUR":
+        return f"{s} €"
+    return f"{s} {cur}".strip()
+
+
+# ----------------------------------------------------------------- main class
+
+class Scraper:
+    def __init__(self, url, out_dir, public_base="", seed=None, fetcher=None):
+        if not re.match(r"^https?://", url):
+            url = "https://" + url
+        self.start_url = url
+        self.f = fetcher or Fetcher()
+        self.assets = I.AssetStore(out_dir, public_base)
+        self.warnings = []
+        self.seed = seed
+
+    # -- helpers
+    def page(self, url):
+        final, html, ctype = self.f.get(url)
+        if not html or ("html" not in (ctype or "") and "<html" not in html[:2000].lower()):
+            return final, None
+        return final, soup_of(html)
+
+    def image(self, url):
+        if not url:
+            return None, None
+        if url.startswith("inline-svg:"):
+            return I.load(url[len("inline-svg:"):].encode("utf-8"), "image/svg+xml")
+        _, data, ctype = self.f.get(url, binary=True)
+        im, fmt = I.load(data, ctype)
+        return im, fmt
+
+    # -- run
+    def run(self):
+        final, soup = self.page(self.start_url)
+        if soup is None:
+            raise RuntimeError(f"Nu am putut descărca {self.start_url} ({'; '.join(self.f.log[-3:])})")
+        p = urlparse(final)
+        self.base = f"{p.scheme}://{p.netloc}/"
+        self.domain = p.netloc.lower().removeprefix("www.")
+        self.html = str(soup)
+        self.soup = soup
+        self.rng = random.Random(self.seed if self.seed is not None else self.domain)
+        self.ld = jsonld_items(soup)
+        self.platform = self.detect_platform()
+
+        brand = {
+            "url": self.base,
+            "domain": self.domain,
+            "slug": re.sub(r"[^a-z0-9]+", "-", self.domain).strip("-"),
+            "platform": self.platform,
+        }
+        brand["name"] = self.site_name()
+        links = self.links()
+        contact = self.contact(links)
+        brand["contact"] = contact
+        brand["socials"] = self.socials()
+        brand["links"] = links
+        logo, logo_colors = self.logo()
+        brand["logo"] = logo
+        brand["banner"] = self.banner(logo)
+        brand["colors"] = self.colors(logo_colors)
+        brand["products"] = self.products()
+        brand["options"] = {"discount_code": "", "sender_email": contact.get("email") or "", "sender_name": brand["name"]}
+        brand["warnings"] = self.warnings
+        brand["fetch_log"] = self.f.log[-20:]
+        return brand
+
+    # -- platform
+    def detect_platform(self):
+        h = self.html.lower()
+        if "cdn.shopify.com" in h or "shopify.theme" in h:
+            return "shopify"
+        if "woocommerce" in h or "wp-content/plugins/woocommerce" in h:
+            return "woocommerce"
+        if "gomag" in h:
+            return "gomag"
+        if "merchantpro" in h:
+            return "merchantpro"
+        if "prestashop" in h:
+            return "prestashop"
+        if "mage/" in h or "magento" in h:
+            return "magento"
+        if "route=product" in h or "catalog/view/theme" in h:
+            return "opencart"
+        if "wp-content" in h:
+            return "wordpress"
+        return "necunoscut"
+
+    # -- name
+    def site_name(self):
+        m = self.soup.find("meta", property="og:site_name")
+        if m and m.get("content", "").strip():
+            return m["content"].strip()
+        for d in self.ld:
+            if set(ld_type(d)) & {"organization", "store", "onlinestore", "website", "localbusiness"} and isinstance(d.get("name"), str):
+                return d["name"].strip()
+        title = text_of(self.soup.title)
+        if title:
+            parts = [x.strip() for x in re.split(r"\s[|\-–—:]\s", title) if x.strip()]
+            if parts:
+                short = min(parts, key=len)
+                if len(short) <= 40:
+                    return short
+        return self.domain.split(".")[0].capitalize()
+
+    # -- links
+    def all_links(self, soup=None):
+        soup = soup or self.soup
+        out = []
+        for a in soup.find_all("a", href=True):
+            out.append((a, a["href"].strip(), text_of(a)))
+        return out
+
+    def links(self):
+        res = {"home": self.base, "cart": None, "terms": None, "privacy": None, "contact": None, "promo": None, "menu": []}
+        for a, href, txt in self.all_links():
+            u = absolute(self.base, href)
+            if not u or not same_site(u, self.base):
+                continue
+            label = (txt or a.get("title") or "").strip()
+            if not res["cart"] and CART_HREF_RE.search(urlparse(u).path + ("?" + urlparse(u).query if urlparse(u).query else "")):
+                res["cart"] = u
+            if not res["terms"] and TERMS_RE.search(label) and not PRIVACY_RE.search(label):
+                res["terms"] = u
+            if not res["privacy"] and PRIVACY_RE.search(label) and "cookie" not in label.lower():
+                res["privacy"] = u
+            if not res["contact"] and (CONTACT_RE.search(label) or re.search(r"/contact", u, re.I)):
+                res["contact"] = u
+            if not res["promo"] and PROMO_RE.search(label) and len(label) < 40:
+                res["promo"] = u
+        if not res["cart"]:
+            res["cart"] = {
+                "shopify": urljoin(self.base, "/cart"),
+                "woocommerce": urljoin(self.base, "/cos/") if self.domain.endswith(".ro") else urljoin(self.base, "/cart/"),
+                "gomag": urljoin(self.base, "/cos-de-cumparaturi"),
+                "opencart": urljoin(self.base, "/index.php?route=checkout/cart"),
+                "magento": urljoin(self.base, "/checkout/cart/"),
+                "prestashop": urljoin(self.base, "/cos?action=show") if self.domain.endswith(".ro") else urljoin(self.base, "/cart?action=show"),
+            }.get(self.platform, self.base)
+            self.warnings.append("Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.")
+        if not res["privacy"]:
+            for a, href, txt in self.all_links():
+                u = absolute(self.base, href)
+                if u and same_site(u, self.base) and PRIVACY_RE.search(txt or ""):
+                    res["privacy"] = u
+                    break
+        res["menu"] = self.menu(res.get("promo"))
+        return res
+
+    def menu(self, promo):
+        containers = []
+        for sel in ["header nav", "nav", "header", "[class*=menu]", "[id*=menu]", "[class*=nav]"]:
+            containers.extend(self.soup.select(sel))
+        seen, items = set(), []
+        for cont in containers:
+            if in_tag(cont, ["footer"]):
+                continue
+            for a in cont.find_all("a", href=True):
+                label = text_of(a)
+                u = absolute(self.base, a["href"])
+                if not u or not same_site(u, self.base) or urlparse(u).path in ("", "/"):
+                    continue
+                if not (2 <= len(label) <= 28) or MENU_SKIP_RE.search(label) or re.fullmatch(r"[\d\s.,]+", label):
+                    continue
+                key = label.lower()
+                if key in seen:
+                    continue
+                seen.add(key)
+                items.append({"label": label.upper(), "url": u})
+            if len(items) >= 3:
+                break
+        promo_item = None
+        if promo:
+            promo_item = next((i for i in items if i["url"] == promo), None)
+            if not promo_item:
+                promo_item = {"label": "REDUCERI", "url": promo}
+                for a, href, txt in self.all_links():
+                    if absolute(self.base, href) == promo and txt and len(txt) <= 28:
+                        promo_item["label"] = txt.upper()
+                        break
+        regular = [i for i in items if i is not promo_item][: (2 if promo_item else 3)]
+        result = regular + ([promo_item] if promo_item else [])
+        if not result:
+            self.warnings.append("Meniu: nu am găsit linkuri de meniu; am pus doar HOME.")
+        return result
+
+    # -- contact
+    def contact(self, links):
+        res = {"phone": None, "phone_href": None, "email": None}
+        pages = [self.soup]
+        if links.get("contact"):
+            _, cs = self.page(links["contact"])
+            if cs is not None:
+                pages.append(cs)
+        for soup in pages:
+            for a in soup.find_all("a", href=True):
+                h = a["href"].strip()
+                if not res["phone"] and h.lower().startswith("tel:"):
+                    num = re.sub(r"[^\d+]", "", h[4:])
+                    if len(re.sub(r"\D", "", num)) >= 9:
+                        txt = text_of(a)
+                        res["phone"] = txt if len(re.sub(r"\D", "", txt)) >= 9 and len(txt) < 25 else num
+                        res["phone_href"] = "tel:" + num
+                if not res["email"] and h.lower().startswith("mailto:"):
+                    em = h[7:].split("?")[0].strip()
+                    if re.fullmatch(r"[^@\s]+@[^@\s]+\.[a-z]{2,}", em, re.I):
+                        res["email"] = em
+            if res["phone"] and res["email"]:
+                break
+        if not res["phone"] or not res["email"]:
+            for soup in pages:
+                txt = text_of(soup.body or soup)
+                if not res["phone"]:
+                    m = re.search(r"(?<!\d)(?:\+?40[\s.]?|0)(?:7\d{2}|[23]\d{2})[\s.\-]?\d{3}[\s.\-]?\d{3}(?!\d)", txt)
+                    if m:
+                        res["phone"] = m.group(0).strip()
+                        res["phone_href"] = "tel:" + re.sub(r"[^\d+]", "", m.group(0))
+                if not res["email"]:
+                    for m in re.finditer(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", txt):
+                        em = m.group(0)
+                        if not re.search(r"example|sentry|wixpress|\.(png|jpg|webp|gif|svg)$|@\dx", em, re.I):
+                            res["email"] = em
+                            break
+        if not res["phone"]:
+            self.warnings.append("Telefon: nu am găsit niciun număr pe site.")
+        if not res["email"]:
+            self.warnings.append("Email: nu am găsit nicio adresă de contact pe site.")
+        return res
+
+    # -- socials
+    def socials(self):
+        found = {}
+        links = self.all_links()
+        # prefer links in footer/header, then anywhere
+        links.sort(key=lambda t: 0 if in_tag(t[0], ["footer", "header"]) else 1)
+        for a, href, _ in links:
+            href = href.split("?")[0].rstrip("/")
+            for net, pat in SOCIAL_PATTERNS.items():
+                if net not in found and pat.match(href):
+                    found[net] = href
+        for d in self.ld:
+            for s in d.get("sameAs", []) if isinstance(d.get("sameAs"), list) else []:
+                for net, pat in SOCIAL_PATTERNS.items():
+                    if net not in found and isinstance(s, str) and pat.match(s):
+                        found[net] = s.rstrip("/")
+        if not found:
+            self.warnings.append("Social media: nu am găsit niciun profil.")
+        order = ["facebook", "instagram", "tiktok", "youtube", "linkedin", "pinterest", "twitter"]
+        return {k: found[k] for k in order if k in found}
+
+    # -- logo
+    def logo_candidates(self):
+        cands = []
+        for d in self.ld:
+            if set(ld_type(d)) & {"organization", "store", "onlinestore", "localbusiness", "brand"}:
+                u = ld_image(d.get("logo"))
+                if u:
+                    cands.append((70, absolute(self.base, u), "json-ld"))
+        imgs = self.soup.find_all("img")
+        total = max(1, len(imgs))
+        for idx, img in enumerate(imgs):
+            u = img_url(img, self.base)
+            if not u:
+                continue
+            chain = classes_chain(img, 4) + " " + (img.get("alt") or "").lower() + " " + u.lower().split("/")[-1]
+            score = 0
+            if "logo" in chain:
+                score = 60
+            elif img.find_parent(class_=re.compile(r"navbar-brand|site-branding|brand", re.I)):
+                score = 50
+            elif img.find_parent("a", href=re.compile(r"^(/|%s/?)$" % re.escape(self.base.rstrip("/")))) and in_tag(img, ["header"]):
+                score = 50
+            if not score:
+                continue
+            if in_tag(img, ["header"]):
+                score += 15
+            if idx < total * 0.25:
+                score += 10
+            if in_tag(img, ["footer"]):
+                score -= 30
+            if BAD_IMG_WORDS.search(u) or re.search(r"partener|partner|brands?/", u, re.I):
+                score -= 40
+            cands.append((score, u, "img"))
+        for svg in self.soup.find_all("svg"):
+            chain = classes_chain(svg, 4)
+            if "logo" in chain and len(str(svg)) > 120:
+                score = 55 + (15 if in_tag(svg, ["header"]) else 0) - (30 if in_tag(svg, ["footer"]) else 0)
+                markup = str(svg)
+                if "xmlns" not in markup[:200]:
+                    markup = markup.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg"', 1)
+                cands.append((score, "inline-svg:" + markup, "inline-svg"))
+        og = self.soup.find("meta", property="og:image")
+        if og and "logo" in (og.get("content") or "").lower():
+            cands.append((40, absolute(self.base, og["content"]), "og:image"))
+        for rel in ("apple-touch-icon", "icon"):
+            for l in self.soup.find_all("link", rel=lambda r: r and rel in (r if isinstance(r, list) else [r])):
+                cands.append((10, absolute(self.base, l.get("href")), rel))
+        cands = [c for c in cands if c[1]]
+        cands.sort(key=lambda c: -c[0])
+        return cands
+
+    def logo(self):
+        tried = set()
+        for score, url, src in self.logo_candidates():
+            if url in tried:
+                continue
+            tried.add(url)
+            im, fmt = self.image(url)
+            if im is None or im.width < 40:
+                continue
+            orig_size = im.size
+            im = I.trim_transparent(im)
+            dom = I.dominant_colors(im)
+            # white logos (made for dark headers) are invisible on white emails
+            light_logo = not dom or all(C.luminance(c) > 0.7 for c, _ in dom[:2])
+            if light_logo and score < 70:
+                self.warnings.append(f"Logo: logo-ul găsit ({url[:80]}) pare alb/transparent; verifică dacă se vede pe fundal alb.")
+            # email-safe: keep original if PNG/JPG/GIF and not SVG, otherwise host a PNG
+            if fmt in I.EMAIL_SAFE and not url.startswith("inline-svg:") and im.size == orig_size:
+                public = url
+            else:
+                im2 = im.copy()
+                if im2.width > 600:
+                    im2.thumbnail((600, 600))
+                public = self.assets.save(im2, "logo", "PNG")
+            w, h = im.size
+            disp_w = min(200, w, int(round(70 * w / h)) if h else 200)
+            disp_w = max(disp_w, min(120, w))
+            return ({"url": public, "source_url": url if not url.startswith("inline-svg:") else "inline-svg",
+                     "width": w, "height": h, "display_width": disp_w, "found_by": src},
+                    dom)
+        self.warnings.append("Logo: nu am găsit logo-ul — am păstrat placeholderul din template.")
+        return None, []
+
+    # -- banner
+    def banner(self, logo):
+        cands = []
+        hero_re = re.compile(r"slide|slider|swiper|carousel|hero|banner|owl|slick|revslider|masthead|jumbotron|cover", re.I)
+        order = 0
+        for img in self.soup.find_all("img"):
+            order += 1
+            if in_tag(img, ["footer"]):
+                continue
+            chain = classes_chain(img, 6)
+            if not hero_re.search(chain):
+                continue
+            u = img_url(img, self.base)
+            if u and not BAD_IMG_WORDS.search(u) and "logo" not in u.lower():
+                cands.append((60 - min(order, 40) * 0.5, u))
+        for pic in self.soup.find_all("source", srcset=True):
+            if hero_re.search(classes_chain(pic, 6)):
+                u = absolute(self.base, best_from_srcset(pic["srcset"]))
+                if u:
+                    cands.append((58, u))
+        for el in self.soup.find_all(style=re.compile(r"background(-image)?\s*:[^;]*url\(", re.I)):
+            if hero_re.search(classes_chain(el, 3)):
+                m = re.search(r"url\(['\"]?([^'\")]+)", el["style"])
+                if m:
+                    cands.append((55, absolute(self.base, m.group(1))))
+        og = self.soup.find("meta", property="og:image")
+        if og and og.get("content") and "logo" not in og["content"].lower():
+            cands.append((40, absolute(self.base, og["content"])))
+        cands.sort(key=lambda c: -c[0])
+        seen = set()
+        for _, u in cands:
+            if not u or u in seen or (logo and u == logo.get("source_url")):
+                continue
+            seen.add(u)
+            if len(seen) > 8:
+                break
+            im, fmt = self.image(u)
+            if im is None or im.width < 500:
+                continue
+            ratio = im.width / max(1, im.height)
+            if ratio < 0.9 or ratio > 5:
+                continue
+            if fmt in I.EMAIL_SAFE:
+                public = u
+            else:
+                im2 = im.convert("RGB")
+                if im2.width > 1300:
+                    im2.thumbnail((1300, 1300))
+                public = self.assets.save(im2, "banner", "JPEG")
+            return {"url": public, "source_url": u, "width": im.width, "height": im.height}
+        self.warnings.append("Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.")
+        return None
+
+    # -- colors
+    def stylesheets(self):
+        css = []
+        for st in self.soup.find_all("style"):
+            css.append(st.get_text())
+        links = []
+        for l in self.soup.find_all("link", href=True):
+            rel = l.get("rel") or []
+            rel = rel if isinstance(rel, list) else [rel]
+            if "stylesheet" in [r.lower() for r in rel] or (l.get("as") == "style"):
+                u = absolute(self.base, l["href"])
+                if u and not re.search(r"fonts\.googleapis|font-awesome|fontawesome|icons?\.css|jquery-ui|swiper|slick|owl\.|animate|aos\.css", u, re.I):
+                    links.append(u)
+        # site stylesheets first
+        links.sort(key=lambda u: (0 if same_site(u, self.base) else 1, 1 if re.search(r"plugin|vendor|lib|bootstrap|wp-includes|block-library", u) else 0))
+        for u in links[:8]:
+            _, text, _ = self.f.get(u)
+            if text and len(text) < 3_000_000:
+                css.append(text)
+        inline = " ".join(el.get("style", "") for el in self.soup.find_all(style=True))
+        css.append(inline)
+        return css
+
+    def colors(self, logo_colors):
+        scores = defaultdict(float)
+        darks = defaultdict(float)
+        meta = self.soup.find("meta", attrs={"name": "theme-color"})
+        if meta and C.norm_hex(meta.get("content")):
+            scores[C.norm_hex(meta["content"])] += 8
+        tile = self.soup.find("meta", attrs={"name": "msapplication-TileColor"})
+        if tile and C.norm_hex(tile.get("content")):
+            scores[C.norm_hex(tile["content"])] += 3
+        for css in self.stylesheets():
+            for m in re.finditer(r"--([\w-]+)\s*:\s*([^;}{]+)", css):
+                name, val = m.group(1).lower(), m.group(2)
+                if name.startswith("wp--preset"):
+                    continue
+                if re.search(r"primary|brand|accent|main|theme|secondary|highlight|button|btn|link", name):
+                    for c in C.find_colors(val):
+                        scores[c] += 5 if "secondary" not in name else 2
+            for m in re.finditer(r"([^{}]{1,400})\{([^{}]{1,3000})\}", css):
+                sel, body = m.group(1).lower(), m.group(2)
+                bgs = re.findall(r"background(?:-color)?\s*:\s*([^;]+)", body)
+                fg = re.findall(r"(?<![-\w])color\s*:\s*([^;]+)", body)
+                if re.search(r"btn|button|add.?to.?cart|addtocart|cta|primary|buy|checkout|badge|label-sale|onsale|price|promo|discount", sel):
+                    for v in bgs:
+                        for c in C.find_colors(v):
+                            scores[c] += 4
+                    for v in fg:
+                        for c in C.find_colors(v):
+                            scores[c] += 1.5
+                if re.search(r"header|footer|top-?bar|navbar|nav\b|menu", sel):
+                    for v in bgs:
+                        for c in C.find_colors(v):
+                            if C.is_dark(c):
+                                darks[c] += 3
+                            else:
+                                scores[c] += 1.5
+                if re.search(r"(^|,|\s)(body|html|h1|h2|h3|p)(\s|,|$|:)", sel):
+                    for v in fg:
+                        for c in C.find_colors(v):
+                            if C.is_dark(c):
+                                darks[c] += 2
+            for c in C.find_colors(css):
+                scores[c] += 0.15
+        total_logo = sum(n for _, n in logo_colors) or 1
+        for c, n in logo_colors:
+            if C.is_brandish(c):
+                scores[c] += 14 * n / total_logo + 4
+            elif C.is_dark(c):
+                darks[c] += 4 * n / total_logo
+        # merge similar colors, keep brandish ones
+        merged = []
+        for c, s in sorted(scores.items(), key=lambda x: -x[1]):
+            if not C.is_brandish(c):
+                continue
+            if c in FRAMEWORK_DEFAULTS:
+                s *= 0.3
+            for item in merged:
+                if C.similar(item[0], c, 36):
+                    item[1] += s
+                    break
+            else:
+                merged.append([c, s])
+        # boost colors present in the logo
+        for item in merged:
+            if any(C.similar(item[0], lc, 50) for lc, _ in logo_colors):
+                item[1] *= 1.5
+        merged.sort(key=lambda x: -x[1])
+        accent = merged[0][0] if merged else None
+        if not accent:
+            self.warnings.append("Culori: nu am găsit o culoare de brand clară — am folosit o culoare implicită; verifică.")
+        dark = max(darks.items(), key=lambda x: x[1])[0] if darks else None
+        pal = C.palette(accent, dark)
+        pal["candidates"] = [c for c, _ in merged[:6]]
+        pal["logo_colors"] = [c for c, _ in logo_colors]
+        return pal
+
+    # -- products
+    def products(self, want=3):
+        found = []
+        try:
+            if self.platform == "shopify":
+                found = self.products_shopify()
+            elif self.platform in ("woocommerce", "wordpress"):
+                found = self.products_woo()
+        except Exception as e:  # never fail the whole run because of products
+            self.f.log.append(f"products api error: {e}")
+        if len(found) < want:
+            found += self.products_generic(want * 3)
+        uniq, seen = [], set()
+        for p in found:
+            if p.get("name") and p.get("image") and p.get("url") and p["url"] not in seen:
+                seen.add(p["url"])
+                uniq.append(p)
+        self.rng.shuffle(uniq)
+        out = []
+        for p in uniq:
+            im, fmt = self.image(p["image"])
+            if im is None or im.width < 150:
+                continue
+            p["source_image"] = p["image"]
+            p["image"] = self.assets.save(I.square(im, 600), "product", "JPEG")
+            out.append(p)
+            if len(out) >= want:
+                break
+        if len(out) < want:
+            self.warnings.append(f"Produse: am găsit doar {len(out)} din {want}; restul rămân placeholder.")
+        return out
+
+    def products_shopify(self):
+        data = self.f.json(urljoin(self.base, "/products.json?limit=60"))
+        cur = None
+        m = re.search(r'Shopify\.currency\s*=\s*\{"active":"(\w+)"', self.html)
+        if m:
+            cur = m.group(1)
+        out = []
+        for p in (data or {}).get("products", []):
+            imgs = p.get("images") or []
+            var = (p.get("variants") or [{}])[0]
+            if not imgs or not var.get("available", True):
+                continue
+            out.append({"name": p.get("title"), "url": urljoin(self.base, f"/products/{p.get('handle')}"),
+                        "image": imgs[0].get("src"), "price": fmt_price(var.get("price"), cur, self.domain)})
+        return out
+
+    def products_woo(self):
+        data = self.f.json(urljoin(self.base, "/wp-json/wc/store/v1/products?per_page=40"))
+        out = []
+        for p in data if isinstance(data, list) else []:
+            imgs = p.get("images") or []
+            pr = p.get("prices") or {}
+            price = None
+            if pr.get("price"):
+                price = int(pr["price"]) / (10 ** int(pr.get("currency_minor_unit", 2)))
+            if not imgs or p.get("is_in_stock") is False:
+                continue
+            out.append({"name": re.sub(r"<[^>]+>", "", p.get("name", "")), "url": p.get("permalink"),
+                        "image": imgs[0].get("src"), "price": fmt_price(price, pr.get("currency_code"), self.domain) if price else ""})
+        return out
+
+    def product_from_page(self, url):
+        final, soup = self.page(url)
+        if soup is None:
+            return None
+        for d in jsonld_items(soup):
+            if "product" in ld_type(d) and d.get("name"):
+                price, cur = ld_price(d)
+                img = ld_image(d.get("image"))
+                if img:
+                    return {"name": str(d["name"]).strip(), "url": d.get("url") if isinstance(d.get("url"), str) and d["url"].startswith("http") else final,
+                            "image": absolute(final, img), "price": fmt_price(price, cur, self.domain) if price else ""}
+
+        def meta(*names):
+            for n in names:
+                m = soup.find("meta", property=n) or soup.find("meta", attrs={"name": n}) or soup.find(attrs={"itemprop": n})
+                if m and (m.get("content") or "").strip():
+                    return m["content"].strip()
+            return None
+        is_product = (meta("og:type") or "").lower().startswith("product") or meta("product:price:amount", "og:price:amount", "price")
+        if is_product and meta("og:title") and meta("og:image"):
+            price = meta("product:price:amount", "og:price:amount", "price")
+            cur = meta("product:price:currency", "og:price:currency", "priceCurrency")
+            return {"name": meta("og:title"), "url": final, "image": absolute(final, meta("og:image")),
+                    "price": fmt_price(price, cur, self.domain) if price else ""}
+        return None
+
+    def products_generic(self, limit):
+        out = []
+        # 1. products described on the homepage itself
+        for d in self.ld:
+            if "product" in ld_type(d) and d.get("name") and ld_image(d.get("image")) and isinstance(d.get("url"), str):
+                price, cur = ld_price(d)
+                out.append({"name": d["name"], "url": absolute(self.base, d["url"]), "image": absolute(self.base, ld_image(d["image"])),
+                            "price": fmt_price(price, cur, self.domain) if price else ""})
+        if len(out) >= 3:
+            return out
+        # 2. product-looking links on the homepage
+        scored = {}
+        for a, href, txt in self.all_links():
+            u = absolute(self.base, href)
+            if not u or not same_site(u, self.base) or NOT_PRODUCT_HREF_RE.search(u) or urlparse(u).path in ("", "/"):
+                continue
+            s = 0
+            if "product" in classes_chain(a, 5) or "produs" in classes_chain(a, 5):
+                s += 3
+            if PRODUCT_HREF_RE.search(urlparse(u).path):
+                s += 2
+            if a.find("img"):
+                s += 1
+            if in_tag(a, ["header", "nav", "footer", "menu"]):
+                s -= 3
+            if s >= 3:
+                scored[u.split("#")[0]] = max(s, scored.get(u, 0))
+        urls = list(scored)
+        self.rng.shuffle(urls)
+        # 3. sitemap fallback
+        if len(urls) < 4:
+            urls += self.sitemap_products(30)
+        tried = 0
+        for u in urls:
+            if len(out) >= limit or tried >= 10:
+                break
+            tried += 1
+            p = self.product_from_page(u)
+            if p:
+                out.append(p)
+        return out
+
+    def sitemap_products(self, n):
+        maps = []
+        _, robots, _ = self.f.get(urljoin(self.base, "/robots.txt"))
+        if robots:
+            maps += re.findall(r"(?im)^sitemap:\s*(\S+)", robots)
+        maps += [urljoin(self.base, "/sitemap.xml"), urljoin(self.base, "/sitemap_index.xml")]
+        product_urls = []
+        visited = 0
+        queue = list(dict.fromkeys(maps))
+        while queue and visited < 6 and len(product_urls) < 200:
+            sm = queue.pop(0)
+            visited += 1
+            _, xml, _ = self.f.get(sm)
+            if not xml or "<loc" not in xml:
+                continue
+            locs = re.findall(r"<loc>\s*(.*?)\s*</loc>", xml)
+            if "<sitemapindex" in xml:
+                prod = [l for l in locs if re.search(r"product|produs", l, re.I)]
+                queue = prod[:2] + queue
+                continue
+            if re.search(r"product|produs", sm, re.I):
+                product_urls += locs
+            else:
+                product_urls += [l for l in locs if PRODUCT_HREF_RE.search(urlparse(l).path) and not NOT_PRODUCT_HREF_RE.search(l)]
+        self.rng.shuffle(product_urls)
+        return product_urls[:n]
