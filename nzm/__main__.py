@@ -110,6 +110,7 @@ def cmd_scrape(a):
     if a.github_output and os.environ.get("GITHUB_OUTPUT"):
         with open(os.environ["GITHUB_OUTPUT"], "a") as f:
             f.write(f"slug={slug}\nname={brand['name']}\n")
+        print(f"::notice title=slug::{slug}")
 
 
 def cmd_regen(a):
@@ -145,7 +146,13 @@ def main(argv=None):
     ra = sub.add_parser("regen-all")
     ra.set_defaults(fn=cmd_regen_all)
     a = ap.parse_args(argv)
-    a.fn(a)
+    try:
+        a.fn(a)
+    except Exception as e:  # surfaced in the web page through GitHub annotations
+        if os.environ.get("GITHUB_ACTIONS"):
+            msg = str(e).replace("\n", " ")[:600]
+            print(f"::error title=Eroare generare::{msg}")
+        raise
 
 
 if __name__ == "__main__":

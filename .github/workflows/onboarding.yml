@@ -1,8 +1,7 @@
 name: Onboarding
+run-name: "${{ github.event_name == 'workflow_dispatch' && format('Generare {0} [{1}]', inputs.url, inputs.rid) || 'Regenerare după editare' }}"
 
 on:
-  issues:
-    types: [opened, reopened]
   workflow_dispatch:
     inputs:
       url:
@@ -17,6 +16,9 @@ on:
       sender_email:
         description: Email expeditor (opțional)
         required: false
+      rid:
+        description: ID cerere (pus de pagină)
+        required: false
   push:
     branches: [main]
     paths:
@@ -26,7 +28,6 @@ on:
 
 permissions:
   contents: write
-  issues: write
 
 concurrency:
   group: onboarding
@@ -34,11 +35,6 @@ concurrency:
 
 jobs:
   generate:
-    # issues: only those created from the form, by people with access to the repo
-    if: >-
-      github.event_name != 'issues' || (
-        contains(github.event.issue.labels.*.name, 'onboarding') &&
-        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -53,32 +49,24 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Install
+      - name: Instalare
         run: |
           sudo apt-get install -y --no-install-recommends librsvg2-bin >/dev/null 2>&1 || true
           pip install -r requirements.txt
 
-      - name: Read issue form
-        id: form
-        if: github.event_name == 'issues'
-        env:
-          ISSUE_BODY: ${{ github.event.issue.body }}
-        run: python -m nzm.issue
-
-      - name: Scrape site and build templates
+      - name: Citire site și generare fișiere
         id: gen
-        if: github.event_name != 'push'
+        if: github.event_name == 'workflow_dispatch'
         env:
-          IN_URL: ${{ steps.form.outputs.url || inputs.url }}
-          IN_NAME: ${{ steps.form.outputs.name || inputs.name }}
-          IN_DISCOUNT: ${{ steps.form.outputs.discount || inputs.discount }}
-          IN_SENDER: ${{ steps.form.outputs.sender_email || inputs.sender_email }}
+          IN_URL: ${{ inputs.url }}
+          IN_NAME: ${{ inputs.name }}
+          IN_DISCOUNT: ${{ inputs.discount }}
+          IN_SENDER: ${{ inputs.sender_email }}
         run: |
           python -m nzm scrape "$IN_URL" --name "$IN_NAME" --discount "$IN_DISCOUNT" \
-            --sender-email "$IN_SENDER" --public-base "$PUBLIC_BASE" --github-output 2>&1 | tee run.log
-          test "${PIPESTATUS[0]}" -eq 0
+            --sender-email "$IN_SENDER" --public-base "$PUBLIC_BASE" --github-output
 
-      - name: Regenerate after edits
+      - name: Regenerare după editare
         if: github.event_name == 'push'
         env:
           BEFORE: ${{ github.event.before }}
@@ -92,51 +80,13 @@ jobs:
             done
           fi
 
-      - name: Commit
+      - name: Salvare
         env:
           SLUG: ${{ steps.gen.outputs.slug }}
         run: |
           git config user.name "nzm-onboarding-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A docs/clients
-          if git diff --cached --quiet; then echo "nimic de comis"; exit 0; fi
+          if git diff --cached --quiet; then echo "nimic de salvat"; exit 0; fi
           git commit -m "Onboarding: ${SLUG:-regenerare}"
           for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
-
-      - name: Comment on issue
-        if: github.event_name == 'issues' && always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-          SLUG: ${{ steps.gen.outputs.slug }}
-          NAME: ${{ steps.gen.outputs.name }}
-          ISSUE: ${{ github.event.issue.number }}
-          REPO: ${{ github.repository }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          if [ -n "$SLUG" ] && [ -f "docs/clients/$SLUG/report.md" ]; then
-            raw="https://github.com/$REPO/raw/main/docs/clients/$SLUG"
-            {
-              echo "✅ **Gata — $NAME**"
-              echo
-              echo "**[⬇ Descarcă toate fișierele (.zip)]($raw/${SLUG}__newsman-import.zip)** · [Previzualizare pe pagină]($PUBLIC_BASE/#c-$SLUG) · [Editează datele](https://github.com/$REPO/edit/main/docs/clients/$SLUG/brand.json)"
-              echo
-              for f in docs/clients/$SLUG/*__*.json; do echo "- [$(basename "$f")]($raw/$(basename "$f"))"; done
-              echo
-              echo "<details><summary>Raport</summary>"
-              echo
-              cat "docs/clients/$SLUG/report.md"
-              echo
-              echo "</details>"
-            } > comment.md
-            gh issue comment "$ISSUE" -R "$REPO" --body-file comment.md
-            gh issue close "$ISSUE" -R "$REPO"
-          else
-            {
-              echo "❌ Nu am reușit să generez fișierele. Detalii în [log]($RUN_URL)."
-              echo
-              echo '```'
-              tail -n 15 run.log 2>/dev/null || true
-              echo '```'
-            } > comment.md
-            gh issue comment "$ISSUE" -R "$REPO" --body-file comment.md
-          fi

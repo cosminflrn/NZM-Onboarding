@@ -10,17 +10,16 @@ Dai linkul unui site, primești 3 fișiere gata de importat în contul Newsman a
 
 ## Cum se folosește
 
-1. Deschide pagina: **https://cosminflrn.github.io/NZM-Onboarding/**
-2. Pune linkul site-ului (opțional: nume brand, cod discount, email expeditor) → **Generează**.
-3. Se deschide un issue completat deja → **Create**.
-4. În 1–2 minute: clientul apare pe pagină (cu previzualizare) și primești în issue linkul spre `.zip`.
-5. Importi fișierele în Newsman. **Deschide fiecare email o dată în editor și dă Save**, ca Newsman să regenereze HTML-ul din design.
+Totul se face din pagina **https://cosminflrn.github.io/NZM-Onboarding/**:
 
-Alternativ: tab-ul **Actions → Onboarding → Run workflow**.
+1. **Prima dată pe un calculator:** pagina îți cere un token GitHub (pașii sunt afișați acolo, durează 1 minut). Tokenul rămâne doar în browser.
+2. Pui linkul site-ului (opțional: nume brand, cod discount, email expeditor) → **Generează**. Vezi progresul în pagină.
+3. În 1–2 minute clientul apare în listă: **Previzualizare**, descărcare **.zip** sau fișier cu fișier.
+4. Importi fișierele în Newsman. **Deschide fiecare email o dată în editor și dă Save**, ca Newsman să regenereze HTML-ul din design.
 
 ### Corecturi
 
-Dacă ceva n-a ieșit bine (logo greșit, culoare, telefon), apasă **✏ Editează date** pe pagină. Se deschide `brand.json` al clientului pe GitHub: modifici valoarea, dai **Commit**, iar fișierele se regenerează automat, fără să mai citească iar site-ul.
+**✏ Editează** pe un client deschide un formular cu tot ce s-a extras (logo – și upload, banner, culori, telefon, email, social, linkuri, meniu, produse, discount, expeditor). La salvare fișierele se regenerează automat, fără să mai citească site-ul. **↻ Recitește site** pornește de la zero.
 
 Câmpuri utile în `brand.json`:
 - `logo.url`, `logo.display_width` – logo-ul și lățimea lui în email (px)
@@ -66,4 +65,4 @@ python -m nzm regen docs/clients/magazin-ro/brand.json
 
 - **Settings → Pages →** Source: *Deploy from a branch*, Branch: `main`, folder `/docs`.
 - **Settings → Actions → General → Workflow permissions:** *Read and write*.
-- Issue-urile sunt procesate doar dacă sunt deschise de owner/membri/colaboratori ai repo-ului.
+- Fiecare coleg își creează un token fine-grained pe acest repo cu **Actions: Read and write** și **Contents: Read and write**.
