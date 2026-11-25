@@ -1,5 +1,27 @@
 [
  {
+  "slug": "techfarm-ro",
+  "name": "techfarm.ro",
+  "domain": "techfarm.ro",
+  "url": "https://www.techfarm.ro/",
+  "generated_at": "2026-11-25 15:33 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
+  "colors": {
+   "accent": "#a78a25",
+   "dark": "#000000",
+   "light": "#fffaeb"
+  },
+  "warnings": [],
+  "products": 6,
+  "site_type": "ecommerce",
+  "form_type": "popup",
+  "files": [
+   "techfarm-ro-automatizare-cos-abandonat.json",
+   "techfarm-ro-formular-pop-up.json",
+   "techfarm-ro-newsletter-bun-venit.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
@@ -43,28 +65,6 @@
    "yesswimming-ro-automatizare-bun-venit.json",
    "yesswimming-ro-formular-pop-up.json",
    "yesswimming-ro-newsletter-noutati.json"
-  ]
- },
- {
-  "slug": "techfarm-ro",
-  "name": "techfarm.ro",
-  "domain": "techfarm.ro",
-  "url": "https://www.techfarm.ro/",
-  "generated_at": "2026-11-25 15:16 UTC",
-  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-a835c5a4.png",
-  "colors": {
-   "accent": "#a78a25",
-   "dark": "#000000",
-   "light": "#fffaeb"
-  },
-  "warnings": [],
-  "products": 6,
-  "site_type": "ecommerce",
-  "form_type": "popup",
-  "files": [
-   "techfarm-ro-automatizare-cos-abandonat.json",
-   "techfarm-ro-formular-pop-up.json",
-   "techfarm-ro-newsletter-bun-venit.json"
   ]
  }
 ]

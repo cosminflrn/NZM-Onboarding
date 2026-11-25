@@ -38,7 +38,7 @@
     "cart_found": true
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-a835c5a4.png",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
     "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo-mare-techfarm4509.png",
     "width": 300,
     "height": 71,
@@ -109,14 +109,14 @@
     {
       "name": "Semănătoare Prășitoare VELOX | Sola | Distribuitor Techfarm Agro",
       "url": "https://www.techfarm.ro/semanatori-prasitoare/semanatoare-prasitoare-velox.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-f2acd447.jpg",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-d35f3799.jpg",
       "price": "",
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-prasitoare-velox-691558.webp"
     },
     {
       "name": "Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
       "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-d03a9604.jpg",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-ca966d52.jpg",
       "price": "35.000,00 €",
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp"
     }
@@ -132,9 +132,11 @@
   "warnings": [],
   "fetch_log": [
     "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html",
-    "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html"
+    "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html",
+    "429 https://www.techfarm.ro/utilaje-agricole",
+    "429 https://www.techfarm.ro/utilaje-agricole"
   ],
-  "generated_at": "2026-11-25 15:16 UTC",
+  "generated_at": "2026-11-25 15:33 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea techfarm.ro!",

@@ -1,10 +1,10 @@
 # techfarm.ro (techfarm.ro)
 
-Generat: 2026-11-25 15:16 UTC  ·  Platformă: gomag
+Generat: 2026-11-25 15:33 UTC  ·  Platformă: gomag
 
 ## Ce am găsit
 
-- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-a835c5a4.png
+- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png
 - **Banner:** https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/banner-a3591b49.jpg
 - **Culori:** accent `#a78a25` · închis `#000000` · deschis `#fffaeb`
 - **Telefon:** 0745643424
