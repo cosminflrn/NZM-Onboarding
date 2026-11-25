@@ -274,10 +274,14 @@ class Kit:
         mods.append(m_spacer(28))
         return row([mods], bg=self.accent)
 
-    def banner(self):
+    def banner(self, inset=False):
         ban = self.b.get("banner") or {}
         if not ban.get("url"):
             return None
+        if inset:  # inside the email body: padded, all corners rounded
+            return row([[m_image(ban["url"], ban.get("width") or 1200, ban.get("height") or 600, WIDTH - 64,
+                                 href=self.home, alt=self.b["name"], padding=pad(24, 32, 4, 32), radius=RADIUS)]],
+                       bg=WHITE)
         return row([[m_image(ban["url"], ban.get("width") or 1200, ban.get("height") or 600, WIDTH,
                              href=self.home, alt=self.b["name"], full=True, radius=f"0px 0px {RADIUS} {RADIUS}")]], bg=WHITE)
 
@@ -328,7 +332,7 @@ class Kit:
                 m_text(wrap([para(link(esc(name), p["url"], INK, underline=False), 15, INK, lh=1.4)]),
                        padding=pad(0, 8, 4, 8), link_color=INK),
             ]
-            if p.get("price"):
+            if all(q.get("price") for q in prods):  # prices only when every card has one, so the row stays even
                 mods.append(m_text(wrap([para(esc(p["price"]), 16, self.accent, weight="bold", lh=1.4)]),
                                    padding=pad(0, 8, 4, 8), color=self.accent))
             mods.append(m_button("Vezi produsul", p["url"], "transparent", INK, border=f"1px solid {LINE}", size=13,

@@ -212,14 +212,28 @@ def cart_email(k, n, condition):
     else:
         hero = ("Ultima amintire", "Coșul tău expiră curând", "Produsele sunt încă rezervate pentru tine, dar nu pentru mult timp.")
         subject, pre = "Ultima amintire: coșul tău te așteaptă", "Finalizează comanda cât produsele sunt pe stoc."
-    rows = [k.header(nav=False), k.hero(*hero)]
+    rows = [k.header(nav=True), k.hero(*hero)]
     if n >= 2 and code:
         rows.append(k.discount(code, "Aplică-l la finalizarea comenzii."))
     rows.append(k.heading("Produsele din coșul tău", top=32, bottom=8))
     rows.append(cart_products_row(k, condition))
-    rows.append(k.cta("Finalizează comanda", cart, top=24, bottom=36))
+    rows.append(k.cta("Finalizează comanda", cart, top=24, bottom=12))
+    prods = [p for p in (b.get("products") or []) if p.get("image") and p.get("url")]
+    if n == 1:
+        rows.append(k.benefits(CART_TRUST))
+    elif n == 2 and len(prods) >= 3:
+        rows.append(k.products(prods[3:6] if len(prods) >= 6 else prods[:3], "Te-ar putea interesa și"))
+    elif n == 3:
+        rows.append(k.banner(inset=True))
+        rows.append(k.body("Dacă te-ai răzgândit sau ai nevoie de ajutor la alegere, răspunde la acest email. "
+                           "Te ajutăm cu drag.", size=16, top=28, bottom=4))
     rows.append(k.help())
     return k.assemble(rows), subject, pre
+
+
+CART_TRUST = [("Comandă simplă", "Finalizezi în câțiva pași."),
+              ("Plată securizată", "Datele tale sunt protejate."),
+              ("Suntem aici", "Te ajutăm cu orice întrebare.")]
 
 
 def cart_products_row(k, condition):
