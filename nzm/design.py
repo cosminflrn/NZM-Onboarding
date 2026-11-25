@@ -19,6 +19,8 @@ PAGE_BG = "#f4f4f5"    # outside the email card
 WHITE = "#ffffff"
 ICON_SET = "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/{net}@2x.png"
 PLACEHOLDER_IMG = "https://img.newsmanapp.com/i/b/901bd24ca743a8d7ea7d611c3e43c36e/28118/placeholder400x300.png"
+SOCIAL_COLORS = {"facebook": "#1877F2", "instagram": "#E1306C", "tiktok": "#000000", "youtube": "#FF0000",
+                 "linkedin": "#0A66C2", "pinterest": "#E60023", "twitter": "#000000"}
 SOCIAL_NAMES = {"facebook": "Facebook", "instagram": "Instagram", "tiktok": "TikTok", "youtube": "YouTube",
                 "linkedin": "LinkedIn", "pinterest": "Pinterest", "twitter": "X"}
 
@@ -105,7 +107,7 @@ def m_image(src, width, height, display_width, href="", alt="", padding=None, dy
 
 
 def m_button(label, href, bg, color=WHITE, border=None, size=16, padding=None, align="center", radius="999px",
-             px=28, py=12, weight="700"):
+             px=28, py=12, weight="700", width="auto"):
     border = border or "0px solid transparent"
     st = f"word-break:break-word;"
     return {
@@ -118,7 +120,7 @@ def m_button(label, href, bg, color=WHITE, border=None, size=16, padding=None, a
                           "border-left": border, "border-radius": radius, "color": color, "direction": "ltr",
                           "font-family": "inherit", "font-size": f"{size}px", "font-weight": weight, "line-height": "150%",
                           "max-width": "100%", "padding-top": f"{py}px", "padding-bottom": f"{py}px",
-                          "padding-left": f"{px}px", "padding-right": f"{px}px", "width": "auto"},
+                          "padding-left": f"{px}px", "padding-right": f"{px}px", "width": width},
             },
             "style": {**(padding or pad(8, 24)), "text-align": align},
             "computedStyle": {"height": int(size * 1.5 + 2 * py), "width": int(len(label) * size * 0.6 + 2 * px),
@@ -395,16 +397,16 @@ class Kit:
                 row(cols, bg=WHITE, col_pad=pad(8, 8, 16, 8))]
 
     def social_cta(self):
+        """One big button per network, in the network's own colour, all the same size."""
         socials = self.b.get("socials") or {}
         if not socials:
             return []
-        mods = []
-        for net, url in list(socials.items())[:4]:
-            mods.append(m_button(f"{SOCIAL_NAMES.get(net, net.title())} →", url, "transparent", INK,
-                                 border=f"1px solid {LINE}", size=15, px=24, py=10, weight="600",
-                                 padding=pad(4, 24, 4, 24)))
-        mods.insert(0, m_social(socials, padding=pad(16, 24, 12, 24), size=48, icon_set=ICON_SET_COLOR))
-        mods.append(m_spacer(16))
+        mods = [m_spacer(8)]
+        for net, url in socials.items():
+            mods.append(m_button(SOCIAL_NAMES.get(net, net.title()), url, SOCIAL_COLORS.get(net, INK), "#ffffff",
+                                 size=17, px=24, py=14, weight="700", radius="12px", width="60%",
+                                 padding=pad(6, 24, 6, 24)))
+        mods.append(m_spacer(20))
         return [row([mods], bg=WHITE)]
 
     def help(self):
@@ -514,6 +516,8 @@ def render_module(m):
         a_style = _style(bs, ["background-color", "color", "font-size", "font-weight", "line-height", "border-radius",
                               "border-top", "border-right", "border-bottom", "border-left", "padding-top",
                               "padding-bottom", "padding-left", "padding-right"])
+        if str(bs.get("width", "auto")).endswith("%"):
+            a_style += f";width:{bs['width']};box-sizing:border-box"
         align = st.get("text-align", "center")
         return (f'<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"><tr>'
                 f'<td align="{align}" style="{p};text-align:{align}">'

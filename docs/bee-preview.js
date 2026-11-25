@@ -31,7 +31,7 @@
       const b = d.button || {};
       const st = Object.assign({}, b.style);
       const label = (b.label || "").replace(/<\/?(div|p)[^>]*>/g, "");
-      return wrap(`<a href="${esc(b.href || "#")}" target="_blank" style="display:inline-block;text-decoration:none;${css(st)}">${label}</a>`,
+      return wrap(`<a href="${esc(b.href || "#")}" target="_blank" style="display:inline-block;text-decoration:none;box-sizing:border-box;${css(st)}">${label}</a>`,
         `text-align:${(d.style || {})["text-align"] || "center"}`);
     }
     if (t === "divider") {
