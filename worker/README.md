@@ -1,6 +1,6 @@
 # Intermediar Cloudflare (o singură dată, ~10 minute, gratuit)
 
-Ca pagina să meargă pentru oricine primește linkul, fără token, tokenul GitHub stă aici, ca secret.
+Ca pagina să meargă pentru colegi fără token GitHub, tokenul stă aici, ca secret. Pagina cere un utilizator și o parolă comune; fără ele nu se poate porni nimic.
 Intermediarul permite doar: pornirea generării, urmărirea ei, citirea fișierelor generate și salvarea editărilor în `docs/clients/`. Nu poate modifica codul și nu poate șterge nimic.
 
 1. **Token GitHub:** https://github.com/settings/personal-access-tokens/new
@@ -13,6 +13,8 @@ Intermediarul permite doar: pornirea generării, urmărirea ei, citirea fișiere
    - `GITHUB_TOKEN` = tokenul de la pasul 1 (tip **Secret**)
    - `REPO` = `cosminflrn/NZM-Onboarding`
    - `ALLOWED_ORIGIN` = `https://cosminflrn.github.io`
+   - `APP_USER` = utilizatorul comun (tip **Text**)
+   - `APP_PASSWORD` = parola comună (tip **Secret** — nu o pune niciodată în repo)
    → **Deploy**.
 5. Copiază adresa workerului (ex. `https://nzm-onboarding.<cont>.workers.dev`) și pune-o în `docs/config.js`:
    ```js

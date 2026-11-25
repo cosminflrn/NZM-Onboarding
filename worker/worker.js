@@ -6,18 +6,27 @@
 //   GITHUB_TOKEN   (Secret)  token fine-grained: Actions R/W + Contents R/W, doar pe repo-ul NZM-Onboarding
 //   REPO           (Text)    cosminflrn/NZM-Onboarding
 //   ALLOWED_ORIGIN (Text)    https://cosminflrn.github.io   (opțional; implicit oricine)
+//   APP_USER       (Text)    utilizatorul cerut în pagină
+//   APP_PASSWORD   (Secret)  parola cerută în pagină
 
 export default {
   async fetch(req, env) {
     const cors = {
       "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "*",
       "Access-Control-Allow-Methods": "GET,POST,PUT,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,Accept",
+      "Access-Control-Allow-Headers": "Content-Type,Accept,X-NZM-Auth",
       "Access-Control-Max-Age": "86400",
     };
     if (req.method === "OPTIONS") return new Response(null, { headers: cors });
 
     const url = new URL(req.url);
+    const authed = await checkAuth(req, env);
+    if (url.pathname === "/login") {
+      return new Response(JSON.stringify({ ok: authed }), {
+        status: authed ? 200 : 401, headers: { ...cors, "Content-Type": "application/json" },
+      });
+    }
+    if (url.pathname.startsWith("/gh/") && !authed) return deny(cors, "utilizator sau parolă greșite", 401);
     if (!url.pathname.startsWith("/gh/")) {
       return new Response(JSON.stringify({ ok: true, repo: env.REPO, token: !!env.GITHUB_TOKEN }), {
         headers: { ...cors, "Content-Type": "application/json" },
@@ -59,6 +68,20 @@ export default {
   },
 };
 
-function deny(cors, msg = "operație nepermisă") {
-  return new Response(JSON.stringify({ message: msg }), { status: 403, headers: { ...cors, "Content-Type": "application/json" } });
+function deny(cors, msg = "operație nepermisă", status = 403) {
+  return new Response(JSON.stringify({ message: msg }), { status, headers: { ...cors, "Content-Type": "application/json" } });
+}
+
+// header X-NZM-Auth: base64("user:parola")
+async function checkAuth(req, env) {
+  if (!env.APP_PASSWORD) return false;
+  let given = "";
+  try { given = new TextDecoder().decode(Uint8Array.from(atob(req.headers.get("X-NZM-Auth") || ""), (c) => c.charCodeAt(0))); } catch { return false; }
+  const expected = `${env.APP_USER || ""}:${env.APP_PASSWORD}`;
+  const enc = new TextEncoder();
+  const [a, b] = await Promise.all([crypto.subtle.digest("SHA-256", enc.encode(given)), crypto.subtle.digest("SHA-256", enc.encode(expected))]);
+  const x = new Uint8Array(a), y = new Uint8Array(b);
+  let diff = 0;
+  for (let i = 0; i < x.length; i++) diff |= x[i] ^ y[i];
+  return diff === 0;
 }

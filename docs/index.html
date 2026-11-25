@@ -103,6 +103,16 @@
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
 </main>
 
+<div id="login" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:50;align-items:center;justify-content:center">
+  <form id="loginForm" class="card" style="width:min(380px,92vw);display:grid;gap:12px">
+    <img src="newsman-logo.png" alt="NewsMAN" style="height:30px;width:auto;justify-self:center;margin:4px 0 8px">
+    <div><label>Utilizator</label><input id="lu" autocomplete="username" required></div>
+    <div><label>Parolă</label><input id="lp" type="password" autocomplete="current-password" required></div>
+    <button class="primary" type="submit">Intră</button>
+    <div id="lerr" class="warn" style="text-align:center"></div>
+  </form>
+</div>
+
 <dialog id="pv" class="pv">
   <div class="bar" id="tabs"></div>
   <div class="subj" id="subj"></div>
@@ -141,12 +151,30 @@ $("patLink").href = "https://github.com/settings/personal-access-tokens/new";
 
 // =============================================================== GitHub API
 let TOKEN = PROXY ? "proxy" : (localStorage.getItem("nzm_token") || "");
+let AUTH = localStorage.getItem("nzm_auth") || "";
+const b64auth = (u, p) => btoa(unescape(encodeURIComponent(`${u}:${p}`)));
+function showLogin(msg) {
+  $("login").style.display = "flex";
+  $("lerr").textContent = msg || "";
+  $("lu").focus();
+}
+$("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const a = b64auth($("lu").value.trim(), $("lp").value);
+  const r = await fetch(PROXY + "/login", { headers: { "X-NZM-Auth": a } }).catch(() => null);
+  if (r && r.ok) {
+    AUTH = a; localStorage.setItem("nzm_auth", a);
+    $("login").style.display = "none"; $("lp").value = "";
+    if (await checkToken()) load();
+  } else showLogin(r ? "Utilizator sau parolă greșite." : "Serverul nu răspunde, încearcă din nou.");
+});
 async function gh(path, opts = {}) {
   const r = await fetch(path.startsWith("http") ? path : API + path, {
     ...opts,
-    headers: PROXY ? { Accept: "application/vnd.github+json", ...(opts.headers || {}) }
+    headers: PROXY ? { Accept: "application/vnd.github+json", "X-NZM-Auth": AUTH, ...(opts.headers || {}) }
       : { Accept: "application/vnd.github+json", Authorization: `Bearer ${TOKEN}`, "X-GitHub-Api-Version": "2022-11-28", ...(opts.headers || {}) },
   });
+  if (PROXY && r.status === 401) { localStorage.removeItem("nzm_auth"); showLogin("Te rugăm să te autentifici."); }
   if (!r.ok) {
     let msg = r.status + "";
     try { msg += " " + (await r.json()).message; } catch {}
@@ -167,7 +195,10 @@ async function readFile(path, as = "json") {           // path relative to docs/
 const b64 = (s) => btoa(unescape(encodeURIComponent(s)));
 
 async function checkToken() {
-  if (PROXY) $("tokBtn").style.display = "none";
+  if (PROXY) {
+    $("tokBtn").style.display = "none";
+    if (!AUTH) { showLogin(); return false; }
+  }
   if (!TOKEN) { $("setup").style.display = ""; $("who").textContent = "neconfigurat"; return false; }
   try {
     const repo = await ghJson("");
@@ -471,7 +502,7 @@ $("edSave").onclick = async () => {
 };
 
 // =============================================================== start
-checkToken().then(() => load());
+checkToken().then((ok) => { if (ok || !PROXY) load(); });
 </script>
 </body>
 </html>
