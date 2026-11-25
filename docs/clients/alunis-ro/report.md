@@ -1,6 +1,6 @@
 # Aluniș (alunis.ro)
 
-Generat: 2026-11-25 13:25 UTC  ·  Platformă: wordpress
+Generat: 2026-11-25 13:35 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
@@ -26,5 +26,5 @@ Generat: 2026-11-25 13:25 UTC  ·  Platformă: wordpress
 ## Fișiere
 
 - `alunis-ro__1-Formular-pop-up.json`
-- `alunis-ro__2-Newsletter-bun-venit.json`
-- `alunis-ro__3-Automatizare-bun-venit.json`
+- `alunis-ro__2-Automatizare-bun-venit.json`
+- `alunis-ro__3-Newsletter-noutati.json`

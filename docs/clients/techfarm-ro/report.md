@@ -1,6 +1,6 @@
 # techfarm.ro (techfarm.ro)
 
-Generat: 2026-11-25 12:54 UTC  ·  Platformă: gomag
+Generat: 2026-11-25 13:35 UTC  ·  Platformă: gomag
 
 ## Ce am găsit
 
@@ -25,6 +25,5 @@ Generat: 2026-11-25 12:54 UTC  ·  Platformă: gomag
 ## Fișiere
 
 - `techfarm-ro__1-Formular-pop-up.json`
-- `techfarm-ro__2-Newsletter-bun-venit.json`
-- `techfarm-ro__3-Automatizare-bun-venit.json`
-- `techfarm-ro__4-Automatizare-cos-abandonat.json`
+- `techfarm-ro__2-Automatizare-cos-abandonat.json`
+- `techfarm-ro__3-Newsletter-bun-venit.json`
