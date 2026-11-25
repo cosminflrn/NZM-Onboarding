@@ -1,0 +1,1605 @@
+{
+	"type": "newsman_template",
+	"format": 2,
+	"exported_at": 1795611291,
+	"data": {
+		"page": {
+			"body": {
+				"container": {
+					"style": {
+						"background-color": "#f4f4f5"
+					}
+				},
+				"content": {
+					"computedStyle": {
+						"linkColor": "#9e7e52",
+						"messageBackgroundColor": "transparent",
+						"messageWidth": "640px"
+					},
+					"style": {
+						"color": "#18181b",
+						"font-family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+					}
+				},
+				"type": "mailup-bee-page-properties",
+				"webFonts": []
+			},
+			"description": "",
+			"rows": [
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "fe6d5ff8-3263-4110-90dd-4bda4661e892",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "20px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "338642e3-52c7-418b-ba09-6157125fe699",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#f4f4f5",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "97bdcfb0-508c-4f92-a1fc-aec1b57c4f07"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "a3fd4823-0f28-4a8f-94ed-80f4c5325836",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "8px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-image",
+									"locked": false,
+									"uuid": "8243d9a7-cd8a-4be2-b47d-faa7b4abcac8",
+									"descriptor": {
+										"image": {
+											"alt": "Aluniș",
+											"href": "https://alunis.ro/",
+											"prefix": "",
+											"src": "https://images.weserv.nl/?url=https%3A%2F%2Falunis.ro%2Fwp-content%2Fuploads%2F2026%2F05%2FKit-Identitate-Vizuala-no-background_e-1.avif&trim=10&w=600&output=png&filt=negate",
+											"target": "_blank",
+											"width": "388px",
+											"height": "112px"
+										},
+										"style": {
+											"width": "100%",
+											"padding-top": "20px",
+											"padding-right": "24px",
+											"padding-bottom": "12px",
+											"padding-left": "24px"
+										},
+										"computedStyle": {
+											"class": "center fixedwidth",
+											"width": "200px",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "3598ae20-895f-4fad-a369-6a6cb0cae674",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "6px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "98cb9b71-73e6-47fb-94bb-e46d748dcbd2",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "320270ae-6ff6-4fa7-afd5-99bb25284e7a"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "09727e39-669a-471f-aaa8-b693fcccc234",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "28px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "f616f850-1a14-4f1d-9dae-387f1a8353b6",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">BINE AI VENIT</span></strong></p></div>",
+											"style": {
+												"color": "#ffffff",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#ffffff"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "40px",
+											"padding-bottom": "8px",
+											"padding-left": "40px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "917b196b-2a76-43d9-8332-fe37a832fb70",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Bine ai venit în comunitatea Aluniș!</span></strong></p></div>",
+											"style": {
+												"color": "#ffffff",
+												"font-family": "inherit",
+												"line-height": "120%"
+											},
+											"computedStyle": {
+												"linkColor": "#ffffff"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "40px",
+											"padding-bottom": "12px",
+											"padding-left": "40px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "4550704a-c22e-473a-be79-43228430cf24",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.</span></p></div>",
+											"style": {
+												"color": "#ffffff",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#ffffff"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "48px",
+											"padding-bottom": "8px",
+											"padding-left": "48px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "9b91da61-b52a-4f25-8e1b-d3ebc5b16169",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "28px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "86f01cb4-9b3e-481d-99ca-200103737fa0",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#9e7e52",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "22ed6c4e-f37c-42bd-a18d-0ecf1fed7fd9"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "14db1f7b-7edb-4091-b0ad-2cba7b56b9e0",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">De acum ești primul care află noutățile Aluniș. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "36px",
+											"padding-right": "40px",
+											"padding-bottom": "12px",
+											"padding-left": "40px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "d3984f9f-9626-47d6-aaac-afadd2db2321",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "33624148-6f1f-46ba-8aa3-1573a06213c7"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "a6307cd3-41a9-4399-adf5-2d77184189e2",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Ce găsești la noi</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "36px",
+											"padding-right": "32px",
+											"padding-bottom": "12px",
+											"padding-left": "32px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "4fe70954-7c04-44af-a176-ee354d7db593",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "9db234ce-695e-4bad-9702-fb412f463f89"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "3086f9b7-a054-4234-9d1f-dac40b7e2f18",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Ateliere și activități</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "20px",
+											"padding-right": "16px",
+											"padding-bottom": "6px",
+											"padding-left": "16px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "5c63df08-15b0-4d38-9314-0161a0736e19",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
+											"href": "https://alunis.ro/ateliere-si-activitati/",
+											"target": "_blank",
+											"style": {
+												"background-color": "transparent",
+												"border-top": "0px solid transparent",
+												"border-right": "0px solid transparent",
+												"border-bottom": "0px solid transparent",
+												"border-left": "0px solid transparent",
+												"border-radius": "0px",
+												"color": "#9e7e52",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "14px",
+												"font-weight": "700",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "4px",
+												"padding-bottom": "4px",
+												"padding-left": "0px",
+												"padding-right": "0px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "16px",
+											"padding-bottom": "18px",
+											"padding-left": "16px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 29,
+											"width": 92,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "0f7a2b6e-404f-459b-a880-7dcd7a732c92",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "8px",
+								"padding-bottom": "8px",
+								"padding-left": "8px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "86b7554d-8f07-4aa2-91e0-5b1bfe0a6321",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Drumeții &amp; atracții</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "20px",
+											"padding-right": "16px",
+											"padding-bottom": "6px",
+											"padding-left": "16px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "2eeb2f51-79fb-4c15-b7b3-24c431e5ee21",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
+											"href": "https://alunis.ro/drumetii-atractii/",
+											"target": "_blank",
+											"style": {
+												"background-color": "transparent",
+												"border-top": "0px solid transparent",
+												"border-right": "0px solid transparent",
+												"border-bottom": "0px solid transparent",
+												"border-left": "0px solid transparent",
+												"border-radius": "0px",
+												"color": "#9e7e52",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "14px",
+												"font-weight": "700",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "4px",
+												"padding-bottom": "4px",
+												"padding-left": "0px",
+												"padding-right": "0px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "16px",
+											"padding-bottom": "18px",
+											"padding-left": "16px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 29,
+											"width": 92,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "4591494d-0cfe-4578-ad1c-be812ca0284b",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "8px",
+								"padding-bottom": "8px",
+								"padding-left": "8px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "2c594513-08b8-4caf-9f97-565582f18d0b",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Echipa</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "20px",
+											"padding-right": "16px",
+											"padding-bottom": "6px",
+											"padding-left": "16px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "7f506d62-9569-4995-8fc0-293b7b554909",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
+											"href": "https://alunis.ro/echipa/",
+											"target": "_blank",
+											"style": {
+												"background-color": "transparent",
+												"border-top": "0px solid transparent",
+												"border-right": "0px solid transparent",
+												"border-bottom": "0px solid transparent",
+												"border-left": "0px solid transparent",
+												"border-radius": "0px",
+												"color": "#9e7e52",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "14px",
+												"font-weight": "700",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "4px",
+												"padding-bottom": "4px",
+												"padding-left": "0px",
+												"padding-right": "0px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "16px",
+											"padding-bottom": "18px",
+											"padding-left": "16px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 29,
+											"width": 92,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "adb91ff7-da89-494b-9afb-43abe1fc94a9",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "8px",
+								"padding-bottom": "8px",
+								"padding-left": "8px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "three-columns-empty",
+					"uuid": "53af86a0-f7d3-4d2c-be79-97b950bbf233"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "ddf367b4-de7d-4a1e-bbd1-55566b0ec99a",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vizitează site-ul</strong></p></div>",
+											"href": "https://alunis.ro/",
+											"target": "_blank",
+											"style": {
+												"background-color": "#9e7e52",
+												"border-top": "0px solid transparent",
+												"border-right": "0px solid transparent",
+												"border-bottom": "0px solid transparent",
+												"border-left": "0px solid transparent",
+												"border-radius": "999px",
+												"color": "#ffffff",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "16px",
+												"font-weight": "700",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "12px",
+												"padding-bottom": "12px",
+												"padding-left": "28px",
+												"padding-right": "28px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "20px",
+											"padding-right": "24px",
+											"padding-bottom": "12px",
+											"padding-left": "24px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 48,
+											"width": 219,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "d05d8559-7e28-4e1c-81b7-0c994cd320a5",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "66f4513f-23db-462e-b956-9527c8f9540e"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "d11d19cd-3ae7-408b-a495-a88e8190747e",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "1px solid #e4e4e7",
+												"width": "100%"
+											}
+										},
+										"style": {
+											"padding-top": "24px",
+											"padding-right": "40px",
+											"padding-bottom": "8px",
+											"padding-left": "40px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "c8b0806d-13ba-4c64-af79-95da6ff9de25",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "21054385-b22c-4899-ad71-1f53dc9dd5db"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "44a1e832-30d0-46c4-9cb1-4825c88299ba",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:28px;line-height:34px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:28px;line-height:34px;text-align:center;word-break:break-word;\"><span style=\"font-size:28px;line-height:34px;color:#18181b;\" data-mce-style=\"font-size:28px;line-height:34px;color:#18181b;\">✨</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "8px",
+											"padding-right": "12px",
+											"padding-bottom": "4px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "0da5166f-4134-472b-a2db-3597c75af94d",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\">Noutăți</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "12px",
+											"padding-bottom": "2px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "b7d8bb4f-dca8-4678-809a-c65d337a0cee",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Afli primul ce pregătim.</span></p></div>",
+											"style": {
+												"color": "#52525b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#52525b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "12px",
+											"padding-bottom": "8px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "086c9650-5bf0-432b-87a9-0464efe06678",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "8px",
+								"padding-right": "8px",
+								"padding-bottom": "16px",
+								"padding-left": "8px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "cb8cd476-a101-43de-bf5d-13efa3e60652",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:28px;line-height:34px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:28px;line-height:34px;text-align:center;word-break:break-word;\"><span style=\"font-size:28px;line-height:34px;color:#18181b;\" data-mce-style=\"font-size:28px;line-height:34px;color:#18181b;\">💡</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "8px",
+											"padding-right": "12px",
+											"padding-bottom": "4px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "72c14ab3-f99c-4267-b1c5-261922d55cae",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\">Sfaturi utile</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "12px",
+											"padding-bottom": "2px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "3c0e3b03-1aeb-4bcf-898e-5a62a4e6d7aa",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Informații alese cu grijă.</span></p></div>",
+											"style": {
+												"color": "#52525b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#52525b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "12px",
+											"padding-bottom": "8px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "d4c487ba-9710-4eea-b241-cbdcb0a656dd",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "8px",
+								"padding-right": "8px",
+								"padding-bottom": "16px",
+								"padding-left": "8px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "8dd0dfaa-47e5-4436-a83f-b03db0ed6a7c",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:28px;line-height:34px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:28px;line-height:34px;text-align:center;word-break:break-word;\"><span style=\"font-size:28px;line-height:34px;color:#18181b;\" data-mce-style=\"font-size:28px;line-height:34px;color:#18181b;\">📩</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "8px",
+											"padding-right": "12px",
+											"padding-bottom": "4px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "3cecbf2d-0d44-419c-ad84-b242d9d2350b",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\">Fără spam</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "12px",
+											"padding-bottom": "2px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "5119c4fd-95fa-4efd-a62d-2b481b7ac811",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Îți scriem doar când contează.</span></p></div>",
+											"style": {
+												"color": "#52525b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#52525b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "12px",
+											"padding-bottom": "8px",
+											"padding-left": "12px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "21ad741e-4cbf-43ff-9745-afc82f0fab30",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "8px",
+								"padding-right": "8px",
+								"padding-bottom": "16px",
+								"padding-left": "8px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "three-columns-empty",
+					"uuid": "c5d2d6f8-da2a-4fe4-90ed-2936e77584b1"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "efdbe425-f36b-4f72-b5a3-ce3d8f0b0e3e",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:22px;color:#52525b;\" data-mce-style=\"font-size:15px;line-height:22px;color:#52525b;\">Ai întrebări? Suntem aici pentru tine.</span></p><p style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:24px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:24px;color:#18181b;\"><a href=\"tel:+40736732588\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">+40 736 732 588</a> &nbsp;·&nbsp; <a href=\"mailto:rezervari@alunis.ro\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">rezervari@alunis.ro</a></span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "24px",
+											"padding-right": "32px",
+											"padding-bottom": "32px",
+											"padding-left": "32px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "b2b0ee26-2006-4791-9bba-8f9ee188368d",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "b74e6f88-332f-43b1-a132-7f9ab0080713"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "6544e896-7d33-474e-b60f-25b69a20ee26",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "12px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-social",
+									"locked": false,
+									"uuid": "72f7dfb9-8913-4b6e-9b92-f013b2075b63",
+									"descriptor": {
+										"iconsList": {
+											"icons": [
+												{
+													"id": "e9322fce-0152-4034-b1d2-f6b3ec762846",
+													"type": "follow",
+													"name": "facebook",
+													"text": "",
+													"image": {
+														"alt": "Facebook",
+														"title": "Facebook",
+														"href": "https://www.facebook.com/AlunisRetreat",
+														"prefix": "",
+														"target": "_blank",
+														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/facebook@2x.png"
+													}
+												},
+												{
+													"id": "af144e12-2222-47d7-b1da-4137a25f539e",
+													"type": "follow",
+													"name": "instagram",
+													"text": "",
+													"image": {
+														"alt": "Instagram",
+														"title": "Instagram",
+														"href": "https://www.instagram.com/alunis_retreat",
+														"prefix": "",
+														"target": "_blank",
+														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/instagram@2x.png"
+													}
+												}
+											]
+										},
+										"style": {
+											"padding-top": "12px",
+											"padding-right": "24px",
+											"padding-bottom": "8px",
+											"padding-left": "24px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"iconsDefaultWidth": 32,
+											"padding": "0 6px 0 6px",
+											"width": 88,
+											"height": 48,
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "fa85a2d5-f13a-4be0-a344-7ddd42ff8e90",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Aluniș. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://alunis.ro/termeni-conditii/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://alunis.ro/politica-gdpr-regulament/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://alunis.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">alunis.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
+											"style": {
+												"color": "#71717a",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#71717a"
+											}
+										},
+										"style": {
+											"padding-top": "8px",
+											"padding-right": "32px",
+											"padding-bottom": "32px",
+											"padding-left": "32px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "d5ac2819-6164-49e4-af8a-d8ceea58de0e",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#f4f4f5",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "0d6a25d1-0db3-4f82-ad23-ca604cd763a9"
+				}
+			],
+			"template": {
+				"name": "template-base",
+				"type": "basic",
+				"version": "2.0.0"
+			},
+			"title": ""
+		},
+		"comments": {}
+	}
+}

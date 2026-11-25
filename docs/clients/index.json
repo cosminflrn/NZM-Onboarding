@@ -1,56 +1,10 @@
 [
  {
-  "slug": "yesswimming-ro",
-  "name": "Club Sportiv Yes Swimming",
-  "domain": "yesswimming.ro",
-  "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-20 15:08 UTC",
-  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
-  "colors": {
-   "accent": "#fc3030",
-   "dark": "#0d1b2a",
-   "light": "#ffeaea"
-  },
-  "warnings": [
-   "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
-   "Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.",
-   "Produse: am găsit doar 0 din 3; restul rămân placeholder."
-  ],
-  "products": 0,
-  "files": [
-   "yesswimming-ro__1-Pop-up-abonare.json",
-   "yesswimming-ro__2-Welcome.json",
-   "yesswimming-ro__3-Automatizare-cos-abandonat.json",
-   "yesswimming-ro__newsman-import.zip"
-  ]
- },
- {
-  "slug": "techfarm-ro",
-  "name": "techfarm.ro",
-  "domain": "techfarm.ro",
-  "url": "https://www.techfarm.ro/",
-  "generated_at": "2026-11-20 15:04 UTC",
-  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
-  "colors": {
-   "accent": "#a78a25",
-   "dark": "#000000",
-   "light": "#fffaeb"
-  },
-  "warnings": [],
-  "products": 3,
-  "files": [
-   "techfarm-ro__1-Pop-up-abonare.json",
-   "techfarm-ro__2-Welcome.json",
-   "techfarm-ro__3-Automatizare-cos-abandonat.json",
-   "techfarm-ro__newsman-import.zip"
-  ]
- },
- {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
   "url": "https://alunis.ro/",
-  "generated_at": "2026-11-20 14:58 UTC",
+  "generated_at": "2026-11-25 12:54 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
   "colors": {
    "accent": "#9e7e52",
@@ -64,11 +18,64 @@
    "Produse: am găsit doar 0 din 3; restul rămân placeholder."
   ],
   "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
   "files": [
-   "alunis-ro__1-Pop-up-abonare.json",
-   "alunis-ro__2-Welcome.json",
-   "alunis-ro__3-Automatizare-cos-abandonat.json",
+   "alunis-ro__1-Formular-pop-up.json",
+   "alunis-ro__2-Newsletter-bun-venit.json",
+   "alunis-ro__3-Automatizare-bun-venit.json",
    "alunis-ro__newsman-import.zip"
+  ]
+ },
+ {
+  "slug": "techfarm-ro",
+  "name": "techfarm.ro",
+  "domain": "techfarm.ro",
+  "url": "https://www.techfarm.ro/",
+  "generated_at": "2026-11-25 12:54 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
+  "colors": {
+   "accent": "#a78a25",
+   "dark": "#000000",
+   "light": "#fffaeb"
+  },
+  "warnings": [],
+  "products": 3,
+  "site_type": "ecommerce",
+  "form_type": "popup",
+  "files": [
+   "techfarm-ro__1-Formular-pop-up.json",
+   "techfarm-ro__2-Newsletter-bun-venit.json",
+   "techfarm-ro__3-Automatizare-bun-venit.json",
+   "techfarm-ro__4-Automatizare-cos-abandonat.json",
+   "techfarm-ro__newsman-import.zip"
+  ]
+ },
+ {
+  "slug": "yesswimming-ro",
+  "name": "Club Sportiv Yes Swimming",
+  "domain": "yesswimming.ro",
+  "url": "https://yesswimming.ro/",
+  "generated_at": "2026-11-25 12:54 UTC",
+  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+  "colors": {
+   "accent": "#fc3030",
+   "dark": "#0d1b2a",
+   "light": "#ffeaea"
+  },
+  "warnings": [
+   "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
+   "Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.",
+   "Produse: am găsit doar 0 din 3; restul rămân placeholder."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "files": [
+   "yesswimming-ro__1-Formular-pop-up.json",
+   "yesswimming-ro__2-Newsletter-bun-venit.json",
+   "yesswimming-ro__3-Automatizare-bun-venit.json",
+   "yesswimming-ro__newsman-import.zip"
   ]
  }
 ]
