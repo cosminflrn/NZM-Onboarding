@@ -212,38 +212,62 @@ def cart_email(k, n, condition):
     else:
         hero = ("Ultima amintire", "Coșul tău expiră curând", "Produsele sunt încă rezervate pentru tine, dar nu pentru mult timp.")
         subject, pre = "Ultima amintire: coșul tău te așteaptă", "Finalizează comanda cât produsele sunt pe stoc."
-    rows = [k.header(nav=True), k.hero(*hero)]
+    rows = [k.header(nav=True), k.hero(*hero), k.stock_banner(CART_BANNERS[n - 1], "Produsele tale te așteaptă")]
     if n >= 2 and code:
         rows.append(k.discount(code, "Aplică-l la finalizarea comenzii."))
-    rows.append(k.heading("Produsele din coșul tău", top=32, bottom=8))
+    rows.append(k.heading("Produsele din coșul tău", top=36, bottom=12))
     rows.append(cart_products_row(k, condition))
-    rows.append(k.cta("Finalizează comanda", cart, top=24, bottom=12))
+    rows.append(k.cta("Finalizează comanda", cart, top=28, bottom=12))
     prods = [p for p in (b.get("products") or []) if p.get("image") and p.get("url")]
     if n == 1:
         rows.append(k.benefits(CART_TRUST))
-    elif n == 2 and len(prods) >= 3:
-        rows.append(k.products(prods[3:6] if len(prods) >= 6 else prods[:3], "Te-ar putea interesa și"))
-    elif n == 3:
-        rows.append(k.banner(inset=True))
-        rows.append(k.body("Dacă te-ai răzgândit sau ai nevoie de ajutor la alegere, răspunde la acest email. "
-                           "Te ajutăm cu drag.", size=16, top=28, bottom=4))
-    rows.append(k.help())
+        rows.append(k.help())
+    elif n == 2:
+        if len(prods) >= 3:
+            rows.append(k.products(prods[3:6] if len(prods) >= 6 else prods[:3], "Te-ar putea interesa și"))
+        rows.append(k.help())
+    else:
+        rows.append(cart_contact(k))
     return k.assemble(rows), subject, pre
 
+
+# free pictures (Unsplash licence), served straight from Unsplash's CDN
+CART_BANNERS = [
+    "https://images.unsplash.com/photo-1760565030243-c92ed557e8da?w=1280&h=560&fit=crop&q=80&auto=format",
+    "https://images.unsplash.com/photo-1760565030309-8a56664f8901?w=1280&h=560&fit=crop&q=80&auto=format",
+    "https://images.unsplash.com/photo-1760565031198-00e39da3d9cb?w=1280&h=560&fit=crop&q=80&auto=format",
+]
 
 CART_TRUST = [("Comandă simplă", "Finalizezi în câțiva pași."),
               ("Plată securizată", "Datele tale sunt protejate."),
               ("Suntem aici", "Te ajutăm cu orice întrebare.")]
 
 
+def cart_contact(k):
+    """Last cart email: invite them to write or call us (no 'reply to this email')."""
+    ct = k.b.get("contact") or {}
+    ways = []
+    if ct.get("email"):
+        ways.append("scrie-ne la " + D.link(D.esc(ct["email"]), "mailto:" + ct["email"], D.INK, weight="600"))
+    if ct.get("phone"):
+        ways.append("sună-ne la " + D.link(D.esc(ct["phone"]), ct.get("phone_href") or "tel:" + re.sub(r"[^\d+]", "", ct["phone"]),
+                                           D.INK, weight="600"))
+    if not ways:
+        return None
+    text = ("Ai nevoie de ajutor la alegere sau o întrebare despre comandă? "
+            + (lambda w: w[:1].upper() + w[1:])(" sau ".join(ways)) + " și te ajutăm cu drag.")
+    return D.row([[D.m_text(D.wrap([D.para(text, 16, D.INK, lh=1.6)]), padding=D.pad(28, 40, 36, 40), link_color=D.INK)]],
+                 bg=D.WHITE)
+
+
 def cart_products_row(k, condition):
-    img = D.m_image(D.PLACEHOLDER_IMG, 400, 300, 160, href="{{url}}", alt="{{name}}", dynamic="{{img}}",
-                    padding=D.pad(8, 8, 8, 16))
-    name = D.m_text(D.wrap([D.para(D.link("{{name}}", "{{url}}", D.INK, underline=False), 16, D.INK, align="left",
-                                   weight="bold", lh=1.4)]), padding=D.pad(16, 16, 4, 8), link_color=D.INK)
-    btn = D.m_button("Vezi produsul", "{{url}}", "transparent", D.INK, border=f"1px solid {D.LINE}", size=13,
-                     px=16, py=8, weight="600", align="left", padding=D.pad(4, 16, 12, 8))
-    return D.row([[img], [name, btn]], bg=D.WHITE, grid=[4, 8], col_pad=D.pad(4, 16, 4, 16), condition=condition)
+    img = D.m_image(D.PLACEHOLDER_IMG, 400, 300, 220, href="{{url}}", alt="{{name}}", dynamic="{{img}}",
+                    padding=D.pad(10, 12, 10, 0), radius=D.RADIUS)
+    name = D.m_text(D.wrap([D.para(D.link("{{name}}", "{{url}}", D.INK, underline=False), 18, D.INK, align="left",
+                                   weight="bold", lh=1.4)]), padding=D.pad(28, 0, 10, 4), link_color=D.INK)
+    btn = D.m_button("Vezi produsul", "{{url}}", "transparent", D.INK, border=f"1px solid {D.LINE}", size=14,
+                     px=18, py=9, weight="600", align="left", padding=D.pad(0, 0, 12, 4))
+    return D.row([[img], [name, btn]], bg=D.WHITE, grid=[5, 7], col_pad=D.pad(0, 20, 0, 20), condition=condition)
 
 
 # ====================================================================== workflow export helpers

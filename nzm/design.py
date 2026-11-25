@@ -170,7 +170,7 @@ def m_social(socials, padding=None, size=32, icon_set=ICON_SET):
 
 
 def row(columns, bg=WHITE, col_pad=None, container_bg="transparent", grid=None, radius=None, condition=None,
-        stack=True):
+        stack=True, col_style=None):
     n = len(columns)
     grid = grid or [12 // n] * n
     cols = []
@@ -178,7 +178,7 @@ def row(columns, bg=WHITE, col_pad=None, container_bg="transparent", grid=None, 
         cols.append({"grid-columns": g, "modules": mods, "uuid": uid(),
                      "style": {"background-color": "transparent", "border-top": "0px solid transparent",
                                "border-right": "0px solid transparent", "border-bottom": "0px solid transparent",
-                               "border-left": "0px solid transparent", **(col_pad or pad(0))}})
+                               "border-left": "0px solid transparent", **(col_pad or pad(0)), **(col_style or {})}})
     content_style = {"background-color": bg, "background-image": "none", "background-position": "top left",
                      "background-repeat": "no-repeat", "color": INK, "width": f"{WIDTH}px"}
     if radius:
@@ -274,6 +274,11 @@ class Kit:
         mods.append(m_spacer(28))
         return row([mods], bg=self.accent)
 
+    def stock_banner(self, url, alt):
+        """Free (Unsplash licence) picture under a coloured band: only the bottom corners are rounded."""
+        return row([[m_image(url, 1280, 560, WIDTH, href=self.home, alt=alt, full=True,
+                             radius=f"0px 0px {RADIUS} {RADIUS}")]], bg=WHITE)
+
     def banner(self, inset=False):
         ban = self.b.get("banner") or {}
         if not ban.get("url"):
@@ -355,8 +360,8 @@ class Kit:
         for it in items:
             mods = []
             if it.get("image"):
-                mods.append(m_image(it["image"], 600, 400, 176, href=it["url"], alt=self._label(it),
-                                    padding=pad(0, 8, 12, 8), radius=RADIUS))
+                mods.append(m_image(it["image"], 600, 400, 200, href=it["url"], alt=self._label(it),
+                                    padding=pad(0, 3, 12, 3), radius=RADIUS))
             mods += [
                 m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
                 m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
@@ -364,7 +369,7 @@ class Kit:
             ]
             cols.append(mods)
         return [self.heading(title, top=36, bottom=16),
-                row(cols, bg=WHITE, col_pad=pad(0, 8, 8, 8))]
+                row(cols, bg=WHITE, col_pad=pad(0, 4, 8, 4))]
 
     def featured(self, items, intro_title):
         """One section large (picture + title + button), the others as a 2-column row."""
@@ -374,8 +379,8 @@ class Kit:
         first, rest = items[0], items[1:]
         mods = []
         if first.get("image"):
-            mods.append(m_image(first["image"], 600, 400, 560, href=first["url"], alt=self._label(first),
-                                padding=pad(0, 40, 16, 40), radius=RADIUS))
+            mods.append(m_image(first["image"], 1200, 800, WIDTH, href=first["url"], alt=self._label(first),
+                                padding=pad(0, 0, 16, 0), radius=RADIUS, full=True))
         mods += [m_text(wrap([para(esc(self._label(first)), 22, INK, weight="bold", lh=1.3)]), padding=pad(4, 40, 4, 40)),
                  m_button(f"Descoperă {self._label(first).lower()} →", first["url"], self.accent, "#ffffff", size=15,
                           padding=pad(8, 24, 16, 24))]
@@ -395,15 +400,22 @@ class Kit:
         return out
 
     def benefits(self, items):
+        """Three tinted cards with white gutters between them."""
+        from .colors import mix
+        tint = mix(self.accent, "#ffffff", 0.9)
         cols = []
-        for n, (title, desc) in enumerate(items[:3], 1):
+        for title, desc in items[:3]:
             cols.append([
-                m_text(wrap([para(esc(title), 16, self.accent, weight="bold", lh=1.4)]), padding=pad(0, 12, 2, 12),
+                m_text(wrap([para(esc(title), 16, self.accent, weight="bold", lh=1.35)]), padding=pad(0, 14, 6, 14),
                        color=self.accent),
-                m_text(wrap([para(esc(desc), 14, MUTED, lh=1.5)]), padding=pad(0, 12, 8, 12), color=MUTED),
+                m_text(wrap([para(esc(desc), 14, MUTED, lh=1.5)]), padding=pad(0, 14, 0, 14), color=MUTED),
             ])
-        return [row([[m_divider(LINE, "100%", 1, pad(24, 40, 8, 40))]], bg=WHITE),
-                row(cols, bg=WHITE, col_pad=pad(8, 8, 16, 8))]
+        gutter = "6px solid #ffffff"
+        cards = row(cols, bg=WHITE, col_pad=pad(26, 4, 26, 4), grid=[4, 4, 4],
+                    col_style={"background-color": tint, "border-left": gutter, "border-right": gutter})
+        cards["columns"][0]["style"]["border-left"] = "28px solid #ffffff"    # same side margin as the text above
+        cards["columns"][-1]["style"]["border-right"] = "28px solid #ffffff"
+        return [row([[m_spacer(12)]], bg=WHITE), cards, row([[m_spacer(8)]], bg=WHITE)]
 
     def social_cta(self):
         """Big Beefree social icons: the networks' own colours, or dark ones on a very colourful brand."""
@@ -411,7 +423,7 @@ class Kit:
         if not socials:
             return []
         icon_set = ICON_SET_COLOR if self._calm_palette() else ICON_SET
-        return [row([[m_social(socials, padding=pad(12, 24, 28, 24), size=56, icon_set=icon_set)]], bg=WHITE)]
+        return [row([[m_social(socials, padding=pad(28, 24, 4, 24), size=44, icon_set=icon_set)]], bg=WHITE)]
 
     def _calm_palette(self):
         """Coloured network icons sit well next to calm brands; next to a strong accent we use dark ones."""
@@ -568,7 +580,10 @@ def render_html(bee, title=""):
         for c in cols:
             pct = round(100 * c.get("grid-columns", 12) / total, 4)
             inner = "".join(render_module(m) for m in c["modules"])
-            tds.append(f'<td class="column" width="{pct}%" valign="top" style="vertical-align:top;{_pads(c.get("style", {}))}">'
+            cst = c.get("style", {})
+            extra = "".join(f";{k}:{cst[k]}" for k in ("background-color", "border-top", "border-right", "border-bottom", "border-left")
+                            if cst.get(k) and cst[k] not in ("transparent", "0px solid transparent"))
+            tds.append(f'<td class="column" width="{pct}%" valign="top" style="vertical-align:top;{_pads(cst)}{extra}">'
                        f'{inner}</td>')
         radius = f'border-radius:{cs["border-radius"]};' if cs.get("border-radius") else ""
         stack = " stack" if r["content"]["computedStyle"].get("rowColStackOnMobile", True) else ""

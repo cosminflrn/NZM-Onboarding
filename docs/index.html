@@ -28,6 +28,31 @@
   button:hover { border-color:#cfcfd6; }
   button.primary { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; }
   button:disabled { opacity:.5; cursor:default; }
+  /* motion */
+  button, .btn { transition: transform .12s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, opacity .2s ease, color .2s ease; }
+  button:not(:disabled):hover { box-shadow:0 2px 10px rgba(17,17,20,.08); }
+  button:not(:disabled):active { transform:scale(.96); }
+  button.primary:not(:disabled):hover, button.dl:not(:disabled):hover { box-shadow:0 4px 14px rgba(166,4,0,.28); }
+  .seg { position:relative; }
+  .seg button { position:relative; z-index:1; transition:color .25s ease; }
+  .seg .pill { position:absolute; z-index:0; top:3px; bottom:3px; border-radius:999px; background:var(--red);
+    transition:left .3s cubic-bezier(.3,.9,.3,1), width .3s cubic-bezier(.3,.9,.3,1); box-shadow:0 2px 8px rgba(166,4,0,.25); }
+  .seg.ready button.on { background:transparent; }
+  .card { transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease; }
+  .client:hover { box-shadow:0 6px 24px rgba(17,17,20,.07); }
+  .clients.anim .client { animation: rise .35s ease both; }
+  .clients.anim .client:nth-child(2) { animation-delay:.04s; } .clients.anim .client:nth-child(3) { animation-delay:.08s; } .clients.anim .client:nth-child(n+4) { animation-delay:.12s; }
+  @keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  dialog[open] { animation: pop .25s cubic-bezier(.2,.9,.3,1.15); }
+  dialog::backdrop { background:rgba(17,17,20,.45); animation: fade .25s ease; }
+  dialog.closing { animation: unpop .18s ease forwards; }
+  dialog.closing::backdrop { animation: unfade .18s ease forwards; }
+  @keyframes pop { from { opacity:0; transform:translateY(12px) scale(.97); } to { opacity:1; transform:none; } }
+  @keyframes unpop { to { opacity:0; transform:translateY(8px) scale(.98); } }
+  @keyframes fade { from { opacity:0; } } @keyframes unfade { to { opacity:0; } }
+  dialog .view iframe { animation: fade .3s ease; }
+  input.pick { transition: transform .15s ease; } input.pick:active { transform:scale(.85); }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important; } }
   svg.i { width:16px; height:16px; flex:none; }
   .hint { color:var(--muted); font-size:13px; }
   .switches { grid-column:1/-1; display:flex; gap:24px; flex-wrap:wrap; margin-top:4px; }
@@ -42,9 +67,9 @@
   .client { display:grid; grid-template-columns: 20px 120px 1fr 300px; gap:20px; align-items:center; }
   .client.sel { border-color:var(--red); box-shadow:0 0 0 1px var(--red); }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
-  .selbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 12px; font-size:13px; }
-  .selbar label { display:inline-flex; align-items:center; gap:8px; cursor:pointer; padding-left:21px; color:var(--muted); }
-  .selbar .push { margin-left:auto; }
+  .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
+  .selbar #selCount { color:var(--muted); margin-right:4px; }
+  input.pick:disabled { opacity:.35; cursor:not-allowed; }
   .selbar button { padding:8px 12px; font-size:13px; }
   .selbar button.dl { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; }
   dialog.dlg { width:min(420px, 94vw); }
@@ -128,13 +153,12 @@
 
   <h2>Istoric
     <span class="search" id="searchBox"><input id="filter" placeholder="caută…" autocomplete="off"><button type="button" id="clearFilter" title="Șterge căutarea"><svg class="i"><use href="#i-x"/></svg></button></span>
+    <span class="selbar" id="selbar">
+      <span id="selCount">selectează max. 3</span>
+      <button type="button" class="dl" id="dlSel" disabled><svg class="i"><use href="#i-dl"/></svg>Descarcă selecția</button>
+      <button type="button" id="rsSel" disabled><svg class="i"><use href="#i-refresh"/></svg>Recitește selecția</button>
+    </span>
   </h2>
-  <div class="selbar" id="selbar">
-    <label><input type="checkbox" class="pick" id="selAll">Selectează tot <span id="selCount"></span></label>
-    <span class="push"></span>
-    <button type="button" class="dl" id="dlSel" disabled><svg class="i"><use href="#i-dl"/></svg>Descarcă selecția</button>
-    <button type="button" id="rsSel" disabled><svg class="i"><use href="#i-refresh"/></svg>Recitește selecția</button>
-  </div>
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
 </main>
 
@@ -320,6 +344,27 @@ function setSeg(name, v) {
   document.querySelectorAll(`.seg[data-name="${name}"] button`).forEach((b) => b.classList.toggle("on", b.dataset.v === v));
 }
 document.querySelectorAll(".seg button").forEach((btn) => btn.onclick = () => setSeg(btn.parentNode.dataset.name, btn.dataset.v));
+// red pill that slides between the options
+function placePill(seg) {
+  let pill = seg.querySelector(".pill");
+  if (!pill) { pill = document.createElement("span"); pill.className = "pill"; seg.prepend(pill); seg.classList.add("ready"); }
+  const on = seg.querySelector("button.on");
+  if (on) { pill.style.left = on.offsetLeft + "px"; pill.style.width = on.offsetWidth + "px"; }
+}
+document.querySelectorAll(".seg").forEach((seg) => {
+  placePill(seg);
+  new MutationObserver(() => placePill(seg)).observe(seg, { subtree: true, attributes: true, attributeFilter: ["class"] });
+});
+window.addEventListener("resize", () => document.querySelectorAll(".seg").forEach(placePill));
+document.fonts && document.fonts.ready.then(() => document.querySelectorAll(".seg").forEach(placePill));
+// dialogs fade out instead of vanishing
+const nativeClose = HTMLDialogElement.prototype.close;
+HTMLDialogElement.prototype.close = function (v) {
+  if (!this.open || this.classList.contains("closing")) return;
+  this.classList.add("closing");
+  setTimeout(() => { this.classList.remove("closing"); nativeClose.call(this, v); }, 170);
+};
+document.addEventListener("cancel", (e) => { if (e.target.tagName === "DIALOG") { e.preventDefault(); e.target.close(); } }, true);
 
 // --- new client / re-read
 $("gen").addEventListener("submit", async (e) => {
@@ -360,7 +405,9 @@ async function runJob(inputs) {
 let CLIENTS = [];
 async function load() {
   try { CLIENTS = await readFile("clients/index.json"); } catch { CLIENTS = []; }
+  $("clients").classList.add("anim");
   render();
+  setTimeout(() => $("clients").classList.remove("anim"), 600);
 }
 $("filter").oninput = () => { $("searchBox").classList.toggle("has", !!$("filter").value); render(); };
 $("clearFilter").onclick = () => { $("filter").value = ""; $("searchBox").classList.remove("has"); render(); $("filter").focus(); };
@@ -386,7 +433,7 @@ function render() {
   const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));
   const cards = list.map((c) => `
     <div class="card client${SEL.has(c.slug) ? " sel" : ""}" id="c-${c.slug}">
-      <input type="checkbox" class="pick" title="Selectează" ${SEL.has(c.slug) ? "checked" : ""} onchange="toggleSel('${c.slug}', this.checked)">
+      <input type="checkbox" class="pick" title="${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "Poți selecta maximum 3" : "Selectează"}" ${SEL.has(c.slug) ? "checked" : ""} ${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "disabled" : ""} onchange="toggleSel('${c.slug}', this.checked)">
       <a class="logo" href="${esc(c.url)}" target="_blank" title="Deschide site-ul">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</a>
       <div><h3><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a></h3>
         <div class="dom">${esc(fmtDate(c.generated_at))}</div>
@@ -408,18 +455,16 @@ function render() {
 
 // --- selection
 const SEL = new Set();
+const MAX_SEL = 3;   // keep the load on GitHub small
 function visible() { const q = $("filter").value.toLowerCase(); return CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q)); }
-function toggleSel(slug, on) { on ? SEL.add(slug) : SEL.delete(slug); render(); }
+function toggleSel(slug, on) { if (on && SEL.size >= MAX_SEL) return render(); on ? SEL.add(slug) : SEL.delete(slug); render(); }
 function syncSel(list) {
   for (const s of [...SEL]) if (!CLIENTS.some((c) => c.slug === s)) SEL.delete(s);
-  const n = SEL.size, vis = list.length, visSel = list.filter((c) => SEL.has(c.slug)).length;
-  $("selAll").checked = vis > 0 && visSel === vis;
-  $("selAll").indeterminate = visSel > 0 && visSel < vis;
-  $("selCount").textContent = n ? `(${n} ${n === 1 ? "selectat" : "selectate"})` : "";
+  const n = SEL.size;
+  $("selCount").textContent = n ? `${n} din ${MAX_SEL} selectate` : `selectează max. ${MAX_SEL}`;
   $("dlSel").disabled = $("rsSel").disabled = !n;
   $("selbar").style.display = CLIENTS.length ? "" : "none";
 }
-$("selAll").onchange = () => { const on = $("selAll").checked; visible().forEach((c) => on ? SEL.add(c.slug) : SEL.delete(c.slug)); render(); };
 $("dlSel").onclick = async () => {
   const slugs = CLIENTS.filter((c) => SEL.has(c.slug)).map((c) => c.slug);
   $("dlSel").disabled = true;
