@@ -21,6 +21,13 @@ ROOT = G.ROOT
 CLIENTS = os.path.join(ROOT, "docs", "clients")
 
 
+OUT_RE = re.compile(r"-(formular|automatizare|newsletter)-[a-z-]+\.json$")
+
+
+def output_files(folder):
+    return sorted(p for p in glob.glob(os.path.join(folder, "*.json")) if OUT_RE.search(os.path.basename(p)))
+
+
 def write_report(brand, out_dir, files):
     L, ct = brand["links"], brand["contact"]
     lines = [f"# {brand['name']} ({brand['domain']})", "",
@@ -70,7 +77,7 @@ def update_index():
             "warnings": b.get("warnings", []),
             "products": len([p for p in b.get("products") or []]),
             "site_type": E.site_type(b), "form_type": E.form_type(b),
-            "files": sorted(os.path.basename(p) for p in glob.glob(os.path.join(folder, "*__*.json"))
+            "files": sorted(os.path.basename(p) for p in output_files(folder)
                             if not p.endswith("brand.json")),
         })
     items.sort(key=lambda x: x.get("generated_at") or "", reverse=True)
@@ -122,7 +129,7 @@ def cmd_regen(a):
         brand = json.load(f)
     brand["generated_at"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     out_dir = os.path.dirname(os.path.abspath(a.brand))
-    for old in glob.glob(os.path.join(out_dir, "*__*.json")) + glob.glob(os.path.join(out_dir, "*.zip")):
+    for old in output_files(out_dir) + glob.glob(os.path.join(out_dir, "*__*.json")) + glob.glob(os.path.join(out_dir, "*.zip")):
         os.remove(old)
     print(finish(brand, out_dir))
 

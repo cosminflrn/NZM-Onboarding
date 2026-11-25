@@ -1,11 +1,11 @@
 # Aluniș (alunis.ro)
 
-Generat: 2026-11-25 13:48 UTC  ·  Platformă: wordpress
+Generat: 2026-11-25 14:11 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
-- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png
-- **Banner:** — (doar blocul colorat)
+- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-834838b3.png
+- **Banner:** https://alunis.ro/wp-content/uploads/2026/10/home-reel-32-1.jpg
 - **Culori:** accent `#9e7e52` · închis `#221b11` · deschis `#f5f2ee`
 - **Telefon:** +40 736 732 588
 - **Email:** rezervari@alunis.ro
@@ -21,10 +21,9 @@ Generat: 2026-11-25 13:48 UTC  ·  Platformă: wordpress
 ## De verificat
 
 - Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică.
-- Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.
 
 ## Fișiere
 
-- `alunis-ro__1-Formular-pop-up.json`
-- `alunis-ro__2-Automatizare-bun-venit.json`
-- `alunis-ro__3-Newsletter-noutati.json`
+- `alunis-ro-formular-pop-up.json`
+- `alunis-ro-automatizare-bun-venit.json`
+- `alunis-ro-newsletter-noutati.json`

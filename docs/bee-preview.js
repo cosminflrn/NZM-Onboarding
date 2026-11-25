@@ -40,7 +40,7 @@
     }
     if (t === "social") {
       const icons = ((d.iconsList || {}).icons || []).map((i) =>
-        `<a href="${esc(i.image.href)}" target="_blank" title="${esc(i.image.title)}" style="display:inline-block;margin:0 5px"><img src="${esc(i.image.src)}" width="32" height="32" alt="${esc(i.image.alt)}"></a>`).join("");
+        `<a href="${esc(i.image.href)}" target="_blank" title="${esc(i.image.title)}" style="display:inline-block;margin:0 5px"><img src="${esc(i.image.src)}" width="${(d.computedStyle || {}).iconsDefaultWidth || 32}" alt="${esc(i.image.alt)}"></a>`).join("");
       return wrap(icons, `text-align:${(d.style || {})["text-align"] || "center"}`);
     }
     if (t === "html") return wrap((d.html || {}).html || "");
@@ -71,7 +71,8 @@
         `<div style="flex:${c["grid-columns"] || 12};min-width:0;${css(c.style)}">${(c.modules || []).map((m) => module(m, ctx)).join("")}</div>`).join("");
       return `<div style="${css((r.container || {}).style)}"><div style="max-width:${width};margin:0 auto;display:flex;${css(rs)};width:auto">${cols}</div></div>`;
     }).join("");
-    return `<div class="bp" style="${css((body.container || {}).style)};${css(content.style)};padding:10px 0">
+    const fonts = (body.webFonts || []).filter((f) => f.url).map((f) => `<link rel="stylesheet" href="${esc(f.url)}">`).join("");
+    return fonts + `<div class="bp" style="${css((body.container || {}).style)};${css(content.style)};padding:10px 0">
       <style>.bp p{margin:0}.bp input[type=checkbox]{width:auto!important}.bp .bp-text a{color:var(--bp-link)}.bp img{border:0}</style>${rows}</div>`;
   }
 

@@ -4,8 +4,9 @@
   "slug": "techfarm-ro",
   "platform": "gomag",
   "name": "techfarm.ro",
+  "description": "TechFarm Agro oferă soluții complete pentru agricultură: utilaje performante, sisteme de irigații și service specializat. Creștem productivitatea fermelor !",
   "contact": {
-    "phone": "1 0745643424",
+    "phone": "0745643424",
     "phone_href": "tel:0745643424",
     "email": "vanzari@techfarm.ro"
   },
@@ -33,10 +34,11 @@
         "label": "PROMOŢII",
         "url": "https://www.techfarm.ro/promo"
       }
-    ]
+    ],
+    "cart_found": true
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-a835c5a4.png",
     "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo-mare-techfarm4509.png",
     "width": 300,
     "height": 71,
@@ -76,18 +78,11 @@
   },
   "products": [
     {
-      "name": "Dezmiriștitor Combinat Versatill Tractat | Ovlac | Techfarm Agro",
-      "url": "https://www.techfarm.ro/dezmiristitoare/dezmiristitor-combinat-tractat-versatill.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-bf74987b.jpg",
+      "name": "Semănătoare Pneumatică ARES 2713 - Brăzdar PT | Sola",
+      "url": "https://www.techfarm.ro/semanatori-paioase/semanatoare-de-paioase-pneumatica-ares-2713-brazdar-pt.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-f153b76a.jpg",
       "price": "",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/dezmiristitor-combinat-versatill-purtat-copie-711562.png"
-    },
-    {
-      "name": "Semănătoare Păioase TRISEM 2110 Disc Dublu | Sola Spania",
-      "url": "https://www.techfarm.ro/semanatori-paioase/semanatoare-de-paioase-trisem-2110-disc-dublu.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-7d168d34.jpg",
-      "price": "",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-trisem-2110-disc-dublu-863243.jpg"
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-pneumatica-ares-2713-600-48-cu-brazdar-pt-1380106902.png"
     },
     {
       "name": "SEMANATOARE PROSEM K GEA ELEKTRA",
@@ -95,21 +90,54 @@
       "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-a8d6a7a3.jpg",
       "price": "75.000,00 €",
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/original/semanatoare-prosem-k-gea-elektra-149075.webp"
+    },
+    {
+      "name": "Remorcă de transfer S6 24000 L 2R Boggie",
+      "url": "https://www.techfarm.ro/utilaje-agricole/remorca-de-transfer-s6-24000-2r-boggie.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-4b591723.jpg",
+      "price": "44.000,00 €",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/original/remorca-de-transfer-s6-24000-2r-boggie-637160.png"
+    },
+    {
+      "name": "Semănătoare Prășitoare VELOX | Sola | Distribuitor Techfarm Agro",
+      "url": "https://www.techfarm.ro/semanatori-prasitoare/semanatoare-prasitoare-velox.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-f2acd447.jpg",
+      "price": "",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-prasitoare-velox-691558.webp"
+    },
+    {
+      "name": "Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
+      "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-d03a9604.jpg",
+      "price": "35.000,00 €",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp"
     }
   ],
   "options": {
     "discount_code": "",
     "sender_email": "vanzari@techfarm.ro",
-    "sender_name": "techfarm.ro"
+    "sender_name": "techfarm.ro",
+    "form_type": "popup",
+    "site_type": "auto"
   },
+  "site_type": "ecommerce",
   "warnings": [],
-  "fetch_log": [],
-  "generated_at": "2026-11-25 13:35 UTC",
+  "fetch_log": [
+    "429 https://www.techfarm.ro/utilaje-agricole/remorcă-transfer-bnp-30.html",
+    "429 https://www.techfarm.ro/utilaje-agricole/remorcă-transfer-bnp-30.html",
+    "429 https://www.techfarm.ro/produse/mom",
+    "429 https://www.techfarm.ro/produse/mom",
+    "429 https://www.techfarm.ro/utilaje-strip-till-prelucrare-in-benzi/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html",
+    "429 https://www.techfarm.ro/utilaje-strip-till-prelucrare-in-benzi/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html",
+    "429 https://www.techfarm.ro/dezmiristitoare/dezmiristitor-combinat-tractat-versatill.html",
+    "429 https://www.techfarm.ro/dezmiristitoare/dezmiristitor-combinat-tractat-versatill.html"
+  ],
+  "generated_at": "2026-11-25 14:12 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea techfarm.ro!",
     "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
-    "intro": "La techfarm.ro găsești utilaje agricole și balotiere.\n\nDe acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
+    "intro": "TechFarm Agro oferă soluții complete pentru agricultură: utilaje performante, sisteme de irigații și service specializat.\n\nDe acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
     "cta_label": "Intră în magazin",
     "products_title": "Am ales câteva produse pentru tine",
     "cards_title": "Ce găsești la noi",

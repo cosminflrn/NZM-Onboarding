@@ -1,26 +1,24 @@
 [
  {
-  "slug": "yesswimming-ro",
-  "name": "Club Sportiv Yes Swimming",
-  "domain": "yesswimming.ro",
-  "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-25 13:51 UTC",
-  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+  "slug": "techfarm-ro",
+  "name": "techfarm.ro",
+  "domain": "techfarm.ro",
+  "url": "https://www.techfarm.ro/",
+  "generated_at": "2026-11-25 14:12 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-a835c5a4.png",
   "colors": {
-   "accent": "#fc3030",
-   "dark": "#0d1b2a",
-   "light": "#ffeaea"
+   "accent": "#a78a25",
+   "dark": "#000000",
+   "light": "#fffaeb"
   },
-  "warnings": [
-   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
-  ],
-  "products": 0,
-  "site_type": "non-ecommerce",
+  "warnings": [],
+  "products": 5,
+  "site_type": "ecommerce",
   "form_type": "popup",
   "files": [
-   "yesswimming-ro__1-Formular-pop-up.json",
-   "yesswimming-ro__2-Automatizare-bun-venit.json",
-   "yesswimming-ro__3-Newsletter-noutati.json"
+   "techfarm-ro-automatizare-cos-abandonat.json",
+   "techfarm-ro-formular-pop-up.json",
+   "techfarm-ro-newsletter-bun-venit.json"
   ]
  },
  {
@@ -28,46 +26,45 @@
   "name": "Aluniș",
   "domain": "alunis.ro",
   "url": "https://alunis.ro/",
-  "generated_at": "2026-11-25 13:48 UTC",
-  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
+  "generated_at": "2026-11-25 14:11 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-834838b3.png",
   "colors": {
    "accent": "#9e7e52",
    "dark": "#221b11",
    "light": "#f5f2ee"
   },
   "warnings": [
-   "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică.",
-   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
+   "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică."
   ],
   "products": 0,
   "site_type": "non-ecommerce",
   "form_type": "popup",
   "files": [
-   "alunis-ro__1-Formular-pop-up.json",
-   "alunis-ro__2-Automatizare-bun-venit.json",
-   "alunis-ro__3-Newsletter-noutati.json"
+   "alunis-ro-automatizare-bun-venit.json",
+   "alunis-ro-formular-pop-up.json",
+   "alunis-ro-newsletter-noutati.json"
   ]
  },
  {
-  "slug": "techfarm-ro",
-  "name": "techfarm.ro",
-  "domain": "techfarm.ro",
-  "url": "https://www.techfarm.ro/",
-  "generated_at": "2026-11-25 13:35 UTC",
-  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
+  "slug": "yesswimming-ro",
+  "name": "Club Sportiv Yes Swimming",
+  "domain": "yesswimming.ro",
+  "url": "https://yesswimming.ro/",
+  "generated_at": "2026-11-25 14:11 UTC",
+  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
   "colors": {
-   "accent": "#a78a25",
-   "dark": "#000000",
-   "light": "#fffaeb"
+   "accent": "#fc3030",
+   "dark": "#0d1b2a",
+   "light": "#ffeaea"
   },
   "warnings": [],
-  "products": 3,
-  "site_type": "ecommerce",
+  "products": 0,
+  "site_type": "non-ecommerce",
   "form_type": "popup",
   "files": [
-   "techfarm-ro__1-Formular-pop-up.json",
-   "techfarm-ro__2-Automatizare-cos-abandonat.json",
-   "techfarm-ro__3-Newsletter-bun-venit.json"
+   "yesswimming-ro-automatizare-bun-venit.json",
+   "yesswimming-ro-formular-pop-up.json",
+   "yesswimming-ro-newsletter-noutati.json"
   ]
  }
 ]

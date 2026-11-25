@@ -354,13 +354,13 @@ def neutral_images(brand):
     logo = b.get("logo") or {}
     src = logo.get("source_url")
     if ours(logo.get("url")) and src and src.startswith("http"):
-        recolored = logo.get("recolored") or any("colorat închis" in w for w in b.get("warnings") or [])
+        recolored = logo["recolored"] if "recolored" in logo else any("colorat închis" in w for w in b.get("warnings") or [])
         logo["url"] = _weserv(src, "&trim=10&w=600&output=png" + ("&filt=negate" if recolored else ""))
     for p in b.get("products") or []:
         # every product image becomes a 600x600 square (white background) so the cards line up
         src = p.get("source_image") if str(p.get("source_image", "")).startswith("http") else p.get("image")
         if isinstance(src, str) and src.startswith("http") and not ours(src) and WESERV not in src:
-            p["image"] = _weserv(src, "&w=600&h=600&fit=contain&cbg=white&output=jpg&q=85")
+            p["image"] = _weserv(src, "&w=600&h=600&fit=contain&cbg=white&bg=white&output=jpg&q=85")
     for item in (b.get("links") or {}).get("menu") or []:
         if isinstance(item.get("image"), str) and item["image"].startswith("http") and WESERV not in item["image"]:
             item["image"] = _weserv(item["image"], "&w=600&h=400&fit=cover&a=attention&output=jpg&q=85")
@@ -379,11 +379,11 @@ def generate(brand, out_dir, templates=None):
     kind = emails.form_type(brand)
     ecom = emails.site_type(brand) == "ecommerce"
     files = {
-        f"{slug}__1-Formular-{'pop-up' if kind == 'popup' else 'embed'}.json": build_form(brand, templates[kind], kind),
-        f"{slug}__2-Automatizare-{'cos-abandonat' if ecom else 'bun-venit'}.json":
+        f"{slug}-formular-{'pop-up' if kind == 'popup' else 'embed'}.json": build_form(brand, templates[kind], kind),
+        f"{slug}-automatizare-{'cos-abandonat' if ecom else 'bun-venit'}.json":
             (emails.build_cart_automation(brand, templates["cart_auto"]) if ecom
              else emails.build_welcome_automation(brand, templates["welcome_auto"])),
-        f"{slug}__3-Newsletter-{'bun-venit' if ecom else 'noutati'}.json": emails.build_newsletter(brand, templates["newsletter"]),
+        f"{slug}-newsletter-{'bun-venit' if ecom else 'noutati'}.json": emails.build_newsletter(brand, templates["newsletter"]),
     }
     for name, doc in files.items():
         with open(os.path.join(out_dir, name), "w", encoding="utf-8") as f:

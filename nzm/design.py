@@ -142,20 +142,23 @@ def m_spacer(h):
     return m_divider(height=h, padding=pad(0))
 
 
-def m_social(socials, padding=None):
+ICON_SET_COLOR = "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-color/{net}@2x.png"
+
+
+def m_social(socials, padding=None, size=32, icon_set=ICON_SET):
     icons = []
     for net, url in socials.items():
         nice = SOCIAL_NAMES.get(net, net.title())
         icons.append({"id": uid(), "type": "follow", "name": net, "text": "",
                       "image": {"alt": nice, "title": nice, "href": url, "prefix": "", "target": "_blank",
-                                "src": ICON_SET.format(net=net)}})
+                                "src": icon_set.format(net=net)}})
     n = max(1, len(icons))
     return {
         "type": "mailup-bee-newsletter-modules-social", "locked": False, "uuid": uid(),
         "descriptor": {
             "iconsList": {"icons": icons},
             "style": {**(padding or pad(8, 24)), "text-align": "center"},
-            "computedStyle": {"iconsDefaultWidth": 32, "padding": "0 6px 0 6px", "width": n * 44, "height": 48,
+            "computedStyle": {"iconsDefaultWidth": size, "padding": "0 6px 0 6px", "width": n * (size + 12), "height": size + 16,
                               "hideContentOnMobile": False},
         },
     }
@@ -328,7 +331,7 @@ class Kit:
 
     @staticmethod
     def _label(it):
-        lab = it["label"].strip()
+        lab = re.sub(r"^[\s→›»>\-–•·|]+|[\s→›»>\-–•·|]+$", "", it["label"])
         return lab[:1].upper() + lab[1:].lower() if lab.isupper() else lab
 
     def cards(self, items, title):
@@ -400,7 +403,7 @@ class Kit:
             mods.append(m_button(f"{SOCIAL_NAMES.get(net, net.title())} →", url, "transparent", INK,
                                  border=f"1px solid {LINE}", size=15, px=24, py=10, weight="600",
                                  padding=pad(4, 24, 4, 24)))
-        mods.insert(0, m_spacer(8))
+        mods.insert(0, m_social(socials, padding=pad(16, 24, 12, 24), size=48, icon_set=ICON_SET_COLOR))
         mods.append(m_spacer(16))
         return [row([mods], bg=WHITE)]
 
@@ -525,9 +528,10 @@ def render_module(m):
                 f'<tr><td style="font-size:1px;line-height:1px;border-top:{dv["border-top"]}">&#8202;</td></tr></table>'
                 f'</td></tr></table>')
     if t == "social":
+        sz = int(d.get("computedStyle", {}).get("iconsDefaultWidth", 32))
         cells = "".join(
             f'<td style="padding:0 6px"><a href="{esc(i["image"]["href"])}" target="_blank">'
-            f'<img src="{esc(i["image"]["src"])}" width="32" height="32" alt="{esc(i["image"]["alt"])}" '
+            f'<img src="{esc(i["image"]["src"])}" width="{sz}" height="{sz}" alt="{esc(i["image"]["alt"])}" '
             f'title="{esc(i["image"]["title"])}" style="display:block;height:auto;border:0"></a></td>'
             for i in d["iconsList"]["icons"])
         return (f'<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"><tr>'

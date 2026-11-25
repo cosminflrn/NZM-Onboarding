@@ -6,7 +6,7 @@
   "name": "Club Sportiv Yes Swimming",
   "description": "",
   "contact": {
-    "phone": "TELEFON 0739 652 493",
+    "phone": "0739 652 493",
     "phone_href": "tel:0739652493",
     "email": "contact@yesswimming.ro"
   },
@@ -25,15 +25,17 @@
     "promo": null,
     "menu": [
       {
-        "label": "PROGRAM →",
-        "url": "https://yesswimming.ro/program/"
+        "label": "PROGRAM",
+        "url": "https://yesswimming.ro/program/",
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/01d4c43d-6855-42a7-8064-81c21e252869.png"
       },
       {
-        "label": "COTIZAȚII →",
-        "url": "https://yesswimming.ro/cotizatii/"
+        "label": "COTIZAȚII",
+        "url": "https://yesswimming.ro/cotizatii/",
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/6b11bc4d-babb-413b-98c5-f673724a64ea.png"
       },
       {
-        "label": "ANTRENORI →",
+        "label": "ANTRENORI",
         "url": "https://yesswimming.ro/antrenori/",
         "image": "https://yesswimming.ro/wp-content/uploads/2026/09/Vlad-Anastasescu.png"
       }
@@ -49,7 +51,12 @@
     "found_by": "img",
     "recolored": false
   },
-  "banner": null,
+  "banner": {
+    "url": "https://yesswimming.ro/wp-content/uploads/2026/09/Bazin-Lia-Manoliu.png",
+    "source_url": "https://yesswimming.ro/wp-content/uploads/2026/09/Bazin-Lia-Manoliu.png",
+    "width": 1200,
+    "height": 799
+  },
   "colors": {
     "accent": "#fc3030",
     "accent_original": "#fc3030",
@@ -83,14 +90,12 @@
     "site_type": "auto"
   },
   "site_type": "non-ecommerce",
-  "warnings": [
-    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
-  ],
+  "warnings": [],
   "fetch_log": [
     "404 https://yesswimming.ro/wp-json/wc/store/v1/products?per_page=40",
     "404 https://yesswimming.ro/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-25 13:51 UTC",
+  "generated_at": "2026-11-25 14:11 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Club Sportiv Yes Swimming!",

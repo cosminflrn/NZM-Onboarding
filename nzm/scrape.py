@@ -236,6 +236,7 @@ class Scraper:
         logo, logo_colors = self.logo()
         brand["logo"] = logo
         brand["banner"] = self.banner(logo)
+        self.banner_src = (brand["banner"] or {}).get("source_url")
         brand["colors"] = self.colors(logo_colors)
         brand["products"] = self.products(6)
         self.section_images(links.get("menu") or [], logo)
@@ -353,7 +354,7 @@ class Scraper:
             if in_tag(cont, ["footer"]):
                 continue
             for a in cont.find_all("a", href=True):
-                label = text_of(a)
+                label = re.sub(r"^[\s→›»>\-–•·|]+|[\s→›»>\-–•·|]+$", "", text_of(a))
                 u = absolute(self.base, a["href"])
                 if not u or not same_site(u, self.base) or urlparse(u).path in ("", "/"):
                     continue
@@ -396,7 +397,9 @@ class Scraper:
                     num = re.sub(r"[^\d+]", "", h[4:])
                     if len(re.sub(r"\D", "", num)) >= 9:
                         txt = text_of(a)
-                        res["phone"] = txt if len(re.sub(r"\D", "", txt)) >= 9 and len(txt) < 25 else num
+                        m_num = re.search(r"\+?[\d][\d\s.\-()]{7,}\d", txt)
+                        same = m_num and re.sub(r"\D", "", m_num.group(0)) == re.sub(r"\D", "", num)
+                        res["phone"] = m_num.group(0).strip() if same else num
                         res["phone_href"] = "tel:" + num
                 if not res["email"] and h.lower().startswith("mailto:"):
                     em = h[7:].split("?")[0].strip()
@@ -538,33 +541,69 @@ class Scraper:
         self.warnings.append("Logo: nu am găsit logo-ul — am păstrat placeholderul din template.")
         return None, []
 
+    # -- pictures
+    def page_images(self, soup, base):
+        """Candidate content pictures of a page, best first (og:image, <img>, lazy-load attributes, CSS urls)."""
+        cands = []
+        og = soup.find("meta", property="og:image")
+        if og and og.get("content"):
+            cands.append(absolute(base, og["content"]))
+        main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
+        for el in main.find_all(True):
+            if el.name in ("header", "footer", "nav") or in_tag(el, ["header", "footer", "nav"], depth=6):
+                continue
+            if el.name == "img":
+                u = img_url(el, base)
+                if u:
+                    cands.append(u)
+            for attr in ("data-bg", "data-background", "data-bg-image", "data-background-image", "data-lazy-background"):
+                if el.get(attr):
+                    cands.append(absolute(base, el[attr].strip()))
+            st = el.get("style") or ""
+            for m in re.finditer(r"url\(['\"]?([^'\")]+)", st):
+                cands.append(absolute(base, m.group(1)))
+        out, seen = [], set()
+        for u in cands:
+            if not u or u in seen or not re.search(r"\.(jpe?g|png|webp|avif)(\?|$)", u, re.I):
+                continue
+            seen.add(u)
+            if BAD_IMG_WORDS.search(u) or re.search(r"logo|favicon|icon|avatar|-\d{2,3}x\d{2,3}\.", u, re.I):
+                continue
+            out.append(u)
+        return out
+
+    def good_image(self, u, min_w=300, min_h=180):
+        """A real photo: big enough, sane ratio, not a logo/icon (transparent or few-colour graphics)."""
+        if re.search(r"booking|tripadvisor|google|facebook|instagram|whatsapp|badge|award|sigla|brand", u, re.I):
+            return False
+        im, fmt = self.image(u)
+        if im is None or im.width < min_w or im.height < min_h or not (0.5 <= im.width / im.height <= 3.5):
+            return False
+        small = im.convert("RGBA")
+        small.thumbnail((64, 64))
+        px = list(small.getdata())
+        if sum(1 for p in px if p[3] < 200) > len(px) * 0.05:
+            return False  # cut-out graphic / logo
+        if len({(r // 16, g // 16, b // 16) for r, g, b, a in px}) < 40:
+            return False  # flat graphic, not a photo
+        return True
+
     # -- one picture per menu section (used by non-ecommerce emails)
     def section_images(self, menu, logo):
-        used = set()
+        used = {(self.banner_src or "")}
+        pool = None
         for item in menu[:3]:
             final, soup = self.page(item["url"])
-            if soup is None:
-                continue
-            cands = []
-            og = soup.find("meta", property="og:image")
-            if og and og.get("content"):
-                cands.append(absolute(final, og["content"]))
-            main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
-            for img in main.find_all("img")[:25]:
-                if in_tag(img, ["header", "footer", "nav"]):
-                    continue
-                u = img_url(img, final)
-                if u and not BAD_IMG_WORDS.search(u) and "logo" not in u.lower():
-                    cands.append(u)
-            for u in cands:
-                if not u or u in used or (logo and u == logo.get("source_url")):
-                    continue
-                im, fmt = self.image(u)
-                if im is None or im.width < 300 or im.height < 180:
-                    continue
-                used.add(u)
-                item["image"] = u
-                break
+            cands = self.page_images(soup, final)[:12] if soup is not None else []
+            pick = next((u for u in cands if u not in used and self.good_image(u)), None)
+            if not pick:
+                # pictures loaded by JavaScript are invisible to us: borrow one from the homepage
+                if pool is None:
+                    pool = [u for u in self.page_images(self.soup, self.base)[:20] if self.good_image(u, 500, 300)]
+                pick = next((u for u in pool if u not in used), None)
+            if pick:
+                used.add(pick)
+                item["image"] = pick
 
     # -- banner
     def banner(self, logo):
@@ -591,9 +630,14 @@ class Scraper:
                 m = re.search(r"url\(['\"]?([^'\")]+)", el["style"])
                 if m:
                     cands.append((55, absolute(self.base, m.group(1))))
+        for el in self.soup.find_all(True, attrs={"data-bg": True}):
+            if hero_re.search(classes_chain(el, 4)):
+                cands.append((57, absolute(self.base, el["data-bg"])))
         og = self.soup.find("meta", property="og:image")
         if og and og.get("content") and "logo" not in og["content"].lower():
             cands.append((40, absolute(self.base, og["content"])))
+        for i, u in enumerate(self.page_images(self.soup, self.base)[:6]):
+            cands.append((30 - i, u))
         cands.sort(key=lambda c: -c[0])
         seen = set()
         for _, u in cands:

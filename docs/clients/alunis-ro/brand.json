@@ -24,21 +24,24 @@
     "menu": [
       {
         "label": "ATELIERE ȘI ACTIVITĂȚI",
-        "url": "https://alunis.ro/ateliere-si-activitati/"
+        "url": "https://alunis.ro/ateliere-si-activitati/",
+        "image": "https://alunis.ro/wp-content/uploads/2026/10/carusel-homepage-3-1.jpg"
       },
       {
         "label": "DRUMEȚII & ATRACȚII",
-        "url": "https://alunis.ro/drumetii-atractii/"
+        "url": "https://alunis.ro/drumetii-atractii/",
+        "image": "https://alunis.ro/wp-content/uploads/2026/06/Screenshot-2026-06-20-at-19.21.54-1-1-1.png"
       },
       {
         "label": "ECHIPA",
-        "url": "https://alunis.ro/echipa/"
+        "url": "https://alunis.ro/echipa/",
+        "image": "https://alunis.ro/wp-content/uploads/2026/10/carusel-home-2-1.jpg"
       }
     ],
     "cart_found": false
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-834838b3.png",
     "source_url": "https://alunis.ro/wp-content/uploads/2026/05/Kit-Identitate-Vizuala-no-background_e-1.avif",
     "width": 388,
     "height": 112,
@@ -46,7 +49,12 @@
     "found_by": "img",
     "recolored": true
   },
-  "banner": null,
+  "banner": {
+    "url": "https://alunis.ro/wp-content/uploads/2026/10/home-reel-32-1.jpg",
+    "source_url": "https://alunis.ro/wp-content/uploads/2026/10/home-reel-32-1.jpg",
+    "width": 1378,
+    "height": 919
+  },
   "colors": {
     "accent": "#9e7e52",
     "accent_original": "#9e7e52",
@@ -76,15 +84,14 @@
   },
   "site_type": "non-ecommerce",
   "warnings": [
-    "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică.",
-    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
+    "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică."
   ],
   "fetch_log": [
     "404 https://alunis.ro/wp-json/wc/store/v1/products?per_page=40",
     "404 https://alunis.ro/sitemap.xml",
     "404 https://alunis.ro/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-25 13:48 UTC",
+  "generated_at": "2026-11-25 14:11 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Aluniș!",

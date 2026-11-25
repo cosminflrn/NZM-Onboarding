@@ -6,47 +6,57 @@
 <title>NewsMAN Onboarding</title>
 <link rel="icon" href="favicon.ico">
 <style>
-  :root { --red:#c8102e; --ink:#1d1d1f; --muted:#6b6b70; --line:#e6e6ea; --bg:#f6f6f8; --ok:#1a7f37; --warn:#9a6700; }
+  :root { --red:#c8102e; --ink:#1d1d1f; --muted:#6b6b70; --line:#e6e6ea; --bg:#f6f6f8; --ok:#1a7f37; --run:#9a6700; --err:#b42318; }
   * { box-sizing: border-box; }
   body { margin:0; font:15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
-  header { background:#fff; border-bottom:1px solid var(--line); }
+  header { background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20; }
   .wrap { max-width:1100px; margin:0 auto; padding:0 20px; }
   header .wrap { display:flex; align-items:center; gap:12px; height:64px; }
-  header b { font-size:18px; } header b span { color:var(--red); }
+  .brand { display:flex; align-items:center; gap:8px; text-decoration:none; color:inherit; }
+  .brand img { height:28px; width:auto; display:block; }
+  .brand span { font-size:15px; color:var(--muted); }
   header .right { margin-left:auto; display:flex; gap:8px; align-items:center; font-size:13px; color:var(--muted); }
-  h2 { font-size:17px; margin:28px 0 12px; }
+  h2 { font-size:17px; margin:28px 0 12px; display:flex; align-items:center; gap:14px; }
   .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; }
   form.gen { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap:10px; align-items:end; }
   label { display:block; font-size:12px; color:var(--muted); margin-bottom:4px; }
-  input, select { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:14px; background:#fff; }
+  input, select, textarea { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:14px; background:#fff; }
+  textarea { min-height:84px; resize:vertical; }
   input[type=color] { padding:2px; height:38px; }
-  button, .btn { display:inline-flex; align-items:center; gap:6px; padding:9px 15px; border-radius:8px; border:1px solid var(--line);
+  button, .btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:9px 15px; border-radius:8px; border:1px solid var(--line);
     background:#fff; color:var(--ink); font:inherit; font-size:14px; cursor:pointer; text-decoration:none; white-space:nowrap; }
+  button:hover { border-color:#cfcfd6; }
   button.primary { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; }
   button:disabled { opacity:.5; cursor:default; }
+  svg.i { width:16px; height:16px; flex:none; }
   .hint { color:var(--muted); font-size:13px; }
   .switches { grid-column:1/-1; display:flex; gap:24px; flex-wrap:wrap; margin-top:4px; }
   .seg { display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:#fafafa; }
   .seg button { border:0; background:transparent; border-radius:999px; padding:6px 14px; font-size:13px; color:var(--muted); }
   .seg button.on { background:var(--ink); color:#fff; }
-  .badge { display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; background:#f0f0f3; color:var(--muted); margin-left:6px; vertical-align:middle; }
-  textarea { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:14px; min-height:84px; resize:vertical; }
+  .search { position:relative; width:240px; font-weight:normal; }
+  .search input { padding-right:34px; }
+  .search button { position:absolute; right:4px; top:50%; transform:translateY(-50%); border:0; padding:4px 8px; color:var(--muted); display:none; }
+  .search.has button { display:inline-flex; }
   .clients { display:grid; gap:14px; }
-  .client { display:grid; grid-template-columns: 120px 1fr auto; gap:18px; align-items:center; }
+  .client { display:grid; grid-template-columns: 120px 1fr 300px; gap:20px; align-items:center; }
   .client .logo { width:120px; height:120px; display:flex; align-items:center; justify-content:center; border-radius:10px; padding:10px;
     border:1px solid var(--line); background-color:#fff;
-    background-image:conic-gradient(#e9e9ee 25%, #fff 0 50%, #e9e9ee 0 75%, #fff 0); background-size:16px 16px; }
+    background-image:conic-gradient(#ececf1 25%, #fff 0 50%, #ececf1 0 75%, #fff 0); background-size:16px 16px; }
   .client .logo img { max-height:100px; max-width:100px; }
   .client h3 { margin:0; font-size:16px; } .dom { color:var(--muted); font-size:13px; }
-  .sw { display:inline-block; width:18px; height:18px; border-radius:50%; border:1px solid rgba(0,0,0,.1); vertical-align:middle; margin-right:3px; }
-  .warn { font-size:12px; color:var(--warn); margin-top:4px; }
-  .actions { display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-end; max-width:380px; }
-  .actions .btn, .actions button { padding:6px 10px; font-size:13px; }
-  .busy { outline:2px solid #f0c000; }
-  #jobs { display:grid; gap:10px; margin-top:14px; }
-  .job { border:1px solid var(--line); border-radius:10px; padding:12px 14px; font-size:14px; }
-  .job .steps { display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:6px; font-size:13px; color:var(--muted); }
-  .job.ok { border-color:#b7e1c1; background:#f3fbf5; } .job.err { border-color:#f1b8b8; background:#fff5f5; }
+  .tags { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+  .tag { display:inline-flex; align-items:center; gap:5px; font-size:12px; padding:3px 9px; border-radius:999px; background:#f0f0f3; color:#3f3f46; }
+  .sw { display:inline-block; width:18px; height:18px; border-radius:50%; border:1px solid rgba(0,0,0,.1); }
+  .status { font-size:12px; padding:3px 9px; border-radius:999px; display:inline-flex; align-items:center; gap:5px; }
+  .status.run { background:#fff4d6; color:var(--run); } .status.ok { background:#e6f6ea; color:var(--ok); } .status.err { background:#fde8e7; color:var(--err); }
+  .status svg.i { width:13px; height:13px; }
+  .spin { width:12px; height:12px; border:2px solid currentColor; border-right-color:transparent; border-radius:50%; animation:sp .8s linear infinite; }
+  @keyframes sp { to { transform:rotate(360deg); } }
+  .actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .actions button { width:100%; padding:9px 10px; font-size:13px; }
+  .actions button.dl { background:var(--ink); border-color:var(--ink); color:#fff; font-weight:600; }
+  .client.pending { border-style:dashed; }
   dialog { border:0; border-radius:12px; padding:0; }
   dialog.pv { width:min(1100px, 96vw); height:92vh; }
   dialog.ed { width:min(900px, 96vw); max-height:92vh; }
@@ -54,19 +64,22 @@
   dialog .bar .tab.on { background:var(--ink); color:#fff; border-color:var(--ink); }
   dialog .bar .push { margin-left:auto; }
   dialog .subj { padding:8px 16px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--line); }
-  dialog .view { height:calc(92vh - 100px); overflow:auto; background:#fff; }
+  dialog .view { height:calc(92vh - 100px); overflow:hidden; background:#fff; }
   .grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; padding:16px 18px; }
   .grid h4 { grid-column:1/-1; margin:10px 0 0; font-size:14px; border-bottom:1px solid var(--line); padding-bottom:4px; }
   .grid .w2 { grid-column:span 2; } .grid .w4 { grid-column:1/-1; }
   .setup ol { margin:8px 0; padding-left:20px; } .setup li { margin:4px 0; }
   code { background:#f0f0f3; padding:1px 5px; border-radius:4px; font-size:13px; }
   .empty { color:var(--muted); }
-  @media (max-width: 820px) { form.gen, .grid { grid-template-columns:1fr; } .client { grid-template-columns:1fr; } .actions { justify-content:flex-start; } }
+  #login { display:none; position:fixed; inset:0; background:var(--bg); z-index:50; align-items:center; justify-content:center; }
+  @media (max-width: 900px) { form.gen, .grid { grid-template-columns:1fr; } .client { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
-<header><div class="wrap"><img src="newsman-logo.png" alt="NewsMAN" style="height:28px;width:auto;display:block"><span style="font-size:15px;color:var(--muted)">Onboarding</span>
-  <div class="right"><span id="who"></span><button id="tokBtn">⚙ Acces</button></div></div></header>
+<header><div class="wrap">
+  <a class="brand" href="./" title="Reîncarcă"><img src="newsman-logo.png" alt="NewsMAN"><span>Onboarding</span></a>
+  <div class="right"><span id="who"></span><button id="tokBtn" title="Acces"><svg class="i"><use href="#i-key"/></svg>Acces</button></div>
+</div></header>
 
 <main class="wrap">
   <div id="setup" class="card setup" style="display:none;margin-top:24px">
@@ -79,7 +92,6 @@
       <li><b>Generate token</b>, copiază-l și pune-l aici:</li>
     </ol>
     <div style="display:flex;gap:8px;max-width:640px"><input id="tok" type="password" placeholder="github_pat_…"><button class="primary" id="tokSave">Salvează</button></div>
-    <div class="hint" style="margin-top:8px">Tokenul rămâne doar în acest browser și e trimis doar către GitHub. Colegii își fac fiecare tokenul lor.</div>
   </div>
 
   <h2>Client nou</h2>
@@ -89,30 +101,30 @@
       <div><label>Nume brand (opțional)</label><input id="name" placeholder="din site"></div>
       <div><label>Cod discount (opțional)</label><input id="discount" placeholder="ex. BINEAIVENIT10"></div>
       <div><label>Email expeditor (opțional)</label><input id="sender" placeholder="din site"></div>
-      <button class="primary" type="submit" id="genBtn">Generează →</button>
+      <button class="primary" type="submit" id="genBtn">Generează</button>
       <div class="switches">
         <div><label>Formular</label><div class="seg" data-name="form_type">
           <button type="button" data-v="popup" class="on">Pop-up</button><button type="button" data-v="embed">Embed (fix în pagină)</button></div></div>
         <div><label>Tip site</label><div class="seg" data-name="site_type">
-          <button type="button" data-v="auto" class="on">Detectează automat</button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Fără magazin</button></div></div>
+          <button type="button" data-v="auto" class="on">Detectează automat</button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
       </div>
     </form>
-    <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Poți porni mai mulți clienți unul după altul; se fac pe rând.</div>
-    <div id="jobs"></div>
+    <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Starea apare direct în istoric.</div>
   </div>
 
-  <h2>Clienți generați <input id="filter" placeholder="caută…" style="width:200px;margin-left:10px;font-weight:normal"></h2>
+  <h2>Istoric
+    <span class="search" id="searchBox"><input id="filter" placeholder="caută…" autocomplete="off"><button type="button" id="clearFilter" title="Șterge căutarea"><svg class="i"><use href="#i-x"/></svg></button></span>
+  </h2>
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
 </main>
 
-<div id="login" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:50;align-items:center;justify-content:center">
+<div id="login">
   <form id="loginForm" class="card" style="width:min(380px,92vw);display:grid;gap:12px">
-    <div style="display:flex;align-items:center;gap:10px;justify-self:center;margin:4px 0 8px">
-      <img src="newsman-logo.png" alt="NewsMAN" style="height:30px;width:auto;display:block"><span style="font-size:16px;color:var(--muted)">Onboarding</span></div>
+    <div class="brand" style="justify-self:center;margin:4px 0 8px"><img src="newsman-logo.png" alt="NewsMAN" style="height:30px"><span style="font-size:16px">Onboarding</span></div>
     <div><label>Utilizator</label><input id="lu" autocomplete="username" required></div>
     <div><label>Parolă</label><input id="lp" type="password" autocomplete="current-password" required></div>
     <button class="primary" type="submit">Intră</button>
-    <div id="lerr" class="warn" style="text-align:center"></div>
+    <div id="lerr" style="text-align:center;font-size:13px;color:var(--err)"></div>
   </form>
 </div>
 
@@ -127,6 +139,17 @@
     <button onclick="ed.close()">Renunță</button><button class="primary" id="edSave">Salvează și regenerează</button></div>
   <form id="edForm" class="grid" onsubmit="return false"></form>
 </dialog>
+
+<!-- icons (inline SVG: same look on every OS, unlike emoji) -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.3-9.3"/><path d="m16 7 3 3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
 
 <script src="config.js"></script>
 <script src="bee-preview.js"></script>
@@ -144,15 +167,24 @@ const WF = "onboarding.yml";
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const icon = (id) => `<svg class="i"><use href="#i-${id}"/></svg>`;
 const slugOf = (u) => { try { return new URL(/^https?:\/\//.test(u) ? u : "https://" + u).host.toLowerCase()
   .replace(/^www\./, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); } catch { return null; } };
 // images: show fresh files from the repo even before GitHub Pages redeploys
 const fresh = (u) => (u || "").startsWith(PUBLIC_BASE) ? RAW_BASE + u.slice(PUBLIC_BASE.length) : u;
+const fmtDate = (s) => {
+  const m = /^(\d{4})-(\d\d)-(\d\d) (\d\d):(\d\d)/.exec(s || "");
+  if (!m) return s || "";
+  const d = new Date(Date.UTC(+m[1], m[2] - 1, +m[3], +m[4], +m[5]));
+  return d.toLocaleString("ro-RO", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" });
+};
+const FILE_KIND = { formular: "-formular-", automatizare: "-automatizare-", newsletter: "-newsletter-" };
+const fileOf = (c, kind) => (c.files || []).find((f) => f.includes(FILE_KIND[kind]));
 
 $("repoName").textContent = `${OWNER}/${REPO}`;
 $("patLink").href = "https://github.com/settings/personal-access-tokens/new";
 
-// =============================================================== GitHub API
+// =============================================================== GitHub API (direct with a token, or through the proxy with a password)
 let TOKEN = PROXY ? "proxy" : (localStorage.getItem("nzm_token") || "");
 let AUTH = localStorage.getItem("nzm_auth") || "";
 const b64auth = (u, p) => btoa(unescape(encodeURIComponent(`${u}:${p}`)));
@@ -171,6 +203,7 @@ $("loginForm").addEventListener("submit", async (e) => {
     if (await checkToken()) load();
   } else showLogin(r ? "Utilizator sau parolă greșite." : "Serverul nu răspunde, încearcă din nou.");
 });
+
 async function gh(path, opts = {}) {
   const r = await fetch(path.startsWith("http") ? path : API + path, {
     ...opts,
@@ -206,12 +239,11 @@ async function checkToken() {
   try {
     const repo = await ghJson("");
     const ok = repo.permissions && repo.permissions.push;
-    $("who").textContent = ok ? "✓ conectat" : "token fără drept de scriere";
+    $("who").textContent = ok ? "conectat" : "fără drept de scriere";
     $("setup").style.display = ok || PROXY ? "none" : "";
-    if (!ok && PROXY) alert("Intermediarul nu are drept de scriere pe repo — verifică tokenul din Cloudflare.");
     return ok;
   } catch (e) {
-    $("who").textContent = PROXY ? "intermediar indisponibil" : "token invalid / expirat";
+    $("who").textContent = PROXY ? "server indisponibil" : "token invalid / expirat";
     $("setup").style.display = PROXY ? "none" : "";
     return false;
   }
@@ -225,18 +257,9 @@ $("tokSave").onclick = async () => {
   else alert("Tokenul nu are acces de scriere la repo. Verifică pașii 3–4.");
 };
 
-// =============================================================== jobs (workflow runs)
-function jobBox(title) {
-  const el = document.createElement("div");
-  el.className = "job";
-  el.innerHTML = `<b>${esc(title)}</b> <span class="st">⏳ pornește…</span><div class="steps"></div>`;
-  $("jobs").prepend(el);
-  return {
-    el,
-    status: (h, cls) => { el.querySelector(".st").innerHTML = h; if (cls) el.className = "job " + cls; },
-    steps: (h) => { el.querySelector(".steps").innerHTML = h; },
-  };
-}
+// =============================================================== jobs: status shown in the history card
+const JOBS = {};   // slug -> { state: "run" | "ok" | "err", text, link, name, url }
+function setJob(slug, job) { JOBS[slug] = { ...(JOBS[slug] || {}), ...job }; render(); }
 
 async function findRun(filter, since) {
   for (let i = 0; i < 40; i++) {
@@ -245,21 +268,16 @@ async function findRun(filter, since) {
     const run = res.workflow_runs.find(filter);
     if (run) return run;
   }
-  throw new Error("Jobul nu a pornit (verifică Actions în repo)");
+  throw new Error("jobul nu a pornit");
 }
 
-async function follow(run, box) {
+async function follow(run) {
   while (true) {
     const r = await ghJson(`/actions/runs/${run.id}`);
-    const jobs = await ghJson(`/actions/runs/${run.id}/jobs`);
-    const job = jobs.jobs[0];
-    if (job) box.steps((job.steps || []).filter((s) => !/^(Set up job|Post |Complete job|Run actions)/.test(s.name))
-      .map((s) => `${s.conclusion === "success" ? "✓" : s.conclusion === "skipped" ? "–" : s.conclusion === "failure" ? "✗" : s.status === "in_progress" ? "⏳" : "·"} ${esc(s.name)}`).join(""));
-    if (r.status === "queued" || r.status === "waiting" || r.status === "pending") box.status("⏳ pornește…");
-    else if (r.status !== "completed") box.status("⏳ lucrează…");
-    else {
+    if (r.status === "completed") {
+      const jobs = await ghJson(`/actions/runs/${run.id}/jobs`);
       let notes = [];
-      if (job) { try { notes = await ghJson(`/check-runs/${job.id}/annotations`); } catch {} }
+      if (jobs.jobs[0]) { try { notes = await ghJson(`/check-runs/${jobs.jobs[0].id}/annotations`); } catch {} }
       return { ok: r.conclusion === "success", run: r, notes };
     }
     await sleep(4000);
@@ -273,70 +291,92 @@ function setSeg(name, v) {
 }
 document.querySelectorAll(".seg button").forEach((btn) => btn.onclick = () => setSeg(btn.parentNode.dataset.name, btn.dataset.v));
 
-// --- new client
+// --- new client / re-read
 $("gen").addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!(await checkToken())) return;
   const url = $("url").value.trim();
-  if (!slugOf(url)) return alert("Link invalid");
+  let slug = slugOf(url);
+  if (!slug) return alert("Link invalid");
   const rid = Math.random().toString(36).slice(2, 8);
-  const box = jobBox(slugOf(url));
   const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
+  const inputs = { url, rid, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
+    form_type: segValue("form_type"), site_type: segValue("site_type") };
+  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto");
+  setJob(slug, { state: "run", text: "în curs", name: inputs.name || slug, url });
+  document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
   try {
-    await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs: {
-      url, rid, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
-      form_type: segValue("form_type"), site_type: segValue("site_type") } }) });
-    $("gen").reset();
+    await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs }) });
     const run = await findRun((r) => (r.display_title || "").includes(`[${rid}]`), since);
-    const res = await follow(run, box);
+    const res = await follow(run);
     if (res.ok) {
-      const slug = (res.notes.find((n) => n.title === "slug") || {}).message || slugOf(url);
-      box.status(`✅ gata`, "ok");
-      await load(slug);
-      document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      const real = (res.notes.find((n) => n.title === "slug") || {}).message || slug;
+      if (real !== slug) { delete JOBS[slug]; slug = real; }
+      await load();
+      setJob(slug, { state: "ok", text: "finalizat" });
     } else {
       const err = res.notes.find((n) => n.annotation_level === "failure" && n.title !== "slug");
-      box.status(`❌ ${esc(err ? err.message : "a eșuat")} · <a href="${res.run.html_url}" target="_blank">detalii</a>`, "err");
+      setJob(slug, { state: "err", text: err ? err.message : "a eșuat", link: res.run.html_url });
     }
-  } catch (err) { box.status("❌ " + esc(err.message), "err"); }
+  } catch (err) { setJob(slug, { state: "err", text: err.message }); }
 });
 
-// =============================================================== list
+// =============================================================== history
 let CLIENTS = [];
-async function load(highlight) {
+async function load() {
   try { CLIENTS = await readFile("clients/index.json"); } catch { CLIENTS = []; }
-  render(highlight);
+  render();
 }
-$("filter").oninput = () => render();
+$("filter").oninput = () => { $("searchBox").classList.toggle("has", !!$("filter").value); render(); };
+$("clearFilter").onclick = () => { $("filter").value = ""; $("searchBox").classList.remove("has"); render(); $("filter").focus(); };
 
-function render(highlight) {
+function statusHtml(slug) {
+  const j = JOBS[slug];
+  if (!j) return "";
+  if (j.state === "run") return `<span class="status run"><span class="spin"></span>${esc(j.text)}</span>`;
+  if (j.state === "ok") return `<span class="status ok">${icon("check")}${esc(j.text)}</span>`;
+  return `<span class="status err" title="${esc(j.text)}">${icon("x")}eroare: ${esc(String(j.text).slice(0, 80))}${j.link ? ` · <a href="${esc(j.link)}" target="_blank">detalii</a>` : ""}</span>`;
+}
+
+function render() {
   const box = $("clients");
   const q = $("filter").value.toLowerCase();
+  const known = new Set(CLIENTS.map((c) => c.slug));
+  // clients still being generated for the first time
+  const pending = Object.entries(JOBS).filter(([s, j]) => !known.has(s) && j.state !== "ok").map(([s, j]) => `
+    <div class="card client pending" id="c-${s}">
+      <div class="logo"></div>
+      <div><h3>${esc(j.name || s)}</h3><div class="dom">${esc(j.url || "")}</div><div class="tags">${statusHtml(s)}</div></div><div></div>
+    </div>`);
   const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));
-  if (!list.length) { box.innerHTML = `<div class="empty">Niciun client${q ? " găsit" : " încă"}.</div>`; return; }
-  box.innerHTML = list.map((c) => {
-
-    const w = c.warnings.length ? `<div class="warn" title="${esc(c.warnings.join("\n"))}">⚠ ${c.warnings.length} de verificat: ${esc(c.warnings[0])}${c.warnings.length > 1 ? " …" : ""}</div>` : "";
-    return `<div class="card client${c.slug === highlight ? " busy" : ""}" id="c-${c.slug}">
+  const cards = list.map((c) => `
+    <div class="card client" id="c-${c.slug}">
       <div class="logo">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</div>
-      <div><h3>${esc(c.name)}</h3><div class="dom"><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a> · ${esc(c.generated_at || "")}</div>
-        <div style="margin-top:6px">${["accent", "dark", "light"].map((k) => `<span class="sw" title="${k} ${c.colors[k]}" style="background:${c.colors[k]}"></span>`).join("")}
-        <span class="dom">${c.site_type === "non-ecommerce" ? "fără magazin" : c.products + " produse reale"}</span>
-        <span class="badge">${c.form_type === "embed" ? "formular embed" : "pop-up"}</span></div>${w}</div>
+      <div><h3>${esc(c.name)}</h3>
+        <div class="dom"><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a> · ${esc(fmtDate(c.generated_at))}</div>
+        <div class="tags">
+          <span class="tag">${c.site_type === "non-ecommerce" ? "Non-e-commerce" : "E-commerce"}</span>
+          <span class="tag">${c.form_type === "embed" ? "Formular embed" : "Formular pop-up"}</span>
+          ${["accent", "dark", "light"].map((k) => `<span class="sw" title="${k} ${c.colors[k]}" style="background:${c.colors[k]}"></span>`).join("")}
+          ${statusHtml(c.slug)}
+        </div></div>
       <div class="actions">
-        <button onclick="downloadAll('${c.slug}')"><b>⬇ Descarcă</b></button>
-        <button onclick="preview('${c.slug}')">👁 Previzualizare</button>
-        <button onclick="edit('${c.slug}')">✏ Editează</button>
-        <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul (suprascrie editările)">↻ Recitește site</button>
-      </div></div>`;
-  }).join("");
+        <button class="dl" onclick="downloadAll('${c.slug}')">${icon("dl")}Descarcă</button>
+        <button onclick="preview('${c.slug}')">${icon("eye")}Previzualizare</button>
+        <button onclick="edit('${c.slug}')">${icon("edit")}Editează</button>
+        <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul (suprascrie editările)">${icon("refresh")}Recitește site</button>
+      </div></div>`);
+  const all = (q ? [] : pending).concat(cards);
+  box.innerHTML = all.length ? all.join("") : `<div class="empty">Niciun client${q ? " găsit" : " încă"}.</div>`;
 }
 
 async function downloadAll(slug) {
   const c = CLIENTS.find((x) => x.slug === slug);
-  for (const f of c.files.filter((x) => x.endsWith(".json"))) {
+  for (const kind of ["formular", "automatizare", "newsletter"]) {
+    const f = fileOf(c, kind);
+    if (!f) continue;
     await download(slug, f);
-    await sleep(400);
+    await sleep(500);
   }
 }
 
@@ -360,43 +400,58 @@ async function rescrape(slug) {
   setSeg("form_type", b.options.form_type || "popup");
   setSeg("site_type", b.options.site_type || "auto");
   $("gen").requestSubmit();
-  scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // =============================================================== preview
+function framed(view) {
+  const html = BeePreview.render(view.bee).split(PUBLIC_BASE).join(RAW_BASE);
+  const bar = (w) => `<div style="height:14px;border-radius:7px;background:#dedee3;margin:14px 0;width:${w}"></div>`;
+  const fake = ["92%", "76%", "84%", "60%", "88%", "70%"].map(bar).join("");
+  if (view.frame === "popup") {
+    return `<div style="min-height:100vh;background:#f3f3f5;padding:40px 60px">${fake}${fake}${fake}</div>
+      <div style="position:fixed;inset:0;background:rgba(17,17,20,.55);display:flex;align-items:center;justify-content:center;padding:20px">
+        <div style="position:relative;width:${view.width || 620}px;max-width:100%;max-height:94vh;overflow:auto;background:${view.bg || "#fff"};border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+          <div style="position:absolute;right:14px;top:10px;font:700 22px/1 Arial;color:${view.close || "#000"}">✕</div>${html}</div></div>`;
+  }
+  if (view.frame === "embed") {
+    return `<div style="background:#f3f3f5;min-height:100vh;padding:40px 60px">${fake}
+      <div style="background:#fff;border:1px solid #e6e6ea;border-radius:10px;padding:24px;margin:28px auto;max-width:${(view.width || 600) + 48}px">${html}</div>${fake}</div>`;
+  }
+  return html;
+}
+
 async function preview(slug) {
   const c = CLIENTS.find((x) => x.slug === slug);
-  const get = (part) => { const f = c.files.find((x) => x.includes(part)); return f ? readFile(`clients/${slug}/${f}`) : null; };
-  const [form, auto, news] = await Promise.all([get("__1-"), get("__2-"), get("__3-")]);
-  const autoName = c.files.some((x) => x.includes("cos-abandonat")) ? "Coș" : "Bun venit";
+  const get = (kind) => { const f = fileOf(c, kind); return f ? readFile(`clients/${slug}/${f}`) : null; };
+  const [form, auto, news] = await Promise.all([get("formular"), get("automatizare"), get("newsletter")]);
   const views = [];
   if (form) {
     const f = form.data.form;
-    views.push({ name: c.form_type === "embed" ? "Formular embed" : "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json) });
-    if (f.pages.responder) views.push({ name: "Mulțumire", subj: "pagina după abonare", bee: JSON.parse(f.pages.responder.responder_json) });
+    const embed = c.form_type === "embed";
+    const meta = { frame: embed ? "embed" : "popup", width: +(f.pages.form.bf_width || 620),
+      close: (f.modal || {}).close_color, bg: (f.modal || {}).background_color };
+    views.push({ name: embed ? "Formular embed" : "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json), ...meta });
+    if (f.pages.responder) views.push({ name: "Mulțumire", subj: "după abonare", bee: JSON.parse(f.pages.responder.responder_json), ...meta });
     if (f.template && f.template.confirm_email_json) views.push({ name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) });
   }
-  const start = 0;
-  const drafts = (doc, label) => doc && Object.values(doc.data.draft_meta.meta).sort((a, b) => a.trigger_id - b.trigger_id)
-    .forEach((d, i) => views.push({ name: `${label} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
-  drafts(auto, autoName);
+  const autoName = (fileOf(c, "automatizare") || "").includes("cos-abandonat") ? "Coș" : "Bun venit";
+  if (auto) Object.values(auto.data.draft_meta.meta).sort((a, b) => a.trigger_id - b.trigger_id)
+    .forEach((d, i) => views.push({ name: `${autoName} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
   if (news) views.push({ name: "Newsletter", subj: "draft newsletter", bee: news.data });
   const tabs = $("tabs");
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
-    `<span class="push"></span><button onclick="pv.close()">✕</button>`;
+    `<span class="push"></span><button onclick="pv.close()">${icon("x")}</button>`;
   const show = (i) => {
     tabs.querySelectorAll(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.i === i));
     $("subj").textContent = "Subiect / nume: " + (views[i].subj || "");
-    // render inside an iframe so the page's own styles do not leak into the preview
+    // rendered inside an iframe so the page's own styles do not leak into the preview
     const frame = document.createElement("iframe");
-    frame.style.cssText = "width:100%;border:0;display:block;background:#fff";
-    frame.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:Arial,sans-serif}</style></head><body>${
-      BeePreview.render(views[i].bee).split(PUBLIC_BASE).join(RAW_BASE)}</body></html>`;
-    frame.onload = () => { frame.style.height = Math.max(400, frame.contentDocument.documentElement.scrollHeight) + "px"; };
+    frame.style.cssText = "width:100%;height:100%;border:0;display:block;background:#fff";
+    frame.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:Arial,sans-serif}</style></head><body>${framed(views[i])}</body></html>`;
     $("view").replaceChildren(frame);
   };
   tabs.querySelectorAll(".tab").forEach((b) => b.onclick = () => show(+b.dataset.i));
-  show(start);
+  show(0);
   $("pv").showModal();
 }
 
@@ -413,18 +468,16 @@ async function edit(slug) {
   const L = b.links || {}, C = b.colors, ct = b.contact || {}, S = b.socials || {}, O = b.options || {};
   const menu = [0, 1, 2].map((i) => (L.menu || [])[i] || {});
   const prods = [0, 1, 2].map((i) => (b.products || [])[i] || {});
+  const sel = (name, cur, opts) => `<select name="${name}">${opts.map(([v, l]) => `<option value="${v}"${cur === v ? " selected" : ""}>${l}</option>`).join("")}</select>`;
   $("edForm").innerHTML = [
     `<h4>General</h4>`, F("name", "Nume brand", b.name, "w2"), F("opt.discount_code", "Cod discount", O.discount_code),
     F("opt.sender_email", "Email expeditor", O.sender_email), F("opt.sender_name", "Nume expeditor", O.sender_name, "w2"),
-    `<h4>Tip și formular</h4>`,
-    `<div><label>Formular</label><select name="opt.form_type">${[["popup", "Pop-up"], ["embed", "Embed (fix)"]].map(([v, l]) =>
-      `<option value="${v}"${(O.form_type || "popup") === v ? " selected" : ""}>${l}</option>`).join("")}</select></div>`,
-    `<div><label>Tip site</label><select name="opt.site_type">${[["auto", `Automat (${b.site_type || "?"})`], ["ecommerce", "E-commerce"], ["non-ecommerce", "Fără magazin"]].map(([v, l]) =>
-      `<option value="${v}"${(O.site_type || "auto") === v ? " selected" : ""}>${l}</option>`).join("")}</select></div>`,
+    `<div><label>Formular</label>${sel("opt.form_type", O.form_type || "popup", [["popup", "Pop-up"], ["embed", "Embed (fix)"]])}</div>`,
+    `<div><label>Tip site</label>${sel("opt.site_type", O.site_type || "auto", [["auto", `Automat (${b.site_type === "ecommerce" ? "e-commerce" : "non-e-commerce"})`], ["ecommerce", "E-commerce"], ["non-ecommerce", "Non-e-commerce"]])}</div>`,
     `<h4>Texte (gol = textul automat, afișat gri)</h4>`,
     ...[["hero_title", "Titlu mare", "w4"], ["hero_subtitle", "Subtitlu", "w4"], ["intro", "Text de bun venit", "w4", "area"],
         ["cta_label", "Text buton principal", "w2"], ["news_title", "Titlu email „Descoperă”", "w2"],
-        ["newsletter_title", "Titlu newsletter (fără magazin)", "w2"], ["newsletter_subtitle", "Subtitlu newsletter", "w2"],
+        ["newsletter_title", "Titlu newsletter (non-e-commerce)", "w2"], ["newsletter_subtitle", "Subtitlu newsletter", "w2"],
         ["form_title", "Titlu formular pop-up", "w2"], ["form_subtitle", "Subtitlu formular pop-up", "w2"]].map(([k, l, cls, kind]) => {
       const val = esc((b.texts || {})[k] || ""), ph = esc((b.texts_default || {})[k] || "");
       return kind === "area"
@@ -437,16 +490,17 @@ async function edit(slug) {
     F("banner.url", "Banner sub titlu (gol = fără banner)", (b.banner || {}).url, "w2"),
     `<div class="w2"><label>…sau încarcă banner</label><input type="file" name="banner.file" accept="image/png,image/jpeg"></div>`,
     `<h4>Culori</h4>`, ...["accent", "dark", "light", "muted"].map((k) =>
-      F("col." + k, { accent: "Accent (butoane)", dark: "Închis (header/footer)", light: "Deschis (fundaluri)", muted: "Text discret" }[k], C[k], "", "color")),
+      F("col." + k, { accent: "Accent (butoane)", dark: "Închis (text)", light: "Deschis (fundaluri)", muted: "Text discret" }[k], C[k], "", "color")),
     `<h4>Contact și social</h4>`, F("ct.phone", "Telefon", ct.phone), F("ct.email", "Email", ct.email),
     ...["facebook", "instagram", "tiktok", "youtube", "linkedin", "pinterest", "twitter"].map((k) => F("soc." + k, k === "twitter" ? "X / Twitter" : k[0].toUpperCase() + k.slice(1), S[k])),
     `<h4>Linkuri</h4>`, ...["home", "cart", "terms", "privacy", "contact", "promo"].map((k) =>
       F("lnk." + k, { home: "Site", cart: "Coș", terms: "Termeni", privacy: "Confidențialitate", contact: "Contact", promo: "Reduceri" }[k], L[k], "w2")),
+    `<h4>Secțiuni (meniu)</h4>`,
     ...menu.flatMap((m, i) => [F(`menu.${i}.label`, `Secțiune ${i + 1} – text`, m.label), F(`menu.${i}.url`, `Secțiune ${i + 1} – link`, m.url),
       F(`menu.${i}.image`, `Secțiune ${i + 1} – imagine (URL)`, m.image, "w2")]),
-    `<h4>Produse în welcome</h4>`,
+    `<h4>Produse (e-commerce)</h4>`,
     ...prods.flatMap((p, i) => [F(`prod.${i}.name`, `Produs ${i + 1} – nume`, p.name), F(`prod.${i}.price`, "Preț", p.price),
-      F(`prod.${i}.url`, "Link", p.url), F(`prod.${i}.image`, "Imagine (URL)", p.image)]),
+      F(`prod.${i}.url`, "Link", p.url), F(`prod.${i}.image`, "Imagine (URL)", p.source_image || p.image)]),
   ].join("");
   $("ed").showModal();
 }
@@ -465,35 +519,29 @@ $("edSave").onclick = async () => {
   const { slug, b } = EDIT;
   const v = Object.fromEntries([...$("edForm").querySelectorAll("input:not([type=file]), select, textarea")].map((i) => [i.name, i.value.trim()]));
   const files = Object.fromEntries([...$("edForm").querySelectorAll("input[type=file]")].map((i) => [i.name, i.files[0]]));
-  $("edSave").disabled = true;
-  const box = jobBox(`${b.name} — editare`);
   $("ed").close();
-  scrollTo({ top: 0, behavior: "smooth" });
+  setJob(slug, { state: "run", text: "în curs" });
+  document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
   try {
     b.name = v.name || b.name;
     Object.assign(b.options, { discount_code: v["opt.discount_code"], sender_email: v["opt.sender_email"], sender_name: v["opt.sender_name"] || b.name,
       form_type: v["opt.form_type"] || "popup", site_type: v["opt.site_type"] || "auto" });
     b.texts = Object.fromEntries(Object.entries(v).filter(([k, x]) => k.startsWith("txt.") && x).map(([k, x]) => [k.slice(4), x]));
-    // logo
     if (files["logo.file"]) {
-      box.status("⏳ încarc logo-ul…");
       const up = await uploadAsset(slug, files["logo.file"], "logo");
-      b.logo = { ...(b.logo || {}), url: up.url, width: up.width, height: up.height, found_by: "upload" };
+      b.logo = { ...(b.logo || {}), url: up.url, source_url: up.url, width: up.width, height: up.height, found_by: "upload", recolored: false };
     } else if (v["logo.url"] && v["logo.url"] !== (b.logo || {}).url) {
-      b.logo = { ...(b.logo || { width: 400, height: 120 }), url: v["logo.url"], found_by: "manual" };
+      b.logo = { ...(b.logo || { width: 400, height: 120 }), url: v["logo.url"], source_url: v["logo.url"], found_by: "manual", recolored: false };
     }
     if (b.logo) {
-      const w = parseInt(v["logo.display_width"]) || b.logo.display_width
-        || Math.min(200, Math.round(70 * b.logo.width / Math.max(1, b.logo.height)));
+      const w = parseInt(v["logo.display_width"]) || b.logo.display_width || Math.min(200, Math.round(70 * b.logo.width / Math.max(1, b.logo.height)));
       b.logo.display_width = Math.max(40, Math.min(600, w));
     }
-    // banner
     if (files["banner.file"]) {
-      box.status("⏳ încarc bannerul…");
       const up = await uploadAsset(slug, files["banner.file"], "banner");
-      b.banner = { url: up.url, width: up.width, height: up.height };
+      b.banner = { url: up.url, source_url: up.url, width: up.width, height: up.height };
     } else if (!v["banner.url"]) b.banner = null;
-    else if (v["banner.url"] !== (b.banner || {}).url) b.banner = { url: v["banner.url"], width: 1200, height: 600 };
+    else if (v["banner.url"] !== (b.banner || {}).url) b.banner = { url: v["banner.url"], source_url: v["banner.url"], width: 1200, height: 600 };
     ["accent", "dark", "light", "muted"].forEach((k) => b.colors[k] = v["col." + k]);
     b.contact = { ...(b.contact || {}), phone: v["ct.phone"] || null, email: v["ct.email"] || null,
       phone_href: v["ct.phone"] ? "tel:" + v["ct.phone"].replace(/[^\d+]/g, "") : null };
@@ -502,21 +550,19 @@ $("edSave").onclick = async () => {
     ["home", "cart", "terms", "privacy", "contact", "promo"].forEach((k) => b.links[k] = v["lnk." + k] || (k === "home" ? b.url : null));
     b.links.menu = [0, 1, 2].map((i) => ({ label: (v[`menu.${i}.label`] || "").toUpperCase(), url: v[`menu.${i}.url`],
       ...(v[`menu.${i}.image`] ? { image: v[`menu.${i}.image`] } : {}) })).filter((m) => m.label && m.url);
-    b.products = [0, 1, 2].map((i) => ({ name: v[`prod.${i}.name`], price: v[`prod.${i}.price`], url: v[`prod.${i}.url`], image: v[`prod.${i}.image`] }))
-      .filter((p) => p.name && p.url && p.image);
-    b.warnings = (b.warnings || []).concat(["Editat manual din pagină."]).filter((w, i, a) => a.indexOf(w) === i);
+    b.products = [0, 1, 2].map((i) => ({ name: v[`prod.${i}.name`], price: v[`prod.${i}.price`], url: v[`prod.${i}.url`],
+      image: v[`prod.${i}.image`], source_image: v[`prod.${i}.image`] })).filter((p) => p.name && p.url && p.image)
+      .concat((b.products || []).slice(3));
 
-    box.status("⏳ salvez…");
     const cur = await ghJson(`/contents/docs/clients/${slug}/brand.json?ref=main`);
     const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
     const put = await ghJson(`/contents/docs/clients/${slug}/brand.json`, { method: "PUT",
       body: JSON.stringify({ message: `Editare ${slug}`, content: b64(JSON.stringify(b, null, 2) + "\n"), sha: cur.sha }) });
     const run = await findRun((r) => r.head_sha === put.commit.sha, since);
-    const res = await follow(run, box);
-    if (res.ok) { box.status("✅ regenerat", "ok"); await load(slug); }
-    else box.status(`❌ regenerarea a eșuat · <a href="${res.run.html_url}" target="_blank">detalii</a>`, "err");
-  } catch (e) { box.status("❌ " + esc(e.message), "err"); }
-  $("edSave").disabled = false;
+    const res = await follow(run);
+    if (res.ok) { await load(); setJob(slug, { state: "ok", text: "finalizat" }); }
+    else setJob(slug, { state: "err", text: "regenerarea a eșuat", link: res.run.html_url });
+  } catch (e) { setJob(slug, { state: "err", text: e.message }); }
 };
 
 // =============================================================== start
