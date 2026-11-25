@@ -39,7 +39,19 @@
   .search button { position:absolute; right:4px; top:50%; transform:translateY(-50%); border:0; padding:4px 8px; color:var(--muted); display:none; }
   .search.has button { display:inline-flex; }
   .clients { display:grid; gap:14px; }
-  .client { display:grid; grid-template-columns: 120px 1fr 300px; gap:20px; align-items:center; }
+  .client { display:grid; grid-template-columns: 20px 120px 1fr 300px; gap:20px; align-items:center; }
+  .client.sel { border-color:var(--red); box-shadow:0 0 0 1px var(--red); }
+  input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
+  .selbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 12px; font-size:13px; }
+  .selbar label { display:inline-flex; align-items:center; gap:8px; cursor:pointer; padding-left:21px; color:var(--muted); }
+  .selbar .push { margin-left:auto; }
+  .selbar button { padding:8px 12px; font-size:13px; }
+  .selbar button.dl { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; }
+  dialog.dlg { width:min(420px, 94vw); }
+  dialog.dlg .body { padding:16px; display:grid; gap:8px; }
+  dialog.dlg .body button { justify-content:flex-start; text-align:left; padding:11px 14px; }
+  dialog.dlg .body button small { color:var(--muted); margin-left:auto; font-size:12px; }
+  dialog.dlg .body button.dl { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; justify-content:center; }
   .client .logo { width:120px; height:120px; display:flex; align-items:center; justify-content:center; border-radius:10px; padding:10px;
     border:1px solid var(--line); background-color:#fff; }
   .client .logo img { max-height:100px; max-width:100px; }
@@ -74,7 +86,7 @@
   code { background:#f0f0f3; padding:1px 5px; border-radius:4px; font-size:13px; }
   .empty { color:var(--muted); }
   #login { display:none; position:fixed; inset:0; background:var(--bg); z-index:50; align-items:center; justify-content:center; }
-  @media (max-width: 900px) { form.gen, .grid { grid-template-columns:1fr; } .client { grid-template-columns:1fr; } }
+  @media (max-width: 900px) { form.gen, .grid { grid-template-columns:1fr; } .client { grid-template-columns:20px 1fr; } .client > .logo { display:none; } .client .actions { grid-column:1/-1; } }
 </style>
 </head>
 <body>
@@ -117,8 +129,19 @@
   <h2>Istoric
     <span class="search" id="searchBox"><input id="filter" placeholder="caută…" autocomplete="off"><button type="button" id="clearFilter" title="Șterge căutarea"><svg class="i"><use href="#i-x"/></svg></button></span>
   </h2>
+  <div class="selbar" id="selbar">
+    <label><input type="checkbox" class="pick" id="selAll">Selectează tot <span id="selCount"></span></label>
+    <span class="push"></span>
+    <button type="button" class="dl" id="dlSel" disabled><svg class="i"><use href="#i-dl"/></svg>Descarcă selecția</button>
+    <button type="button" id="rsSel" disabled><svg class="i"><use href="#i-refresh"/></svg>Recitește selecția</button>
+  </div>
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
 </main>
+
+<dialog id="dlg" class="dlg">
+  <div class="bar"><b id="dlgTitle"></b><span class="push"></span><button type="button" onclick="$('dlg').close()" title="Închide"><svg class="i"><use href="#i-x"/></svg></button></div>
+  <div class="body" id="dlgBody"></div>
+</dialog>
 
 <div id="login">
   <form id="loginForm" class="card" style="width:min(380px,92vw);display:grid;gap:12px">
@@ -303,18 +326,23 @@ $("gen").addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!(await checkToken())) return;
   const url = $("url").value.trim();
-  let slug = slugOf(url);
-  if (!slug) return alert("Link invalid");
-  const rid = Math.random().toString(36).slice(2, 8);
-  const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
-  const inputs = { url, rid, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
+  if (!slugOf(url)) return alert("Link invalid");
+  const inputs = { url, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
     form_type: segValue("form_type"), site_type: segValue("site_type") };
   $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto");
+  runJob(inputs);
+});
+
+async function runJob(inputs) {
+  const url = inputs.url;
+  let slug = slugOf(url);
+  inputs = { ...inputs, rid: Math.random().toString(36).slice(2, 8) };
+  const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
   setJob(slug, { state: "run", text: "în curs", name: inputs.name || slug, url });
   document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
   try {
     await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs }) });
-    const run = await findRun((r) => (r.display_title || "").includes(`[${rid}]`), since);
+    const run = await findRun((r) => (r.display_title || "").includes(`[${inputs.rid}]`), since);
     const res = await follow(run);
     if (res.ok) {
       const real = (res.notes.find((n) => n.title === "slug") || {}).message || slug;
@@ -326,7 +354,7 @@ $("gen").addEventListener("submit", async (e) => {
       setJob(slug, { state: "err", text: err ? err.message : "a eșuat", link: res.run.html_url });
     }
   } catch (err) { setJob(slug, { state: "err", text: err.message }); }
-});
+}
 
 // =============================================================== history
 let CLIENTS = [];
@@ -352,12 +380,13 @@ function render() {
   // clients still being generated for the first time
   const pending = Object.entries(JOBS).filter(([s, j]) => !known.has(s) && j.state !== "ok").map(([s, j]) => `
     <div class="card client pending" id="c-${s}">
-      <div class="logo"></div>
+      <span></span><div class="logo"></div>
       <div><h3>${esc(j.name || s)}</h3><div class="dom">${esc(j.url || "")}</div><div class="tags">${statusHtml(s)}</div></div><div></div>
     </div>`);
   const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));
   const cards = list.map((c) => `
-    <div class="card client" id="c-${c.slug}">
+    <div class="card client${SEL.has(c.slug) ? " sel" : ""}" id="c-${c.slug}">
+      <input type="checkbox" class="pick" title="Selectează" ${SEL.has(c.slug) ? "checked" : ""} onchange="toggleSel('${c.slug}', this.checked)">
       <a class="logo" href="${esc(c.url)}" target="_blank" title="Deschide site-ul">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</a>
       <div><h3><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a></h3>
         <div class="dom">${esc(fmtDate(c.generated_at))}</div>
@@ -367,13 +396,56 @@ function render() {
           ${statusHtml(c.slug)}
         </div></div>
       <div class="actions">
-        <button class="dl" onclick="downloadAll('${c.slug}')">${icon("dl")}Descarcă</button>
+        <button class="dl" onclick="askDownload('${c.slug}')">${icon("dl")}Descarcă</button>
         <button onclick="preview('${c.slug}')">${icon("eye")}Previzualizare</button>
         <button onclick="edit('${c.slug}')">${icon("edit")}Editează</button>
-        <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul (suprascrie editările)">${icon("refresh")}Recitește site</button>
+        <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul">${icon("refresh")}Recitește site</button>
       </div></div>`);
   const all = (q ? [] : pending).concat(cards);
   box.innerHTML = all.length ? all.join("") : `<div class="empty">Niciun client${q ? " găsit" : " încă"}.</div>`;
+  syncSel(list);
+}
+
+// --- selection
+const SEL = new Set();
+function visible() { const q = $("filter").value.toLowerCase(); return CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q)); }
+function toggleSel(slug, on) { on ? SEL.add(slug) : SEL.delete(slug); render(); }
+function syncSel(list) {
+  for (const s of [...SEL]) if (!CLIENTS.some((c) => c.slug === s)) SEL.delete(s);
+  const n = SEL.size, vis = list.length, visSel = list.filter((c) => SEL.has(c.slug)).length;
+  $("selAll").checked = vis > 0 && visSel === vis;
+  $("selAll").indeterminate = visSel > 0 && visSel < vis;
+  $("selCount").textContent = n ? `(${n} ${n === 1 ? "selectat" : "selectate"})` : "";
+  $("dlSel").disabled = $("rsSel").disabled = !n;
+  $("selbar").style.display = CLIENTS.length ? "" : "none";
+}
+$("selAll").onchange = () => { const on = $("selAll").checked; visible().forEach((c) => on ? SEL.add(c.slug) : SEL.delete(c.slug)); render(); };
+$("dlSel").onclick = async () => {
+  const slugs = CLIENTS.filter((c) => SEL.has(c.slug)).map((c) => c.slug);
+  $("dlSel").disabled = true;
+  for (const s of slugs) await downloadAll(s);
+  syncSel(visible());
+};
+$("rsSel").onclick = async () => {
+  const slugs = CLIENTS.filter((c) => SEL.has(c.slug)).map((c) => c.slug);
+  SEL.clear();
+  slugs.forEach((s) => setJob(s, { state: "run", text: "la coadă" }));
+  for (const s of slugs) await rescrape(s);   // one at a time: GitHub keeps a single job waiting
+};
+
+// --- download dialog: one file or all three
+const KIND_LABEL = { formular: "Formular", automatizare: "Automatizare", newsletter: "Newsletter (draft)" };
+function askDownload(slug) {
+  const c = CLIENTS.find((x) => x.slug === slug);
+  $("dlgTitle").textContent = "Descarcă · " + c.domain;
+  const one = ["formular", "automatizare", "newsletter"].map((k) => [k, fileOf(c, k)]).filter(([, f]) => f);
+  $("dlgBody").innerHTML = `<button class="dl" data-all="1" autofocus>${icon("dl")}Toate cele ${one.length} fișiere</button>` +
+    one.map(([k, f]) => `<button data-f="${esc(f)}">${icon("dl")}${KIND_LABEL[k]}<small>${esc(f.replace(slug + "-", "").replace(".json", ""))}</small></button>`).join("");
+  $("dlgBody").querySelectorAll("button").forEach((b) => b.onclick = () => {
+    $("dlg").close();
+    b.dataset.all ? downloadAll(slug) : download(slug, b.dataset.f);
+  });
+  $("dlg").showModal();
 }
 
 async function downloadAll(slug) {
@@ -399,13 +471,11 @@ async function download(slug, file) {
 
 async function rescrape(slug) {
   const c = CLIENTS.find((x) => x.slug === slug);
-  if (!confirm(`Citesc din nou ${c.domain}? Editările manuale se pierd.`)) return;
-  const b = await readFile(`clients/${slug}/brand.json`);
-  $("url").value = c.url; $("name").value = ""; $("discount").value = b.options.discount_code || "";
-  $("sender").value = b.options.sender_email || "";
-  setSeg("form_type", b.options.form_type || "popup");
-  setSeg("site_type", b.options.site_type || "auto");
-  $("gen").requestSubmit();
+  if (!(await checkToken())) return;
+  let o = {};
+  try { o = (await readFile(`clients/${slug}/brand.json`)).options || {}; } catch {}
+  await runJob({ url: c.url, name: "", discount: o.discount_code || "", sender_email: o.sender_email || "",
+    form_type: o.form_type || "popup", site_type: o.site_type || "auto" });
 }
 
 // =============================================================== preview
