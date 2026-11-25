@@ -50,10 +50,15 @@
       const fields = (f.structure || {}).fields || {};
       const rows = ((f.structure || {}).layout || []).map((row) => row
         .map((k) => fields[k]).filter((x) => x && !x.removeFromLayout));
+      const box = (o, keys) => keys.filter((k) => o[k]).map((k) => `${k}:${o[k]}`).join(";");
+      const fs = (d.style || {})["font-size"] || "14px";
+      const lab = st.labels || {};
+      const pads = ["padding-top", "padding-right", "padding-bottom", "padding-left"];
+      const borders = ["border-top", "border-right", "border-bottom", "border-left"];
       const html = rows.filter((r) => r.length).map((r) => `<div style="display:flex;gap:8px;margin:6px 0">${r.map((x) => {
-        if (x.type === "submit") return `<button style="flex:1;border:0;background:${btn.backgroundColor};color:${btn.color};border-radius:${btn["border-radius"]};padding:10px 20px;font-weight:bold">${esc(x.attributes.value || "Trimite")}</button>`;
-        if (x.type === "checkbox") return `<label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;text-align:left;flex:1"><input type="checkbox" style="margin:2px 0 0;flex:none"><span>${(x.label || "").replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')}</span></label>`;
-        return `<input placeholder="${esc((x.attributes || {}).placeholder || x.label)}" style="flex:1;background:${fld.backgroundColor};border:0;border-radius:${fld["border-radius"]};padding:10px 20px">`;
+        if (x.type === "submit") return `<button style="flex:1;cursor:pointer;font:inherit;font-size:${fs};background:${btn.backgroundColor};color:${btn.color};border-radius:${btn["border-radius"]};font-weight:${btn["font-weight"] || "bold"};letter-spacing:${btn["letter-spacing"] || "0"};line-height:${btn["line-height"] || "normal"};${box(btn, borders)};${box(btn, pads)}">${esc(x.attributes.value || "Trimite")}</button>`;
+        if (x.type === "checkbox") return `<label style="display:flex;gap:8px;align-items:flex-start;font-size:${fs};line-height:${lab["line-height"] || "1.5"};color:${lab.color || "inherit"};text-align:left;flex:1"><input type="checkbox" style="margin:${lab["line-height"] === "200%" ? "7px" : "3px"} 0 0;flex:none"><span>${(x.label || "").replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a href="$2" target="_blank" style="color:${lab.color || "inherit"};text-decoration:underline">$1</a>`)}</span></label>`;
+        return `<input placeholder="${esc((x.attributes || {}).placeholder || x.label)}" style="flex:1;min-width:0;font:inherit;font-size:${fs};line-height:200%;background:${fld.backgroundColor};color:${fld.color || "inherit"};border-radius:${fld["border-radius"]};outline:none;${box(fld, borders)};${box(fld, pads)}">`;
       }).join("")}</div>`).join("");
       return wrap(html);
     }
