@@ -14,6 +14,7 @@ import shutil
 import sys
 import zipfile
 
+from . import emails as E
 from . import generate as G
 from .scrape import Scraper
 
@@ -27,7 +28,7 @@ def write_report(brand, out_dir, files):
              f"Generat: {brand.get('generated_at', '')}  ·  Platformă: {brand.get('platform')}", "",
              "## Ce am găsit", "",
              f"- **Logo:** {(brand.get('logo') or {}).get('url') or '— (placeholder)'}",
-             f"- **Banner:** {(brand.get('banner') or {}).get('url') or '— (imaginea generică)'}",
+             f"- **Banner:** {(brand.get('banner') or {}).get('url') or '— (doar blocul colorat)'}",
              f"- **Culori:** accent `{brand['colors']['accent']}` · închis `{brand['colors']['dark']}` · deschis `{brand['colors']['light']}`",
              f"- **Telefon:** {ct.get('phone') or '—'}",
              f"- **Email:** {ct.get('email') or '—'}",
@@ -35,7 +36,9 @@ def write_report(brand, out_dir, files):
              f"- **Meniu:** {', '.join(f'[{m['label']}]({m['url']})' for m in L.get('menu') or []) or '—'}",
              f"- **Coș:** {L.get('cart')} · **Termeni:** {L.get('terms') or '—'} · **Confidențialitate:** {L.get('privacy') or '—'}",
              f"- **Produse:** " + (", ".join(f"[{p['name']}]({p['url']})" for p in brand.get("products") or []) or "— (placeholder)"),
-             f"- **Cod discount:** {brand['options'].get('discount_code') or '— (welcome fără discount; în automatizare rămâne CODDISCOUNT)'}",
+             f"- **Tip site:** {E.site_type(brand)} (detectat: {brand.get('site_type') or '—'}) · **Formular:** {E.form_type(brand)}",
+             f"- **Descriere site:** {brand.get('description') or '—'}",
+             f"- **Cod discount:** {brand['options'].get('discount_code') or '— (emailurile nu au discount)'}",
              f"- **Expeditor automatizare:** {brand['options'].get('sender_name')} <{brand['options'].get('sender_email') or 'neschimbat'}>",
              "", "## De verificat", ""]
     lines += [f"- {w}" for w in brand.get("warnings") or []] or ["- nimic special"]
@@ -45,6 +48,8 @@ def write_report(brand, out_dir, files):
 
 
 def finish(brand, out_dir):
+    brand["texts_default"] = E.default_texts(brand, E.site_type(brand) == "ecommerce")
+    brand.setdefault("texts", {})
     files = G.generate(brand, out_dir)
     with open(os.path.join(out_dir, "brand.json"), "w", encoding="utf-8") as f:
         json.dump(brand, f, ensure_ascii=False, indent=2)
@@ -69,6 +74,7 @@ def update_index():
             "colors": {k: b["colors"][k] for k in ("accent", "dark", "light")},
             "warnings": b.get("warnings", []),
             "products": len([p for p in b.get("products") or []]),
+            "site_type": E.site_type(b), "form_type": E.form_type(b),
             "files": sorted(os.path.basename(p) for p in glob.glob(os.path.join(folder, "*.json")) + glob.glob(os.path.join(folder, "*.zip"))
                             if not p.endswith("brand.json")),
         })
@@ -102,6 +108,9 @@ def cmd_scrape(a):
         brand["options"]["sender_email"] = a.sender_email.strip()
     if a.sender_name:
         brand["options"]["sender_name"] = a.sender_name.strip()
+    for key, val in (("form_type", a.form_type), ("site_type", a.site_type)):
+        if val:
+            brand["options"][key] = val
     if a.name:
         brand["name"] = a.name.strip()
         brand["options"]["sender_name"] = a.sender_name or brand["name"]
@@ -138,6 +147,8 @@ def main(argv=None):
     s.add_argument("--sender-name", default="")
     s.add_argument("--name", default="", help="numele brandului (suprascrie ce se găsește pe site)")
     s.add_argument("--public-base", default="", help="ex. https://user.github.io/repo")
+    s.add_argument("--form-type", default="", choices=["", "popup", "embed"])
+    s.add_argument("--site-type", default="", choices=["", "auto", "ecommerce", "non-ecommerce"])
     s.add_argument("--github-output", action="store_true")
     s.set_defaults(fn=cmd_scrape)
     r = sub.add_parser("regen")

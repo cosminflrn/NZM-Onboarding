@@ -1,12 +1,19 @@
 # NZM Onboarding
 
-Dai linkul unui site, primești 3 fișiere gata de importat în contul Newsman al clientului:
+Dai linkul unui site, primești fișierele gata de importat în contul Newsman al clientului:
 
 | Fișier | Ce e | Unde se importă |
 |---|---|---|
-| `…__1-Pop-up-abonare.json` | formular pop-up + pagina de mulțumire + emailul și pagina de confirmare | Formulare → import |
-| `…__2-Welcome.json` | template de welcome cu 3 produse reale de pe site | Newslettere / Template-uri → import |
-| `…__3-Automatizare-cos-abandonat.json` | automatizarea de coș abandonat (3 emailuri) | Automatizări → import |
+| `…__1-Formular-pop-up.json` / `…__1-Formular-embed.json` | formularul (pop-up sau fix în pagină) + pagina de mulțumire + emailul de confirmare | Formulare → import |
+| `…__2-Newsletter-bun-venit.json` | template de bun venit | Newslettere / Template-uri → import |
+| `…__3-Automatizare-bun-venit.json` | seria de bun venit (3 emailuri: bun venit, social media, noutăți) | Automatizări → import |
+| `…__4-Automatizare-cos-abandonat.json` | coș abandonat (3 emailuri) — doar la site-urile cu magazin | Automatizări → import |
+
+Două comutatoare în pagină:
+- **Formular:** pop-up sau embed (fix în pagină).
+- **Tip site:** detectat automat (magazin sau nu) sau ales manual. La site-urile fără magazin emailurile nu au produse și nu se generează coșul abandonat.
+
+Emailurile au un design nou, construit din cod: header cu logo, bloc mare în culoarea brandului cu titlu, bannerul site-ului (dacă există), text personalizat din descrierea site-ului și categoriile lui, produse reale sau secțiunile site-ului, beneficii, contact și footer. Toate textele se pot schimba din **✏ Editează → Texte**.
 
 ## Cum se folosește
 

@@ -24,6 +24,12 @@
   button.primary { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; }
   button:disabled { opacity:.5; cursor:default; }
   .hint { color:var(--muted); font-size:13px; }
+  .switches { grid-column:1/-1; display:flex; gap:24px; flex-wrap:wrap; margin-top:4px; }
+  .seg { display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:#fafafa; }
+  .seg button { border:0; background:transparent; border-radius:999px; padding:6px 14px; font-size:13px; color:var(--muted); }
+  .seg button.on { background:var(--ink); color:#fff; }
+  .badge { display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; background:#f0f0f3; color:var(--muted); margin-left:6px; vertical-align:middle; }
+  textarea { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:14px; min-height:84px; resize:vertical; }
   .clients { display:grid; gap:14px; }
   .client { display:grid; grid-template-columns: 160px 1fr auto; gap:18px; align-items:center; }
   .client .logo { height:70px; display:flex; align-items:center; justify-content:center; background:#fafafa; border-radius:8px; padding:8px; }
@@ -81,6 +87,12 @@
       <div><label>Cod discount (opțional)</label><input id="discount" placeholder="ex. BINEAIVENIT10"></div>
       <div><label>Email expeditor (opțional)</label><input id="sender" placeholder="din site"></div>
       <button class="primary" type="submit" id="genBtn">Generează →</button>
+      <div class="switches">
+        <div><label>Formular</label><div class="seg" data-name="form_type">
+          <button type="button" data-v="popup" class="on">Pop-up</button><button type="button" data-v="embed">Embed (fix în pagină)</button></div></div>
+        <div><label>Tip site</label><div class="seg" data-name="site_type">
+          <button type="button" data-v="auto" class="on">Detectează automat</button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Fără magazin</button></div></div>
+      </div>
     </form>
     <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Poți porni mai mulți clienți unul după altul; se fac pe rând.</div>
     <div id="jobs"></div>
@@ -219,6 +231,13 @@ async function follow(run, box) {
   }
 }
 
+// --- switches
+const segValue = (name) => (document.querySelector(`.seg[data-name="${name}"] button.on`) || {}).dataset?.v || "";
+function setSeg(name, v) {
+  document.querySelectorAll(`.seg[data-name="${name}"] button`).forEach((b) => b.classList.toggle("on", b.dataset.v === v));
+}
+document.querySelectorAll(".seg button").forEach((btn) => btn.onclick = () => setSeg(btn.parentNode.dataset.name, btn.dataset.v));
+
 // --- new client
 $("gen").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -230,7 +249,8 @@ $("gen").addEventListener("submit", async (e) => {
   const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
   try {
     await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs: {
-      url, rid, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim() } }) });
+      url, rid, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
+      form_type: segValue("form_type"), site_type: segValue("site_type") } }) });
     $("gen").reset();
     const run = await findRun((r) => (r.display_title || "").includes(`[${rid}]`), since);
     const res = await follow(run, box);
@@ -268,7 +288,8 @@ function render(highlight) {
       <div class="logo">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</div>
       <div><h3>${esc(c.name)}</h3><div class="dom"><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a> · ${esc(c.generated_at || "")}</div>
         <div style="margin-top:6px">${["accent", "dark", "light"].map((k) => `<span class="sw" title="${k} ${c.colors[k]}" style="background:${c.colors[k]}"></span>`).join("")}
-        <span class="dom">${c.products} produse reale</span></div>${w}</div>
+        <span class="dom">${c.site_type === "non-ecommerce" ? "fără magazin" : c.products + " produse reale"}</span>
+        <span class="badge">${c.form_type === "embed" ? "formular embed" : "pop-up"}</span></div>${w}</div>
       <div class="actions">
         ${zip ? `<button onclick="download('${c.slug}','${zip}')"><b>⬇ Toate (.zip)</b></button>` : ""}${files}
         <button onclick="preview('${c.slug}')">👁 Previzualizare</button>
@@ -295,6 +316,8 @@ async function rescrape(slug) {
   const b = await readFile(`clients/${slug}/brand.json`);
   $("url").value = c.url; $("name").value = ""; $("discount").value = b.options.discount_code || "";
   $("sender").value = b.options.sender_email || "";
+  setSeg("form_type", b.options.form_type || "popup");
+  setSeg("site_type", b.options.site_type || "auto");
   $("gen").requestSubmit();
   scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -302,17 +325,21 @@ async function rescrape(slug) {
 // =============================================================== preview
 async function preview(slug) {
   const c = CLIENTS.find((x) => x.slug === slug);
-  const get = (part) => readFile(`clients/${slug}/${c.files.find((f) => f.includes(part))}`);
-  const [form, welcome, auto] = await Promise.all([get("Pop-up"), get("Welcome"), get("cos-abandonat")]);
-  const f = form.data.form;
-  const views = [
-    { name: "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json) },
-    { name: "Mulțumire", subj: "pagina după abonare", bee: JSON.parse(f.pages.responder.responder_json) },
-    { name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) },
-    { name: "Welcome", subj: "template newsletter", bee: welcome.data },
-  ];
-  Object.values(auto.data.draft_meta.meta).sort((a, b) => a.trigger_id - b.trigger_id)
-    .forEach((d, i) => views.push({ name: `Coș email ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
+  const get = (part) => { const f = c.files.find((x) => x.includes(part)); return f ? readFile(`clients/${slug}/${f}`) : null; };
+  const [form, news, welcome, cart] = await Promise.all([get("__1-"), get("__2-"), get("__3-"), get("__4-")]);
+  const views = [];
+  if (form) {
+    const f = form.data.form;
+    views.push({ name: c.form_type === "embed" ? "Formular embed" : "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json) });
+    if (f.pages.responder) views.push({ name: "Mulțumire", subj: "pagina după abonare", bee: JSON.parse(f.pages.responder.responder_json) });
+    if (f.template && f.template.confirm_email_json) views.push({ name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) });
+  }
+  const start = views.length;
+  if (news) views.push({ name: "Newsletter bun venit", subj: "template newsletter", bee: news.data });
+  const drafts = (doc, label) => doc && Object.values(doc.data.draft_meta.meta).sort((a, b) => a.trigger_id - b.trigger_id)
+    .forEach((d, i) => views.push({ name: `${label} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
+  drafts(welcome, "Bun venit");
+  drafts(cart, "Coș");
   const tabs = $("tabs");
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
     `<span class="push"></span><button onclick="pv.close()">✕</button>`;
@@ -322,7 +349,7 @@ async function preview(slug) {
     $("view").innerHTML = BeePreview.render(views[i].bee).split(PUBLIC_BASE).join(RAW_BASE);
   };
   tabs.querySelectorAll(".tab").forEach((b) => b.onclick = () => show(+b.dataset.i));
-  show(3);
+  show(start);
   $("pv").showModal();
 }
 
@@ -342,10 +369,24 @@ async function edit(slug) {
   $("edForm").innerHTML = [
     `<h4>General</h4>`, F("name", "Nume brand", b.name, "w2"), F("opt.discount_code", "Cod discount", O.discount_code),
     F("opt.sender_email", "Email expeditor", O.sender_email), F("opt.sender_name", "Nume expeditor", O.sender_name, "w2"),
+    `<h4>Tip și formular</h4>`,
+    `<div><label>Formular</label><select name="opt.form_type">${[["popup", "Pop-up"], ["embed", "Embed (fix)"]].map(([v, l]) =>
+      `<option value="${v}"${(O.form_type || "popup") === v ? " selected" : ""}>${l}</option>`).join("")}</select></div>`,
+    `<div><label>Tip site</label><select name="opt.site_type">${[["auto", `Automat (${b.site_type || "?"})`], ["ecommerce", "E-commerce"], ["non-ecommerce", "Fără magazin"]].map(([v, l]) =>
+      `<option value="${v}"${(O.site_type || "auto") === v ? " selected" : ""}>${l}</option>`).join("")}</select></div>`,
+    `<h4>Texte (gol = textul automat, afișat gri)</h4>`,
+    ...[["hero_title", "Titlu mare", "w4"], ["hero_subtitle", "Subtitlu", "w4"], ["intro", "Text de bun venit", "w4", "area"],
+        ["cta_label", "Text buton principal", "w2"], ["news_title", "Titlu email noutăți", "w2"],
+        ["form_title", "Titlu formular pop-up", "w2"], ["form_subtitle", "Subtitlu formular pop-up", "w2"]].map(([k, l, cls, kind]) => {
+      const val = esc((b.texts || {})[k] || ""), ph = esc((b.texts_default || {})[k] || "");
+      return kind === "area"
+        ? `<div class="${cls}"><label>${l}</label><textarea name="txt.${k}" placeholder="${ph}">${val}</textarea></div>`
+        : `<div class="${cls}"><label>${l}</label><input name="txt.${k}" value="${val}" placeholder="${ph}"></div>`;
+    }),
     `<h4>Logo și banner</h4>`,
     F("logo.url", "Logo (URL PNG/JPG)", (b.logo || {}).url, "w2"), F("logo.display_width", "Lățime logo în email (px)", (b.logo || {}).display_width, "", "number"),
     `<div><label>…sau încarcă logo</label><input type="file" name="logo.file" accept="image/png,image/jpeg,image/gif"></div>`,
-    F("banner.url", "Banner welcome (gol = imaginea generică)", (b.banner || {}).url, "w2"),
+    F("banner.url", "Banner sub titlu (gol = fără banner)", (b.banner || {}).url, "w2"),
     `<div class="w2"><label>…sau încarcă banner</label><input type="file" name="banner.file" accept="image/png,image/jpeg"></div>`,
     `<h4>Culori</h4>`, ...["accent", "dark", "light", "muted"].map((k) =>
       F("col." + k, { accent: "Accent (butoane)", dark: "Închis (header/footer)", light: "Deschis (fundaluri)", muted: "Text discret" }[k], C[k], "", "color")),
@@ -373,7 +414,7 @@ async function uploadAsset(slug, file, kind) {
 
 $("edSave").onclick = async () => {
   const { slug, b } = EDIT;
-  const v = Object.fromEntries([...$("edForm").querySelectorAll("input:not([type=file])")].map((i) => [i.name, i.value.trim()]));
+  const v = Object.fromEntries([...$("edForm").querySelectorAll("input:not([type=file]), select, textarea")].map((i) => [i.name, i.value.trim()]));
   const files = Object.fromEntries([...$("edForm").querySelectorAll("input[type=file]")].map((i) => [i.name, i.files[0]]));
   $("edSave").disabled = true;
   const box = jobBox(`${b.name} — editare`);
@@ -381,7 +422,9 @@ $("edSave").onclick = async () => {
   scrollTo({ top: 0, behavior: "smooth" });
   try {
     b.name = v.name || b.name;
-    Object.assign(b.options, { discount_code: v["opt.discount_code"], sender_email: v["opt.sender_email"], sender_name: v["opt.sender_name"] || b.name });
+    Object.assign(b.options, { discount_code: v["opt.discount_code"], sender_email: v["opt.sender_email"], sender_name: v["opt.sender_name"] || b.name,
+      form_type: v["opt.form_type"] || "popup", site_type: v["opt.site_type"] || "auto" });
+    b.texts = Object.fromEntries(Object.entries(v).filter(([k, x]) => k.startsWith("txt.") && x).map(([k, x]) => [k.slice(4), x]));
     // logo
     if (files["logo.file"]) {
       box.status("⏳ încarc logo-ul…");

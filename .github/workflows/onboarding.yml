@@ -16,6 +16,14 @@ on:
       sender_email:
         description: Email expeditor (opțional)
         required: false
+      form_type:
+        description: Formular (popup / embed)
+        required: false
+        default: popup
+      site_type:
+        description: Tip site (auto / ecommerce / non-ecommerce)
+        required: false
+        default: auto
       rid:
         description: ID cerere (pus de pagină)
         required: false
@@ -25,6 +33,8 @@ on:
       - "docs/clients/*/brand.json"
       - "templates/**"
       - "nzm/generate.py"
+      - "nzm/emails.py"
+      - "nzm/design.py"
 
 permissions:
   contents: write
@@ -62,9 +72,12 @@ jobs:
           IN_NAME: ${{ inputs.name }}
           IN_DISCOUNT: ${{ inputs.discount }}
           IN_SENDER: ${{ inputs.sender_email }}
+          IN_FORM: ${{ inputs.form_type }}
+          IN_SITE: ${{ inputs.site_type }}
         run: |
           python -m nzm scrape "$IN_URL" --name "$IN_NAME" --discount "$IN_DISCOUNT" \
-            --sender-email "$IN_SENDER" --public-base "$PUBLIC_BASE" --github-output
+            --sender-email "$IN_SENDER" --form-type "${IN_FORM:-popup}" --site-type "${IN_SITE:-auto}" \
+            --public-base "$PUBLIC_BASE" --github-output
 
       - name: Regenerare după editare
         if: github.event_name == 'push'
@@ -72,7 +85,7 @@ jobs:
           BEFORE: ${{ github.event.before }}
         run: |
           changed=$(git diff --name-only "$BEFORE" HEAD 2>/dev/null || true)
-          if echo "$changed" | grep -qE '^(templates/|nzm/generate.py)'; then
+          if echo "$changed" | grep -qE '^(templates/|nzm/(generate|emails|design)\.py)'; then
             python -m nzm regen-all
           else
             for f in $(echo "$changed" | grep -E '^docs/clients/[^/]+/brand.json$'); do

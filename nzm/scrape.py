@@ -227,6 +227,7 @@ class Scraper:
             "platform": self.platform,
         }
         brand["name"] = self.site_name()
+        brand["description"] = self.description()
         links = self.links()
         contact = self.contact(links)
         brand["contact"] = contact
@@ -236,8 +237,13 @@ class Scraper:
         brand["logo"] = logo
         brand["banner"] = self.banner(logo)
         brand["colors"] = self.colors(logo_colors)
-        brand["products"] = self.products()
-        brand["options"] = {"discount_code": "", "sender_email": contact.get("email") or "", "sender_name": brand["name"]}
+        brand["products"] = self.products(6)
+        brand["options"] = {"discount_code": "", "sender_email": contact.get("email") or "", "sender_name": brand["name"],
+                            "form_type": "popup", "site_type": "auto"}
+        from .emails import detect_ecommerce
+        brand["site_type"] = "ecommerce" if detect_ecommerce(brand) else "non-ecommerce"
+        if brand["site_type"] == "ecommerce" and not brand["products"]:
+            self.warnings.append("Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder.")
         brand["warnings"] = self.warnings
         brand["fetch_log"] = self.f.log[-20:]
         return brand
@@ -280,6 +286,17 @@ class Scraper:
                     return short
         return self.domain.split(".")[0].capitalize()
 
+    # -- description
+    def description(self):
+        for attrs in ({"name": "description"}, {"property": "og:description"}):
+            m = self.soup.find("meta", attrs=attrs)
+            if m and (m.get("content") or "").strip():
+                return re.sub(r"\s+", " ", m["content"]).strip()
+        for d in self.ld:
+            if isinstance(d.get("description"), str) and set(ld_type(d)) & {"organization", "store", "website", "localbusiness"}:
+                return d["description"].strip()
+        return ""
+
     # -- links
     def all_links(self, soup=None):
         soup = soup or self.soup
@@ -305,6 +322,7 @@ class Scraper:
                 res["contact"] = u
             if not res["promo"] and PROMO_RE.search(label) and len(label) < 40:
                 res["promo"] = u
+        res["cart_found"] = bool(res["cart"])
         if not res["cart"]:
             res["cart"] = {
                 "shopify": urljoin(self.base, "/cart"),
@@ -314,7 +332,8 @@ class Scraper:
                 "magento": urljoin(self.base, "/checkout/cart/"),
                 "prestashop": urljoin(self.base, "/cos?action=show") if self.domain.endswith(".ro") else urljoin(self.base, "/cart?action=show"),
             }.get(self.platform, self.base)
-            self.warnings.append("Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.")
+            if self.platform in ("shopify", "woocommerce", "gomag", "opencart", "magento", "prestashop"):
+                self.warnings.append("Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.")
         if not res["privacy"]:
             for a, href, txt in self.all_links():
                 u = absolute(self.base, href)
@@ -568,7 +587,7 @@ class Scraper:
                     im2.thumbnail((1300, 1300))
                 public = self.assets.save(im2, "banner", "JPEG")
             return {"url": public, "source_url": u, "width": im.width, "height": im.height}
-        self.warnings.append("Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.")
+        self.warnings.append("Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.")
         return None
 
     # -- colors
@@ -701,8 +720,8 @@ class Scraper:
             out.append(p)
             if len(out) >= want:
                 break
-        if len(out) < want:
-            self.warnings.append(f"Produse: am găsit doar {len(out)} din {want}; restul rămân placeholder.")
+        if 0 < len(out) < 3:
+            self.warnings.append(f"Produse: am găsit doar {len(out)} din 3; restul rămân placeholder.")
         return out
 
     def products_shopify(self):
