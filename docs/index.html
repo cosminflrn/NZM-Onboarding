@@ -157,6 +157,7 @@
       <span id="selCount">selectează max. 3</span>
       <button type="button" class="dl" id="dlSel" disabled><svg class="i"><use href="#i-dl"/></svg>Descarcă selecția</button>
       <button type="button" id="rsSel" disabled><svg class="i"><use href="#i-refresh"/></svg>Recitește selecția</button>
+      <button type="button" id="clrSel" disabled title="Debifează tot"><svg class="i"><use href="#i-x"/></svg>Resetează selecția</button>
     </span>
   </h2>
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
@@ -462,9 +463,10 @@ function syncSel(list) {
   for (const s of [...SEL]) if (!CLIENTS.some((c) => c.slug === s)) SEL.delete(s);
   const n = SEL.size;
   $("selCount").textContent = n ? `${n} din ${MAX_SEL} selectate` : `selectează max. ${MAX_SEL}`;
-  $("dlSel").disabled = $("rsSel").disabled = !n;
+  $("dlSel").disabled = $("rsSel").disabled = $("clrSel").disabled = !n;
   $("selbar").style.display = CLIENTS.length ? "" : "none";
 }
+$("clrSel").onclick = () => { SEL.clear(); render(); };
 $("dlSel").onclick = async () => {
   const slugs = CLIENTS.filter((c) => SEL.has(c.slug)).map((c) => c.slug);
   $("dlSel").disabled = true;
