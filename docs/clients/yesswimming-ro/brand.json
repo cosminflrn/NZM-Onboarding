@@ -4,6 +4,7 @@
   "slug": "yesswimming-ro",
   "platform": "wordpress",
   "name": "Club Sportiv Yes Swimming",
+  "description": "",
   "contact": {
     "phone": "TELEFON 0739 652 493",
     "phone_href": "tel:0739652493",
@@ -33,9 +34,11 @@
       },
       {
         "label": "ANTRENORI →",
-        "url": "https://yesswimming.ro/antrenori/"
+        "url": "https://yesswimming.ro/antrenori/",
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/Vlad-Anastasescu.png"
       }
-    ]
+    ],
+    "cart_found": false
   },
   "logo": {
     "url": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
@@ -75,18 +78,19 @@
   "options": {
     "discount_code": "",
     "sender_email": "contact@yesswimming.ro",
-    "sender_name": "Club Sportiv Yes Swimming"
+    "sender_name": "Club Sportiv Yes Swimming",
+    "form_type": "popup",
+    "site_type": "auto"
   },
+  "site_type": "non-ecommerce",
   "warnings": [
-    "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
-    "Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.",
-    "Produse: am găsit doar 0 din 3; restul rămân placeholder."
+    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
   ],
   "fetch_log": [
     "404 https://yesswimming.ro/wp-json/wc/store/v1/products?per_page=40",
     "404 https://yesswimming.ro/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-25 13:35 UTC",
+  "generated_at": "2026-11-25 13:51 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Club Sportiv Yes Swimming!",

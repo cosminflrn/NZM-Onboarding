@@ -1,6 +1,6 @@
 # Club Sportiv Yes Swimming (yesswimming.ro)
 
-Generat: 2026-11-25 13:35 UTC  ·  Platformă: wordpress
+Generat: 2026-11-25 13:51 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
@@ -13,16 +13,14 @@ Generat: 2026-11-25 13:35 UTC  ·  Platformă: wordpress
 - **Meniu:** [PROGRAM →](https://yesswimming.ro/program/), [COTIZAȚII →](https://yesswimming.ro/cotizatii/), [ANTRENORI →](https://yesswimming.ro/antrenori/)
 - **Coș:** https://yesswimming.ro/ · **Termeni:** — · **Confidențialitate:** https://yesswimming.ro/politica-de-confidentialitate/
 - **Produse:** — (placeholder)
-- **Tip site:** non-ecommerce (detectat: —) · **Formular:** popup
+- **Tip site:** non-ecommerce (detectat: non-ecommerce) · **Formular:** popup
 - **Descriere site:** —
 - **Cod discount:** — (emailurile nu au discount)
 - **Expeditor automatizare:** Club Sportiv Yes Swimming <contact@yesswimming.ro>
 
 ## De verificat
 
-- Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.
-- Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.
-- Produse: am găsit doar 0 din 3; restul rămân placeholder.
+- Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.
 
 ## Fișiere
 
