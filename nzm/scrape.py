@@ -238,6 +238,7 @@ class Scraper:
         brand["banner"] = self.banner(logo)
         brand["colors"] = self.colors(logo_colors)
         brand["products"] = self.products(6)
+        self.section_images(links.get("menu") or [], logo)
         brand["options"] = {"discount_code": "", "sender_email": contact.get("email") or "", "sender_name": brand["name"],
                             "form_type": "popup", "site_type": "auto"}
         from .emails import detect_ecommerce
@@ -536,6 +537,34 @@ class Scraper:
                     dom)
         self.warnings.append("Logo: nu am găsit logo-ul — am păstrat placeholderul din template.")
         return None, []
+
+    # -- one picture per menu section (used by non-ecommerce emails)
+    def section_images(self, menu, logo):
+        used = set()
+        for item in menu[:3]:
+            final, soup = self.page(item["url"])
+            if soup is None:
+                continue
+            cands = []
+            og = soup.find("meta", property="og:image")
+            if og and og.get("content"):
+                cands.append(absolute(final, og["content"]))
+            main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
+            for img in main.find_all("img")[:25]:
+                if in_tag(img, ["header", "footer", "nav"]):
+                    continue
+                u = img_url(img, final)
+                if u and not BAD_IMG_WORDS.search(u) and "logo" not in u.lower():
+                    cands.append(u)
+            for u in cands:
+                if not u or u in used or (logo and u == logo.get("source_url")):
+                    continue
+                im, fmt = self.image(u)
+                if im is None or im.width < 300 or im.height < 180:
+                    continue
+                used.add(u)
+                item["image"] = u
+                break
 
     # -- banner
     def banner(self, logo):

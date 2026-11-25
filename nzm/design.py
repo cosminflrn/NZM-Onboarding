@@ -326,27 +326,65 @@ class Kit:
         return [self.heading(title, top=36, bottom=12),
                 row(cols, bg=WHITE, col_pad=pad(0, 8, 8, 8))]
 
+    @staticmethod
+    def _label(it):
+        lab = it["label"].strip()
+        return lab[:1].upper() + lab[1:].lower() if lab.isupper() else lab
+
     def cards(self, items, title):
-        """Non-ecommerce: up to 3 sections/pages of the site as simple cards."""
+        """Non-ecommerce: up to 3 sections/pages of the site as cards (with their picture when found)."""
         items = [i for i in items if i.get("label") and i.get("url")][:3]
         if not items:
             return []
         cols = []
         for it in items:
-            label = it["label"][:1].upper() + it["label"][1:].lower()
-            cols.append([
-                m_text(wrap([para(esc(label), 17, INK, weight="bold", lh=1.35)]), padding=pad(20, 16, 6, 16)),
+            mods = []
+            if it.get("image"):
+                mods.append(m_image(it["image"], 600, 400, 176, href=it["url"], alt=self._label(it),
+                                    padding=pad(0, 8, 12, 8)))
+            mods += [
+                m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
                 m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
-                         padding=pad(0, 16, 18, 16)),
-            ])
-        return [self.heading(title, top=36, bottom=12),
+                         padding=pad(0, 12, 16, 12)),
+            ]
+            cols.append(mods)
+        return [self.heading(title, top=36, bottom=16),
                 row(cols, bg=WHITE, col_pad=pad(0, 8, 8, 8))]
+
+    def featured(self, items, intro_title):
+        """One section large (picture + title + button), the others as a 2-column row."""
+        items = [i for i in items if i.get("label") and i.get("url")][:3]
+        if not items:
+            return []
+        first, rest = items[0], items[1:]
+        mods = []
+        if first.get("image"):
+            mods.append(m_image(first["image"], 600, 400, 560, href=first["url"], alt=self._label(first),
+                                padding=pad(0, 40, 16, 40)))
+        mods += [m_text(wrap([para(esc(self._label(first)), 22, INK, weight="bold", lh=1.3)]), padding=pad(4, 40, 4, 40)),
+                 m_button(f"Descoperă {self._label(first).lower()} →", first["url"], self.accent, "#ffffff", size=15,
+                          padding=pad(8, 24, 16, 24))]
+        out = [self.heading(intro_title, top=36, bottom=16), row([mods], bg=WHITE)]
+        if rest:
+            cols = []
+            for it in rest:
+                cm = []
+                if it.get("image"):
+                    cm.append(m_image(it["image"], 600, 400, 264, href=it["url"], alt=self._label(it),
+                                      padding=pad(0, 8, 12, 8)))
+                cm += [m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
+                       m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
+                                padding=pad(0, 12, 16, 12))]
+                cols.append(cm)
+            out.append(row(cols, bg=WHITE, col_pad=pad(8, 24, 8, 24)))
+        return out
 
     def benefits(self, items):
         cols = []
-        for icon, title, desc in items[:3]:
+        for n, (title, desc) in enumerate(items[:3], 1):
             cols.append([
-                m_text(wrap([para(icon, 28, INK, lh=1.2)]), padding=pad(8, 12, 4, 12)),
+                m_text(wrap([para(f"0{n}", 22, self.accent, weight="bold", lh=1.2)]), padding=pad(8, 12, 4, 12),
+                       color=self.accent),
                 m_text(wrap([para(esc(title), 15, INK, weight="bold", lh=1.4)]), padding=pad(0, 12, 2, 12)),
                 m_text(wrap([para(esc(desc), 14, MUTED, lh=1.5)]), padding=pad(0, 12, 8, 12), color=MUTED),
             ])
@@ -381,9 +419,9 @@ class Kit:
         return row([[m_text(wrap(ps), padding=pad(24, 32, 32, 32), link_color=INK)]], bg=WHITE)
 
     # ---- footer
-    def footer(self):
+    def footer(self, social=True):
         mods = [m_spacer(12)]
-        if self.b.get("socials"):
+        if social and self.b.get("socials"):
             mods.append(m_social(self.b["socials"], padding=pad(12, 24, 8, 24)))
         legal = []
         if self.L.get("terms"):
@@ -403,13 +441,13 @@ class Kit:
     def top_gap(self):
         return row([[m_spacer(20)]], bg=PAGE_BG)
 
-    def assemble(self, rows):
+    def assemble(self, rows, social_footer=True):
         flat = [self.top_gap()]
         for r in rows:
             if r is None:
                 continue
             flat.extend(r if isinstance(r, list) else [r])
-        flat.append(self.footer())
+        flat.append(self.footer(social_footer))
         return page(flat, self.accent)
 
 

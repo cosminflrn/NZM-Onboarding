@@ -314,6 +314,8 @@ def build_form(brand, tpl, kind):
             continue
         page = json.loads(holder[path[-1]])
         fix_bee(page, brand, patch)
+        if path[-1] == "confirm_email_json":
+            page["page"]["body"]["container"]["style"]["background-color"] = "#FFFFFF"
         page = deep_map(page, patch)
         holder[path[-1]] = json.dumps(page, ensure_ascii=False, separators=(",", ":"))
     # the remaining strings (rendered html, labels, modal colors...)
@@ -359,6 +361,9 @@ def neutral_images(brand):
         src = p.get("source_image") if str(p.get("source_image", "")).startswith("http") else p.get("image")
         if isinstance(src, str) and src.startswith("http") and not ours(src) and WESERV not in src:
             p["image"] = _weserv(src, "&w=600&h=600&fit=contain&cbg=white&output=jpg&q=85")
+    for item in (b.get("links") or {}).get("menu") or []:
+        if isinstance(item.get("image"), str) and item["image"].startswith("http") and WESERV not in item["image"]:
+            item["image"] = _weserv(item["image"], "&w=600&h=400&fit=cover&a=attention&output=jpg&q=85")
     ban = b.get("banner") or {}
     if ours(ban.get("url")) and str(ban.get("source_url", "")).startswith("http"):
         ban["url"] = _weserv(ban["source_url"], "&w=1300&output=jpg&q=85")
@@ -372,13 +377,14 @@ def generate(brand, out_dir, templates=None):
     os.makedirs(out_dir, exist_ok=True)
     slug = brand["slug"]
     kind = emails.form_type(brand)
+    ecom = emails.site_type(brand) == "ecommerce"
     files = {
         f"{slug}__1-Formular-{'pop-up' if kind == 'popup' else 'embed'}.json": build_form(brand, templates[kind], kind),
-        f"{slug}__2-Newsletter-bun-venit.json": emails.build_newsletter(brand, templates["newsletter"]),
-        f"{slug}__3-Automatizare-bun-venit.json": emails.build_welcome_automation(brand, templates["welcome_auto"]),
+        f"{slug}__2-Automatizare-{'cos-abandonat' if ecom else 'bun-venit'}.json":
+            (emails.build_cart_automation(brand, templates["cart_auto"]) if ecom
+             else emails.build_welcome_automation(brand, templates["welcome_auto"])),
+        f"{slug}__3-Newsletter-{'bun-venit' if ecom else 'noutati'}.json": emails.build_newsletter(brand, templates["newsletter"]),
     }
-    if emails.site_type(brand) == "ecommerce":
-        files[f"{slug}__4-Automatizare-cos-abandonat.json"] = emails.build_cart_automation(brand, templates["cart_auto"])
     for name, doc in files.items():
         with open(os.path.join(out_dir, name), "w", encoding="utf-8") as f:
             json.dump(doc, f, ensure_ascii=False, indent="\t")

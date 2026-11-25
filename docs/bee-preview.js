@@ -72,7 +72,7 @@
       return `<div style="${css((r.container || {}).style)}"><div style="max-width:${width};margin:0 auto;display:flex;${css(rs)};width:auto">${cols}</div></div>`;
     }).join("");
     return `<div class="bp" style="${css((body.container || {}).style)};${css(content.style)};padding:10px 0">
-      <style>.bp p{margin:0}.bp .bp-text a{color:var(--bp-link)}.bp img{border:0}</style>${rows}</div>`;
+      <style>.bp p{margin:0}.bp input[type=checkbox]{width:auto!important}.bp .bp-text a{color:var(--bp-link)}.bp img{border:0}</style>${rows}</div>`;
   }
 
   root.BeePreview = { render };

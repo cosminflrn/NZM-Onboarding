@@ -12,7 +12,6 @@ import os
 import re
 import shutil
 import sys
-import zipfile
 
 from . import emails as E
 from . import generate as G
@@ -54,10 +53,6 @@ def finish(brand, out_dir):
     with open(os.path.join(out_dir, "brand.json"), "w", encoding="utf-8") as f:
         json.dump(brand, f, ensure_ascii=False, indent=2)
     write_report(brand, out_dir, files)
-    zpath = os.path.join(out_dir, f"{brand['slug']}__newsman-import.zip")
-    with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
-        for fn in files + ["report.md"]:
-            z.write(os.path.join(out_dir, fn), fn)
     update_index()
     return files
 
@@ -75,7 +70,7 @@ def update_index():
             "warnings": b.get("warnings", []),
             "products": len([p for p in b.get("products") or []]),
             "site_type": E.site_type(b), "form_type": E.form_type(b),
-            "files": sorted(os.path.basename(p) for p in glob.glob(os.path.join(folder, "*.json")) + glob.glob(os.path.join(folder, "*.zip"))
+            "files": sorted(os.path.basename(p) for p in glob.glob(os.path.join(folder, "*__*.json"))
                             if not p.endswith("brand.json")),
         })
     items.sort(key=lambda x: x.get("generated_at") or "", reverse=True)

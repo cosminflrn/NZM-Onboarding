@@ -32,9 +32,11 @@
   .badge { display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; background:#f0f0f3; color:var(--muted); margin-left:6px; vertical-align:middle; }
   textarea { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:14px; min-height:84px; resize:vertical; }
   .clients { display:grid; gap:14px; }
-  .client { display:grid; grid-template-columns: 160px 1fr auto; gap:18px; align-items:center; }
-  .client .logo { height:70px; display:flex; align-items:center; justify-content:center; background:#fafafa; border-radius:8px; padding:8px; }
-  .client .logo img { max-height:54px; max-width:140px; }
+  .client { display:grid; grid-template-columns: 120px 1fr auto; gap:18px; align-items:center; }
+  .client .logo { width:120px; height:120px; display:flex; align-items:center; justify-content:center; border-radius:10px; padding:10px;
+    border:1px solid var(--line); background-color:#fff;
+    background-image:conic-gradient(#e9e9ee 25%, #fff 0 50%, #e9e9ee 0 75%, #fff 0); background-size:16px 16px; }
+  .client .logo img { max-height:100px; max-width:100px; }
   .client h3 { margin:0; font-size:16px; } .dom { color:var(--muted); font-size:13px; }
   .sw { display:inline-block; width:18px; height:18px; border-radius:50%; border:1px solid rgba(0,0,0,.1); vertical-align:middle; margin-right:3px; }
   .warn { font-size:12px; color:var(--warn); margin-top:4px; }
@@ -52,7 +54,7 @@
   dialog .bar .tab.on { background:var(--ink); color:#fff; border-color:var(--ink); }
   dialog .bar .push { margin-left:auto; }
   dialog .subj { padding:8px 16px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--line); }
-  dialog .view { height:calc(92vh - 100px); overflow:auto; background:#eee; }
+  dialog .view { height:calc(92vh - 100px); overflow:auto; background:#fff; }
   .grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; padding:16px 18px; }
   .grid h4 { grid-column:1/-1; margin:10px 0 0; font-size:14px; border-bottom:1px solid var(--line); padding-bottom:4px; }
   .grid .w2 { grid-column:span 2; } .grid .w4 { grid-column:1/-1; }
@@ -63,7 +65,7 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><img src="newsman-logo.png" alt="NewsMAN" style="height:28px;width:auto;display:block"><span style="font-size:15px;color:var(--muted);border-left:1px solid var(--line);padding-left:12px">Onboarding</span>
+<header><div class="wrap"><img src="newsman-logo.png" alt="NewsMAN" style="height:28px;width:auto;display:block"><span style="font-size:15px;color:var(--muted)">Onboarding</span>
   <div class="right"><span id="who"></span><button id="tokBtn">⚙ Acces</button></div></div></header>
 
 <main class="wrap">
@@ -105,7 +107,8 @@
 
 <div id="login" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:50;align-items:center;justify-content:center">
   <form id="loginForm" class="card" style="width:min(380px,92vw);display:grid;gap:12px">
-    <img src="newsman-logo.png" alt="NewsMAN" style="height:30px;width:auto;justify-self:center;margin:4px 0 8px">
+    <div style="display:flex;align-items:center;gap:10px;justify-self:center;margin:4px 0 8px">
+      <img src="newsman-logo.png" alt="NewsMAN" style="height:30px;width:auto;display:block"><span style="font-size:16px;color:var(--muted)">Onboarding</span></div>
     <div><label>Utilizator</label><input id="lu" autocomplete="username" required></div>
     <div><label>Parolă</label><input id="lp" type="password" autocomplete="current-password" required></div>
     <button class="primary" type="submit">Intră</button>
@@ -252,7 +255,7 @@ async function follow(run, box) {
     const job = jobs.jobs[0];
     if (job) box.steps((job.steps || []).filter((s) => !/^(Set up job|Post |Complete job|Run actions)/.test(s.name))
       .map((s) => `${s.conclusion === "success" ? "✓" : s.conclusion === "skipped" ? "–" : s.conclusion === "failure" ? "✗" : s.status === "in_progress" ? "⏳" : "·"} ${esc(s.name)}`).join(""));
-    if (r.status === "queued") box.status("⏳ la coadă (se termină unul înainte)…");
+    if (r.status === "queued" || r.status === "waiting" || r.status === "pending") box.status("⏳ pornește…");
     else if (r.status !== "completed") box.status("⏳ lucrează…");
     else {
       let notes = [];
@@ -312,9 +315,7 @@ function render(highlight) {
   const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));
   if (!list.length) { box.innerHTML = `<div class="empty">Niciun client${q ? " găsit" : " încă"}.</div>`; return; }
   box.innerHTML = list.map((c) => {
-    const files = c.files.filter((f) => f.endsWith(".json")).map((f) =>
-      `<button onclick="download('${c.slug}','${f}')">${esc(f.split("__")[1].replace(".json", "").replace(/^\d-/, ""))}</button>`).join("");
-    const zip = c.files.find((f) => f.endsWith(".zip"));
+
     const w = c.warnings.length ? `<div class="warn" title="${esc(c.warnings.join("\n"))}">⚠ ${c.warnings.length} de verificat: ${esc(c.warnings[0])}${c.warnings.length > 1 ? " …" : ""}</div>` : "";
     return `<div class="card client${c.slug === highlight ? " busy" : ""}" id="c-${c.slug}">
       <div class="logo">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</div>
@@ -323,12 +324,20 @@ function render(highlight) {
         <span class="dom">${c.site_type === "non-ecommerce" ? "fără magazin" : c.products + " produse reale"}</span>
         <span class="badge">${c.form_type === "embed" ? "formular embed" : "pop-up"}</span></div>${w}</div>
       <div class="actions">
-        ${zip ? `<button onclick="download('${c.slug}','${zip}')"><b>⬇ Toate (.zip)</b></button>` : ""}${files}
+        <button onclick="downloadAll('${c.slug}')"><b>⬇ Descarcă</b></button>
         <button onclick="preview('${c.slug}')">👁 Previzualizare</button>
         <button onclick="edit('${c.slug}')">✏ Editează</button>
         <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul (suprascrie editările)">↻ Recitește site</button>
       </div></div>`;
   }).join("");
+}
+
+async function downloadAll(slug) {
+  const c = CLIENTS.find((x) => x.slug === slug);
+  for (const f of c.files.filter((x) => x.endsWith(".json"))) {
+    await download(slug, f);
+    await sleep(400);
+  }
 }
 
 async function download(slug, file) {
@@ -358,7 +367,8 @@ async function rescrape(slug) {
 async function preview(slug) {
   const c = CLIENTS.find((x) => x.slug === slug);
   const get = (part) => { const f = c.files.find((x) => x.includes(part)); return f ? readFile(`clients/${slug}/${f}`) : null; };
-  const [form, news, welcome, cart] = await Promise.all([get("__1-"), get("__2-"), get("__3-"), get("__4-")]);
+  const [form, auto, news] = await Promise.all([get("__1-"), get("__2-"), get("__3-")]);
+  const autoName = c.files.some((x) => x.includes("cos-abandonat")) ? "Coș" : "Bun venit";
   const views = [];
   if (form) {
     const f = form.data.form;
@@ -366,19 +376,24 @@ async function preview(slug) {
     if (f.pages.responder) views.push({ name: "Mulțumire", subj: "pagina după abonare", bee: JSON.parse(f.pages.responder.responder_json) });
     if (f.template && f.template.confirm_email_json) views.push({ name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) });
   }
-  const start = views.length;
-  if (news) views.push({ name: "Newsletter bun venit", subj: "template newsletter", bee: news.data });
+  const start = 0;
   const drafts = (doc, label) => doc && Object.values(doc.data.draft_meta.meta).sort((a, b) => a.trigger_id - b.trigger_id)
     .forEach((d, i) => views.push({ name: `${label} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
-  drafts(welcome, "Bun venit");
-  drafts(cart, "Coș");
+  drafts(auto, autoName);
+  if (news) views.push({ name: "Newsletter", subj: "draft newsletter", bee: news.data });
   const tabs = $("tabs");
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
     `<span class="push"></span><button onclick="pv.close()">✕</button>`;
   const show = (i) => {
     tabs.querySelectorAll(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.i === i));
     $("subj").textContent = "Subiect / nume: " + (views[i].subj || "");
-    $("view").innerHTML = BeePreview.render(views[i].bee).split(PUBLIC_BASE).join(RAW_BASE);
+    // render inside an iframe so the page's own styles do not leak into the preview
+    const frame = document.createElement("iframe");
+    frame.style.cssText = "width:100%;border:0;display:block;background:#fff";
+    frame.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:Arial,sans-serif}</style></head><body>${
+      BeePreview.render(views[i].bee).split(PUBLIC_BASE).join(RAW_BASE)}</body></html>`;
+    frame.onload = () => { frame.style.height = Math.max(400, frame.contentDocument.documentElement.scrollHeight) + "px"; };
+    $("view").replaceChildren(frame);
   };
   tabs.querySelectorAll(".tab").forEach((b) => b.onclick = () => show(+b.dataset.i));
   show(start);
@@ -408,7 +423,8 @@ async function edit(slug) {
       `<option value="${v}"${(O.site_type || "auto") === v ? " selected" : ""}>${l}</option>`).join("")}</select></div>`,
     `<h4>Texte (gol = textul automat, afișat gri)</h4>`,
     ...[["hero_title", "Titlu mare", "w4"], ["hero_subtitle", "Subtitlu", "w4"], ["intro", "Text de bun venit", "w4", "area"],
-        ["cta_label", "Text buton principal", "w2"], ["news_title", "Titlu email noutăți", "w2"],
+        ["cta_label", "Text buton principal", "w2"], ["news_title", "Titlu email „Descoperă”", "w2"],
+        ["newsletter_title", "Titlu newsletter (fără magazin)", "w2"], ["newsletter_subtitle", "Subtitlu newsletter", "w2"],
         ["form_title", "Titlu formular pop-up", "w2"], ["form_subtitle", "Subtitlu formular pop-up", "w2"]].map(([k, l, cls, kind]) => {
       const val = esc((b.texts || {})[k] || ""), ph = esc((b.texts_default || {})[k] || "");
       return kind === "area"
@@ -426,7 +442,8 @@ async function edit(slug) {
     ...["facebook", "instagram", "tiktok", "youtube", "linkedin", "pinterest", "twitter"].map((k) => F("soc." + k, k === "twitter" ? "X / Twitter" : k[0].toUpperCase() + k.slice(1), S[k])),
     `<h4>Linkuri</h4>`, ...["home", "cart", "terms", "privacy", "contact", "promo"].map((k) =>
       F("lnk." + k, { home: "Site", cart: "Coș", terms: "Termeni", privacy: "Confidențialitate", contact: "Contact", promo: "Reduceri" }[k], L[k], "w2")),
-    ...menu.flatMap((m, i) => [F(`menu.${i}.label`, `Meniu ${i + 1} – text`, m.label), F(`menu.${i}.url`, `Meniu ${i + 1} – link`, m.url, "", "url").replace('class=""', 'class="w2"') + "<div></div>"]),
+    ...menu.flatMap((m, i) => [F(`menu.${i}.label`, `Secțiune ${i + 1} – text`, m.label), F(`menu.${i}.url`, `Secțiune ${i + 1} – link`, m.url),
+      F(`menu.${i}.image`, `Secțiune ${i + 1} – imagine (URL)`, m.image, "w2")]),
     `<h4>Produse în welcome</h4>`,
     ...prods.flatMap((p, i) => [F(`prod.${i}.name`, `Produs ${i + 1} – nume`, p.name), F(`prod.${i}.price`, "Preț", p.price),
       F(`prod.${i}.url`, "Link", p.url), F(`prod.${i}.image`, "Imagine (URL)", p.image)]),
@@ -483,7 +500,8 @@ $("edSave").onclick = async () => {
     b.socials = {};
     ["facebook", "instagram", "tiktok", "youtube", "linkedin", "pinterest", "twitter"].forEach((k) => { if (v["soc." + k]) b.socials[k] = v["soc." + k]; });
     ["home", "cart", "terms", "privacy", "contact", "promo"].forEach((k) => b.links[k] = v["lnk." + k] || (k === "home" ? b.url : null));
-    b.links.menu = [0, 1, 2].map((i) => ({ label: (v[`menu.${i}.label`] || "").toUpperCase(), url: v[`menu.${i}.url`] })).filter((m) => m.label && m.url);
+    b.links.menu = [0, 1, 2].map((i) => ({ label: (v[`menu.${i}.label`] || "").toUpperCase(), url: v[`menu.${i}.url`],
+      ...(v[`menu.${i}.image`] ? { image: v[`menu.${i}.image`] } : {}) })).filter((m) => m.label && m.url);
     b.products = [0, 1, 2].map((i) => ({ name: v[`prod.${i}.name`], price: v[`prod.${i}.price`], url: v[`prod.${i}.url`], image: v[`prod.${i}.image`] }))
       .filter((p) => p.name && p.url && p.image);
     b.warnings = (b.warnings || []).concat(["Editat manual din pagină."]).filter((w, i, a) => a.indexOf(w) === i);

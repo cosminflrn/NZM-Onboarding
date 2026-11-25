@@ -87,8 +87,10 @@ def default_texts(brand, ecom):
         "discount_note": "Aplică-l la finalizarea comenzii.",
         "form_title": "Abonează-te la newsletter",
         "form_subtitle": f"Fii primul care află noutățile și ofertele {n}." if ecom else f"Fii primul care află noutățile {n}.",
-        "news_title": "Am pregătit ceva nou pentru tine",
-        "news_subtitle": f"Aruncă o privire la ce e nou la {n}.",
+        "news_title": f"Descoperă {n}",
+        "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
+        "newsletter_title": f"Noutăți de la {n}",
+        "newsletter_subtitle": "Iată ce am pregătit pentru tine în perioada aceasta.",
     }
 
 
@@ -101,12 +103,12 @@ def texts_for(brand, ecom):
 
 
 BENEFITS = {
-    "ecommerce": [("🎁", "Oferte pentru abonați", "Promoții trimise întâi pe email."),
-                  ("✨", "Noutăți în avans", "Afli primul de produsele noi."),
-                  ("💡", "Idei și inspirație", "Recomandări alese pentru tine.")],
-    "non-ecommerce": [("✨", "Noutăți", "Afli primul ce pregătim."),
-                      ("💡", "Sfaturi utile", "Informații alese cu grijă."),
-                      ("📩", "Fără spam", "Îți scriem doar când contează.")],
+    "ecommerce": [("Oferte pentru abonați", "Promoții trimise întâi pe email."),
+                  ("Noutăți în avans", "Afli primul de produsele noi."),
+                  ("Idei și inspirație", "Recomandări alese pentru tine.")],
+    "non-ecommerce": [("Noutăți", "Afli primul ce pregătim."),
+                      ("Sfaturi utile", "Informații alese cu grijă."),
+                      ("Fără spam", "Îți scriem doar când contează.")],
 }
 
 
@@ -128,8 +130,6 @@ def welcome_email(k):
         rows.append(k.discount(code, t["discount_note"]))
     if k.ecom:
         rows.append(k.products((b.get("products") or [])[:3], t["products_title"]))
-    else:
-        rows.append(k.cards((b.get("links") or {}).get("menu") or [], t["cards_title"]))
     rows.append(k.cta(t["cta_label"], k.home, top=20, bottom=12))
     rows.append(k.benefits(BENEFITS["ecommerce" if k.ecom else "non-ecommerce"]))
     rows.append(k.help())
@@ -148,7 +148,7 @@ def social_email(k):
                        top=32, bottom=8),
                 k.social_cta(),
                 k.help()]
-        subject = f"Hai să ne vedem și pe social media 👋"
+        return k.assemble(rows, social_footer=False), "Hai să ne vedem și pe social media 👋", "Rămâi aproape de noi."
     else:
         rows = [k.header(nav=False),
                 k.hero("Suntem aici pentru tine", "Ai o întrebare? Scrie-ne!",
@@ -164,21 +164,35 @@ def D_join(items):
 
 
 def news_email(k):
-    """Welcome series #3: what's new."""
+    """Welcome series #3: explore the site (featured sections)."""
     t, b = k.t, k.b
     prods = b.get("products") or []
     rows = [k.header(),
-            k.hero("Noutăți", t["news_title"], t["news_subtitle"])]
+            k.hero("Ghid rapid", t["news_title"], t["news_subtitle"])]
     if k.ecom:
         pick = prods[3:6] if len(prods) >= 6 else prods[:3]
         rows.append(k.products(pick, "Ți-ar putea plăcea"))
         target = (b.get("links") or {}).get("promo") or k.home
         rows.append(k.cta("Vezi toate noutățile", target, top=20, bottom=32))
     else:
-        rows.append(k.cards((b.get("links") or {}).get("menu") or [], t["cards_title"]))
-        rows.append(k.cta("Vezi ce e nou", k.home, top=20, bottom=32))
+        rows.append(k.featured((b.get("links") or {}).get("menu") or [], "Câteva locuri de unde să începi"))
+        rows.append(k.cta("Vizitează site-ul", k.home, top=24, bottom=32, outline=True))
     rows.append(k.help())
-    return k.assemble(rows), "Vezi ce avem nou pentru tine ✨", f"Noutățile {b['name']}, alese pentru tine."
+    return k.assemble(rows), f"Descoperă {b['name']} ✨", "Câteva lucruri pe care merită să le vezi."
+
+
+def newsletter_email(k):
+    """Non-ecommerce draft: a regular newsletter, ready to be edited and sent."""
+    t, b = k.t, k.b
+    rows = [k.header(nav=False),
+            k.hero("Newsletter", t["newsletter_title"], t["newsletter_subtitle"]),
+            k.banner(),
+            k.body(clean_description(b.get("description"), b["name"]) or
+                   "Scrie aici câteva rânduri despre noutățile pe care vrei să le împărtășești.", top=36, bottom=8),
+            k.cards((b.get("links") or {}).get("menu") or [], t["cards_title"]),
+            k.cta(t["cta_label"], k.home, top=24, bottom=32),
+            k.help()]
+    return k.assemble(rows)
 
 
 def cart_email(k, n, condition):
@@ -288,7 +302,9 @@ def build_welcome_automation(brand, tpl):
 
 
 def build_newsletter(brand, tpl):
+    """Draft: welcome newsletter with products (ecommerce) or a regular newsletter (non-ecommerce)."""
     doc = copy.deepcopy(tpl)
-    doc["data"] = welcome_email(kit(brand))
+    k = kit(brand)
+    doc["data"] = welcome_email(k) if k.ecom else newsletter_email(k)
     doc["exported_at"] = int(time.time())
     return doc
