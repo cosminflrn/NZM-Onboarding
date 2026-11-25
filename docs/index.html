@@ -6,7 +6,7 @@
 <title>NewsMAN Onboarding</title>
 <link rel="icon" href="favicon.ico">
 <style>
-  :root { --red:#c8102e; --ink:#1d1d1f; --muted:#6b6b70; --line:#e6e6ea; --bg:#f6f6f8; --ok:#1a7f37; --run:#9a6700; --err:#b42318; }
+  :root { --red:#a60400; --ink:#1d1d1f; --muted:#6b6b70; --line:#e6e6ea; --bg:#f6f6f8; --ok:#1a7f37; --run:#9a6700; --err:#b42318; }
   * { box-sizing: border-box; }
   body { margin:0; font:15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
   header { background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20; }
@@ -41,8 +41,7 @@
   .clients { display:grid; gap:14px; }
   .client { display:grid; grid-template-columns: 120px 1fr 300px; gap:20px; align-items:center; }
   .client .logo { width:120px; height:120px; display:flex; align-items:center; justify-content:center; border-radius:10px; padding:10px;
-    border:1px solid var(--line); background-color:#fff;
-    background-image:conic-gradient(#ececf1 25%, #fff 0 50%, #ececf1 0 75%, #fff 0); background-size:16px 16px; }
+    border:1px solid var(--line); background-color:#fff; }
   .client .logo img { max-height:100px; max-width:100px; }
   .client h3 { margin:0; font-size:16px; } .dom { color:var(--muted); font-size:13px; }
   .tags { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
@@ -365,7 +364,6 @@ function render() {
         <div class="tags">
           ${c.site_type === "non-ecommerce" ? `<span class="tag">${icon("globe")}Non-e-commerce</span>` : `<span class="tag">${icon("cart")}E-commerce</span>`}
           ${c.form_type === "embed" ? `<span class="tag">${icon("embed")}Formular embed</span>` : `<span class="tag">${icon("popup")}Formular pop-up</span>`}
-          ${["accent", "dark", "light"].map((k) => `<span class="sw" title="${k} ${c.colors[k]}" style="background:${c.colors[k]}"></span>`).join("")}
           ${statusHtml(c.slug)}
         </div></div>
       <div class="actions">

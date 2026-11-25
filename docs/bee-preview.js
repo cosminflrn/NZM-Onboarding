@@ -23,7 +23,8 @@
       const im = d.image || {};
       const cs = d.computedStyle || {};
       const w = cs.width && /fixedwidth|autowidth/.test(cs.class || "") ? `max-width:${cs.width};` : "";
-      let img = `<img src="${esc(im.src)}" alt="${esc(im.alt)}" style="display:block;width:100%;${w}height:auto;margin:0 auto">`;
+      const rad = (d.style || {})["border-radius"];
+      let img = `<img src="${esc(im.src)}" alt="${esc(im.alt)}" style="display:block;width:100%;${w}height:auto;margin:0 auto;${rad ? "border-radius:" + rad : ""}">`;
       if (im.href) img = `<a href="${esc(im.href)}" target="_blank">${img}</a>`;
       return wrap(img, "text-align:center");
     }

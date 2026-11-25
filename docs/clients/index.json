@@ -1,33 +1,11 @@
 [
  {
-  "slug": "yesswimming-ro",
-  "name": "Club Sportiv Yes Swimming",
-  "domain": "yesswimming.ro",
-  "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-25 14:40 UTC",
-  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
-  "colors": {
-   "accent": "#fc3030",
-   "dark": "#0d1b2a",
-   "light": "#ffeaea"
-  },
-  "warnings": [],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "files": [
-   "yesswimming-ro-automatizare-bun-venit.json",
-   "yesswimming-ro-formular-pop-up.json",
-   "yesswimming-ro-newsletter-noutati.json"
-  ]
- },
- {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
   "url": "https://alunis.ro/",
-  "generated_at": "2026-11-25 14:36 UTC",
-  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
+  "generated_at": "2026-11-25 15:14 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-834838b3.png",
   "colors": {
    "accent": "#9e7e52",
    "dark": "#221b11",
@@ -50,7 +28,7 @@
   "name": "techfarm.ro",
   "domain": "techfarm.ro",
   "url": "https://www.techfarm.ro/",
-  "generated_at": "2026-11-25 14:32 UTC",
+  "generated_at": "2026-11-25 15:14 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-a835c5a4.png",
   "colors": {
    "accent": "#a78a25",
@@ -58,13 +36,35 @@
    "light": "#fffaeb"
   },
   "warnings": [],
-  "products": 5,
+  "products": 6,
   "site_type": "ecommerce",
   "form_type": "popup",
   "files": [
    "techfarm-ro-automatizare-cos-abandonat.json",
    "techfarm-ro-formular-pop-up.json",
    "techfarm-ro-newsletter-bun-venit.json"
+  ]
+ },
+ {
+  "slug": "yesswimming-ro",
+  "name": "Club Sportiv Yes Swimming",
+  "domain": "yesswimming.ro",
+  "url": "https://yesswimming.ro/",
+  "generated_at": "2026-11-25 15:14 UTC",
+  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+  "colors": {
+   "accent": "#fc3030",
+   "dark": "#0d1b2a",
+   "light": "#ffeaea"
+  },
+  "warnings": [],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "files": [
+   "yesswimming-ro-automatizare-bun-venit.json",
+   "yesswimming-ro-formular-pop-up.json",
+   "yesswimming-ro-newsletter-noutati.json"
   ]
  }
 ]

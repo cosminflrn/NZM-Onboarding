@@ -38,13 +38,14 @@
     "cart_found": true
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-a835c5a4.png",
     "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo-mare-techfarm4509.png",
     "width": 300,
     "height": 71,
     "display_width": 200,
     "found_by": "img",
-    "recolored": false
+    "recolored": false,
+    "light_parts": false
   },
   "banner": {
     "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/banner-a3591b49.jpg",
@@ -78,6 +79,20 @@
   },
   "products": [
     {
+      "name": "Utilaj Strip-Till Hawk Easy (prelucrare în benzi)",
+      "url": "https://www.techfarm.ro/utilaje-agricole/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-25c08665.jpg",
+      "price": "40.000,00 €",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/strip-till-hawk-4-randuri-cadru-fix-8902292127.jpeg"
+    },
+    {
+      "name": "Remorcă Transfer BNP-30 | 30 m³ | EGRITECH | Techfarm Agro",
+      "url": "https://www.techfarm.ro/utilaje-agricole/remorc%C4%83-transfer-bnp-30.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-ce0dae7f.jpg",
+      "price": "",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/remorca-transfer-bnp-30-572806.png"
+    },
+    {
       "name": "SEMANATOARE PROSEM K GEA ELEKTRA",
       "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-prosem-k-elektra-gea.html",
       "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-a8d6a7a3.jpg",
@@ -92,18 +107,18 @@
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-trisem-2110-disc-dublu-863243.jpg"
     },
     {
-      "name": "Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
-      "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-ca966d52.jpg",
-      "price": "35.000,00 €",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp"
-    },
-    {
       "name": "Semănătoare Prășitoare VELOX | Sola | Distribuitor Techfarm Agro",
       "url": "https://www.techfarm.ro/semanatori-prasitoare/semanatoare-prasitoare-velox.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-d35f3799.jpg",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-f2acd447.jpg",
       "price": "",
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-prasitoare-velox-691558.webp"
+    },
+    {
+      "name": "Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
+      "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-d03a9604.jpg",
+      "price": "35.000,00 €",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp"
     }
   ],
   "options": {
@@ -117,19 +132,9 @@
   "warnings": [],
   "fetch_log": [
     "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html",
-    "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html",
-    "429 https://www.techfarm.ro/utilaje-agricole/remorcă-transfer-bnp-30.html",
-    "429 https://www.techfarm.ro/utilaje-agricole/remorcă-transfer-bnp-30.html",
-    "429 https://www.techfarm.ro/produse/mom",
-    "429 https://www.techfarm.ro/produse/mom",
-    "429 https://www.techfarm.ro/produse/ovlac",
-    "429 https://www.techfarm.ro/produse/ovlac",
-    "429 https://www.techfarm.ro/utilaje-strip-till-prelucrare-in-benzi/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html",
-    "429 https://www.techfarm.ro/utilaje-strip-till-prelucrare-in-benzi/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html",
-    "429 https://www.techfarm.ro/produse/cestari",
-    "429 https://www.techfarm.ro/produse/cestari"
+    "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html"
   ],
-  "generated_at": "2026-11-25 14:40 UTC",
+  "generated_at": "2026-11-25 15:14 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea techfarm.ro!",

@@ -90,7 +90,10 @@ def m_text(html, padding=None, color=INK, link_color=None, lh="160%"):
     }
 
 
-def m_image(src, width, height, display_width, href="", alt="", padding=None, dynamic=None, full=False):
+RADIUS = "12px"
+
+
+def m_image(src, width, height, display_width, href="", alt="", padding=None, dynamic=None, full=False, radius=None):
     img = {"alt": alt, "href": href, "prefix": "", "src": src, "target": "_blank",
            "width": f"{int(width)}px", "height": f"{int(height)}px"}
     if dynamic:
@@ -100,7 +103,7 @@ def m_image(src, width, height, display_width, href="", alt="", padding=None, dy
         "type": "mailup-bee-newsletter-modules-image", "locked": False, "uuid": uid(),
         "descriptor": {
             "image": img,
-            "style": {"width": "100%", **(padding or pad(0))},
+            "style": {"width": "100%", "border-radius": radius or "0px", **(padding or pad(0))},
             "computedStyle": {"class": cls, "width": f"{int(display_width)}px", "hideContentOnMobile": False},
         },
     }
@@ -243,14 +246,17 @@ class Kit:
         else:
             mods.append(m_text(wrap([para(esc(self.b["name"]), 22, INK, weight="bold")]), padding=pad(20, 24, 12, 24)))
         items = (self.L.get("menu") or [])[:3] if (nav and self.ecom) else []
+        head_bg = self.dark if logo.get("light_parts") and not logo.get("recolored") else WHITE
         if items:
             sep = f'<span style="color:{LINE};">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>'
             links = sep.join(link(esc(m["label"]), m["url"], MUTED, underline=False, weight="600") for m in items)
-            mods.append(m_text(wrap([para(links, 12, MUTED, spacing="1px", lh=1.5)]), padding=pad(4, 24, 16, 24),
-                               color=MUTED, link_color=MUTED))
+            nav_color = "#ffffff" if head_bg != WHITE else MUTED
+            links = links.replace(f"color:{MUTED};", f"color:{nav_color};")
+            mods.append(m_text(wrap([para(links, 12, nav_color, spacing="1px", lh=1.5)]), padding=pad(4, 24, 16, 24),
+                               color=nav_color, link_color=nav_color))
         else:
             mods.append(m_spacer(6))
-        return row([mods], bg=WHITE)
+        return row([mods], bg=head_bg)
 
     # ---- hero block in brand color
     def hero(self, eyebrow, title, subtitle, cta=None, cta_url=None):
@@ -273,7 +279,7 @@ class Kit:
         if not ban.get("url"):
             return None
         return row([[m_image(ban["url"], ban.get("width") or 1200, ban.get("height") or 600, WIDTH,
-                             href=self.home, alt=self.b["name"], full=True)]], bg=WHITE)
+                             href=self.home, alt=self.b["name"], full=True, radius=f"0px 0px {RADIUS} {RADIUS}")]], bg=WHITE)
 
     # ---- plain section of text
     def body(self, text, size=17, top=32, bottom=8, align="center", color=INK):
@@ -318,7 +324,7 @@ class Kit:
             name = p["name"] if len(p["name"]) <= 55 else p["name"][:52].rstrip() + "…"
             mods = [
                 m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600, 176,
-                        href=p["url"], alt=name, padding=pad(0, 8, 12, 8)),
+                        href=p["url"], alt=name, padding=pad(0, 8, 12, 8), radius=RADIUS),
                 m_text(wrap([para(link(esc(name), p["url"], INK, underline=False), 15, INK, lh=1.4)]),
                        padding=pad(0, 8, 4, 8), link_color=INK),
             ]
@@ -346,7 +352,7 @@ class Kit:
             mods = []
             if it.get("image"):
                 mods.append(m_image(it["image"], 600, 400, 176, href=it["url"], alt=self._label(it),
-                                    padding=pad(0, 8, 12, 8)))
+                                    padding=pad(0, 8, 12, 8), radius=RADIUS))
             mods += [
                 m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
                 m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
@@ -365,7 +371,7 @@ class Kit:
         mods = []
         if first.get("image"):
             mods.append(m_image(first["image"], 600, 400, 560, href=first["url"], alt=self._label(first),
-                                padding=pad(0, 40, 16, 40)))
+                                padding=pad(0, 40, 16, 40), radius=RADIUS))
         mods += [m_text(wrap([para(esc(self._label(first)), 22, INK, weight="bold", lh=1.3)]), padding=pad(4, 40, 4, 40)),
                  m_button(f"Descoperă {self._label(first).lower()} →", first["url"], self.accent, "#ffffff", size=15,
                           padding=pad(8, 24, 16, 24))]
@@ -376,7 +382,7 @@ class Kit:
                 cm = []
                 if it.get("image"):
                     cm.append(m_image(it["image"], 600, 400, 264, href=it["url"], alt=self._label(it),
-                                      padding=pad(0, 8, 12, 8)))
+                                      padding=pad(0, 8, 12, 8), radius=RADIUS))
                 cm += [m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
                        m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
                                 padding=pad(0, 12, 16, 12))]
@@ -388,26 +394,26 @@ class Kit:
         cols = []
         for n, (title, desc) in enumerate(items[:3], 1):
             cols.append([
-                m_text(wrap([para(f"0{n}", 22, self.accent, weight="bold", lh=1.2)]), padding=pad(8, 12, 4, 12),
+                m_text(wrap([para(esc(title), 16, self.accent, weight="bold", lh=1.4)]), padding=pad(0, 12, 2, 12),
                        color=self.accent),
-                m_text(wrap([para(esc(title), 15, INK, weight="bold", lh=1.4)]), padding=pad(0, 12, 2, 12)),
                 m_text(wrap([para(esc(desc), 14, MUTED, lh=1.5)]), padding=pad(0, 12, 8, 12), color=MUTED),
             ])
         return [row([[m_divider(LINE, "100%", 1, pad(24, 40, 8, 40))]], bg=WHITE),
                 row(cols, bg=WHITE, col_pad=pad(8, 8, 16, 8))]
 
     def social_cta(self):
-        """One big button per network, in the network's own colour, all the same size."""
+        """Big Beefree social icons: the networks' own colours, or dark ones on a very colourful brand."""
         socials = self.b.get("socials") or {}
         if not socials:
             return []
-        mods = [m_spacer(8)]
-        for net, url in socials.items():
-            mods.append(m_button(SOCIAL_NAMES.get(net, net.title()), url, SOCIAL_COLORS.get(net, INK), "#ffffff",
-                                 size=17, px=24, py=14, weight="700", radius="12px", width="60%",
-                                 padding=pad(6, 24, 6, 24)))
-        mods.append(m_spacer(20))
-        return [row([mods], bg=WHITE)]
+        icon_set = ICON_SET_COLOR if self._calm_palette() else ICON_SET
+        return [row([[m_social(socials, padding=pad(12, 24, 28, 24), size=56, icon_set=icon_set)]], bg=WHITE)]
+
+    def _calm_palette(self):
+        """Coloured network icons sit well next to calm brands; next to a strong accent we use dark ones."""
+        from .colors import hls
+        _, light, sat = hls(self.accent)
+        return sat < 0.65
 
     def help(self):
         ct = self.b.get("contact") or {}
@@ -503,8 +509,10 @@ def render_module(m):
         cs = d.get("computedStyle", {})
         w = int(float(str(cs.get("width", "600")).replace("px", "") or 600))
         src = im.get("dynamicSrc") or im["src"]
+        rad = st.get("border-radius", "0px")
+        rad_css = f";border-radius:{rad}" if rad and rad not in ("0", "0px") else ""
         img = (f'<img src="{esc(src)}" alt="{esc(im.get("alt"))}" title="{esc(im.get("alt"))}" width="{w}" '
-               f'style="display:block;height:auto;border:0;width:100%;max-width:{w}px">')
+               f'style="display:block;height:auto;border:0;width:100%;max-width:{w}px{rad_css}">')
         if im.get("href"):
             img = f'<a href="{esc(im["href"])}" target="_blank" style="text-decoration:none">{img}</a>'
         return (f'<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"><tr>'

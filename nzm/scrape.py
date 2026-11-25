@@ -514,6 +514,11 @@ class Scraper:
             # white logos (made for dark headers) are invisible on white emails
             light_logo = not dom or all(C.luminance(c) > 0.7 for c, _ in dom[:2])
             recolored = False
+            light_parts = False
+            if not light_logo and im.mode in ("RGBA", "LA", "P"):
+                # transparent logo with white text next to coloured parts: needs a dark header to stay readable
+                px = [p for p in im.convert("RGBA").resize((80, max(1, int(80 * im.height / im.width)))).getdata() if p[3] > 200]
+                light_parts = bool(px) and sum(1 for r, g, b, a in px if r > 225 and g > 225 and b > 225) > 0.2 * len(px)
             if light_logo and im.mode in ("RGBA", "LA", "P"):
                 # white logo made for a dark header: paint it dark so it shows on white emails
                 rgba = im.convert("RGBA")
@@ -536,7 +541,7 @@ class Scraper:
             disp_w = min(200, w, int(round(70 * w / h)) if h else 200)
             disp_w = max(disp_w, min(120, w))
             return ({"url": public, "source_url": url if not url.startswith("inline-svg:") else "inline-svg",
-                     "width": w, "height": h, "display_width": disp_w, "found_by": src, "recolored": recolored},
+                     "width": w, "height": h, "display_width": disp_w, "found_by": src, "recolored": recolored, "light_parts": light_parts},
                     dom)
         self.warnings.append("Logo: nu am găsit logo-ul — am păstrat placeholderul din template.")
         return None, []

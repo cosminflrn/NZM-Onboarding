@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795617636,
+	"exported_at": 1795619687,
 	"data": {
 		"page": {
 			"body": {
@@ -34,7 +34,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "c0167012-1294-4812-9ee9-d3c4da7f5478",
+									"uuid": "d094698d-14ff-4134-b6db-29548d14c2f6",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -56,7 +56,7 @@
 									}
 								}
 							],
-							"uuid": "748d5319-00af-4583-b5e7-1ff8b0bd9815",
+							"uuid": "a1fbf439-00d0-44e6-b8a2-0e022b428e75",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -99,7 +99,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "1d4c1bd5-1b50-4542-a9f8-45e0efd7d99c"
+					"uuid": "c1cff619-1004-48da-91f0-e7a9f856acb6"
 				},
 				{
 					"columns": [
@@ -109,7 +109,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "22f195a9-5ff2-4ecd-bf5f-d85eb5ae5707",
+									"uuid": "e106004f-8111-4b47-8ef7-2407f6370069",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -133,7 +133,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "008fa729-e10c-4098-a590-8cf455f21d24",
+									"uuid": "d5e0cd32-33ee-4699-a16a-9e5d8d8b1c4f",
 									"descriptor": {
 										"image": {
 											"alt": "Club Sportiv Yes Swimming",
@@ -146,6 +146,7 @@
 										},
 										"style": {
 											"width": "100%",
+											"border-radius": "0px",
 											"padding-top": "20px",
 											"padding-right": "24px",
 											"padding-bottom": "12px",
@@ -161,7 +162,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "c7644376-94a0-4930-9695-715dd517efd4",
+									"uuid": "3a49d869-90b4-415c-8d8f-55802f1ec859",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -183,7 +184,7 @@
 									}
 								}
 							],
-							"uuid": "0b033b25-6460-46b7-b26b-17e8097c3a8d",
+							"uuid": "8ba67c4f-db30-4786-ae43-0656bea5376b",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -226,7 +227,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "4a15d13d-edcc-4f11-bfc9-860dd0491105"
+					"uuid": "75a5bc2e-b70c-4b07-bab8-ee9da39f0e86"
 				},
 				{
 					"columns": [
@@ -236,7 +237,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "d1273e68-9665-4556-92ed-78b89de12923",
+									"uuid": "94413227-2ba8-4aee-87e5-ce37ab037c5c",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -260,7 +261,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "5290ed6e-8eec-460d-a7d5-ff2d269c6a80",
+									"uuid": "a467f592-5d23-4695-bb0f-192c37697095",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">NEWSLETTER</span></strong></p></div>",
@@ -287,7 +288,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "752aa6ad-4d8f-41f2-9222-78f1e92be21f",
+									"uuid": "2ffa7d48-50b1-4023-96b2-dc8e59c6cb88",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Noutăți de la Club Sportiv Yes Swimming</span></strong></p></div>",
@@ -314,7 +315,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "a866ecfd-83c5-4ec7-80e8-d8e009c5d343",
+									"uuid": "e260734c-31e2-4cb5-95e7-ace537ceb651",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Iată ce am pregătit pentru tine în perioada aceasta.</span></p></div>",
@@ -341,7 +342,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "3837cf90-d43a-402e-a33b-1a6695c7fd64",
+									"uuid": "be6bc2aa-469f-4e9f-8619-2c3e9bc29a07",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -363,7 +364,7 @@
 									}
 								}
 							],
-							"uuid": "aa96eb10-34c0-4ccf-a42e-b62159b23354",
+							"uuid": "5bafeaeb-8038-43ab-9e96-fec881bcd941",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -406,7 +407,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "6d0f2561-4682-4a93-94e8-81fa3b650592"
+					"uuid": "31268459-aea4-4579-ad36-4729942f4ce5"
 				},
 				{
 					"columns": [
@@ -416,7 +417,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "84d6dc8f-b7e3-4afd-a7a5-a79d6aaee6aa",
+									"uuid": "b7455913-ed3d-476b-93f8-fa8063b600f0",
 									"descriptor": {
 										"image": {
 											"alt": "Club Sportiv Yes Swimming",
@@ -429,6 +430,7 @@
 										},
 										"style": {
 											"width": "100%",
+											"border-radius": "0px 0px 12px 12px",
 											"padding-top": "0px",
 											"padding-right": "0px",
 											"padding-bottom": "0px",
@@ -442,7 +444,7 @@
 									}
 								}
 							],
-							"uuid": "c64080cf-4c05-49fd-a90f-dbcfc507e488",
+							"uuid": "4bca627a-49a0-4348-8c3f-8dbc1b76ea8f",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -485,7 +487,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "d9fe29f8-c8e1-4727-b940-26cf55fd6731"
+					"uuid": "1602ca2b-6134-443a-b332-302fa69cc6a9"
 				},
 				{
 					"columns": [
@@ -495,7 +497,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "8a14a276-b489-472e-bb0d-90b4a2378981",
+									"uuid": "93be67c6-a536-4605-b365-cfc022390c04",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Scrie aici câteva rânduri despre noutățile pe care vrei să le împărtășești.</span></p></div>",
@@ -520,7 +522,7 @@
 									}
 								}
 							],
-							"uuid": "f4f0b282-972e-444f-b815-fab0f9bc803e",
+							"uuid": "52469044-b4de-4eac-b06e-4986fffab745",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -563,7 +565,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "7518f013-438d-42a0-965a-78b2dd11848a"
+					"uuid": "0b8b69b0-2750-4c5b-b84f-ff169f6a4b13"
 				},
 				{
 					"columns": [
@@ -573,7 +575,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "06566140-3558-41a4-b108-151ee1486379",
+									"uuid": "d1e0f0d0-a20d-472c-875a-63ac6f117229",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Ce găsești la noi</span></strong></p></div>",
@@ -598,7 +600,7 @@
 									}
 								}
 							],
-							"uuid": "39160d00-f319-41a1-80a5-98c4369a1f6a",
+							"uuid": "20b18f93-edab-4e84-847f-59508cf8a8d4",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -641,7 +643,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "618f0c8b-c1ab-4fce-aef7-cff2e759c8d6"
+					"uuid": "c2d50c2b-08ab-4750-8f6e-1af644d62fe2"
 				},
 				{
 					"columns": [
@@ -651,7 +653,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "81e02e89-82f5-4cc0-ae82-5f93584e73cf",
+									"uuid": "519f1ea3-a2ff-4576-9c86-5bcab6c5ee94",
 									"descriptor": {
 										"image": {
 											"alt": "Program",
@@ -664,6 +666,7 @@
 										},
 										"style": {
 											"width": "100%",
+											"border-radius": "12px",
 											"padding-top": "0px",
 											"padding-right": "8px",
 											"padding-bottom": "12px",
@@ -679,7 +682,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "f35d8c13-844b-4b02-92cd-096a93b534c5",
+									"uuid": "8f3405a1-ee9c-4221-8383-a4c0ad73af0e",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Program</span></strong></p></div>",
@@ -706,7 +709,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "1748fe7a-ff56-41fb-a829-cb47f30aa8e0",
+									"uuid": "b5d46238-e197-4ecb-949f-efcc5423d790",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
@@ -748,7 +751,7 @@
 									}
 								}
 							],
-							"uuid": "110ec64e-cc0b-4755-b751-3996e06e9444",
+							"uuid": "2d92ee68-4543-4abc-be36-21928d4f03d6",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -767,7 +770,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "750d7659-a1fd-42bf-bb5d-a4eaf4692502",
+									"uuid": "417333e7-d2cb-4690-b4af-0d67577e5af7",
 									"descriptor": {
 										"image": {
 											"alt": "Cotizații",
@@ -780,6 +783,7 @@
 										},
 										"style": {
 											"width": "100%",
+											"border-radius": "12px",
 											"padding-top": "0px",
 											"padding-right": "8px",
 											"padding-bottom": "12px",
@@ -795,7 +799,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "cc15ad7f-4e5e-44ec-bb3e-2c92336d6867",
+									"uuid": "70861d2f-c899-4670-9a27-8b6a1dd3b8e5",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Cotizații</span></strong></p></div>",
@@ -822,7 +826,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "6af62b53-af42-48f3-9297-f067483bc384",
+									"uuid": "cb5343d9-24a5-4a0b-8da9-b1488795d020",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
@@ -864,7 +868,7 @@
 									}
 								}
 							],
-							"uuid": "08c5b7ad-70dc-483d-875c-09d37d248133",
+							"uuid": "1e909d7f-ab8f-4c3a-9fa4-e1f29cd36a53",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -883,7 +887,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "6f326e9b-d303-4ad2-87b8-3ab33c59688c",
+									"uuid": "6ec1e80c-5bc6-4d2d-aee0-7ad5ae40a666",
 									"descriptor": {
 										"image": {
 											"alt": "Antrenori",
@@ -896,6 +900,7 @@
 										},
 										"style": {
 											"width": "100%",
+											"border-radius": "12px",
 											"padding-top": "0px",
 											"padding-right": "8px",
 											"padding-bottom": "12px",
@@ -911,7 +916,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3c850d55-8a84-4b3d-9c36-99e1b6712b8d",
+									"uuid": "d6c4ccb5-9332-4165-ac9d-ff8152db941e",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Antrenori</span></strong></p></div>",
@@ -938,7 +943,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "d1a4b4a7-153b-48e2-8f30-cdf8f355db10",
+									"uuid": "0f7bd46e-c291-47f5-8e51-8f95fd0d9097",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
@@ -980,7 +985,7 @@
 									}
 								}
 							],
-							"uuid": "109a8f2c-4f8c-4200-94a3-a91e9f3340c5",
+							"uuid": "bb001a3b-ad09-4e5d-9835-18d5c9224aeb",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1023,7 +1028,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "5e6dd78c-fd25-4acd-8403-980331dfbdf6"
+					"uuid": "2921e1f5-b444-40db-b4ba-74c8864f3011"
 				},
 				{
 					"columns": [
@@ -1033,7 +1038,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "2e8d66da-354e-42b9-94e1-a5f41f0f4481",
+									"uuid": "fa65c253-d4ca-4746-9dcf-d32db6b79440",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vizitează site-ul</strong></p></div>",
@@ -1075,7 +1080,7 @@
 									}
 								}
 							],
-							"uuid": "8b5bd9ac-df63-4daa-b4bd-05c898ecdfa1",
+							"uuid": "b9b1e085-0338-4e3e-b600-8ea117cbc20f",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1118,7 +1123,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "4686e209-74e6-44dc-9e4e-999ec787b1b2"
+					"uuid": "10cff163-1170-42ac-afe5-608903c7764d"
 				},
 				{
 					"columns": [
@@ -1128,7 +1133,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "9ed58350-3ce3-4468-a5a1-195d5fd3f993",
+									"uuid": "d5037d9e-df85-451c-8cb6-fe7bba061400",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:22px;color:#52525b;\" data-mce-style=\"font-size:15px;line-height:22px;color:#52525b;\">Ai întrebări? Suntem aici pentru tine.</span></p><p style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:24px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:24px;color:#18181b;\"><a href=\"tel:0739652493\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">0739 652 493</a> &nbsp;·&nbsp; <a href=\"mailto:contact@yesswimming.ro\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">contact@yesswimming.ro</a></span></p></div>",
@@ -1153,7 +1158,7 @@
 									}
 								}
 							],
-							"uuid": "134a8d72-77ab-4559-831b-bb369eabd764",
+							"uuid": "a60e065d-f8d6-44b5-843b-c173eb5f01e5",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1196,7 +1201,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "7c4f8da9-bb42-4b39-9b5d-245fa66beaf2"
+					"uuid": "70903583-7c8b-412a-b6c6-b022cf64ac91"
 				},
 				{
 					"columns": [
@@ -1206,7 +1211,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "0d6fdc88-2f6e-46a6-9859-4e83f381d592",
+									"uuid": "b9ea7d9f-9d22-4e97-b673-929532e2b00e",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1230,12 +1235,12 @@
 								{
 									"type": "mailup-bee-newsletter-modules-social",
 									"locked": false,
-									"uuid": "aa08f0ee-9dfe-4977-81d0-017840ac5685",
+									"uuid": "4ea30ede-1a6e-4089-ad73-516911b091ea",
 									"descriptor": {
 										"iconsList": {
 											"icons": [
 												{
-													"id": "8bd9d4b7-1749-4cc5-a6f3-68bc82ecd06b",
+													"id": "95fe6205-98d8-4830-9994-c4a14ceb22b2",
 													"type": "follow",
 													"name": "facebook",
 													"text": "",
@@ -1249,7 +1254,7 @@
 													}
 												},
 												{
-													"id": "59346407-d813-40ae-9a1c-1496da8c208e",
+													"id": "e92c9d4f-655f-4eef-838a-a8a32d256ed2",
 													"type": "follow",
 													"name": "instagram",
 													"text": "",
@@ -1263,7 +1268,7 @@
 													}
 												},
 												{
-													"id": "4829bd11-ccc9-4e12-9e4e-154de43687e0",
+													"id": "8e4e7aef-0ffd-47ec-9c86-20c461ff57d9",
 													"type": "follow",
 													"name": "tiktok",
 													"text": "",
@@ -1277,7 +1282,7 @@
 													}
 												},
 												{
-													"id": "4ac88064-3415-4b1e-83ed-160d49657c3d",
+													"id": "72bdd4a6-e1bc-41b7-bb5b-8a4259b64a83",
 													"type": "follow",
 													"name": "youtube",
 													"text": "",
@@ -1311,7 +1316,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "9d8436b5-1ff1-4856-ae16-c914f15563cb",
+									"uuid": "83173506-0db9-44bc-a783-ebb9ca431bad",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Club Sportiv Yes Swimming. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://yesswimming.ro/politica-de-confidentialitate/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://yesswimming.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">yesswimming.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
@@ -1336,7 +1341,7 @@
 									}
 								}
 							],
-							"uuid": "17fda4ff-db8d-4211-a773-66eccfc3189d",
+							"uuid": "bd86cda0-9be4-41a3-b190-78bb45dfebc7",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1379,7 +1384,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "94c443df-d920-45fb-8ba6-988865a4aa40"
+					"uuid": "a5295117-a81d-471a-a316-006639071d62"
 				}
 			],
 			"template": {
