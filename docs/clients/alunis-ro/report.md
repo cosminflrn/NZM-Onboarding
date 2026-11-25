@@ -1,6 +1,6 @@
 # Aluniș (alunis.ro)
 
-Generat: 2026-11-25 12:54 UTC  ·  Platformă: wordpress
+Generat: 2026-11-25 13:25 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
@@ -13,17 +13,15 @@ Generat: 2026-11-25 12:54 UTC  ·  Platformă: wordpress
 - **Meniu:** [ATELIERE ȘI ACTIVITĂȚI](https://alunis.ro/ateliere-si-activitati/), [DRUMEȚII & ATRACȚII](https://alunis.ro/drumetii-atractii/), [ECHIPA](https://alunis.ro/echipa/)
 - **Coș:** https://alunis.ro/ · **Termeni:** https://alunis.ro/termeni-conditii/ · **Confidențialitate:** https://alunis.ro/politica-gdpr-regulament/
 - **Produse:** — (placeholder)
-- **Tip site:** non-ecommerce (detectat: —) · **Formular:** popup
+- **Tip site:** non-ecommerce (detectat: non-ecommerce) · **Formular:** popup
 - **Descriere site:** —
 - **Cod discount:** — (emailurile nu au discount)
 - **Expeditor automatizare:** Aluniș <rezervari@alunis.ro>
 
 ## De verificat
 
-- Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.
 - Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică.
-- Banner: nu am găsit un banner potrivit — am păstrat imaginea generică de bun venit.
-- Produse: am găsit doar 0 din 3; restul rămân placeholder.
+- Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.
 
 ## Fișiere
 
