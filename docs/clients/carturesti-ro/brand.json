@@ -44,14 +44,15 @@
     "cart_found": false
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/logo-833ab92b.png",
-    "source_url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/favicon.ico",
-    "width": 58,
-    "height": 64,
-    "display_width": 58,
-    "found_by": "icon",
+    "url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/logo-carturesti.png",
+    "source_url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/logo-carturesti.png",
+    "width": 120,
+    "height": 120,
+    "display_width": 84,
+    "found_by": "header",
     "recolored": false,
-    "light_parts": false
+    "light_parts": true,
+    "header_bg": "#71984a"
   },
   "banner": {
     "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/banner-ec10a34f.jpg",
@@ -139,7 +140,7 @@
   "fetch_log": [
     "403 https://carturesti.ro/Cărturești - Librărie Online - Carte Ceai Muzică Film_files/angular-material.min.css"
   ],
-  "generated_at": "2026-11-26 14:50 UTC",
+  "generated_at": "2026-11-26 14:52 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cărturești!",

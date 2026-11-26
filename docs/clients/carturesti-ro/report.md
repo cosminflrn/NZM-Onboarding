@@ -1,10 +1,10 @@
 # Cărturești (carturesti.ro)
 
-Generat: 2026-11-26 14:50 UTC  ·  Platformă: wordpress
+Generat: 2026-11-26 14:52 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
-- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/logo-833ab92b.png
+- **Logo:** https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/logo-carturesti.png
 - **Banner:** https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/banner-ec10a34f.jpg
 - **Culori:** accent `#71984a` · închis `#000000` · deschis `#f1f5ed`
 - **Telefon:** 0376 448 000
