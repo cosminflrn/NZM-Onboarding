@@ -2,13 +2,7 @@
   <a href="https://cosminflrn.github.io/NZM-Onboarding/"><img src="docs/readme-hero.png" alt="NewsMAN Onboarding" width="100%"></a>
 </p>
 
-<p align="center">
-  <a href="https://cosminflrn.github.io/NZM-Onboarding/"><img src="docs/readme-app.png" alt="Aplicația NewsMAN Onboarding" width="100%"></a>
-</p>
-
-<p align="center">
-  <a href="https://cosminflrn.github.io/NZM-Onboarding/"><b>Deschide aplicația →</b></a>
-</p>
+<h3 align="center"><a href="https://cosminflrn.github.io/NZM-Onboarding/">Deschide aplicația →</a></h3>
 
 ### Cum se folosește
 
