@@ -1,5 +1,5 @@
 {
-  "url": "https://www.cabanova.com/p/ro/",
+  "url": "https://www.cabanova.com/p/ro/acasa.html",
   "domain": "cabanova.com",
   "slug": "cabanova-com",
   "platform": "necunoscut",
@@ -12,7 +12,7 @@
   },
   "socials": {},
   "links": {
-    "home": "https://www.cabanova.com/p/ro/",
+    "home": "https://www.cabanova.com/p/ro/acasa.html",
     "cart": "https://www.cabanova.com/",
     "terms": "https://www.cabanova.com/p/ro/termeni-si-conditii.html",
     "privacy": "https://www.cabanova.com/p/ro/politica-de-confidentialitate.html",
@@ -22,20 +22,17 @@
       {
         "label": "PREȚURI",
         "url": "https://www.cabanova.com/p/ro/preturi.html",
-        "image_from": "home",
-        "image": "https://www.cabanova.com/p/ro/files/im1i-32fvyp7qr8jj-g3yzo.jpg"
+        "image_from": "home"
       },
       {
         "label": "DOMENII",
         "url": "https://www.cabanova.com/p/ro/domenii.html",
-        "image_from": "home",
-        "image": "https://www.cabanova.com/p/ro/files/im1i-wgpiflduv4u-p7epu.jpg"
+        "image_from": "home"
       },
       {
         "label": "ACTIVARE SSL",
         "url": "https://www.cabanova.com/p/ro/activare-ssl-21122021.html",
-        "image_from": "home",
-        "image": "https://www.cabanova.com/p/ro/files/im1i-1ebeuxtyxtlq-mklur.jpg"
+        "image_from": "home"
       }
     ],
     "cart_found": false
@@ -50,26 +47,21 @@
     "recolored": false,
     "light_parts": false
   },
-  "banner": {
-    "url": "https://www.cabanova.com/p/ro/files/im1i-4fo1wj86l13t-7e65b.jpg",
-    "source_url": "https://www.cabanova.com/p/ro/files/im1i-4fo1wj86l13t-7e65b.jpg",
-    "width": 1920,
-    "height": 660
-  },
+  "banner": null,
   "colors": {
-    "accent": "#2b6aad",
-    "accent_original": "#2b6aad",
+    "accent": "#3c6ca8",
+    "accent_original": "#3c6ca8",
     "accent_text": "#ffffff",
-    "dark": "#363636",
-    "light": "#eaf0f7",
-    "muted": "#868686",
+    "dark": "#111922",
+    "light": "#ecf0f6",
+    "muted": "#70757a",
     "candidates": [
-      "#2b6aad",
-      "#5cafeb",
-      "#375066",
-      "#a5bfd2",
-      "#ad6e2b",
-      "#f26b41"
+      "#3c6ca8",
+      "#50b6e9",
+      "#ed3928",
+      "#2796ce",
+      "#e76049",
+      "#d8452c"
     ],
     "logo_colors": [
       "#3c6ca8"
@@ -80,20 +72,31 @@
     "discount_code": "",
     "sender_email": "",
     "sender_name": "Cabanova",
-    "form_type": "embed",
+    "form_type": "popup",
     "site_type": "auto"
   },
   "site_type": "non-ecommerce",
   "warnings": [
     "Telefon: nu am găsit niciun număr pe site.",
     "Email: nu am găsit nicio adresă de contact pe site.",
-    "Social media: nu am găsit niciun profil."
+    "Social media: nu am găsit niciun profil.",
+    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
   ],
   "fetch_log": [
-    "404 https://www.cabanova.com/sitemap.xml",
-    "404 https://www.cabanova.com/sitemap_index.xml"
+    "403 https://www.cabanova.com/p/ro/files/im1i-4fo1wj86l13t-7e65b.jpg",
+    "403 https://www.cabanova.com/p/ro/files/im1i-32fvyp7qr8jj-g3yzo.jpg",
+    "403 https://www.cabanova.com/p/ro/files/im1i-wgpiflduv4u-p7epu.jpg",
+    "403 https://www.cabanova.com/p/ro/files/im1i-1ebeuxtyxtlq-mklur.jpg",
+    "403 https://www.cabanova.com/p/ro/shared/html5/html5.css",
+    "403 https://www.cabanova.com/static/css/style2.css?rev=1",
+    "403 https://www.cabanova.com/sitemap.xml",
+    "403 https://www.cabanova.com/sitemap_index.xml",
+    "403 https://www.cabanova.com/static/images/close.png",
+    "403 https://www.cabanova.com/p/ro/files/im1i-2aay6a38ajhb-kqdkx.jpg",
+    "403 https://www.cabanova.com/p/ro/files/im1i-2fn4dg42aae7-78y3j.jpg",
+    "403 https://www.cabanova.com/p/ro/files/im1i-2mka8wmmjpcv-sb19s.jpg"
   ],
-  "generated_at": "2026-11-26 10:50 UTC",
+  "generated_at": "2026-11-26 11:00 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cabanova!",
