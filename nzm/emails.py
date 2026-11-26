@@ -29,7 +29,10 @@ def detect_ecommerce(brand):
         return True
     if any(not p.get("placeholder") for p in brand.get("products") or []):
         return True
-    return bool((brand.get("links") or {}).get("cart_found"))
+    if (brand.get("links") or {}).get("cart_found"):
+        return True
+    sig = brand.get("shop_signals") or {}
+    return sig.get("add_to_cart", 0) >= 1 or sig.get("prices", 0) >= 6
 
 
 def form_type(brand):

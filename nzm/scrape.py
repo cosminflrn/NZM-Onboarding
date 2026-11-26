@@ -21,6 +21,10 @@ SOCIAL_PATTERNS = {
     "twitter": re.compile(r"^https?://(www\.)?(twitter|x)\.com/(?!intent|share|home)[^?#]+", re.I),
 }
 
+PAY_BADGE_RE = re.compile(
+    r"apple.?pay|google.?pay|\bgpay|samsung.?pay|visa|master.?card|maestro|paypal|netopia|mobilpay|euplatesc|payu|"
+    r"stripe|revolut|klarna|tbi|anpc|\bsal\b|\bsol\b|trustpilot|trusted|gpec|ecommerce.?europe|"
+    r"fan.?courier|sameday|cargus|\bdpd\b|\bgls\b|easybox|google.?play|app.?store", re.I)
 BAD_IMG_WORDS = re.compile(
     r"anpc|\bsal\b|sal-|sol-|\bsol\b|netopia|mobilpay|visa|mastercard|maestro|payu|euplatesc|stripe|paypal|gls|fan-?courier|"
     r"sameday|cargus|dpd|trusted|badge|google-?play|app-?store|ecommerce-?europe|gpec|placeholder|loader|spinner|flag|"
@@ -45,7 +49,7 @@ MENU_SKIP_RE = re.compile(
     r"blog|despre|about|track|urmar|retur|faq|intrebari|ajutor|help|livrare|termen|confiden|gdpr|anpc|newsletter|compar|"
     r"magazin(e)?\b|store locator|limba|lang|lei\b|ron\b|eur\b", re.I)
 PRODUCT_HREF_RE = re.compile(r"/(produs|produse|product|products|p|item|shop)/[^/]+|-p\d+|/\d{3,}[-/]|-\d{3,}\.html$|\.html$|/pd/", re.I)
-NOT_PRODUCT_HREF_RE = re.compile(r"categor|/collections/[^/]+/?$|/c/|/brand|/blog|/tag/|/pagina|/page/|/cont|/account|/cart|/cos\b|/checkout|/wishlist|/compare|/search|\?|#", re.I)
+NOT_PRODUCT_HREF_RE = re.compile(r"categor|/collections/[^/]+/?$|/c/|/brand|/blog|/tag/|/pagina|/page/|/cont\b|/contul|/account|/cart\b|/cos\b|/checkout|/wishlist|/compare|/search|\?|#", re.I)
 
 
 def soup_of(html):
@@ -183,6 +187,8 @@ def fmt_price(price, currency=None, domain=""):
     return f"{sym}{intl}" if sym else f"{intl} {cur}".strip()
 
 
+PRICE_TEXT_RE = re.compile(r"\d{1,3}(?:[.\s]\d{3})*(?:[.,]\d{2})?\s?(?:lei|ron|€|eur)\b|(?:€|\$|£)\s?\d+(?:[.,]\d{2})?", re.I)
+
 # ----------------------------------------------------------------- main class
 
 CHALLENGE_RE = re.compile(
@@ -275,6 +281,11 @@ class Scraper:
         brand["options"] = {"discount_code": "", "sender_email": contact.get("email") or "", "sender_name": brand["name"],
                             "form_type": "popup", "site_type": "auto"}
         from .emails import detect_ecommerce
+        page_text = " ".join(self.soup.get_text(" ").split())
+        brand["shop_signals"] = {
+            "prices": len(PRICE_TEXT_RE.findall(page_text)),
+            "add_to_cart": len(re.findall(r"adaug[ăa] [îi]n co[șs]|add to (cart|bag|basket)|cump[ăa]r[ăa] acum|buy now", page_text, re.I)),
+        }
         brand["site_type"] = "ecommerce" if detect_ecommerce(brand) else "non-ecommerce"
         brand["lang_detected"] = self.detect_lang()
         if brand["site_type"] == "non-ecommerce" and getattr(self, "regular_menu", None):
@@ -541,6 +552,10 @@ class Scraper:
                 score -= 30
             if BAD_IMG_WORDS.search(u) or re.search(r"partener|partner|brands?/", u, re.I):
                 score -= 40
+            if PAY_BADGE_RE.search(chain + " " + u):
+                continue  # Apple Pay, Visa, ANPC… sit in "payment-logos" blocks but are never the brand
+            if re.search(r"logos\b", chain) and not re.search(r"(?<![a-z])logo(?!s)", chain):
+                score -= 30  # "partner-logos", "payment-logos": a strip of other brands' logos
             cands.append((score, u, "img"))
         for svg in self.soup.find_all("svg"):
             chain = classes_chain(svg, 4)
@@ -927,6 +942,41 @@ class Scraper:
                     "price": fmt_price(price, cur, self.domain) if price else ""}
         return None
 
+    def products_from_cards(self, limit):
+        out, seen = [], set()
+        for a in self.soup.find_all("a", href=True):
+            img = a.find("img")
+            u = absolute(self.ref, a["href"])
+            if not img or not u or not same_site(u, self.base) or u in seen or NOT_PRODUCT_HREF_RE.search(u):
+                continue
+            if in_tag(a, ["header", "nav", "footer"]):
+                continue
+            box, price = a, None
+            for _ in range(5):  # the card around the picture link
+                txt = " ".join(box.get_text(" ").split())
+                m = PRICE_TEXT_RE.search(txt)
+                if m and len(txt) < 500:
+                    price = m.group(0)
+                    break
+                if not box.parent or box.parent.name in ("body", "html"):
+                    break
+                box = box.parent
+            if not price:
+                continue
+            name = (img.get("alt") or a.get("title") or "").strip()
+            if len(name) < 4:
+                texts = [" ".join(x.get_text(" ").split()) for x in box.find_all(["a", "h2", "h3", "h4", "p", "span"])]
+                texts = [t for t in texts if 4 <= len(t) <= 120 and not PRICE_TEXT_RE.search(t)]
+                name = max(texts, key=len) if texts else ""
+            src = img_url(img, self.ref)
+            if not name or not src or BAD_IMG_WORDS.search(src):
+                continue
+            seen.add(u)
+            out.append({"name": name, "url": u, "image": src, "price": re.sub(r"\s+", " ", price)})
+            if len(out) >= limit:
+                break
+        return out
+
     def products_generic(self, limit):
         out = []
         # 1. products described on the homepage itself
@@ -937,7 +987,11 @@ class Scraper:
                             "price": fmt_price(price, cur, self.domain) if price else ""})
         if len(out) >= 3:
             return out
-        # 2. product-looking links on the homepage
+        # 2. product cards on the homepage: picture, name and price together (works for custom shops too)
+        out += self.products_from_cards(limit)
+        if len(out) >= 3:
+            return out
+        # 3. product-looking links on the homepage
         scored = {}
         for a, href, txt in self.all_links():
             u = absolute(self.ref, href)
