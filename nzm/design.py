@@ -331,11 +331,17 @@ class Kit:
                           "placeholder": True})
         cols = []
         for p in prods:
-            name = p["name"] if len(p["name"]) <= 55 else p["name"][:52].rstrip() + "…"
+            # at most ~2 lines in a 3-column row, so the buttons under the cards stay on one line
+            name = p["name"].strip()
+            if name.isupper():  # "SEMANATOARE PROSEM K" reads like shouting and takes a line more
+                name = name[:1] + name[1:].lower()
+            name = name if len(name) <= 38 else name[:36].rsplit(" ", 1)[0].rstrip(" |,-–") + "…"
             mods = [
                 m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600, 168,
                         href=p["url"], alt=name, padding=pad(0, 10, 12, 10), radius=RADIUS),
-                m_text(wrap([para(link(esc(name), p["url"], INK, underline=False), 15, INK, lh=1.4)]),
+                # short names get an empty second line, so every card's button sits at the same height
+                m_text(wrap([para(link(esc(name), p["url"], INK, underline=False) + ("<br/>&nbsp;" if len(name) <= 20 else ""),
+                                  15, INK, lh=1.4)]),
                        padding=pad(0, 10, 4, 10), link_color=INK),
             ]
             if all(q.get("price") for q in prods):  # prices only when every card has one, so the row stays even
@@ -348,11 +354,12 @@ class Kit:
 
     def _card_row(self, cols, top=22, bottom=22, tint=None):
         """Columns as soft cards with white gutters: rounded pictures stand out even on white product shots."""
-        r = row(cols, bg=WHITE, col_pad=pad(top, 2, bottom, 2), grid=[12 // len(cols)] * len(cols),
-                col_style={"background-color": tint or CARD_BG, "border-left": "6px solid #ffffff",
-                           "border-right": "6px solid #ffffff"})
-        r["columns"][0]["style"]["border-left"] = "28px solid #ffffff"
-        r["columns"][-1]["style"]["border-right"] = "28px solid #ffffff"
+        # the same white border on every side of every card: even gutters on desktop, and when the
+        # columns stack on a phone each card keeps equal margins (no lopsided first/last card)
+        edge = "12px solid #ffffff"
+        r = row(cols, bg=WHITE, col_pad=pad(top, 4, bottom, 4), grid=[12 // len(cols)] * len(cols),
+                col_style={"background-color": tint or CARD_BG, "border-left": edge, "border-right": edge,
+                           "border-top": "6px solid #ffffff", "border-bottom": "6px solid #ffffff"})
         return r
 
     def _text_cards(self, items, title):
@@ -441,12 +448,8 @@ class Kit:
                        color=self.accent),
                 m_text(wrap([para(esc(desc), 14, MUTED, lh=1.5)]), padding=pad(0, 14, 0, 14), color=MUTED),
             ])
-        gutter = "6px solid #ffffff"
-        cards = row(cols, bg=WHITE, col_pad=pad(26, 4, 26, 4), grid=[4, 4, 4],
-                    col_style={"background-color": tint, "border-left": gutter, "border-right": gutter})
-        cards["columns"][0]["style"]["border-left"] = "28px solid #ffffff"    # same side margin as the text above
-        cards["columns"][-1]["style"]["border-right"] = "28px solid #ffffff"
-        return [row([[m_spacer(12)]], bg=WHITE), cards, row([[m_spacer(8)]], bg=WHITE)]
+        cards = self._card_row(cols, top=26, bottom=26, tint=tint)
+        return [row([[m_spacer(6)]], bg=WHITE), cards, row([[m_spacer(4)]], bg=WHITE)]
 
     def social_cta(self):
         """Big Beefree social icons: the networks' own colours, or dark ones on a very colourful brand."""

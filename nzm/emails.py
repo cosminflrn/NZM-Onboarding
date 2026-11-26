@@ -228,9 +228,9 @@ def article_block(k, item):
     text = item.get("desc") or f"Află tot ce trebuie să știi despre {label.lower()} – pe scurt, direct pe site-ul nostru."
     return D.row([[
         D.m_image(pic, 1200, 700, D.WIDTH - 64, href=item["url"], alt=label, padding=D.pad(28, 32, 16, 32), radius=D.RADIUS),
-        D.m_text(D.wrap([D.para(D.esc(label), 22, D.INK, weight="bold", lh=1.3, align="left")]), padding=D.pad(0, 32, 6, 32)),
-        D.m_text(D.wrap([D.para(D.esc(text), 16, D.MUTED, lh=1.6, align="left")]), padding=D.pad(0, 32, 10, 32), color=D.MUTED),
-        D.m_button(f"Descoperă {label.lower()} →", item["url"], k.accent, "#ffffff", size=15, align="left",
+        D.m_text(D.wrap([D.para(D.esc(label), 22, D.INK, weight="bold", lh=1.3)]), padding=D.pad(0, 40, 6, 40)),
+        D.m_text(D.wrap([D.para(D.esc(text), 16, D.MUTED, lh=1.6)]), padding=D.pad(0, 40, 10, 40), color=D.MUTED),
+        D.m_button(f"Descoperă {label.lower()} →", item["url"], k.accent, "#ffffff", size=15,
                    padding=D.pad(4, 32, 12, 32)),
     ]], bg=D.WHITE)
 

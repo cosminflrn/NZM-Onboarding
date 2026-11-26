@@ -74,12 +74,13 @@
     const rows = (page.rows || []).map((r) => {
       const rs = (r.content || {}).style || {};
       const cols = (r.columns || []).map((c) =>
-        `<div style="flex:${c["grid-columns"] || 12};min-width:0;${css(c.style)}">${(c.modules || []).map((m) => module(m, ctx)).join("")}</div>`).join("");
-      return `<div style="${css((r.container || {}).style)}"><div style="max-width:${width};margin:0 auto;display:flex;${css(rs)};width:auto">${cols}</div></div>`;
+        `<div class="bp-col" style="flex:${c["grid-columns"] || 12};min-width:0;${css(c.style)}">${(c.modules || []).map((m) => module(m, ctx)).join("")}</div>`).join("");
+      return `<div style="${css((r.container || {}).style)}"><div class="bp-row${((r.content || {}).computedStyle || {}).rowColStackOnMobile === false ? "" : " bp-stack"}" style="max-width:${width};margin:0 auto;display:flex;${css(rs)};width:auto">${cols}</div></div>`;
     }).join("");
     const fonts = (body.webFonts || []).filter((f) => f.url).map((f) => `<link rel="stylesheet" href="${esc(f.url)}">`).join("");
     return fonts + `<div class="bp" style="${css((body.container || {}).style)};${css(content.style)};padding:10px 0">
-      <style>.bp p{margin:0}.bp input[type=checkbox]{width:auto!important}.bp .bp-text a{color:var(--bp-link)}.bp img{border:0}</style>${rows}</div>`;
+      <style>.bp p{margin:0}.bp input[type=checkbox]{width:auto!important}.bp .bp-text a{color:var(--bp-link)}.bp img{border:0}
+      @media (max-width:620px){.bp .bp-stack{flex-direction:column}}</style>${rows}</div>`;
   }
 
   root.BeePreview = { render };

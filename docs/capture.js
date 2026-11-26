@@ -68,7 +68,8 @@
   document.querySelectorAll("svg image[href]").forEach((el) => add(el.getAttribute("href")));
   for (let i = 0; i < imgs.length; i += 6) await Promise.all(imgs.slice(i, i + 6).map(getImage));
 
-  const data = { type: "nzm-capture", url: location.href.split("#")[0], items };
+  // stub: true when the bookmark is the self-updating one (it loads this file fresh every time)
+  const data = { type: "nzm-capture", url: location.href.split("#")[0], items, v: 3, stub: !!window.__nzmStub };
   const n = Object.keys(items).length;
   let delivered = false;
   const send = () => { try { if (app && !app.closed) app.postMessage(data, APP); } catch (e) {} };

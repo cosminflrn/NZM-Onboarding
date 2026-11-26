@@ -104,6 +104,10 @@
   dialog .bar .push { margin-left:auto; }
   dialog .subj { padding:8px 16px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--line); }
   dialog .view { height:calc(92vh - 100px); overflow:hidden; background:#fff; }
+  dialog .view .phone { width:390px; height:calc(100% - 32px); margin:16px auto; border:10px solid #1d1d21; border-radius:36px;
+    overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.25); animation:pop .3s ease; }
+  dialog .view:has(.phone) { background:#ececf0; }
+  .seg.dev button { display:inline-flex; align-items:center; gap:5px; } .seg.dev svg.i { width:14px; height:14px; }
   .grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; padding:16px 18px; }
   .grid h4 { grid-column:1/-1; margin:10px 0 0; font-size:14px; border-bottom:1px solid var(--line); padding-bottom:4px; }
   .grid .w2 { grid-column:span 2; } .grid .w4 { grid-column:1/-1; }
@@ -181,7 +185,7 @@
     <details class="blocked" id="blockedHelp">
       <summary>Site-ul refuză citirea automată? Preia-l din browserul tău</summary>
       <div class="bl-body">
-        <div class="bl-step"><b>1.</b> Trage butonul acesta în bara de favorite (o singură dată):
+        <div class="bl-step"><b>1.</b> Trage butonul acesta în bara de favorite (o singură dată; se actualizează singur):
           <a class="bm" id="bmLink" href="#" onclick="return false" draggable="true"><img src="favicon.ico" alt="">NewsMAN Onboarding</a></div>
         <div class="bl-step"><b>2.</b> Deschide site-ul clientului și apasă butonul din bara de favorite. Pagina se preia și apare aici, gata de generat.</div>
         <div class="bl-step"><b>Rezervă:</b> pe site-ul clientului apasă <b>Ctrl+S</b> („Pagină web, doar HTML”), apoi
@@ -242,7 +246,7 @@
   <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></symbol>
   <symbol id="i-popup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="8" width="10" height="8" rx="1.5"/></symbol>
   <symbol id="i-embed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10"/><rect x="7" y="15" width="10" height="3" rx="1"/></symbol>
-  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-desktop" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
 </svg>
 
 <script src="config.js"></script>
@@ -433,6 +437,9 @@ function validCapture(d) {
 window.addEventListener("message", (e) => {
   if (!validCapture(e.data)) return;
   setCapture({ url: e.data.url, items: e.data.items });
+  if (!e.data.stub) {
+    $("capText").textContent += " Butonul tău din bara de favorite e o versiune veche: trage-l din nou o dată (de acum se actualizează singur).";
+  }
   try { e.source && e.source.postMessage("nzm-received", e.origin); } catch {}
 });
 if (location.hash === "#capture") {
@@ -466,7 +473,7 @@ async function initBookmark() {
     // the copy embedded in it is only a fallback for sites that block outside scripts
     const code = (await (await fetch("capture.js", { cache: "no-store" })).text()).replace(/^\s*\/\/.*$/gm, "").replace(/\n\s*/g, "\n");
     const src = new URL("capture.js", location.href).href;
-    const stub = `(function(){var s=document.createElement("script");s.src=${JSON.stringify(src)}+"?v="+Date.now();` +
+    const stub = `(function(){window.__nzmStub=1;var s=document.createElement("script");s.src=${JSON.stringify(src)}+"?v="+Date.now();` +
       `s.onerror=function(){${code}};(document.head||document.documentElement).appendChild(s)})()`;
     $("bmLink").href = "javascript:" + encodeURIComponent(stub);
     $("bmLink").onclick = (e) => { e.preventDefault(); alert("Trage butonul în bara de favorite (Ctrl+Shift+B o afișează), apoi apasă-l pe site-ul clientului."); };
@@ -663,19 +670,19 @@ async function rescrape(slug) {
 }
 
 // =============================================================== preview
-function framed(view) {
+function framed(view, mobile) {
   const html = BeePreview.render(view.bee).split(PUBLIC_BASE).join(RAW_BASE);
   const bar = (w) => `<div style="height:14px;border-radius:7px;background:#dedee3;margin:14px 0;width:${w}"></div>`;
   const fake = ["92%", "76%", "84%", "60%", "88%", "70%"].map(bar).join("");
   if (view.frame === "popup") {
-    return `<style>html,body{overflow:hidden;height:100%}</style><div style="height:100vh;overflow:hidden;background:#f3f3f5;padding:40px 60px">${fake}${fake}${fake}</div>
+    return `<style>html,body{overflow:hidden;height:100%}</style><div style="height:100vh;overflow:hidden;background:#f3f3f5;padding:${mobile ? "24px 18px" : "40px 60px"}">${fake}${fake}${fake}</div>
       <div style="position:fixed;inset:0;background:rgba(17,17,20,.55);display:flex;align-items:center;justify-content:center;padding:20px">
         <div style="position:relative;width:${view.width || 620}px;max-width:100%;max-height:94vh;overflow:auto;padding:36px 0 32px;background:${view.bg || "#fff"};border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.35)">
           <div style="position:absolute;right:14px;top:10px;font:700 22px/1 Arial;color:${view.close || "#000"}">✕</div>${html}</div></div>`;
   }
   if (view.frame === "embed") {
-    return `<div style="background:#f3f3f5;min-height:100vh;padding:40px 60px">${fake}
-      <div style="background:#fff;border:1px solid #e6e6ea;border-radius:10px;padding:24px;margin:28px auto;max-width:${(view.width || 600) + 48}px">${html}</div>${fake}</div>`;
+    return `<div style="background:#f3f3f5;min-height:100vh;padding:${mobile ? "20px 12px" : "40px 60px"}">${fake}
+      <div style="background:#fff;border:1px solid #e6e6ea;border-radius:10px;padding:${mobile ? "14px 6px" : "24px"};margin:28px auto;max-width:${(view.width || 600) + 48}px">${html}</div>${fake}</div>`;
   }
   return html;
 }
@@ -700,19 +707,35 @@ async function preview(slug) {
   if (news) views.push({ name: "Newsletter", subj: "draft newsletter", bee: news.data });
   const tabs = $("tabs");
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
-    `<span class="push"></span><button onclick="pv.close()">${icon("x")}</button>`;
+    `<span class="push"></span><div class="seg dev" data-name="device"><button type="button" data-v="desktop" class="on">${icon("desktop")}Desktop</button>` +
+    `<button type="button" data-v="mobile">${icon("phone")}Mobil</button></div><button onclick="pv.close()">${icon("x")}</button>`;
+  let current = 0;
+  tabs.querySelectorAll(".dev button").forEach((b) => b.onclick = () => {
+    tabs.querySelectorAll(".dev button").forEach((x) => x.classList.toggle("on", x === b));
+    placePill(tabs.querySelector(".dev"));
+    show(current);
+  });
+  placePill(tabs.querySelector(".dev"));
   const show = (i) => {
+    current = i;
+    const mobile = tabs.querySelector(".dev button.on").dataset.v === "mobile";
     tabs.querySelectorAll(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.i === i));
     $("subj").textContent = "Subiect / nume: " + (views[i].subj || "");
     // rendered inside an iframe so the page's own styles do not leak into the preview
     const frame = document.createElement("iframe");
     frame.style.cssText = "width:100%;height:100%;border:0;display:block;background:#fff";
-    frame.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font-family:Arial,sans-serif}</style></head><body>${framed(views[i])}</body></html>`;
-    $("view").replaceChildren(frame);
+    frame.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;font-family:Arial,sans-serif}</style></head><body>${framed(views[i], mobile)}</body></html>`;
+    if (mobile) {
+      const phone = document.createElement("div");
+      phone.className = "phone";
+      phone.append(frame);
+      $("view").replaceChildren(phone);
+    } else $("view").replaceChildren(frame);
   };
   tabs.querySelectorAll(".tab").forEach((b) => b.onclick = () => show(+b.dataset.i));
   show(0);
   $("pv").showModal();
+  requestAnimationFrame(() => placePill(tabs.querySelector(".dev")));  // sizes are known only once the dialog is open
 }
 
 // =============================================================== edit
