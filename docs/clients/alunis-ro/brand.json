@@ -25,16 +25,19 @@
       {
         "label": "ATELIERE ȘI ACTIVITĂȚI",
         "url": "https://alunis.ro/ateliere-si-activitati/",
+        "image_from": "home",
         "image": "https://alunis.ro/wp-content/uploads/2026/10/carusel-homepage-3-1.jpg"
       },
       {
         "label": "DRUMEȚII & ATRACȚII",
         "url": "https://alunis.ro/drumetii-atractii/",
+        "image_from": "page",
         "image": "https://alunis.ro/wp-content/uploads/2026/06/Screenshot-2026-06-20-at-19.21.54-1-1-1.png"
       },
       {
         "label": "ECHIPA",
         "url": "https://alunis.ro/echipa/",
+        "image_from": "home",
         "image": "https://alunis.ro/wp-content/uploads/2026/10/carusel-home-2-1.jpg"
       }
     ],
@@ -81,9 +84,11 @@
     "sender_email": "rezervari@alunis.ro",
     "sender_name": "Aluniș",
     "form_type": "popup",
-    "site_type": "auto"
+    "site_type": "auto",
+    "lang": "auto"
   },
   "site_type": "non-ecommerce",
+  "lang_detected": "ro",
   "warnings": [
     "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică."
   ],
@@ -92,7 +97,7 @@
     "404 https://alunis.ro/sitemap.xml",
     "404 https://alunis.ro/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-26 13:51 UTC",
+  "generated_at": "2026-11-26 13:59 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Aluniș!",
