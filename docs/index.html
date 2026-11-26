@@ -113,7 +113,8 @@
   dialog .view .phone { width:390px; height:calc(100% - 32px); margin:16px auto; border:10px solid #1d1d21; border-radius:36px;
     overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.25); animation:pop .3s ease; }
   dialog .view:has(.phone) { background:#ececf0; overscroll-behavior:contain; }
-  body:has(dialog[open]) { overflow:hidden; }
+  dialog.pv[open] { display:flex; flex-direction:column; overscroll-behavior:contain; }
+  dialog.pv .view { flex:1; height:auto !important; min-height:0; }
   @media (max-width: 700px) {  /* already on a phone: no phone-in-a-phone, no toggle */
     dialog .bar .seg.dev { display:none; }
     dialog .view .phone { width:100%; height:100%; margin:0; border:0; border-radius:0; box-shadow:none; }
@@ -138,10 +139,8 @@
   .capbar { display:flex; align-items:center; gap:8px; margin-top:12px; padding:9px 12px; border-radius:10px; background:#e6f6ea; color:var(--ok); font-size:13px; animation:rise .3s ease; }
   .capbar[hidden] { display:none; }
   .capbar .link { margin-left:auto; border:0; background:transparent; padding:4px; color:inherit; }
-  details.blocked { margin-top:12px; border-top:1px solid var(--line); padding-top:10px; font-size:13px; }
-  details.blocked summary { cursor:pointer; color:var(--muted); list-style:none; display:inline-flex; align-items:center; gap:6px; }
-  details.blocked summary::before { content:"›"; display:inline-block; transition:transform .2s ease; font-size:16px; line-height:1; }
-  details.blocked[open] summary::before { transform:rotate(90deg); }
+  .blocked { margin-top:12px; border-top:1px solid var(--line); padding-top:12px; font-size:13px; }
+  .blocked .bl-title { color:var(--muted); user-select:none; }
   .bl-body { display:grid; gap:10px; padding:12px 0 2px 0; animation:rise .25s ease; }
   .bl-actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
   .bl-list { margin:0; padding-left:18px; color:var(--muted); line-height:1.6; font-size:13px; }
@@ -184,16 +183,16 @@
       <li>La <b>Permissions → Repository permissions</b>: <b>Actions: Read and write</b> și <b>Contents: Read and write</b>.</li>
       <li><b>Generate token</b>, copiază-l și pune-l aici:</li>
     </ol>
-    <div style="display:flex;gap:8px;max-width:640px"><input id="tok" type="password" placeholder="github_pat_…"><button class="primary" id="tokSave">Salvează</button></div>
+    <div style="display:flex;gap:8px;max-width:640px"><input id="tok" type="password" placeholder="github_pat_…" autocomplete="off" aria-label="Token GitHub"><button class="primary" id="tokSave">Salvează</button></div>
   </div>
 
   <h2>Client nou</h2>
   <div class="card">
     <form class="gen" id="gen">
-      <div><label>Link site *</label><input id="url" placeholder="https://magazin.ro" required></div>
-      <div><label>Nume brand (opțional)</label><input id="name" placeholder="din site"></div>
-      <div><label>Cod discount (opțional)</label><input id="discount" placeholder="ex. BINEAIVENIT10"></div>
-      <div><label>Email expeditor (opțional)</label><input id="sender" placeholder="din site"></div>
+      <div><label>Link site *</label><input id="url" placeholder="https://magazin.ro" autocomplete="url" required></div>
+      <div><label>Nume brand (opțional)</label><input id="name" placeholder="din site" autocomplete="off"></div>
+      <div><label>Cod discount (opțional)</label><input id="discount" placeholder="ex. BINEAIVENIT10" autocomplete="off"></div>
+      <div><label>Email expeditor (opțional)</label><input id="sender" type="email" placeholder="din site" autocomplete="off"></div>
       <button class="primary" type="submit" id="genBtn"><svg class="i"><use href="#i-spark"/></svg>Generează</button>
       <div class="switches">
         <div><label>Formular</label><div class="seg" data-name="form_type">
@@ -209,8 +208,8 @@
       <svg class="i"><use href="#i-check"/></svg><span id="capText"></span>
       <button type="button" class="link" id="capClear" title="Renunță la pagina preluată"><svg class="i"><use href="#i-x"/></svg></button>
     </div>
-    <details class="blocked" id="blockedHelp" open>
-      <summary>Site blocat? Preia-l din browserul tău</summary>
+    <div class="blocked" id="blockedHelp">
+      <div class="bl-title">Site blocat? Preia-l din browserul tău</div>
       <div class="bl-body">
         <div class="bl-actions">
           <a class="bm" id="bmLink" href="#" onclick="return false" draggable="true"><img src="favicon.ico" alt="">NZM Onboarding</a>
@@ -222,11 +221,11 @@
           <li>Nu merge? Pe site apasă <kbd>Ctrl</kbd>+<kbd>S</kbd> („doar HTML”) și încarcă fișierul.</li>
         </ol>
       </div>
-    </details>
+    </div>
   </div>
 
   <h2>Istoric
-    <span class="search" id="searchBox"><input id="filter" placeholder="caută…" autocomplete="off"><button type="button" id="clearFilter" title="Șterge căutarea"><svg class="i"><use href="#i-x"/></svg></button></span>
+    <span class="search" id="searchBox"><input id="filter" placeholder="caută…" autocomplete="off" aria-label="Caută în istoric"><button type="button" id="clearFilter" title="Șterge căutarea"><svg class="i"><use href="#i-x"/></svg></button></span>
     <span class="selbar" id="selbar">
       <span id="selCount">selectează max. 3</span>
       <button type="button" class="dl" id="dlSel" disabled><svg class="i"><use href="#i-dl"/></svg>Descarcă</button>
@@ -571,9 +570,21 @@ function retryJob(slug) { const j = JOBS[slug]; if (j && j.inputs) { delete JOBS
 function captureHelp(slug) {
   const j = JOBS[slug] || {};
   $("url").value = j.url || "";
-  $("blockedHelp").open = true;
-  $("blockedHelp").scrollIntoView({ behavior: "smooth", block: "center" });
+    $("blockedHelp").scrollIntoView({ behavior: "smooth", block: "center" });
 }
+
+// every <label> followed by its field gets for= (screen readers, and clicking the label focuses the field)
+let labelSeq = 0;
+function linkLabels(root = document) {
+  root.querySelectorAll("label:not([for])").forEach((l) => {
+    const f = l.querySelector("input,select,textarea") || (l.nextElementSibling && l.nextElementSibling.matches("input,select,textarea") ? l.nextElementSibling : null);
+    if (!f || l.contains(f)) return;
+    if (!f.id) f.id = "f" + ++labelSeq;
+    l.htmlFor = f.id;
+  });
+}
+linkLabels();
+new MutationObserver(() => linkLabels($("edForm"))).observe($("edForm"), { childList: true });
 
 // =============================================================== history
 let CLIENTS = [];
@@ -608,11 +619,13 @@ function render() {
         <button onclick="retryJob('${s}')">${icon("refresh")}Încearcă din nou</button>
         <button onclick="dropJob('${s}')">${icon("x")}Ascunde</button>` : ""}</div>
     </div>`);
-  const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));
+  const running = (c) => (JOBS[c.slug] || {}).state === "run" ? 1 : 0;
+  const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q))
+    .sort((a, b) => running(b) - running(a));  // a client being generated is always on top
   const cards = list.map((c) => `
     <div class="card client${SEL.has(c.slug) ? " sel" : ""}" id="c-${c.slug}">
       <button class="del" title="Șterge din istoric" onclick="askDelete(['${c.slug}'])">${icon("trash")}</button>
-      <input type="checkbox" class="pick" title="${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "Poți selecta maximum 3" : "Selectează"}" ${SEL.has(c.slug) ? "checked" : ""} ${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "disabled" : ""} onchange="toggleSel('${c.slug}', this.checked)">
+      <input type="checkbox" class="pick" aria-label="Selectează ${esc(c.domain)}" title="${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "Poți selecta maximum 3" : "Selectează"}" ${SEL.has(c.slug) ? "checked" : ""} ${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "disabled" : ""} onchange="toggleSel('${c.slug}', this.checked)">
       <a class="logo" href="${esc(c.url)}" target="_blank" title="Deschide site-ul">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</a>
       <div><h3><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a></h3>
         <div class="dom">${esc(fmtDate(c.generated_at))}</div>
@@ -797,13 +810,14 @@ async function preview(slug) {
   show(0);
   $("pv").showModal();
   requestAnimationFrame(() => placePill(tabs.querySelector(".dev")));  // sizes are known only once the dialog is open
-  $("view").onwheel = (e) => e.preventDefault();  // only the email itself scrolls (inside the frame)
+  // only the email itself scrolls (inside its frame); wheel anywhere else in the dialog or on the backdrop does nothing
+  if (!$("pv").dataset.wheel) { $("pv").addEventListener("wheel", (e) => e.preventDefault(), { passive: false }); $("pv").dataset.wheel = 1; }
 }
 
 // =============================================================== edit
 let EDIT = null;
 const F = (key, label, val, cls = "", type = "text") =>
-  `<div class="${cls}"><label>${label}</label><input name="${key}" type="${type}" value="${esc(val ?? "")}"></div>`;
+  `<div class="${cls}"><label>${label}</label><input name="${key}" type="${type}" value="${esc(val ?? "")}" autocomplete="off"></div>`;
 
 async function edit(slug) {
   if (!(await checkToken())) return;
@@ -828,7 +842,7 @@ async function edit(slug) {
       const val = esc((b.texts || {})[k] || ""), ph = esc((b.texts_default || {})[k] || "");
       return kind === "area"
         ? `<div class="${cls}"><label>${l}</label><textarea name="txt.${k}" placeholder="${ph}">${val}</textarea></div>`
-        : `<div class="${cls}"><label>${l}</label><input name="txt.${k}" value="${val}" placeholder="${ph}"></div>`;
+        : `<div class="${cls}"><label>${l}</label><input name="txt.${k}" value="${val}" placeholder="${ph}" autocomplete="off"></div>`;
     }),
     `<h4>Logo și banner</h4>`,
     F("logo.url", "Logo (URL PNG/JPG)", (b.logo || {}).url, "w2"), F("logo.display_width", "Lățime logo în email (px)", (b.logo || {}).display_width, "", "number"),
