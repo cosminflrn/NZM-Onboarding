@@ -2,75 +2,121 @@
   "url": "https://yesswimming.ro/",
   "domain": "yesswimming.ro",
   "slug": "yesswimming-ro",
-  "platform": "necunoscut",
-  "name": "Un moment, vă rog…",
+  "platform": "wordpress",
+  "name": "Club Sportiv Yes Swimming",
   "description": "",
   "contact": {
-    "phone": null,
-    "phone_href": null,
-    "email": null
+    "phone": "0739 652 493",
+    "phone_href": "tel:0739652493",
+    "email": "contact@yesswimming.ro"
   },
-  "socials": {},
+  "socials": {
+    "facebook": "https://www.facebook.com/clubsportivnatatie",
+    "instagram": "https://www.instagram.com/clubsportivnatatie",
+    "tiktok": "https://www.tiktok.com/@yesswimming",
+    "youtube": "https://www.youtube.com/@YesSwimming"
+  },
   "links": {
     "home": "https://yesswimming.ro/",
     "cart": "https://yesswimming.ro/",
     "terms": null,
-    "privacy": null,
-    "contact": null,
+    "privacy": "https://yesswimming.ro/politica-de-confidentialitate/",
+    "contact": "https://yesswimming.ro/contact/",
     "promo": null,
-    "menu": [],
+    "menu": [
+      {
+        "label": "PROGRAM",
+        "url": "https://yesswimming.ro/program/",
+        "image_from": "page",
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/01d4c43d-6855-42a7-8064-81c21e252869.png"
+      },
+      {
+        "label": "COTIZAȚII",
+        "url": "https://yesswimming.ro/cotizatii/",
+        "image_from": "home",
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/6b11bc4d-babb-413b-98c5-f673724a64ea.png"
+      },
+      {
+        "label": "ANTRENORI",
+        "url": "https://yesswimming.ro/antrenori/",
+        "image_from": "page",
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/Vlad-Anastasescu.png"
+      }
+    ],
     "cart_found": false
   },
-  "logo": null,
-  "banner": null,
+  "logo": {
+    "url": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+    "source_url": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+    "width": 487,
+    "height": 487,
+    "display_width": 120,
+    "found_by": "img",
+    "recolored": false,
+    "light_parts": false
+  },
+  "banner": {
+    "url": "https://yesswimming.ro/wp-content/uploads/2026/09/Bazin-Lia-Manoliu.png",
+    "source_url": "https://yesswimming.ro/wp-content/uploads/2026/09/Bazin-Lia-Manoliu.png",
+    "width": 1200,
+    "height": 799
+  },
   "colors": {
-    "accent": "#267a48",
-    "accent_original": "#267a48",
+    "accent": "#fc3030",
+    "accent_original": "#fc3030",
     "accent_text": "#ffffff",
-    "dark": "#112218",
-    "light": "#e9f2ed",
-    "muted": "#707a74",
+    "dark": "#0d1b2a",
+    "light": "#ffeaea",
+    "muted": "#6e767f",
     "candidates": [
-      "#267a48"
+      "#fc3030",
+      "#c8102e",
+      "#0d3151",
+      "#0785c6",
+      "#00a7d5",
+      "#fc6060"
     ],
-    "logo_colors": []
+    "logo_colors": [
+      "#fc3030",
+      "#fc4848",
+      "#fcd8d8",
+      "#fc6060",
+      "#fcc0c0",
+      "#fca8a8"
+    ]
   },
   "products": [],
   "options": {
     "discount_code": "",
     "sender_email": "contact@yesswimming.ro",
-    "sender_name": "Un moment, vă rog…",
+    "sender_name": "Club Sportiv Yes Swimming",
     "form_type": "popup",
     "site_type": "auto",
     "lang": "auto"
   },
   "site_type": "non-ecommerce",
-  "lang_detected": "en",
-  "warnings": [
-    "Meniu: nu am găsit linkuri de meniu; am pus doar HOME.",
-    "Telefon: nu am găsit niciun număr pe site.",
-    "Email: nu am găsit nicio adresă de contact pe site.",
-    "Social media: nu am găsit niciun profil.",
-    "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
-    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
+  "lang_detected": "ro",
+  "warnings": [],
+  "fetch_log": [
+    "404 https://yesswimming.ro/wp-json/wc/store/v1/products?per_page=40",
+    "404 https://yesswimming.ro/sitemap_index.xml"
   ],
-  "fetch_log": [],
-  "generated_at": "2026-11-26 13:58 UTC",
+  "generated_at": "2026-11-26 13:59 UTC",
   "texts_default": {
-    "hero_eyebrow": "Welcome",
-    "hero_title": "Welcome to the Un moment, vă rog… community!",
-    "hero_subtitle": "Thanks for subscribing. We're glad to have you with us.",
-    "intro": "From now on you'll be the first to hear what's new at Un moment, vă rog…. We only write when we have something truly useful or interesting for you.",
-    "cta_label": "Visit the website",
-    "products_title": "We picked a few products for you",
-    "cards_title": "What you'll find here",
-    "discount_note": "Use it at checkout.",
-    "form_title": "Subscribe to our newsletter",
-    "form_subtitle": "Be the first to hear what's new at Un moment, vă rog….",
-    "news_title": "Discover Un moment, vă rog…",
-    "news_subtitle": "We've gathered a few things worth a look.",
-    "newsletter_title": "News from Un moment, vă rog…",
-    "newsletter_subtitle": "Here's what we've prepared for you lately."
+    "hero_eyebrow": "Bine ai venit",
+    "hero_title": "Bine ai venit în comunitatea Club Sportiv Yes Swimming!",
+    "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
+    "intro": "De acum ești primul care află noutățile Club Sportiv Yes Swimming. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+    "cta_label": "Vizitează site-ul",
+    "products_title": "Am ales câteva produse pentru tine",
+    "cards_title": "Ce găsești la noi",
+    "discount_note": "Aplică-l la finalizarea comenzii.",
+    "form_title": "Abonează-te la newsletter",
+    "form_subtitle": "Fii primul care află noutățile Club Sportiv Yes Swimming.",
+    "news_title": "Descoperă Club Sportiv Yes Swimming",
+    "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
+    "newsletter_title": "Noutăți de la Club Sportiv Yes Swimming",
+    "newsletter_subtitle": "Iată ce am pregătit pentru tine în perioada aceasta."
   },
   "texts": {}
 }

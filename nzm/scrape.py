@@ -182,6 +182,22 @@ def fmt_price(price, currency=None, domain=""):
 
 # ----------------------------------------------------------------- main class
 
+CHALLENGE_RE = re.compile(
+    r"un moment,? v[ăa] rog|one moment,? please|just a moment|checking (your|if the site connection|the site connection)"
+    r"|attention required|please wait while|verifying you are human|ddos protection|security check|access denied"
+    r"|bot verification|enable javascript and cookies", re.I)
+
+
+def is_challenge(soup):
+    """Anti-bot interstitials (Cloudflare, Imunify360, Sucuri, SiteGround…): a title like 'One moment, please'
+    and almost no real content."""
+    title = (soup.title.get_text(" ", strip=True) if soup.title else "")
+    text = " ".join(soup.get_text(" ").split())
+    if CHALLENGE_RE.search(title):
+        return True
+    return len(text) < 600 and bool(CHALLENGE_RE.search(text)) and len(soup.find_all("a", href=True)) < 5
+
+
 class Scraper:
     def __init__(self, url, out_dir, public_base="", seed=None, fetcher=None):
         if not re.match(r"^https?://", url):
@@ -216,6 +232,10 @@ class Scraper:
                 raise RuntimeError(f"{self.start_url} nu permite citirea automată de pe serverele GitHub "
                                    "(răspuns 403 de la firewall-ul site-ului).")
             raise RuntimeError(f"Nu am putut deschide {self.start_url} ({'; '.join(self.f.log[-3:])})")
+        if is_challenge(soup):
+            # the site answered with an anti-bot "please wait" page instead of itself: never build a client from it
+            raise RuntimeError(f"{self.start_url} a răspuns cu o pagină anti-bot („un moment, vă rog”) în loc de site. "
+                               "Folosește „Preia din browser”.")
         p = urlparse(final)
         self.base = f"{p.scheme}://{p.netloc}/"
         # relative links/images resolve against the page itself (or its <base href>), not the domain root:
