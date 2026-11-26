@@ -39,30 +39,28 @@
         "image": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/scr-01.jpg"
       },
       {
-        "label": "SCOLARESTI",
-        "url": "https://carturesti.ro/raft/scolaresti-1141",
-        "image_from": "page",
-        "desc": "<p>La Cărturești, te ajutăm să crești, cu <strong>produse școlărești</strong> adaptate vârstei, materiei și bibliografiei școlare.",
-        "image": "https://media.dc5.ro/banner-images/206_D-sc-noi-26.jpg"
+        "label": "PROMOȚII ȘI SELECȚII",
+        "url": "https://carturesti.ro/offer",
+        "image_from": "home"
       }
     ],
     "cart_found": false
   },
   "logo": {
-    "url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/applePay.png",
-    "source_url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/applePay.png",
-    "width": 70,
-    "height": 45,
-    "display_width": 70,
-    "found_by": "img",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/logo-a5277946.png",
+    "source_url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/favicon.ico",
+    "width": 58,
+    "height": 64,
+    "display_width": 58,
+    "found_by": "icon",
     "recolored": false,
-    "light_parts": true
+    "light_parts": false
   },
   "banner": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/banner-f119ec06.jpg",
-    "source_url": "https://media.dc5.ro/banner-images/24766_banner_579da02d1fc9.jpg",
-    "width": 1170,
-    "height": 400
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/banner-3a823b0b.jpg",
+    "source_url": "https://media.dc5.ro/site-images/14673_Recomandaricusuflet_M_525X180%201.jpg",
+    "width": 525,
+    "height": 180
   },
   "colors": {
     "accent": "#dd2c00",
@@ -80,12 +78,7 @@
       "#f4511e"
     ],
     "logo_colors": [
-      "#000000",
-      "#848484",
-      "#545454",
-      "#e4e4e4",
-      "#9c9c9c",
-      "#cccccc"
+      "#6c9048"
     ]
   },
   "products": [],
@@ -97,24 +90,30 @@
     "site_type": "auto",
     "lang": "auto"
   },
-  "site_type": "non-ecommerce",
+  "shop_signals": {
+    "prices": 30,
+    "add_to_cart": 0
+  },
+  "site_type": "ecommerce",
   "lang_detected": "ro",
-  "warnings": [],
+  "warnings": [
+    "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
+  ],
   "fetch_log": [
     "403 https://carturesti.ro/wp-json/wc/store/v1/products?per_page=40"
   ],
-  "generated_at": "2026-11-26 14:17 UTC",
+  "generated_at": "2026-11-26 14:35 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cărturești!",
     "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
-    "intro": "Noul cărturești.ro este acum mai prietenos și mai plin de viață.\n\nDe acum ești primul care află noutățile Cărturești. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
-    "cta_label": "Vizitează site-ul",
+    "intro": "Noul cărturești.ro este acum mai prietenos și mai plin de viață.\n\nDe acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
+    "cta_label": "Intră în magazin",
     "products_title": "Am ales câteva produse pentru tine",
     "cards_title": "Ce găsești la noi",
     "discount_note": "Aplică-l la finalizarea comenzii.",
     "form_title": "Abonează-te la newsletter",
-    "form_subtitle": "Fii primul care află noutățile Cărturești.",
+    "form_subtitle": "Fii primul care află noutățile și ofertele Cărturești.",
     "news_title": "Descoperă Cărturești",
     "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
     "newsletter_title": "Noutăți de la Cărturești",

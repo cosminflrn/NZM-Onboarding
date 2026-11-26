@@ -1,0 +1,1875 @@
+{
+	"type": "newsman_template",
+	"format": 2,
+	"exported_at": 1795703734,
+	"data": {
+		"page": {
+			"body": {
+				"container": {
+					"style": {
+						"background-color": "#f4f4f5"
+					}
+				},
+				"content": {
+					"computedStyle": {
+						"linkColor": "#dd2c00",
+						"messageBackgroundColor": "transparent",
+						"messageWidth": "640px"
+					},
+					"style": {
+						"color": "#18181b",
+						"font-family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+					}
+				},
+				"type": "mailup-bee-page-properties",
+				"webFonts": []
+			},
+			"description": "",
+			"rows": [
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "ac348118-bc91-4752-9569-afa9b72f0e92",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "20px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "594c0a79-5455-4e69-8b85-23acf962aaae",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#f4f4f5",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "07b7e545-e2da-4d24-bdd0-24f4cf47a451"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "944fa9b5-c6d4-41be-bf02-c1f1e2dc3e75",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "8px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-image",
+									"locked": false,
+									"uuid": "91129b67-af7e-449c-a7ed-a02b74c34db8",
+									"descriptor": {
+										"image": {
+											"alt": "Cărturești",
+											"href": "https://carturesti.ro/",
+											"prefix": "",
+											"src": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/favicon.ico",
+											"target": "_blank",
+											"width": "58px",
+											"height": "64px"
+										},
+										"style": {
+											"width": "100%",
+											"border-radius": "0px",
+											"padding-top": "20px",
+											"padding-right": "24px",
+											"padding-bottom": "12px",
+											"padding-left": "24px"
+										},
+										"computedStyle": {
+											"class": "center fixedwidth",
+											"width": "58px",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "094f24bd-0345-4db8-8713-4146d003dc7d",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\" data-mce-style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\"><a href=\"https://carturesti.ro/offer/raftul-cu-preturi-super-prietenoase-5470\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">PREȚURI PRIETENOASE</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://carturesti.ro/raft/manga-1191097\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">MANGA</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://carturesti.ro/offer\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">PROMOȚII ȘI SELECȚII</a></span></p></div>",
+											"style": {
+												"color": "#52525b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#52525b"
+											}
+										},
+										"style": {
+											"padding-top": "4px",
+											"padding-right": "24px",
+											"padding-bottom": "16px",
+											"padding-left": "24px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "191b55b5-114f-4d03-8a50-73fd7e625e5b",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "1b205a09-c9eb-4022-92ab-cc41f53a9eac"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "b986bb19-35c0-43a4-bc3e-41ff8b38dcdf",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "28px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "dbe58249-5d6a-4e13-a010-a6360c2ff2ed",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">BINE AI VENIT</span></strong></p></div>",
+											"style": {
+												"color": "#ffffff",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#ffffff"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "40px",
+											"padding-bottom": "8px",
+											"padding-left": "40px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "22891b11-d649-44fd-ad42-600410540b8d",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Bine ai venit în comunitatea Cărturești!</span></strong></p></div>",
+											"style": {
+												"color": "#ffffff",
+												"font-family": "inherit",
+												"line-height": "120%"
+											},
+											"computedStyle": {
+												"linkColor": "#ffffff"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "40px",
+											"padding-bottom": "12px",
+											"padding-left": "40px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "1675029e-63a4-4773-8b5f-ef60e78837e8",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.</span></p></div>",
+											"style": {
+												"color": "#ffffff",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#ffffff"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "48px",
+											"padding-bottom": "8px",
+											"padding-left": "48px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "15f81672-1364-4da8-85c9-afc8e720d517",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "28px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "1408c26a-77aa-4b91-8ff2-eb87538b528a",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#dd2c00",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "6643ae70-91e3-448c-942b-64325175fd21"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "208c3fab-e049-46d7-a595-5d2bc6eb8a82",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;margin-bottom:14px;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Noul cărturești.ro este acum mai prietenos și mai plin de viață.</span></p><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">De acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "36px",
+											"padding-right": "40px",
+											"padding-bottom": "12px",
+											"padding-left": "40px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "06a802f8-ccf3-411f-9757-a3721163ac04",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "012bc65f-e94c-44b7-a831-22e02dffd23f"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "2b1072ab-8423-4179-a8f4-fb0781523637",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Am ales câteva produse pentru tine</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "36px",
+											"padding-right": "32px",
+											"padding-bottom": "16px",
+											"padding-left": "32px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "1e65f3bb-93f5-4af3-9f2a-ab83379dbda1",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "da516b90-3eac-41a9-93ed-1421ce4de811"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-image",
+									"locked": false,
+									"uuid": "c16a5a6b-1be7-498a-8811-b24e7904ce84",
+									"descriptor": {
+										"image": {
+											"alt": "Nume produs",
+											"href": "https://carturesti.ro/",
+											"prefix": "",
+											"src": "https://img.newsmanapp.com/i/b/901bd24ca743a8d7ea7d611c3e43c36e/28118/placeholder400x300.png",
+											"target": "_blank",
+											"width": "400px",
+											"height": "300px"
+										},
+										"style": {
+											"width": "100%",
+											"border-radius": "12px",
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "12px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"class": "center autowidth fullwidth",
+											"width": "640px",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "f386276f-17ba-4e2b-b7fc-c1e606041cb2",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://carturesti.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Nume produs</a><br/>&nbsp;</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "10px",
+											"padding-bottom": "4px",
+											"padding-left": "10px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "603c9148-06b2-409e-b825-a83a5ee44ec1",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#dd2c00;\" data-mce-style=\"font-size:16px;line-height:22px;color:#dd2c00;\">199,00 lei</span></strong></p></div>",
+											"style": {
+												"color": "#dd2c00",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#dd2c00"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "8px",
+											"padding-bottom": "4px",
+											"padding-left": "8px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "4b046c60-c6ce-415b-8df8-f745a2e8d0e9",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
+											"href": "https://carturesti.ro/",
+											"target": "_blank",
+											"style": {
+												"background-color": "transparent",
+												"border-top": "1px solid #e4e4e7",
+												"border-right": "1px solid #e4e4e7",
+												"border-bottom": "1px solid #e4e4e7",
+												"border-left": "1px solid #e4e4e7",
+												"border-radius": "999px",
+												"color": "#18181b",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "13px",
+												"font-weight": "600",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "8px",
+												"padding-bottom": "8px",
+												"padding-left": "16px",
+												"padding-right": "16px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "6px",
+											"padding-right": "8px",
+											"padding-bottom": "8px",
+											"padding-left": "8px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 35,
+											"width": 133,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "633689bf-4d6c-4707-82c9-d4ec7dee26e7",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "14px",
+								"padding-bottom": "12px",
+								"padding-left": "14px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-image",
+									"locked": false,
+									"uuid": "669f911b-6034-4bc3-92d2-9c0885721550",
+									"descriptor": {
+										"image": {
+											"alt": "Nume produs",
+											"href": "https://carturesti.ro/",
+											"prefix": "",
+											"src": "https://img.newsmanapp.com/i/b/901bd24ca743a8d7ea7d611c3e43c36e/28118/placeholder400x300.png",
+											"target": "_blank",
+											"width": "400px",
+											"height": "300px"
+										},
+										"style": {
+											"width": "100%",
+											"border-radius": "12px",
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "12px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"class": "center autowidth fullwidth",
+											"width": "640px",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "8d33803d-8123-485b-8252-5f717d0f8d2c",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://carturesti.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Nume produs</a><br/>&nbsp;</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "10px",
+											"padding-bottom": "4px",
+											"padding-left": "10px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "137586e8-c2ed-4830-9f88-3639a253b502",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#dd2c00;\" data-mce-style=\"font-size:16px;line-height:22px;color:#dd2c00;\">199,00 lei</span></strong></p></div>",
+											"style": {
+												"color": "#dd2c00",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#dd2c00"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "8px",
+											"padding-bottom": "4px",
+											"padding-left": "8px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "2d2b051d-cc64-406e-af6a-675f8e158368",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
+											"href": "https://carturesti.ro/",
+											"target": "_blank",
+											"style": {
+												"background-color": "transparent",
+												"border-top": "1px solid #e4e4e7",
+												"border-right": "1px solid #e4e4e7",
+												"border-bottom": "1px solid #e4e4e7",
+												"border-left": "1px solid #e4e4e7",
+												"border-radius": "999px",
+												"color": "#18181b",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "13px",
+												"font-weight": "600",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "8px",
+												"padding-bottom": "8px",
+												"padding-left": "16px",
+												"padding-right": "16px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "6px",
+											"padding-right": "8px",
+											"padding-bottom": "8px",
+											"padding-left": "8px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 35,
+											"width": 133,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "537f82fd-3fe0-4d9a-ae99-9ad17e9ff991",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "14px",
+								"padding-bottom": "12px",
+								"padding-left": "14px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-image",
+									"locked": false,
+									"uuid": "611eaead-20bd-4917-9b13-4cd31c93bc8c",
+									"descriptor": {
+										"image": {
+											"alt": "Nume produs",
+											"href": "https://carturesti.ro/",
+											"prefix": "",
+											"src": "https://img.newsmanapp.com/i/b/901bd24ca743a8d7ea7d611c3e43c36e/28118/placeholder400x300.png",
+											"target": "_blank",
+											"width": "400px",
+											"height": "300px"
+										},
+										"style": {
+											"width": "100%",
+											"border-radius": "12px",
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "12px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"class": "center autowidth fullwidth",
+											"width": "640px",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "d67035fc-372c-44e8-bacd-e6b9c0165a4f",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://carturesti.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Nume produs</a><br/>&nbsp;</span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "10px",
+											"padding-bottom": "4px",
+											"padding-left": "10px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "4b679b1c-911b-48f2-b1e8-fd520ddc4bf1",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#dd2c00;\" data-mce-style=\"font-size:16px;line-height:22px;color:#dd2c00;\">199,00 lei</span></strong></p></div>",
+											"style": {
+												"color": "#dd2c00",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#dd2c00"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "8px",
+											"padding-bottom": "4px",
+											"padding-left": "8px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "3fe839dd-726c-4b4e-9272-148686c8af84",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
+											"href": "https://carturesti.ro/",
+											"target": "_blank",
+											"style": {
+												"background-color": "transparent",
+												"border-top": "1px solid #e4e4e7",
+												"border-right": "1px solid #e4e4e7",
+												"border-bottom": "1px solid #e4e4e7",
+												"border-left": "1px solid #e4e4e7",
+												"border-radius": "999px",
+												"color": "#18181b",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "13px",
+												"font-weight": "600",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "8px",
+												"padding-bottom": "8px",
+												"padding-left": "16px",
+												"padding-right": "16px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "6px",
+											"padding-right": "8px",
+											"padding-bottom": "8px",
+											"padding-left": "8px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 35,
+											"width": 133,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "bc45312e-8662-4185-91c1-4efd4b49ec8d",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "14px",
+								"padding-bottom": "12px",
+								"padding-left": "14px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "three-columns-empty",
+					"uuid": "912a7158-3732-4bf7-9161-c9c8c0554f6f"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "bfe15c4a-08c2-4df3-9ef6-82951037930f",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "12px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "5f824951-22d4-4c10-b5dc-421c19181130",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "184cce10-64b7-424d-bf4f-fa5f99fdda47"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-button",
+									"locked": false,
+									"uuid": "7720ff9f-7fa2-47b6-850d-f0f4599c388d",
+									"descriptor": {
+										"button": {
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Intră în magazin</strong></p></div>",
+											"href": "https://carturesti.ro/",
+											"target": "_blank",
+											"style": {
+												"background-color": "#dd2c00",
+												"border-top": "0px solid transparent",
+												"border-right": "0px solid transparent",
+												"border-bottom": "0px solid transparent",
+												"border-left": "0px solid transparent",
+												"border-radius": "999px",
+												"color": "#ffffff",
+												"direction": "ltr",
+												"font-family": "inherit",
+												"font-size": "16px",
+												"font-weight": "700",
+												"line-height": "150%",
+												"max-width": "100%",
+												"padding-top": "12px",
+												"padding-bottom": "12px",
+												"padding-left": "28px",
+												"padding-right": "28px",
+												"width": "auto"
+											}
+										},
+										"style": {
+											"padding-top": "20px",
+											"padding-right": "24px",
+											"padding-bottom": "12px",
+											"padding-left": "24px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"height": 48,
+											"width": 209,
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "cce2c0c1-a780-44ae-bab8-096a68f26f88",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "50054521-dd96-4837-9513-566f276d26fc"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "4213c5f0-cb31-4604-aa4d-f9f9bb505ae3",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "12px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "dd496fd2-16e7-4c02-8ad5-b645f0a9ea98",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "5425b6e2-7905-4730-bdc6-0024abd57f8a"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "fb56f241-672f-4e0e-8ce8-17526bc09799",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#dd2c00;\" data-mce-style=\"font-size:16px;line-height:22px;color:#dd2c00;\">Oferte pentru abonați</span></strong></p></div>",
+											"style": {
+												"color": "#dd2c00",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#dd2c00"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "14px",
+											"padding-bottom": "6px",
+											"padding-left": "14px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "27c4eab0-8ea4-4f53-96cc-51f6c684d554",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Promoții trimise întâi pe email.</span></p></div>",
+											"style": {
+												"color": "#52525b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#52525b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "14px",
+											"padding-bottom": "0px",
+											"padding-left": "14px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "7e7b140d-50d2-4485-87cb-e699b09cdc13",
+							"style": {
+								"background-color": "#fceae6",
+								"border-top": "6px solid #ffffff",
+								"border-right": "12px solid #ffffff",
+								"border-bottom": "6px solid #ffffff",
+								"border-left": "12px solid #ffffff",
+								"padding-top": "26px",
+								"padding-right": "4px",
+								"padding-bottom": "26px",
+								"padding-left": "4px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "ee2fe857-5e0a-497f-be0c-139996e669b1",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#dd2c00;\" data-mce-style=\"font-size:16px;line-height:22px;color:#dd2c00;\">Noutăți în avans</span></strong></p></div>",
+											"style": {
+												"color": "#dd2c00",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#dd2c00"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "14px",
+											"padding-bottom": "6px",
+											"padding-left": "14px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "56a067fd-5ecf-4309-9805-e1fc62951d39",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Afli primul de produsele noi.</span></p></div>",
+											"style": {
+												"color": "#52525b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#52525b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "14px",
+											"padding-bottom": "0px",
+											"padding-left": "14px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "7f225c80-0cfe-49cf-bbb2-7794a6b7efb4",
+							"style": {
+								"background-color": "#fceae6",
+								"border-top": "6px solid #ffffff",
+								"border-right": "12px solid #ffffff",
+								"border-bottom": "6px solid #ffffff",
+								"border-left": "12px solid #ffffff",
+								"padding-top": "26px",
+								"padding-right": "4px",
+								"padding-bottom": "26px",
+								"padding-left": "4px"
+							}
+						},
+						{
+							"grid-columns": 4,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "3164a2e4-ed2f-43b2-85f8-d8fbf993a53c",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#dd2c00;\" data-mce-style=\"font-size:16px;line-height:22px;color:#dd2c00;\">Idei și inspirație</span></strong></p></div>",
+											"style": {
+												"color": "#dd2c00",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#dd2c00"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "14px",
+											"padding-bottom": "6px",
+											"padding-left": "14px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "d3d80ce6-e772-4965-a868-ecbf20826c93",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Recomandări alese pentru tine.</span></p></div>",
+											"style": {
+												"color": "#52525b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#52525b"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "14px",
+											"padding-bottom": "0px",
+											"padding-left": "14px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "9c7df4e2-c2d4-4b29-a90d-f29c3bdfd396",
+							"style": {
+								"background-color": "#fceae6",
+								"border-top": "6px solid #ffffff",
+								"border-right": "12px solid #ffffff",
+								"border-bottom": "6px solid #ffffff",
+								"border-left": "12px solid #ffffff",
+								"padding-top": "26px",
+								"padding-right": "4px",
+								"padding-bottom": "26px",
+								"padding-left": "4px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "three-columns-empty",
+					"uuid": "986a240a-68e9-4b08-a0f5-adffbe5e622d"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "acdafaf3-ffd3-4510-b665-2b4e171c9c4a",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "24px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "1c0a80e8-d035-46ed-b041-d79ee578c5bb",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "98c9b5b1-0f58-4ef7-9ee0-8b1eea1915a5"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "f90fbb4c-7280-4e2f-b2ef-cd4e57478328",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:22px;color:#52525b;\" data-mce-style=\"font-size:15px;line-height:22px;color:#52525b;\">Ai întrebări? Suntem aici pentru tine.</span></p><p style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:24px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:24px;color:#18181b;\"><a href=\"tel:0376448000\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">0376 448 000</a> &nbsp;·&nbsp; <a href=\"mailto:ecomenzi@carturesti.ro\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">ecomenzi@carturesti.ro</a></span></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
+										},
+										"style": {
+											"padding-top": "24px",
+											"padding-right": "32px",
+											"padding-bottom": "32px",
+											"padding-left": "32px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "c2742ef5-31ea-4117-87d5-099b0570057b",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#ffffff",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "45e729a8-b706-409c-8a0b-9186e3d90a16"
+				},
+				{
+					"columns": [
+						{
+							"grid-columns": 12,
+							"modules": [
+								{
+									"type": "mailup-bee-newsletter-modules-divider",
+									"locked": false,
+									"uuid": "6c0b40af-cc10-421c-a62a-9e38c794d53e",
+									"descriptor": {
+										"divider": {
+											"style": {
+												"border-top": "0px solid transparent",
+												"width": "100%",
+												"height": "12px"
+											}
+										},
+										"style": {
+											"padding-top": "0px",
+											"padding-right": "0px",
+											"padding-bottom": "0px",
+											"padding-left": "0px"
+										},
+										"computedStyle": {
+											"align": "center",
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-social",
+									"locked": false,
+									"uuid": "a237b9ac-8a9e-4b66-a21d-9d1209b7b411",
+									"descriptor": {
+										"iconsList": {
+											"icons": [
+												{
+													"id": "0e2e3aeb-13a2-4aa1-adb2-cb03562a58e9",
+													"type": "follow",
+													"name": "facebook",
+													"text": "",
+													"image": {
+														"alt": "Facebook",
+														"title": "Facebook",
+														"href": "https://www.facebook.com/CarturestiOnline",
+														"prefix": "",
+														"target": "_blank",
+														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/facebook@2x.png"
+													}
+												},
+												{
+													"id": "1e6f1619-efb8-4a47-889f-aca8cf177425",
+													"type": "follow",
+													"name": "instagram",
+													"text": "",
+													"image": {
+														"alt": "Instagram",
+														"title": "Instagram",
+														"href": "https://www.instagram.com/librariile_carturesti",
+														"prefix": "",
+														"target": "_blank",
+														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/instagram@2x.png"
+													}
+												},
+												{
+													"id": "4e06540f-7987-49e9-8500-ec816da6c201",
+													"type": "follow",
+													"name": "tiktok",
+													"text": "",
+													"image": {
+														"alt": "TikTok",
+														"title": "TikTok",
+														"href": "https://www.tiktok.com/@carturesti_official",
+														"prefix": "",
+														"target": "_blank",
+														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/tiktok@2x.png"
+													}
+												},
+												{
+													"id": "35a84af4-865f-4793-8723-139fc8cc78dc",
+													"type": "follow",
+													"name": "youtube",
+													"text": "",
+													"image": {
+														"alt": "YouTube",
+														"title": "YouTube",
+														"href": "https://www.youtube.com/user/CarturestiTube",
+														"prefix": "",
+														"target": "_blank",
+														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/youtube@2x.png"
+													}
+												}
+											]
+										},
+										"style": {
+											"padding-top": "12px",
+											"padding-right": "24px",
+											"padding-bottom": "8px",
+											"padding-left": "24px",
+											"text-align": "center"
+										},
+										"computedStyle": {
+											"iconsDefaultWidth": 32,
+											"padding": "0 6px 0 6px",
+											"width": 176,
+											"height": 48,
+											"hideContentOnMobile": false
+										}
+									}
+								},
+								{
+									"type": "mailup-bee-newsletter-modules-text",
+									"locked": false,
+									"uuid": "14bb677e-5ea7-40a4-bd26-df662bedb2c2",
+									"descriptor": {
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Cărturești. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://carturesti.ro/info/termeni-si-conditii\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://carturesti.ro/info/politica-confidentialitate\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://carturesti.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">carturesti.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
+											"style": {
+												"color": "#71717a",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#71717a"
+											}
+										},
+										"style": {
+											"padding-top": "8px",
+											"padding-right": "32px",
+											"padding-bottom": "32px",
+											"padding-left": "32px"
+										},
+										"computedStyle": {
+											"hideContentOnMobile": false
+										}
+									}
+								}
+							],
+							"uuid": "488d4f25-1fb4-460c-8cf1-3ed7a8b7bb03",
+							"style": {
+								"background-color": "transparent",
+								"border-top": "0px solid transparent",
+								"border-right": "0px solid transparent",
+								"border-bottom": "0px solid transparent",
+								"border-left": "0px solid transparent",
+								"padding-top": "0px",
+								"padding-right": "0px",
+								"padding-bottom": "0px",
+								"padding-left": "0px"
+							}
+						}
+					],
+					"container": {
+						"style": {
+							"background-color": "transparent",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat"
+						}
+					},
+					"content": {
+						"computedStyle": {
+							"hideContentOnDesktop": false,
+							"hideContentOnMobile": false,
+							"rowColStackOnMobile": true,
+							"rowReverseColStackOnMobile": false,
+							"verticalAlign": "top"
+						},
+						"style": {
+							"background-color": "#f4f4f5",
+							"background-image": "none",
+							"background-position": "top left",
+							"background-repeat": "no-repeat",
+							"color": "#18181b",
+							"width": "640px"
+						}
+					},
+					"empty": false,
+					"locked": false,
+					"synced": false,
+					"type": "one-column-empty",
+					"uuid": "cb99ed91-6f34-4aaf-916f-3f61c96c0746"
+				}
+			],
+			"template": {
+				"name": "template-base",
+				"type": "basic",
+				"version": "2.0.0"
+			},
+			"title": ""
+		},
+		"comments": {}
+	}
+}
