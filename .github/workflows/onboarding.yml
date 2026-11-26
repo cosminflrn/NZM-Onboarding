@@ -65,7 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 100
 
       - uses: actions/setup-python@v5
         with:
@@ -121,7 +121,7 @@ jobs:
           fi
 
       - name: Salvare
-        if: steps.gen.outcome != 'failure' || inputs.bundle != ''
+        if: always()
         env:
           SLUG: ${{ steps.gen.outputs.slug }}
           IN_BUNDLE: ${{ inputs.bundle }}
@@ -132,6 +132,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # the captured page was only needed for this run
           if [[ "$IN_BUNDLE" =~ ^inbox/[a-z0-9]{4,12}\.json$ && -f "$IN_BUNDLE" ]]; then git rm -q "$IN_BUNDLE"; fi
+          # leftovers of runs GitHub cancelled before they started (it keeps only one waiting run): gone after 30 min
+          now=$(date +%s)
+          for f in inbox/*.json; do
+            [ -f "$f" ] || continue
+            t=$(git log -1 --format=%ct -- "$f" 2>/dev/null); t=${t:-$now}
+            if [ $((now - t)) -gt 1800 ]; then git rm -q "$f"; fi
+          done
           if [ "$GEN_OUTCOME" != "failure" ]; then git add -A docs/clients; fi
           if git diff --cached --quiet; then echo "nimic de salvat"; exit 0; fi
           MSG="Onboarding: ${SLUG:-regenerare}"; [ -n "$IN_DELETE" ] && MSG="Ștergere din istoric: $IN_DELETE"
