@@ -1,6 +1,6 @@
 # techfarm.ro (techfarm.ro)
 
-Generat: 2026-11-25 15:45 UTC  ·  Platformă: gomag
+Generat: 2026-11-26 09:52 UTC  ·  Platformă: gomag
 
 ## Ce am găsit
 

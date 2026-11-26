@@ -485,16 +485,23 @@ async function runJob(inputs, cap) {
   const url = inputs.url;
   let slug = slugOf(url);
   inputs = { ...inputs, rid: Math.random().toString(36).slice(2, 8) };
-  delete inputs.bundle;
+  delete inputs.bundle; delete inputs.bundle_key;
   const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
   setJob(slug, { state: "run", text: cap ? "trimit pagina preluată" : "în curs", name: inputs.name || slug, url, inputs, cap });
   document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
   try {
     if (cap) {
+      // encrypted with a one-time key: the public repo only ever holds unreadable bytes
       const path = `inbox/${inputs.rid}.json`;
+      const key = crypto.getRandomValues(new Uint8Array(32)), iv = crypto.getRandomValues(new Uint8Array(12));
+      const ck = await crypto.subtle.importKey("raw", key, "AES-GCM", false, ["encrypt"]);
+      const enc = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, ck,
+        new TextEncoder().encode(JSON.stringify({ url: cap.url, items: cap.items }))));
+      const bytesB64 = (u8) => { let b = ""; for (let i = 0; i < u8.length; i += 0x8000) b += String.fromCharCode(...u8.subarray(i, i + 0x8000)); return btoa(b); };
       await gh(`/contents/${path}`, { method: "PUT", body: JSON.stringify({
-        message: `Pagină preluată ${domOf(url)}`, content: b64(JSON.stringify({ url: cap.url, items: cap.items })) }) });
+        message: `Pagină preluată ${domOf(url)}`, content: b64(JSON.stringify({ v: 1, iv: bytesB64(iv), data: bytesB64(enc) })) }) });
       inputs.bundle = path;
+      inputs.bundle_key = bytesB64(key);
       setJob(slug, { text: "în curs" });
     }
     await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs }) });

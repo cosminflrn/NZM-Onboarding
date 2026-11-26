@@ -216,6 +216,11 @@ class Scraper:
             raise RuntimeError(f"Nu am putut deschide {self.start_url} ({'; '.join(self.f.log[-3:])})")
         p = urlparse(final)
         self.base = f"{p.scheme}://{p.netloc}/"
+        # relative links/images resolve against the page itself (or its <base href>), not the domain root:
+        # sites living in a sub-folder (e.g. /p/ro/) would otherwise lose logo, links and pictures
+        base_tag = soup.find("base", href=True)
+        self.ref = urljoin(final, base_tag["href"]) if base_tag else final
+        self.home = final.split("#")[0].split("?")[0]
         self.domain = p.netloc.lower().removeprefix("www.")
         self.html = str(soup)
         self.soup = soup
@@ -224,7 +229,7 @@ class Scraper:
         self.platform = self.detect_platform()
 
         brand = {
-            "url": self.base,
+            "url": self.home,
             "domain": self.domain,
             "slug": re.sub(r"[^a-z0-9]+", "-", self.domain).strip("-"),
             "platform": self.platform,
@@ -266,7 +271,7 @@ class Scraper:
             return "merchantpro"
         if "prestashop" in h:
             return "prestashop"
-        if "mage/" in h or "magento" in h:
+        if re.search(r"magento|/static/(version\d+/)?frontend/|[\"'/]mage/(cookies|requirejs|apply)|mage-init", h):
             return "magento"
         if "route=product" in h or "catalog/view/theme" in h:
             return "opencart"
@@ -311,9 +316,9 @@ class Scraper:
         return out
 
     def links(self):
-        res = {"home": self.base, "cart": None, "terms": None, "privacy": None, "contact": None, "promo": None, "menu": []}
+        res = {"home": self.home, "cart": None, "terms": None, "privacy": None, "contact": None, "promo": None, "menu": []}
         for a, href, txt in self.all_links():
-            u = absolute(self.base, href)
+            u = absolute(self.ref, href)
             if not u or not same_site(u, self.base):
                 continue
             label = (txt or a.get("title") or "").strip()
@@ -341,7 +346,7 @@ class Scraper:
                 self.warnings.append("Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.")
         if not res["privacy"]:
             for a, href, txt in self.all_links():
-                u = absolute(self.base, href)
+                u = absolute(self.ref, href)
                 if u and same_site(u, self.base) and PRIVACY_RE.search(txt or ""):
                     res["privacy"] = u
                     break
@@ -358,7 +363,7 @@ class Scraper:
                 continue
             for a in cont.find_all("a", href=True):
                 label = re.sub(r"^[\s→›»>\-–•·|]+|[\s→›»>\-–•·|]+$", "", text_of(a))
-                u = absolute(self.base, a["href"])
+                u = absolute(self.ref, a["href"])
                 if not u or not same_site(u, self.base) or urlparse(u).path in ("", "/"):
                     continue
                 if not (2 <= len(label) <= 28) or MENU_SKIP_RE.search(label) or re.fullmatch(r"[\d\s.,]+", label):
@@ -376,7 +381,7 @@ class Scraper:
             if not promo_item:
                 promo_item = {"label": "REDUCERI", "url": promo}
                 for a, href, txt in self.all_links():
-                    if absolute(self.base, href) == promo and txt and len(txt) <= 28:
+                    if absolute(self.ref, href) == promo and txt and len(txt) <= 28:
                         promo_item["label"] = txt.upper()
                         break
         regular = [i for i in items if i is not promo_item][: (2 if promo_item else 3)]
@@ -458,11 +463,11 @@ class Scraper:
             if set(ld_type(d)) & {"organization", "store", "onlinestore", "localbusiness", "brand"}:
                 u = ld_image(d.get("logo"))
                 if u:
-                    cands.append((70, absolute(self.base, u), "json-ld"))
+                    cands.append((70, absolute(self.ref, u), "json-ld"))
         imgs = self.soup.find_all("img")
         total = max(1, len(imgs))
         for idx, img in enumerate(imgs):
-            u = img_url(img, self.base)
+            u = img_url(img, self.ref)
             if not u:
                 continue
             chain = classes_chain(img, 4) + " " + (img.get("alt") or "").lower() + " " + u.lower().split("/")[-1]
@@ -494,10 +499,10 @@ class Scraper:
                 cands.append((score, "inline-svg:" + markup, "inline-svg"))
         og = self.soup.find("meta", property="og:image")
         if og and "logo" in (og.get("content") or "").lower():
-            cands.append((40, absolute(self.base, og["content"]), "og:image"))
+            cands.append((40, absolute(self.ref, og["content"]), "og:image"))
         for rel in ("apple-touch-icon", "icon"):
             for l in self.soup.find_all("link", rel=lambda r: r and rel in (r if isinstance(r, list) else [r])):
-                cands.append((10, absolute(self.base, l.get("href")), rel))
+                cands.append((10, absolute(self.ref, l.get("href")), rel))
         cands = [c for c in cands if c[1]]
         cands.sort(key=lambda c: -c[0])
         return cands
@@ -607,7 +612,7 @@ class Scraper:
             if not pick:
                 # pictures loaded by JavaScript are invisible to us: borrow one from the homepage
                 if pool is None:
-                    pool = [u for u in self.page_images(self.soup, self.base)[:20] if self.good_image(u, 500, 300)]
+                    pool = [u for u in self.page_images(self.soup, self.ref)[:20] if self.good_image(u, 500, 300)]
                 pick = next((u for u in pool if u not in used), None)
             if pick:
                 used.add(pick)
@@ -625,26 +630,26 @@ class Scraper:
             chain = classes_chain(img, 6)
             if not hero_re.search(chain):
                 continue
-            u = img_url(img, self.base)
+            u = img_url(img, self.ref)
             if u and not BAD_IMG_WORDS.search(u) and "logo" not in u.lower():
                 cands.append((60 - min(order, 40) * 0.5, u))
         for pic in self.soup.find_all("source", srcset=True):
             if hero_re.search(classes_chain(pic, 6)):
-                u = absolute(self.base, best_from_srcset(pic["srcset"]))
+                u = absolute(self.ref, best_from_srcset(pic["srcset"]))
                 if u:
                     cands.append((58, u))
         for el in self.soup.find_all(style=re.compile(r"background(-image)?\s*:[^;]*url\(", re.I)):
             if hero_re.search(classes_chain(el, 3)):
                 m = re.search(r"url\(['\"]?([^'\")]+)", el["style"])
                 if m:
-                    cands.append((55, absolute(self.base, m.group(1))))
+                    cands.append((55, absolute(self.ref, m.group(1))))
         for el in self.soup.find_all(True, attrs={"data-bg": True}):
             if hero_re.search(classes_chain(el, 4)):
-                cands.append((57, absolute(self.base, el["data-bg"])))
+                cands.append((57, absolute(self.ref, el["data-bg"])))
         og = self.soup.find("meta", property="og:image")
         if og and og.get("content") and "logo" not in og["content"].lower():
-            cands.append((40, absolute(self.base, og["content"])))
-        for i, u in enumerate(self.page_images(self.soup, self.base)[:6]):
+            cands.append((40, absolute(self.ref, og["content"])))
+        for i, u in enumerate(self.page_images(self.soup, self.ref)[:6]):
             cands.append((30 - i, u))
         cands.sort(key=lambda c: -c[0])
         seen = set()
@@ -681,7 +686,7 @@ class Scraper:
             rel = l.get("rel") or []
             rel = rel if isinstance(rel, list) else [rel]
             if "stylesheet" in [r.lower() for r in rel] or (l.get("as") == "style"):
-                u = absolute(self.base, l["href"])
+                u = absolute(self.ref, l["href"])
                 if u and not re.search(r"fonts\.googleapis|font-awesome|fontawesome|icons?\.css|jquery-ui|swiper|slick|owl\.|animate|aos\.css", u, re.I):
                     links.append(u)
         # site stylesheets first
@@ -868,14 +873,14 @@ class Scraper:
         for d in self.ld:
             if "product" in ld_type(d) and d.get("name") and ld_image(d.get("image")) and isinstance(d.get("url"), str):
                 price, cur = ld_price(d)
-                out.append({"name": d["name"], "url": absolute(self.base, d["url"]), "image": absolute(self.base, ld_image(d["image"])),
+                out.append({"name": d["name"], "url": absolute(self.ref, d["url"]), "image": absolute(self.ref, ld_image(d["image"])),
                             "price": fmt_price(price, cur, self.domain) if price else ""})
         if len(out) >= 3:
             return out
         # 2. product-looking links on the homepage
         scored = {}
         for a, href, txt in self.all_links():
-            u = absolute(self.base, href)
+            u = absolute(self.ref, href)
             if not u or not same_site(u, self.base) or NOT_PRODUCT_HREF_RE.search(u) or urlparse(u).path in ("", "/"):
                 continue
             s = 0

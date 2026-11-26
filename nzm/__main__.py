@@ -96,6 +96,8 @@ def cmd_scrape(a):
         from .net import Fetcher
         with open(a.bundle, encoding="utf-8") as f:
             cap = json.load(f)
+        if "data" in cap:  # encrypted in the browser; the one-time key never lands in the repo or the logs
+            cap = decrypt_bundle(cap)
         fetcher = Fetcher(bundle=cap.get("items") or {})
         print(f"pagini preluate din browser: {len(fetcher.bundle)}")
     probe = Scraper(a.url, tmp, "", fetcher=fetcher)
@@ -129,6 +131,19 @@ def cmd_scrape(a):
         with open(os.environ["GITHUB_OUTPUT"], "a") as f:
             f.write(f"slug={slug}\nname={brand['name']}\n")
         print(f"::notice title=slug::{slug}")
+
+
+def decrypt_bundle(box):
+    import base64
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    key = os.environ.get("NZM_BUNDLE_KEY", "")
+    if not key and os.environ.get("GITHUB_EVENT_PATH"):
+        with open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8") as f:
+            key = ((json.load(f).get("inputs") or {}).get("bundle_key") or "")
+    if not key:
+        raise RuntimeError("Pagina preluată e criptată, dar lipsește cheia.")
+    raw = AESGCM(base64.b64decode(key)).decrypt(base64.b64decode(box["iv"]), base64.b64decode(box["data"]), None)
+    return json.loads(raw.decode("utf-8"))
 
 
 def cmd_regen(a):

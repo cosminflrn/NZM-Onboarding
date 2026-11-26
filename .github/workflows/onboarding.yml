@@ -30,6 +30,9 @@ on:
       bundle:
         description: Pagini preluate din browser (inbox/<id>.json, pus de pagină)
         required: false
+      bundle_key:
+        description: Cheie de unică folosință pentru pagina preluată (pusă de pagină, nu se afișează)
+        required: false
   push:
     branches: [main]
     paths:

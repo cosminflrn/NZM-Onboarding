@@ -56,8 +56,10 @@ def clean_description(desc, name):
     if not d or len(d) < 25 or re.search(r"lorem|ipsum|just another|wordpress|default", d, re.I):
         return ""
     m = re.match(r"(.{25,220}?[.!?])(\s|$)", d)
-    d = m.group(1) if m else (d[:200].rsplit(" ", 1)[0] + "…" if len(d) > 200 else d)
-    return d
+    if m:
+        return m.group(1)
+    # no full sentence: a description cut short (often broken quotes in the site's HTML) reads badly in an email
+    return ""
 
 
 def default_texts(brand, ecom):

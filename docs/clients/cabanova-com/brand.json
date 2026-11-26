@@ -1,8 +1,8 @@
 {
-  "url": "https://www.cabanova.com/",
+  "url": "https://www.cabanova.com/p/ro/",
   "domain": "cabanova.com",
   "slug": "cabanova-com",
-  "platform": "magento",
+  "platform": "necunoscut",
   "name": "Cabanova",
   "description": "Creează rapid și ușor un site gratuit folosind interfața simplă",
   "contact": {
@@ -12,46 +12,65 @@
   },
   "socials": {},
   "links": {
-    "home": "https://www.cabanova.com/",
-    "cart": "https://www.cabanova.com/checkout/cart/",
-    "terms": "https://www.cabanova.com/termeni-si-conditii.html",
-    "privacy": "https://www.cabanova.com/politica-de-confidentialitate.html",
-    "contact": "https://www.cabanova.com/contact.html",
-    "promo": "https://www.cabanova.com/black-friday.html",
+    "home": "https://www.cabanova.com/p/ro/",
+    "cart": "https://www.cabanova.com/",
+    "terms": "https://www.cabanova.com/p/ro/termeni-si-conditii.html",
+    "privacy": "https://www.cabanova.com/p/ro/politica-de-confidentialitate.html",
+    "contact": "https://www.cabanova.com/p/ro/contact.html",
+    "promo": "https://www.cabanova.com/p/ro/black-friday.html",
     "menu": [
       {
-        "label": "ACASĂ_SSL",
-        "url": "https://www.cabanova.com/acasa-ssl-10122021.html"
+        "label": "ACASĂ",
+        "url": "https://www.cabanova.com/p/ro/",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-32fvyp7qr8jj-g3yzo.jpg"
       },
       {
-        "label": "ACASĂ_OLD",
-        "url": "https://www.cabanova.com/acasa-20012021.html"
+        "label": "ACASĂ_SSL",
+        "url": "https://www.cabanova.com/p/ro/acasa-ssl-10122021.html",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-wgpiflduv4u-p7epu.jpg"
       },
       {
         "label": "BLACK FRIDAY",
-        "url": "https://www.cabanova.com/black-friday.html"
+        "url": "https://www.cabanova.com/p/ro/black-friday.html",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-3417ov3h4rli-tu1y0.jpg"
       }
     ],
     "cart_found": false
   },
-  "logo": null,
-  "banner": null,
+  "logo": {
+    "url": "https://www.cabanova.com/p/ro/files/im1i-304nmimgqynz-xtps0.jpg",
+    "source_url": "https://www.cabanova.com/p/ro/files/im1i-304nmimgqynz-xtps0.jpg",
+    "width": 152,
+    "height": 33,
+    "display_width": 152,
+    "found_by": "img",
+    "recolored": false,
+    "light_parts": false
+  },
+  "banner": {
+    "url": "https://www.cabanova.com/p/ro/files/im1i-4fo1wj86l13t-7e65b.jpg",
+    "source_url": "https://www.cabanova.com/p/ro/files/im1i-4fo1wj86l13t-7e65b.jpg",
+    "width": 1920,
+    "height": 660
+  },
   "colors": {
-    "accent": "#449ac5",
-    "accent_original": "#50b6e9",
+    "accent": "#2b6aad",
+    "accent_original": "#2b6aad",
     "accent_text": "#ffffff",
-    "dark": "#111c22",
-    "light": "#eef8fd",
-    "muted": "#70777a",
+    "dark": "#363636",
+    "light": "#eaf0f7",
+    "muted": "#868686",
     "candidates": [
-      "#50b6e9",
-      "#ed3928",
-      "#2796ce",
-      "#e76049",
-      "#d8452c",
-      "#4376ac"
+      "#2b6aad",
+      "#5cafeb",
+      "#375066",
+      "#a5bfd2",
+      "#ad6e2b",
+      "#f26b41"
     ],
-    "logo_colors": []
+    "logo_colors": [
+      "#3c6ca8"
+    ]
   },
   "products": [],
   "options": {
@@ -61,50 +80,28 @@
     "form_type": "embed",
     "site_type": "auto"
   },
-  "site_type": "ecommerce",
+  "site_type": "non-ecommerce",
   "warnings": [
-    "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
     "Telefon: nu am găsit niciun număr pe site.",
     "Email: nu am găsit nicio adresă de contact pe site.",
-    "Social media: nu am găsit niciun profil.",
-    "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
-    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.",
-    "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
+    "Social media: nu am găsit niciun profil."
   ],
   "fetch_log": [
-    "403 https://www.cabanova.com/files/im1i-303qazmbr94v-ihmsw.jpg",
-    "403 https://www.cabanova.com/shared/html5/html5.css",
-    "403 https://www.cabanova.com/static/css/style2.css?rev=1",
-    "403 https://www.cabanova.com/sitemap.xml",
-    "403 https://www.cabanova.com/sitemap_index.xml",
-    "403 https://www.cabanova.com/acasa.html",
-    "403 https://www.cabanova.com/acasa-ssl-10122021.html",
-    "403 https://www.cabanova.com/files/im1i-305h1oapr37j-mpj54.jpg",
-    "403 https://www.cabanova.com/files/im1i-306agtyyr7r3-8acgn.jpg",
-    "403 https://www.cabanova.com/files/im1i-3072tpgp7thb-8e4y5.jpg",
-    "403 https://www.cabanova.com/files/im1i-3087xz4m6ozj-mt54k.jpg",
-    "403 https://www.cabanova.com/files/im1i-2j6vmks82haq-pzuas.jpg",
-    "403 https://www.cabanova.com/files/im1i-2ljlhntfde6q-sal64.jpg",
-    "403 https://www.cabanova.com/files/im1i-32f4o3wiu5mn-2yqvj.jpg",
-    "403 https://www.cabanova.com/files/im1i-5jkn4xwb0lce-w1n9.jpg",
-    "403 https://www.cabanova.com/files/im1i-5kvc1amg7dam-7le84.jpg",
-    "403 https://www.cabanova.com/files/im1i-5lwzj3yzg7wu-yigdg.jpg",
-    "403 https://www.cabanova.com/files/im1i-5mxc8hcuu2oe-7k7q1.jpg",
-    "403 https://www.cabanova.com/acasa-20012021.html",
-    "403 https://www.cabanova.com/black-friday.html"
+    "404 https://www.cabanova.com/sitemap.xml",
+    "404 https://www.cabanova.com/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-26 09:49 UTC",
+  "generated_at": "2026-11-26 09:51 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cabanova!",
     "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
-    "intro": "Creează rapid și ușor un site gratuit folosind interfața simplă\n\nDe acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
-    "cta_label": "Intră în magazin",
+    "intro": "De acum ești primul care află noutățile Cabanova. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+    "cta_label": "Vizitează site-ul",
     "products_title": "Am ales câteva produse pentru tine",
     "cards_title": "Ce găsești la noi",
     "discount_note": "Aplică-l la finalizarea comenzii.",
     "form_title": "Abonează-te la newsletter",
-    "form_subtitle": "Fii primul care află noutățile și ofertele Cabanova.",
+    "form_subtitle": "Fii primul care află noutățile Cabanova.",
     "news_title": "Descoperă Cabanova",
     "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
     "newsletter_title": "Noutăți de la Cabanova",

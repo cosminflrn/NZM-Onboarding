@@ -1,64 +1,10 @@
 [
  {
-  "slug": "cabanova-com",
-  "name": "Cabanova",
-  "domain": "cabanova.com",
-  "url": "https://www.cabanova.com/",
-  "generated_at": "2026-11-26 09:49 UTC",
-  "logo": null,
-  "colors": {
-   "accent": "#449ac5",
-   "dark": "#111c22",
-   "light": "#eef8fd"
-  },
-  "warnings": [
-   "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
-   "Telefon: nu am găsit niciun număr pe site.",
-   "Email: nu am găsit nicio adresă de contact pe site.",
-   "Social media: nu am găsit niciun profil.",
-   "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
-   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.",
-   "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
-  ],
-  "products": 0,
-  "site_type": "ecommerce",
-  "form_type": "embed",
-  "files": [
-   "cabanova-com-automatizare-cos-abandonat.json",
-   "cabanova-com-formular-embed.json",
-   "cabanova-com-newsletter-bun-venit.json"
-  ]
- },
- {
-  "slug": "alunis-ro",
-  "name": "Aluniș",
-  "domain": "alunis.ro",
-  "url": "https://alunis.ro/",
-  "generated_at": "2026-11-25 15:45 UTC",
-  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
-  "colors": {
-   "accent": "#9e7e52",
-   "dark": "#221b11",
-   "light": "#f5f2ee"
-  },
-  "warnings": [
-   "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică."
-  ],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "files": [
-   "alunis-ro-automatizare-bun-venit.json",
-   "alunis-ro-formular-pop-up.json",
-   "alunis-ro-newsletter-noutati.json"
-  ]
- },
- {
   "slug": "techfarm-ro",
   "name": "techfarm.ro",
   "domain": "techfarm.ro",
   "url": "https://www.techfarm.ro/",
-  "generated_at": "2026-11-25 15:45 UTC",
+  "generated_at": "2026-11-26 09:52 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
   "colors": {
    "accent": "#a78a25",
@@ -80,7 +26,7 @@
   "name": "Club Sportiv Yes Swimming",
   "domain": "yesswimming.ro",
   "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-25 15:45 UTC",
+  "generated_at": "2026-11-26 09:52 UTC",
   "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
   "colors": {
    "accent": "#fc3030",
@@ -95,6 +41,56 @@
    "yesswimming-ro-automatizare-bun-venit.json",
    "yesswimming-ro-formular-pop-up.json",
    "yesswimming-ro-newsletter-noutati.json"
+  ]
+ },
+ {
+  "slug": "alunis-ro",
+  "name": "Aluniș",
+  "domain": "alunis.ro",
+  "url": "https://alunis.ro/",
+  "generated_at": "2026-11-26 09:51 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
+  "colors": {
+   "accent": "#9e7e52",
+   "dark": "#221b11",
+   "light": "#f5f2ee"
+  },
+  "warnings": [
+   "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "files": [
+   "alunis-ro-automatizare-bun-venit.json",
+   "alunis-ro-formular-pop-up.json",
+   "alunis-ro-newsletter-noutati.json"
+  ]
+ },
+ {
+  "slug": "cabanova-com",
+  "name": "Cabanova",
+  "domain": "cabanova.com",
+  "url": "https://www.cabanova.com/p/ro/",
+  "generated_at": "2026-11-26 09:51 UTC",
+  "logo": "https://www.cabanova.com/p/ro/files/im1i-304nmimgqynz-xtps0.jpg",
+  "colors": {
+   "accent": "#2b6aad",
+   "dark": "#363636",
+   "light": "#eaf0f7"
+  },
+  "warnings": [
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Social media: nu am găsit niciun profil."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "embed",
+  "files": [
+   "cabanova-com-automatizare-bun-venit.json",
+   "cabanova-com-formular-embed.json",
+   "cabanova-com-newsletter-noutati.json"
   ]
  }
 ]
