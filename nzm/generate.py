@@ -444,6 +444,29 @@ def verify_images(b):
         return b
     with ThreadPoolExecutor(8) as ex:
         status = dict(zip(urls, ex.map(_image_ok, urls)))
+    # some shops' CDNs refuse the image service but serve the picture to anyone else: use their own link then
+    from urllib.parse import parse_qs, urlparse as _up
+    direct = {}
+    for u, ok in status.items():
+        if not ok and WESERV in u:
+            src = (parse_qs(_up(u).query).get("url") or [""])[0]
+            if src and not src.startswith("http"):
+                src = "https://" + src
+            if src and re.search(r"\.(jpe?g|png|gif)(\?|$)", src, re.I) and _image_ok(src):
+                direct[u] = src
+                status[u] = True
+    if direct:
+        def swap(x):
+            return direct.get(x, x)
+        if b.get("banner"):
+            b["banner"]["url"] = swap(b["banner"]["url"])
+        if b.get("logo"):
+            b["logo"]["url"] = swap(b["logo"]["url"])
+        for p in b.get("products") or []:
+            p["image"] = swap(p.get("image"))
+        for m in (b.get("links") or {}).get("menu") or []:
+            if m.get("image"):
+                m["image"] = swap(m["image"])
     if status.get(ban.get("url")) is False:
         b["banner"] = None
     for m in (b.get("links") or {}).get("menu") or []:

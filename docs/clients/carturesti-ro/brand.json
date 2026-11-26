@@ -27,16 +27,13 @@
       {
         "label": "PREȚURI PRIETENOASE",
         "url": "https://carturesti.ro/offer/raftul-cu-preturi-super-prietenoase-5470",
-        "image_from": "page",
-        "desc": "Noul cărturești.ro este acum mai prietenos și mai plin de viață.",
-        "image": "https://media.dc5.ro/banner-images/21336_banner_7d9f9d1f4823.jpg"
+        "image_from": "home",
+        "image": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/scr-01.jpg"
       },
       {
         "label": "MANGA",
         "url": "https://carturesti.ro/raft/manga-1191097",
-        "image_from": "page",
-        "desc": "<p>Dacă te pasionează <strong>benzile desenate japoneze</strong>, locul tău este aici, în lumea Manga!",
-        "image": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/scr-01.jpg"
+        "image_from": "home"
       },
       {
         "label": "PROMOȚII ȘI SELECȚII",
@@ -47,7 +44,7 @@
     "cart_found": false
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/logo-a5277946.png",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/logo-833ab92b.png",
     "source_url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/favicon.ico",
     "width": 58,
     "height": 64,
@@ -57,17 +54,17 @@
     "light_parts": false
   },
   "banner": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/banner-3a823b0b.jpg",
-    "source_url": "https://media.dc5.ro/site-images/14673_Recomandaricusuflet_M_525X180%201.jpg",
-    "width": 525,
-    "height": 180
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/banner-ec10a34f.jpg",
+    "source_url": "https://media.dc5.ro/banner-images/24790_banner_851e9d34c424.jpg",
+    "width": 1170,
+    "height": 400
   },
   "colors": {
-    "accent": "#dd2c00",
-    "accent_original": "#dd2c00",
+    "accent": "#71984a",
+    "accent_original": "#71984a",
     "accent_text": "#ffffff",
     "dark": "#000000",
-    "light": "#fceae6",
+    "light": "#f1f5ed",
     "muted": "#666666",
     "candidates": [
       "#dd2c00",
@@ -81,14 +78,56 @@
       "#6c9048"
     ]
   },
-  "products": [],
+  "products": [
+    {
+      "name": "Cu toc sau fara",
+      "url": "https://carturesti.ro/carte/cu-toc-sau-fara-4975273204?p=3",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/product-de9cc751.jpg",
+      "price": "39,95 lei",
+      "source_image": "https://product-images.dc5.ro/4975273204-0-240.png"
+    },
+    {
+      "name": "Ce ramane din noi",
+      "url": "https://carturesti.ro/carte/ce-ramane-din-noi-5021019316?p=5",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/product-1508dfd1.jpg",
+      "price": "59,94 lei",
+      "source_image": "https://product-images.dc5.ro/5021019316-0-240.jpeg"
+    },
+    {
+      "name": "Despre memoriile femeii si alti dragoni",
+      "url": "https://carturesti.ro/carte/despre-memoriile-femeii-si-alti-dragoni-2270652835?p=4",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/product-fd52db19.jpg",
+      "price": "43,00 lei",
+      "source_image": "https://product-images.dc5.ro/2270652835-0-240.png"
+    },
+    {
+      "name": "Piesa de rezistenta",
+      "url": "https://carturesti.ro/carte/piesa-de-rezistenta-2663018526?p=5",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/product-063a5bf4.jpg",
+      "price": "48,00 lei",
+      "source_image": "https://product-images.dc5.ro/2663018526-0-240.jpeg"
+    },
+    {
+      "name": "Gene dominante",
+      "url": "https://carturesti.ro/carte/gene-dominante-1962781409?p=2",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/product-9d30c42b.jpg",
+      "price": "31,00 lei",
+      "source_image": "https://product-images.dc5.ro/1962781409-0-240.jpeg"
+    },
+    {
+      "name": "Resursa",
+      "url": "https://carturesti.ro/carte/resursa-2152332535?p=3",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/product-d90cbe7d.jpg",
+      "price": "37,00 lei",
+      "source_image": "https://product-images.dc5.ro/2152332535-0-240.jpeg"
+    }
+  ],
   "options": {
     "discount_code": "",
     "sender_email": "ecomenzi@carturesti.ro",
     "sender_name": "Cărturești",
     "form_type": "popup",
-    "site_type": "auto",
-    "lang": "auto"
+    "site_type": "auto"
   },
   "shop_signals": {
     "prices": 30,
@@ -96,13 +135,11 @@
   },
   "site_type": "ecommerce",
   "lang_detected": "ro",
-  "warnings": [
-    "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
-  ],
+  "warnings": [],
   "fetch_log": [
-    "403 https://carturesti.ro/wp-json/wc/store/v1/products?per_page=40"
+    "403 https://carturesti.ro/Cărturești - Librărie Online - Carte Ceai Muzică Film_files/angular-material.min.css"
   ],
-  "generated_at": "2026-11-26 14:35 UTC",
+  "generated_at": "2026-11-26 14:45 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cărturești!",

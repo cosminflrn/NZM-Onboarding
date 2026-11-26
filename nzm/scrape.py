@@ -107,7 +107,7 @@ def best_from_srcset(srcset):
 
 
 def img_url(tag, base):
-    for attr in ("data-src", "data-lazy-src", "data-original", "data-lazy", "data-srcset", "srcset", "src"):
+    for attr in ("data-src", "data-ng-src", "ng-src", "data-lazy-src", "data-original", "data-lazy", "data-srcset", "srcset", "src"):
         v = tag.get(attr)
         if not v or v.startswith("data:"):
             continue
@@ -565,6 +565,8 @@ class Scraper:
                 if "xmlns" not in markup[:200]:
                     markup = markup.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg"', 1)
                 cands.append((score, "inline-svg:" + markup, "inline-svg"))
+        for el in self.soup.find_all(attrs={"data-nzm-logo": True}):  # logo drawn from a style sheet (seen by the browser)
+            cands.append((80, absolute(self.ref, el["data-nzm-logo"]), "css-bg"))
         og = self.soup.find("meta", property="og:image")
         if og and "logo" in (og.get("content") or "").lower():
             cands.append((40, absolute(self.ref, og["content"]), "og:image"))
@@ -713,14 +715,17 @@ class Scraper:
                 u = absolute(self.ref, best_from_srcset(pic["srcset"]))
                 if u:
                     cands.append((58, u))
-        for el in self.soup.find_all(style=re.compile(r"background(-image)?\s*:[^;]*url\(", re.I)):
-            if hero_re.search(classes_chain(el, 3)):
-                m = re.search(r"url\(['\"]?([^'\")]+)", el["style"])
-                if m:
-                    cands.append((55, absolute(self.ref, m.group(1))))
-        for el in self.soup.find_all(True, attrs={"data-bg": True}):
-            if hero_re.search(classes_chain(el, 4)):
-                cands.append((57, absolute(self.ref, el["data-bg"])))
+        # pictures set as backgrounds (inline or measured in the browser): the first slider on the page wins
+        bg_order = 0
+        for el in self.soup.find_all(lambda t: t.has_attr("data-bg") or re.search(
+                r"background(-image)?\s*:[^;]*url\(", t.get("style") or "", re.I)):
+            if not hero_re.search(classes_chain(el, 4)):
+                continue
+            bg_order += 1
+            m = re.search(r"url\(['\"]?([^'\")]+)", el.get("style") or "")
+            u = el.get("data-bg") or (m.group(1) if m else None)
+            if u:
+                cands.append((57 - min(bg_order, 40) * 0.2, absolute(self.ref, u)))
         og = self.soup.find("meta", property="og:image")
         if og and og.get("content") and "logo" not in og["content"].lower():
             cands.append((40, absolute(self.ref, og["content"])))
@@ -777,6 +782,13 @@ class Scraper:
     def colors(self, logo_colors):
         scores = defaultdict(float)
         darks = defaultdict(float)
+        seen_on_screen = self.soup.find("meta", attrs={"name": "nzm-colors"})  # colours measured in the browser
+        if seen_on_screen:
+            for i, part in enumerate((seen_on_screen.get("content") or "").split(",")):
+                h = C.norm_hex(part.split(":")[0])
+                if h:
+                    # measured on the real page: worth more than anything guessed from style sheets
+                    scores[h] += (40, 14, 8)[i] if i < 3 else 4
         meta = self.soup.find("meta", attrs={"name": "theme-color"})
         if meta and C.norm_hex(meta.get("content")):
             scores[C.norm_hex(meta["content"])] += 8
@@ -947,13 +959,17 @@ class Scraper:
         for a in self.soup.find_all("a", href=True):
             img = a.find("img")
             u = absolute(self.ref, a["href"])
-            if not img or not u or not same_site(u, self.base) or u in seen or NOT_PRODUCT_HREF_RE.search(u):
+            if not img or not u or not same_site(u, self.base):
+                continue
+            u = u.split("#")[0]
+            if u in seen or NOT_PRODUCT_HREF_RE.search(u.split("?")[0]):  # tracking params (?p=1) are fine
                 continue
             if in_tag(a, ["header", "nav", "footer"]):
                 continue
             box, price = a, None
             for _ in range(5):  # the card around the picture link
                 txt = " ".join(box.get_text(" ").split())
+                txt = re.sub(r"(\d)\s+([.,]\d{2})\b", r"\1\2", txt)  # "43 .00 lei" (decimals in their own tag)
                 m = PRICE_TEXT_RE.search(txt)
                 if m and len(txt) < 500:
                     price = m.group(0)
@@ -972,7 +988,12 @@ class Scraper:
             if not name or not src or BAD_IMG_WORDS.search(src):
                 continue
             seen.add(u)
-            out.append({"name": name, "url": u, "image": src, "price": re.sub(r"\s+", " ", price)})
+            # a machine-readable amount when the shop gives one (content="43.00"), else the text
+            tag = box.find(attrs={"content": re.compile(r"^\d+(\.\d+)?$")}, class_=re.compile(r"pric|pret|suma|amount", re.I)) \
+                or box.find(attrs={"itemprop": "price"})
+            cur = "EUR" if "€" in price or "eur" in price.lower() else ("USD" if "$" in price else ("GBP" if "£" in price else "RON"))
+            num = tag.get("content") if tag else re.sub(r"[^\d.,]", "", price)
+            out.append({"name": name, "url": u, "image": src, "price": fmt_price(num, cur, self.domain) if num else ""})
             if len(out) >= limit:
                 break
         return out

@@ -45,8 +45,42 @@
     } catch (e) { /* cross-site image without CORS: the generator fetches it itself */ }
   };
 
-  // 1) the page exactly as the visitor sees it (scripts already ran)
+  // 1) the page exactly as the visitor sees it (scripts already ran), plus what only the browser knows:
+  //    pictures set from style sheets (logos, hero slides) and the colours really on screen
+  const cssUrl = (v) => { const m = /url\(["']?([^"')]+)["']?\)/.exec(v || ""); return m && !/^data:/.test(m[1]) ? abs(m[1]) : ""; };
+  const marks = [];
+  const mark = (el, attr, val) => { el.setAttribute(attr, val); marks.push([el, attr]); };
+  for (const el of document.querySelectorAll("body *")) {
+    const cs = getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden") continue;
+    const bg = cssUrl(cs.backgroundImage);
+    if (!bg) continue;
+    const r = el.getBoundingClientRect();
+    const tag = ((el.className && el.className.baseVal !== undefined ? el.className.baseVal : el.className) + " " + el.id).toLowerCase();
+    if (/logo|brand/.test(tag) && !el.querySelector("img,svg") && r.width >= 40 && r.top < 800) mark(el, "data-nzm-logo", bg);
+    else if (r.width >= 400 && r.height >= 150 && !el.hasAttribute("data-bg")) mark(el, "data-bg", bg);
+  }
+  const tally = {};
+  const hex = (c) => { const m = /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/.exec(c || ""); if (!m || (m[4] !== undefined && +m[4] < 0.5)) return "";
+    return "#" + [m[1], m[2], m[3]].map((x) => (+x).toString(16).padStart(2, "0")).join(""); };
+  const vivid = (h) => { if (!h) return false; const [r, g, b] = [1, 3, 5].map((i) => parseInt(h.substr(i, 2), 16)); const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+    return mx - mn > 40 && mx > 60; };
+  const addColor = (h, w) => { if (vivid(h)) tally[h] = (tally[h] || 0) + w; };
+  document.querySelectorAll("header, nav, [class*=header], [class*=navbar], [class*=top-bar], [class*=topbar]").forEach((el) => {
+    const r = el.getBoundingClientRect(); if (r.width > 600 && r.top < 300) addColor(hex(getComputedStyle(el).backgroundColor), 6); });
+  document.querySelectorAll("button, .btn, [class*=button], [class*=btn], a[class*=cta]").forEach((el) => {
+    const r = el.getBoundingClientRect(); if (r.width > 40 && r.height > 20 && r.top < 3000) addColor(hex(getComputedStyle(el).backgroundColor), 2); });
+  const linkTally = {};
+  document.querySelectorAll("a").forEach((el, i) => { const h = hex(getComputedStyle(el).color);
+    if (i < 300 && h && h !== "#0000ee" && h !== "#551a8b") linkTally[h] = (linkTally[h] || 0) + 1; });
+  Object.entries(linkTally).forEach(([h, n]) => addColor(h, Math.min(4, n * 0.1)));  // links count, but never outweigh the header
+  const colors = Object.entries(tally).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([h, w]) => h + ":" + Math.round(w));
+  const meta = document.createElement("meta");
+  meta.name = "nzm-colors"; meta.content = colors.join(",");
+  document.head.appendChild(meta);
   items[location.href.split("#")[0]] = { type: "text/html", final: location.href, text: "<!DOCTYPE html>" + document.documentElement.outerHTML };
+  meta.remove();
+  marks.forEach(([el, attr]) => el.removeAttribute(attr));  // leave the client's page exactly as it was
 
   // 2) pages the generator looks for: contact, terms, privacy, cart, about + product feeds and sitemaps
   const want = /contact|termen|condi|confiden|privac|gdpr|cookie|despre|about|cos|cart|basket/i;
