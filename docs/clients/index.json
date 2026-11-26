@@ -1,5 +1,28 @@
 [
  {
+  "slug": "yesswimming-ro",
+  "name": "Club Sportiv Yes Swimming",
+  "domain": "yesswimming.ro",
+  "url": "https://yesswimming.ro/",
+  "generated_at": "2026-11-26 13:37 UTC",
+  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
+  "colors": {
+   "accent": "#fc3030",
+   "dark": "#0d1b2a",
+   "light": "#ffeaea"
+  },
+  "warnings": [],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "files": [
+   "yesswimming-ro-automatizare-bun-venit.json",
+   "yesswimming-ro-formular-pop-up.json",
+   "yesswimming-ro-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "cabanova-com",
   "name": "Cabanova",
   "domain": "cabanova.com",
@@ -72,29 +95,6 @@
    "techfarm-ro-automatizare-cos-abandonat.json",
    "techfarm-ro-formular-pop-up.json",
    "techfarm-ro-newsletter-bun-venit.json"
-  ]
- },
- {
-  "slug": "yesswimming-ro",
-  "name": "Club Sportiv Yes Swimming",
-  "domain": "yesswimming.ro",
-  "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-26 13:14 UTC",
-  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
-  "colors": {
-   "accent": "#fc3030",
-   "dark": "#0d1b2a",
-   "light": "#ffeaea"
-  },
-  "warnings": [],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "lang": "ro",
-  "files": [
-   "yesswimming-ro-automatizare-bun-venit.json",
-   "yesswimming-ro-formular-pop-up.json",
-   "yesswimming-ro-newsletter-noutati.json"
   ]
  }
 ]
