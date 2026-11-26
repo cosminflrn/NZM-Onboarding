@@ -1,5 +1,35 @@
 [
  {
+  "slug": "cabanova-com",
+  "name": "Cabanova",
+  "domain": "cabanova.com",
+  "url": "https://www.cabanova.com/",
+  "generated_at": "2026-11-26 09:49 UTC",
+  "logo": null,
+  "colors": {
+   "accent": "#449ac5",
+   "dark": "#111c22",
+   "light": "#eef8fd"
+  },
+  "warnings": [
+   "Link coș: nu l-am găsit explicit pe site, am folosit adresa standard a platformei — verifică-l.",
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Social media: nu am găsit niciun profil.",
+   "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
+   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.",
+   "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
+  ],
+  "products": 0,
+  "site_type": "ecommerce",
+  "form_type": "embed",
+  "files": [
+   "cabanova-com-automatizare-cos-abandonat.json",
+   "cabanova-com-formular-embed.json",
+   "cabanova-com-newsletter-bun-venit.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
