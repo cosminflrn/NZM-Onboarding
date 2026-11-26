@@ -1,5 +1,35 @@
 [
  {
+  "slug": "yesswimming-ro",
+  "name": "Un moment, vă rog…",
+  "domain": "yesswimming.ro",
+  "url": "https://yesswimming.ro/",
+  "generated_at": "2026-11-26 13:58 UTC",
+  "logo": null,
+  "colors": {
+   "accent": "#267a48",
+   "dark": "#112218",
+   "light": "#e9f2ed"
+  },
+  "warnings": [
+   "Meniu: nu am găsit linkuri de meniu; am pus doar HOME.",
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Social media: nu am găsit niciun profil.",
+   "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
+   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "lang": "en",
+  "files": [
+   "yesswimming-ro-automatizare-bun-venit.json",
+   "yesswimming-ro-formular-pop-up.json",
+   "yesswimming-ro-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
@@ -72,29 +102,6 @@
    "techfarm-ro-automatizare-cos-abandonat.json",
    "techfarm-ro-formular-pop-up.json",
    "techfarm-ro-newsletter-bun-venit.json"
-  ]
- },
- {
-  "slug": "yesswimming-ro",
-  "name": "Club Sportiv Yes Swimming",
-  "domain": "yesswimming.ro",
-  "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-26 13:51 UTC",
-  "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
-  "colors": {
-   "accent": "#fc3030",
-   "dark": "#0d1b2a",
-   "light": "#ffeaea"
-  },
-  "warnings": [],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "lang": "ro",
-  "files": [
-   "yesswimming-ro-automatizare-bun-venit.json",
-   "yesswimming-ro-formular-pop-up.json",
-   "yesswimming-ro-newsletter-noutati.json"
   ]
  }
 ]

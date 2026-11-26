@@ -1,26 +1,31 @@
-# Club Sportiv Yes Swimming (yesswimming.ro)
+# Un moment, vă rog… (yesswimming.ro)
 
-Generat: 2026-11-26 13:51 UTC  ·  Platformă: wordpress
+Generat: 2026-11-26 13:58 UTC  ·  Platformă: necunoscut
 
 ## Ce am găsit
 
-- **Logo:** https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png
-- **Banner:** https://yesswimming.ro/wp-content/uploads/2026/09/Bazin-Lia-Manoliu.png
-- **Culori:** accent `#fc3030` · închis `#0d1b2a` · deschis `#ffeaea`
-- **Telefon:** 0739 652 493
-- **Email:** contact@yesswimming.ro
-- **Social:** [facebook](https://www.facebook.com/clubsportivnatatie), [instagram](https://www.instagram.com/clubsportivnatatie), [tiktok](https://www.tiktok.com/@yesswimming), [youtube](https://www.youtube.com/@YesSwimming)
-- **Meniu:** [PROGRAM](https://yesswimming.ro/program/), [COTIZAȚII](https://yesswimming.ro/cotizatii/), [ANTRENORI](https://yesswimming.ro/antrenori/)
-- **Coș:** https://yesswimming.ro/ · **Termeni:** — · **Confidențialitate:** https://yesswimming.ro/politica-de-confidentialitate/
+- **Logo:** — (placeholder)
+- **Banner:** — (doar blocul colorat)
+- **Culori:** accent `#267a48` · închis `#112218` · deschis `#e9f2ed`
+- **Telefon:** —
+- **Email:** —
+- **Social:** —
+- **Meniu:** —
+- **Coș:** https://yesswimming.ro/ · **Termeni:** — · **Confidențialitate:** —
 - **Produse:** — (placeholder)
 - **Tip site:** non-ecommerce (detectat: non-ecommerce) · **Formular:** popup
 - **Descriere site:** —
 - **Cod discount:** — (emailurile nu au discount)
-- **Expeditor automatizare:** Club Sportiv Yes Swimming <contact@yesswimming.ro>
+- **Expeditor automatizare:** Un moment, vă rog… <contact@yesswimming.ro>
 
 ## De verificat
 
-- nimic special
+- Meniu: nu am găsit linkuri de meniu; am pus doar HOME.
+- Telefon: nu am găsit niciun număr pe site.
+- Email: nu am găsit nicio adresă de contact pe site.
+- Social media: nu am găsit niciun profil.
+- Logo: nu am găsit logo-ul — am păstrat placeholderul din template.
+- Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.
 
 ## Fișiere
 

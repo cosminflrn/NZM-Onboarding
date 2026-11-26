@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795701097,
+	"exported_at": 1795701516,
 	"data": {
 		"page": {
 			"body": {
@@ -12,7 +12,7 @@
 				},
 				"content": {
 					"computedStyle": {
-						"linkColor": "#fc3030",
+						"linkColor": "#267a48",
 						"messageBackgroundColor": "transparent",
 						"messageWidth": "640px"
 					},
@@ -34,7 +34,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "c96cae2a-ee5e-4a4a-ab61-a4ebfc1e12d6",
+									"uuid": "7e59cdbf-dbcc-4c3b-af44-149e7631e6bd",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -56,7 +56,7 @@
 									}
 								}
 							],
-							"uuid": "fcd1ff86-3496-4b7a-80d2-00f2408b3b4c",
+							"uuid": "6c91bf89-e153-41b3-8ec4-4772534dfeaa",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -99,7 +99,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "b75d8799-7b5e-4473-b921-924960296c03"
+					"uuid": "1bc8c936-b195-4019-96bd-617f72e51643"
 				},
 				{
 					"columns": [
@@ -109,7 +109,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "deb78a2c-862d-4b1d-9c81-ce64e323122b",
+									"uuid": "6c38204f-1377-4645-99ab-dc1cc76094e0",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -131,30 +131,28 @@
 									}
 								},
 								{
-									"type": "mailup-bee-newsletter-modules-image",
+									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "02432f54-1a50-4d3c-b6c7-d62333ee3f17",
+									"uuid": "c577c340-0cb5-491e-abc0-bf0115b34eb2",
 									"descriptor": {
-										"image": {
-											"alt": "Club Sportiv Yes Swimming",
-											"href": "https://yesswimming.ro/",
-											"prefix": "",
-											"src": "https://images.weserv.nl/?url=https%3A%2F%2Fyesswimming.ro%2Fwp-content%2Fuploads%2F2026%2F09%2Flogo-yes-swimming.png&trim=10&w=600&output=png",
-											"target": "_blank",
-											"width": "487px",
-											"height": "487px"
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:35px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:35px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:35px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:35px;color:#18181b;\">Un moment, vă rog…</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
 										},
 										"style": {
-											"width": "100%",
-											"border-radius": "0px",
 											"padding-top": "20px",
 											"padding-right": "24px",
 											"padding-bottom": "12px",
 											"padding-left": "24px"
 										},
 										"computedStyle": {
-											"class": "center fixedwidth",
-											"width": "120px",
 											"hideContentOnMobile": false
 										}
 									}
@@ -162,7 +160,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "7678d503-b9d9-4abd-905c-045c5ee91cfa",
+									"uuid": "3596237c-0a4b-434b-b83c-23460a9a642a",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -184,7 +182,7 @@
 									}
 								}
 							],
-							"uuid": "9bad937b-f4e4-4b24-bd59-16e720f22b15",
+							"uuid": "2bb6190f-ca58-43a2-8496-b7f6e96f6a7d",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -227,7 +225,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "8cd5feba-a305-40a6-9cd1-ff1cbab0a214"
+					"uuid": "a3fc7546-1903-40e0-b55c-a6a313e9c04b"
 				},
 				{
 					"columns": [
@@ -237,7 +235,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "e9804d2c-1c60-43de-a848-78d64b43e5d3",
+									"uuid": "b89cf8b7-cb5d-4efd-a9cb-6ab5ee655a7b",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -261,7 +259,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "cf27dc78-5d40-4432-8051-397a1bffd0b2",
+									"uuid": "3e1ee40b-1e50-45a7-85c7-ff86d3ad196d",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">NEWSLETTER</span></strong></p></div>",
@@ -288,10 +286,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "cf3de0bf-d275-4885-91b7-03e8c30fd33d",
+									"uuid": "1270a633-efa2-4fdc-9573-37bfe775f2da",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Noutăți de la Club Sportiv Yes Swimming</span></strong></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">News from Un moment, vă rog…</span></strong></p></div>",
 											"style": {
 												"color": "#ffffff",
 												"font-family": "inherit",
@@ -315,10 +313,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "ea14e022-9ea9-4900-bf25-68718c86dfd7",
+									"uuid": "afa09789-1648-43fe-82c1-0b454bd1e115",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Iată ce am pregătit pentru tine în perioada aceasta.</span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Here's what we've prepared for you lately.</span></p></div>",
 											"style": {
 												"color": "#ffffff",
 												"font-family": "inherit",
@@ -342,7 +340,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "9a885626-1132-4bd3-9043-4b00cb4df00c",
+									"uuid": "31f3db46-a894-41ab-a94e-151bc2851a12",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -364,7 +362,7 @@
 									}
 								}
 							],
-							"uuid": "3cb43ee8-82a2-411f-8204-d289ba5e7508",
+							"uuid": "df093853-1745-4ddd-bdac-86be31dbcdb0",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -395,7 +393,7 @@
 							"verticalAlign": "top"
 						},
 						"style": {
-							"background-color": "#fc3030",
+							"background-color": "#267a48",
 							"background-image": "none",
 							"background-position": "top left",
 							"background-repeat": "no-repeat",
@@ -407,87 +405,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "6936edeb-7c4b-4273-886d-cc9d7fc1da56"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-image",
-									"locked": false,
-									"uuid": "777d8e31-d73e-476c-a032-87c5efdae354",
-									"descriptor": {
-										"image": {
-											"alt": "Club Sportiv Yes Swimming",
-											"href": "https://yesswimming.ro/",
-											"prefix": "",
-											"src": "https://images.weserv.nl/?url=https%3A%2F%2Fyesswimming.ro%2Fwp-content%2Fuploads%2F2026%2F09%2FBazin-Lia-Manoliu.png&w=1300&output=jpg&q=85",
-											"target": "_blank",
-											"width": "1200px",
-											"height": "799px"
-										},
-										"style": {
-											"width": "100%",
-											"border-radius": "0px 0px 12px 12px",
-											"padding-top": "0px",
-											"padding-right": "0px",
-											"padding-bottom": "0px",
-											"padding-left": "0px"
-										},
-										"computedStyle": {
-											"class": "center autowidth fullwidth",
-											"width": "640px",
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "3febed10-0b5b-48b7-97d6-755b185a4139",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "dc47f31e-1722-4490-addb-b8a1f838b45e"
+					"uuid": "6a40911c-5a02-4342-bd67-2da1765c37a1"
 				},
 				{
 					"columns": [
@@ -497,10 +415,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "ef2245ca-d7a6-4550-ab85-1fe43b3ed772",
+									"uuid": "ab246753-11c7-4b0b-aaa2-880d1e0c1af5",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Îți aducem pe scurt cele mai noi lucruri de la Club Sportiv Yes Swimming.</span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Here's a quick round-up of what's new at Un moment, vă rog….</span></p></div>",
 											"style": {
 												"color": "#18181b",
 												"font-family": "inherit",
@@ -522,7 +440,7 @@
 									}
 								}
 							],
-							"uuid": "f7fea753-5c52-4dd7-a499-34b6f670d9bc",
+							"uuid": "32b3b33f-fc61-4a91-9718-3868e672c3f4",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -565,548 +483,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "abe84f63-d85b-4d06-9206-3c8db74581b6"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-image",
-									"locked": false,
-									"uuid": "e213e2b5-bb26-4407-9549-009cb4604ada",
-									"descriptor": {
-										"image": {
-											"alt": "Program",
-											"href": "https://yesswimming.ro/program/",
-											"prefix": "",
-											"src": "https://images.weserv.nl/?url=https%3A%2F%2Fyesswimming.ro%2Fwp-content%2Fuploads%2F2026%2F09%2F01d4c43d-6855-42a7-8064-81c21e252869.png&w=600&h=400&fit=cover&a=attention&output=jpg&q=85",
-											"target": "_blank",
-											"width": "1200px",
-											"height": "700px"
-										},
-										"style": {
-											"width": "100%",
-											"border-radius": "12px",
-											"padding-top": "28px",
-											"padding-right": "32px",
-											"padding-bottom": "16px",
-											"padding-left": "32px"
-										},
-										"computedStyle": {
-											"class": "center fixedwidth",
-											"width": "576px",
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "092e8375-4338-41db-b876-d972e2560c71",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Program</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "40px",
-											"padding-bottom": "6px",
-											"padding-left": "40px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "6ee6888a-8d83-4a5c-8c63-c09b85b86430",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:16px;line-height:26px;color:#52525b;\" data-mce-style=\"font-size:16px;line-height:26px;color:#52525b;\">Află tot ce trebuie să știi despre program – pe scurt, direct pe site-ul nostru.</span></p></div>",
-											"style": {
-												"color": "#52525b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#52525b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "40px",
-											"padding-bottom": "10px",
-											"padding-left": "40px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-button",
-									"locked": false,
-									"uuid": "07d4267e-0b98-453b-af09-a3cb41b84701",
-									"descriptor": {
-										"button": {
-											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă program →</strong></p></div>",
-											"href": "https://yesswimming.ro/program/",
-											"target": "_blank",
-											"style": {
-												"background-color": "#fc3030",
-												"border-top": "0px solid transparent",
-												"border-right": "0px solid transparent",
-												"border-bottom": "0px solid transparent",
-												"border-left": "0px solid transparent",
-												"border-radius": "999px",
-												"color": "#ffffff",
-												"direction": "ltr",
-												"font-family": "inherit",
-												"font-size": "15px",
-												"font-weight": "700",
-												"line-height": "150%",
-												"max-width": "100%",
-												"padding-top": "12px",
-												"padding-bottom": "12px",
-												"padding-left": "28px",
-												"padding-right": "28px",
-												"width": "auto"
-											}
-										},
-										"style": {
-											"padding-top": "4px",
-											"padding-right": "32px",
-											"padding-bottom": "12px",
-											"padding-left": "32px",
-											"text-align": "center"
-										},
-										"computedStyle": {
-											"height": 46,
-											"width": 227,
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "4964a795-eeb1-4289-a846-5946701c61be",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "6941ceaa-74e9-407e-8d36-2e463a170419"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "6ca154a3-5a01-464b-88d1-e332f1585d8c",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Mai găsești la noi</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "36px",
-											"padding-right": "32px",
-											"padding-bottom": "16px",
-											"padding-left": "32px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "0c441cc3-bf8f-421a-8510-46fc9a401c0d",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "c5ee90cc-3d1c-4d71-911f-501dad178584"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 6,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "2b54fca1-e888-44a2-955e-f7abd4ce782b",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Cotizații</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "14px",
-											"padding-bottom": "6px",
-											"padding-left": "14px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-button",
-									"locked": false,
-									"uuid": "60b301b7-16d0-495b-be8a-b87e61a4808b",
-									"descriptor": {
-										"button": {
-											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
-											"href": "https://yesswimming.ro/cotizatii/",
-											"target": "_blank",
-											"style": {
-												"background-color": "transparent",
-												"border-top": "0px solid transparent",
-												"border-right": "0px solid transparent",
-												"border-bottom": "0px solid transparent",
-												"border-left": "0px solid transparent",
-												"border-radius": "0px",
-												"color": "#fc3030",
-												"direction": "ltr",
-												"font-family": "inherit",
-												"font-size": "14px",
-												"font-weight": "700",
-												"line-height": "150%",
-												"max-width": "100%",
-												"padding-top": "4px",
-												"padding-bottom": "4px",
-												"padding-left": "0px",
-												"padding-right": "0px",
-												"width": "auto"
-											}
-										},
-										"style": {
-											"padding-top": "4px",
-											"padding-right": "14px",
-											"padding-bottom": "0px",
-											"padding-left": "14px",
-											"text-align": "center"
-										},
-										"computedStyle": {
-											"height": 29,
-											"width": 92,
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "c4cececc-736e-43ec-8c2f-0b6051f6fdf8",
-							"style": {
-								"background-color": "#ffeeee",
-								"border-top": "6px solid #ffffff",
-								"border-right": "12px solid #ffffff",
-								"border-bottom": "6px solid #ffffff",
-								"border-left": "12px solid #ffffff",
-								"padding-top": "22px",
-								"padding-right": "4px",
-								"padding-bottom": "22px",
-								"padding-left": "4px"
-							}
-						},
-						{
-							"grid-columns": 6,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "b1c26123-1679-4e47-940f-4bf2c9e92438",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Antrenori</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "14px",
-											"padding-bottom": "6px",
-											"padding-left": "14px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-button",
-									"locked": false,
-									"uuid": "c4def7f6-2f0a-4393-be9a-4a8d169a1f71",
-									"descriptor": {
-										"button": {
-											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
-											"href": "https://yesswimming.ro/antrenori/",
-											"target": "_blank",
-											"style": {
-												"background-color": "transparent",
-												"border-top": "0px solid transparent",
-												"border-right": "0px solid transparent",
-												"border-bottom": "0px solid transparent",
-												"border-left": "0px solid transparent",
-												"border-radius": "0px",
-												"color": "#fc3030",
-												"direction": "ltr",
-												"font-family": "inherit",
-												"font-size": "14px",
-												"font-weight": "700",
-												"line-height": "150%",
-												"max-width": "100%",
-												"padding-top": "4px",
-												"padding-bottom": "4px",
-												"padding-left": "0px",
-												"padding-right": "0px",
-												"width": "auto"
-											}
-										},
-										"style": {
-											"padding-top": "4px",
-											"padding-right": "14px",
-											"padding-bottom": "0px",
-											"padding-left": "14px",
-											"text-align": "center"
-										},
-										"computedStyle": {
-											"height": 29,
-											"width": 92,
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "4de0bea4-b6f4-4a08-84ee-698a9da4ab16",
-							"style": {
-								"background-color": "#ffeeee",
-								"border-top": "6px solid #ffffff",
-								"border-right": "12px solid #ffffff",
-								"border-bottom": "6px solid #ffffff",
-								"border-left": "12px solid #ffffff",
-								"padding-top": "22px",
-								"padding-right": "4px",
-								"padding-bottom": "22px",
-								"padding-left": "4px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "two-columns-empty",
-					"uuid": "497d58b8-888a-4aa7-8417-95988baf4462"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-divider",
-									"locked": false,
-									"uuid": "7dc52573-9590-4a30-afd6-876be2f582d4",
-									"descriptor": {
-										"divider": {
-											"style": {
-												"border-top": "0px solid transparent",
-												"width": "100%",
-												"height": "24px"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "0px",
-											"padding-bottom": "0px",
-											"padding-left": "0px"
-										},
-										"computedStyle": {
-											"align": "center",
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "98504027-1d8b-41d1-93f6-62accadc5bd5",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "dc907e53-b1c1-423d-bb06-d0d977cfa240"
+					"uuid": "3b8083cb-4c3e-462c-8258-9290960a399a"
 				},
 				{
 					"columns": [
@@ -1116,14 +493,14 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "65a4e72d-30b5-497a-ae19-06988d270064",
+									"uuid": "1730beef-6c43-4f80-b7ed-c1ddae34a118",
 									"descriptor": {
 										"button": {
-											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vizitează site-ul</strong></p></div>",
+											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Visit the website</strong></p></div>",
 											"href": "https://yesswimming.ro/",
 											"target": "_blank",
 											"style": {
-												"background-color": "#fc3030",
+												"background-color": "#267a48",
 												"border-top": "0px solid transparent",
 												"border-right": "0px solid transparent",
 												"border-bottom": "0px solid transparent",
@@ -1158,7 +535,7 @@
 									}
 								}
 							],
-							"uuid": "4d17e076-6379-485d-aa3d-caae184e032a",
+							"uuid": "51e2c7ab-1082-4141-920e-692c27257ea0",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1201,85 +578,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "84895c9e-d8eb-4b00-990e-08a4b151a04f"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "b356c517-62ee-49e7-92f2-42103c9a6a2c",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:22px;color:#52525b;\" data-mce-style=\"font-size:15px;line-height:22px;color:#52525b;\">Ai întrebări? Suntem aici pentru tine.</span></p><p style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:24px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:24px;color:#18181b;\"><a href=\"tel:0739652493\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">0739 652 493</a> &nbsp;·&nbsp; <a href=\"mailto:contact@yesswimming.ro\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">contact@yesswimming.ro</a></span></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "24px",
-											"padding-right": "32px",
-											"padding-bottom": "32px",
-											"padding-left": "32px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "f488b14b-8942-4005-b887-b31cf68468cc",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "4560b2d7-abe5-481e-89e9-08b0207fa363"
+					"uuid": "d2f04575-8e85-41d4-a012-726a53951279"
 				},
 				{
 					"columns": [
@@ -1289,7 +588,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "6aab7145-30ef-442f-b1bb-7fbc3380fc2a",
+									"uuid": "fbd48d2f-86e8-45d3-b3ad-75f4edc45498",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1311,93 +610,12 @@
 									}
 								},
 								{
-									"type": "mailup-bee-newsletter-modules-social",
-									"locked": false,
-									"uuid": "6d072525-be2c-43c1-9dbb-74fe51866563",
-									"descriptor": {
-										"iconsList": {
-											"icons": [
-												{
-													"id": "fe104f26-9a23-4997-85f9-32cd2da4c0d8",
-													"type": "follow",
-													"name": "facebook",
-													"text": "",
-													"image": {
-														"alt": "Facebook",
-														"title": "Facebook",
-														"href": "https://www.facebook.com/clubsportivnatatie",
-														"prefix": "",
-														"target": "_blank",
-														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/facebook@2x.png"
-													}
-												},
-												{
-													"id": "4c4e5446-864e-4771-8412-e45c696fc939",
-													"type": "follow",
-													"name": "instagram",
-													"text": "",
-													"image": {
-														"alt": "Instagram",
-														"title": "Instagram",
-														"href": "https://www.instagram.com/clubsportivnatatie",
-														"prefix": "",
-														"target": "_blank",
-														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/instagram@2x.png"
-													}
-												},
-												{
-													"id": "6dbebc8d-a515-4232-9a90-f31165f75c71",
-													"type": "follow",
-													"name": "tiktok",
-													"text": "",
-													"image": {
-														"alt": "TikTok",
-														"title": "TikTok",
-														"href": "https://www.tiktok.com/@yesswimming",
-														"prefix": "",
-														"target": "_blank",
-														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/tiktok@2x.png"
-													}
-												},
-												{
-													"id": "013c7d00-3585-4d32-8bdd-ea973818fa28",
-													"type": "follow",
-													"name": "youtube",
-													"text": "",
-													"image": {
-														"alt": "YouTube",
-														"title": "YouTube",
-														"href": "https://www.youtube.com/@YesSwimming",
-														"prefix": "",
-														"target": "_blank",
-														"src": "https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark-gray/youtube@2x.png"
-													}
-												}
-											]
-										},
-										"style": {
-											"padding-top": "12px",
-											"padding-right": "24px",
-											"padding-bottom": "8px",
-											"padding-left": "24px",
-											"text-align": "center"
-										},
-										"computedStyle": {
-											"iconsDefaultWidth": 32,
-											"padding": "0 6px 0 6px",
-											"width": 176,
-											"height": 48,
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "361946de-2a9b-41c0-94a9-565dcb8ce6e1",
+									"uuid": "6434d035-0467-48f8-bb53-ef43b5c11b2f",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Club Sportiv Yes Swimming. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://yesswimming.ro/politica-de-confidentialitate/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://yesswimming.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">yesswimming.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Un moment, vă rog…. All rights reserved.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://yesswimming.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">yesswimming.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">You're receiving this email because you subscribed to our newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Unsubscribe</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">View online</a></span></p></div>",
 											"style": {
 												"color": "#71717a",
 												"font-family": "inherit",
@@ -1419,7 +637,7 @@
 									}
 								}
 							],
-							"uuid": "c6962677-6ddb-418e-b388-2d0d5432318b",
+							"uuid": "a1298a25-6685-4f14-9c5a-9a0b14ad3f53",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1462,7 +680,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "d74528b0-5661-4f44-a171-f8f425c82a4b"
+					"uuid": "8af78334-6246-4ce6-b517-09176896e24c"
 				}
 			],
 			"template": {
