@@ -1,0 +1,11 @@
+# Cloudflare Worker settings (deployed automatically by Cloudflare from this folder).
+# Secrets GITHUB_TOKEN and APP_PASSWORD are set only in the Cloudflare dashboard, never here.
+name = "nzm-onboarding"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+keep_vars = true
+
+[vars]
+REPO = "cosminflrn/NZM-Onboarding"
+ALLOWED_ORIGIN = "https://cosminflrn.github.io"
+APP_USER = "NewsMAN"
