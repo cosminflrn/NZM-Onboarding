@@ -152,13 +152,23 @@ def social_email(k):
                 k.help()]
         return k.assemble(rows, social_footer=False), "Hai să ne vedem și pe social media 👋", "Rămâi aproape de noi."
     else:
+        contact_page = (b.get("links") or {}).get("contact")
         rows = [k.header(nav=False),
                 k.hero("Suntem aici pentru tine", "Ai o întrebare? Scrie-ne!",
                        "Echipa noastră îți răspunde cu drag la orice întrebare."),
-                k.help(),
-                k.cta("Vizitează site-ul", k.home, top=8, bottom=36)]
+                k.banner(),
+                k.body(f"Vrei să afli mai multe despre {b['name']} sau ai nevoie de ajutor să alegi? "
+                       "Scrie-ne și îți răspundem cât de repede putem.", top=32, bottom=8),
+                k.cta("Contactează-ne" if contact_page else "Vizitează site-ul", contact_page or k.home, top=16, bottom=12),
+                k.benefits(HELP_POINTS),
+                k.help()]
         subject = f"Suntem aici dacă ai nevoie de noi"
     return k.assemble(rows), subject, "Rămâi aproape de noi."
+
+
+HELP_POINTS = [("Răspuns rapid", "Îți scriem înapoi cât de repede putem."),
+               ("Oameni reali", "Vorbești direct cu echipa noastră."),
+               ("Fără obligații", "Întreabă orice, oricând.")]
 
 
 def D_join(items):

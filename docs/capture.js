@@ -44,6 +44,11 @@
   const want = /contact|termen|condi|confiden|privac|gdpr|cookie|despre|about|cos|cart|basket/i;
   const links = [...document.querySelectorAll("a[href]")].map((a) => abs(a.getAttribute("href")))
     .filter((u, i, all) => u && same(u) && all.indexOf(u) === i && want.test(u)).slice(0, 14);
+  // the first short links of the page are usually the main menu
+  const home = location.href.split("#")[0];
+  [...document.querySelectorAll("a[href]")].filter((a) => { const t = (a.textContent || "").trim(); return t.length >= 2 && t.length <= 28; })
+    .map((a) => abs(a.getAttribute("href"))).filter((u) => u && same(u) && u !== home && links.indexOf(u) < 0)
+    .filter((u, i, all) => all.indexOf(u) === i).slice(0, 8).forEach((u) => links.push(u));
   const feeds = ["/sitemap.xml", "/sitemap_index.xml", "/product-sitemap.xml", "/robots.txt",
     "/products.json?limit=12", "/wp-json/wc/store/v1/products?per_page=12", "/wp-json/wc/store/products?per_page=12"]
     .map((p) => location.origin + p);

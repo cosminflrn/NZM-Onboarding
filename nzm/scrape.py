@@ -366,8 +366,12 @@ class Scraper:
                 u = absolute(self.ref, a["href"])
                 if not u or not same_site(u, self.base) or urlparse(u).path in ("", "/"):
                     continue
+                if urlparse(u).path.rstrip("/") == urlparse(self.home).path.rstrip("/"):
+                    continue  # the home page itself (site living in a sub-folder)
                 if not (2 <= len(label) <= 28) or MENU_SKIP_RE.search(label) or re.fullmatch(r"[\d\s.,]+", label):
                     continue
+                if "_" in label or re.search(r"^(acas[aă]|home|prima pagin[aă]|start)$", label, re.I):
+                    continue  # internal page names ("ACASĂ_SSL") and links back home
                 key = label.lower()
                 if key in seen:
                     continue

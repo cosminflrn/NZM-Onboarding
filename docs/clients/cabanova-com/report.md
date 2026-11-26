@@ -1,6 +1,6 @@
 # Cabanova (cabanova.com)
 
-Generat: 2026-11-26 09:52 UTC  ·  Platformă: necunoscut
+Generat: 2026-11-26 10:04 UTC  ·  Platformă: necunoscut
 
 ## Ce am găsit
 
@@ -10,7 +10,7 @@ Generat: 2026-11-26 09:52 UTC  ·  Platformă: necunoscut
 - **Telefon:** —
 - **Email:** —
 - **Social:** —
-- **Meniu:** [ACASĂ](https://www.cabanova.com/p/ro/), [ACASĂ_SSL](https://www.cabanova.com/p/ro/acasa-ssl-10122021.html), [BLACK FRIDAY](https://www.cabanova.com/p/ro/black-friday.html)
+- **Meniu:** [PREȚURI](https://www.cabanova.com/p/ro/preturi.html), [DOMENII](https://www.cabanova.com/p/ro/domenii.html), [BLACK FRIDAY](https://www.cabanova.com/p/ro/black-friday.html)
 - **Coș:** https://www.cabanova.com/ · **Termeni:** https://www.cabanova.com/p/ro/termeni-si-conditii.html · **Confidențialitate:** https://www.cabanova.com/p/ro/politica-de-confidentialitate.html
 - **Produse:** — (placeholder)
 - **Tip site:** non-ecommerce (detectat: non-ecommerce) · **Formular:** embed
