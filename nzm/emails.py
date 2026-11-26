@@ -203,40 +203,35 @@ def news_email(k):
 def newsletter_email(k):
     """Non-ecommerce draft: a regular newsletter, ready to be edited and sent."""
     t, b = k.t, k.b
-    menu = (b.get("links") or {}).get("menu") or []
-    blog = next((m["url"] for m in menu if re.search(r"blog|articol|nout[aă][tț]i|stiri|știri", m.get("label", "") + m["url"], re.I)), None)
+    menu = [m for m in (b.get("links") or {}).get("menu") or [] if m.get("label") and m.get("url")][:3]
+    desc = clean_description(b.get("description"), b["name"])
     rows = [k.header(nav=False),
             k.hero("Newsletter", t["newsletter_title"], t["newsletter_subtitle"]),
             k.banner(),
-            k.body("Scrie aici câteva rânduri de început: ce s-a întâmplat nou și de ce merită citit acest newsletter.",
-                   top=36, bottom=8),
-            article_block(k, blog or k.home),
-            k.benefits(NEWS_TIPS),
-            k.cards(menu, t["cards_title"]),
-            k.cta(t["cta_label"], k.home, top=24, bottom=32),
-            k.help()]
+            k.body(desc or f"Îți aducem pe scurt cele mai noi lucruri de la {b['name']}.", top=36, bottom=8)]
+    if menu:
+        rows.append(article_block(k, menu[0]))
+        rows.append(k.cards(menu[1:], "Mai găsești la noi") if len(menu) > 1 else None)
+    rows += [k.cta(t["cta_label"], k.home, top=24, bottom=32), k.help()]
     return k.assemble(rows)
 
 
-# editable starting points for a real newsletter (the client replaces them before sending)
-NEWS_TIPS = [("Sfat rapid", "Un sfat scurt și util pentru cititorii tăi."),
-             ("Știai că?", "O curiozitate din domeniul vostru."),
-             ("De reținut", "O dată, un anunț sau o noutate importantă.")]
 STOCK_ARTICLE = "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=700&fit=crop&q=80&auto=format"
 
 
-def article_block(k, url):
-    """Main story of the newsletter: picture, title, a few lines and 'read more' (all placeholders to edit)."""
-    pics = [m.get("image") for m in ((k.b.get("links") or {}).get("menu") or []) if m.get("image")]
-    pic = next((p for p in pics if p != (k.b.get("banner") or {}).get("url")), None) or STOCK_ARTICLE
+def article_block(k, item):
+    """Main story: the site's first section, with its own picture and description when we found them."""
+    label = k._label(item)
+    ban = (k.b.get("banner") or {}).get("url")
+    pic = item.get("image") if item.get("image") and item.get("image_from", "page") == "page" else None
+    pic = pic or (item.get("image") if item.get("image") and item["image"] != ban else None) or STOCK_ARTICLE
+    text = item.get("desc") or f"Află tot ce trebuie să știi despre {label.lower()} – pe scurt, direct pe site-ul nostru."
     return D.row([[
-        D.m_image(pic, 1200, 700, D.WIDTH - 64, href=url, alt="Articolul principal", padding=D.pad(28, 32, 16, 32),
-                  radius=D.RADIUS),
-        D.m_text(D.wrap([D.para("Titlul articolului principal", 22, D.INK, weight="bold", lh=1.3, align="left")]),
-                 padding=D.pad(0, 32, 6, 32)),
-        D.m_text(D.wrap([D.para("Două-trei rânduri care rezumă articolul și îl fac pe cititor curios să afle mai mult.",
-                                16, D.MUTED, lh=1.6, align="left")]), padding=D.pad(0, 32, 10, 32), color=D.MUTED),
-        D.m_button("Citește mai mult →", url, k.accent, "#ffffff", size=15, align="left", padding=D.pad(4, 32, 12, 32)),
+        D.m_image(pic, 1200, 700, D.WIDTH - 64, href=item["url"], alt=label, padding=D.pad(28, 32, 16, 32), radius=D.RADIUS),
+        D.m_text(D.wrap([D.para(D.esc(label), 22, D.INK, weight="bold", lh=1.3, align="left")]), padding=D.pad(0, 32, 6, 32)),
+        D.m_text(D.wrap([D.para(D.esc(text), 16, D.MUTED, lh=1.6, align="left")]), padding=D.pad(0, 32, 10, 32), color=D.MUTED),
+        D.m_button(f"Descoperă {label.lower()} →", item["url"], k.accent, "#ffffff", size=15, align="left",
+                   padding=D.pad(4, 32, 12, 32)),
     ]], bg=D.WHITE)
 
 
@@ -280,9 +275,9 @@ def cart_email(k, n, condition):
 
 # free pictures (Unsplash licence), served straight from Unsplash's CDN
 CART_BANNERS = [
-    "https://images.unsplash.com/photo-1760565030243-c92ed557e8da?w=1280&h=560&fit=crop&q=80&auto=format",
-    "https://images.unsplash.com/photo-1760565030309-8a56664f8901?w=1280&h=560&fit=crop&q=80&auto=format",
-    "https://images.unsplash.com/photo-1760565031198-00e39da3d9cb?w=1280&h=560&fit=crop&q=80&auto=format",
+    "https://images.unsplash.com/photo-1783699373261-d946ce03c966?w=1280&h=560&fit=crop&q=80&auto=format",
+    "https://images.unsplash.com/photo-1783700696433-13d2c2f0bcc0?w=1280&h=560&fit=crop&q=80&auto=format",
+    "https://images.unsplash.com/photo-1557821552-17105176677c?w=1280&h=560&fit=crop&q=80&auto=format",
 ]
 
 CART_TRUST = [("Comandă simplă", "Finalizezi în câțiva pași."),

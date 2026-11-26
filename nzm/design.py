@@ -344,7 +344,7 @@ class Kit:
             mods.append(m_button("Vezi produsul", p["url"], "transparent", INK, border=f"1px solid {LINE}", size=13,
                                  px=16, py=8, weight="600", padding=pad(6, 8, 8, 8)))
             cols.append(mods)
-        return [self.heading(title, top=36, bottom=12), self._card_row(cols, top=14, bottom=10), row([[m_spacer(8)]], bg=WHITE)]
+        return [self.heading(title, top=36, bottom=12), row(cols, bg=WHITE, col_pad=pad(0, 10, 8, 10))]
 
     def _card_row(self, cols, top=22, bottom=22, tint=None):
         """Columns as soft cards with white gutters: rounded pictures stand out even on white product shots."""

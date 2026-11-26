@@ -462,8 +462,13 @@ $("capFile").onchange = async () => {
 };
 async function initBookmark() {
   try {
-    const code = await (await fetch("capture.js", { cache: "no-store" })).text();
-    $("bmLink").href = "javascript:" + encodeURIComponent(code.replace(/^\s*\/\/.*$/gm, "").replace(/\n\s*/g, "\n"));
+    // the bookmark loads the latest capture.js every time, so it never needs to be dragged again after an update;
+    // the copy embedded in it is only a fallback for sites that block outside scripts
+    const code = (await (await fetch("capture.js", { cache: "no-store" })).text()).replace(/^\s*\/\/.*$/gm, "").replace(/\n\s*/g, "\n");
+    const src = new URL("capture.js", location.href).href;
+    const stub = `(function(){var s=document.createElement("script");s.src=${JSON.stringify(src)}+"?v="+Date.now();` +
+      `s.onerror=function(){${code}};(document.head||document.documentElement).appendChild(s)})()`;
+    $("bmLink").href = "javascript:" + encodeURIComponent(stub);
     $("bmLink").onclick = (e) => { e.preventDefault(); alert("Trage butonul în bara de favorite (Ctrl+Shift+B o afișează), apoi apasă-l pe site-ul clientului."); };
   } catch {}
 }

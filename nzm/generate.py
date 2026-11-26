@@ -353,7 +353,10 @@ def neutral_images(brand):
     ours = lambda u: isinstance(u, str) and ".github.io/" in u
     logo = b.get("logo") or {}
     src = logo.get("source_url")
-    if ours(logo.get("url")) and src and src.startswith("http"):
+    # every picture goes through the image CDN: some sites refuse to show their files on other sites (hotlink protection)
+    if not (src and src.startswith("http")) and str(logo.get("url", "")).startswith("http") and not ours(logo.get("url")):
+        src = logo["url"]
+    if src and src.startswith("http") and WESERV not in str(logo.get("url")):
         recolored = logo["recolored"] if "recolored" in logo else any("colorat închis" in w for w in b.get("warnings") or [])
         logo["url"] = _weserv(src, "&trim=10&w=600&output=png" + ("&filt=negate" if recolored else ""))
     for p in b.get("products") or []:
@@ -365,8 +368,9 @@ def neutral_images(brand):
         if isinstance(item.get("image"), str) and item["image"].startswith("http") and WESERV not in item["image"]:
             item["image"] = _weserv(item["image"], "&w=600&h=400&fit=cover&a=attention&output=jpg&q=85")
     ban = b.get("banner") or {}
-    if ours(ban.get("url")) and str(ban.get("source_url", "")).startswith("http"):
-        ban["url"] = _weserv(ban["source_url"], "&w=1300&output=jpg&q=85")
+    bsrc = ban.get("source_url") if str(ban.get("source_url", "")).startswith("http") else ban.get("url")
+    if isinstance(bsrc, str) and bsrc.startswith("http") and not ours(bsrc) and WESERV not in str(ban.get("url")):
+        ban["url"] = _weserv(bsrc, "&w=1300&output=jpg&q=85")
     return b
 
 
