@@ -134,7 +134,7 @@
     .selbar { width:100%; margin-left:0; flex-wrap:wrap; }
     .selbar #selCount { width:100%; }
     .selbar button { flex:1 1 0; min-width:0; padding:8px 6px; font-size:12px; white-space:normal; line-height:1.2; }
-    header .wrap { gap:8px; } header .sub { display:none; }
+    header .wrap { gap:8px; } #who { display:none; } header .right .lbl { display:none; } header .right button { padding:8px 10px; }
     .wrap { padding:0 14px; }
   }
 </style>
@@ -142,7 +142,7 @@
 <body>
 <header><div class="wrap">
   <a class="brand" href="./" title="Reîncarcă"><img src="newsman-logo.png" alt="NewsMAN"><span>Onboarding</span></a>
-  <div class="right"><span id="who"></span><button id="logoutBtn" title="Ieșire" style="display:none"><svg class="i"><use href="#i-x"/></svg>Ieșire</button><button id="tokBtn" title="Acces"><svg class="i"><use href="#i-key"/></svg>Acces</button></div>
+  <div class="right"><span id="who"></span><button id="logoutBtn" title="Ieșire" style="display:none"><svg class="i"><use href="#i-logout"/></svg><span class="lbl">Ieșire</span></button><button id="tokBtn" title="Acces"><svg class="i"><use href="#i-key"/></svg>Acces</button></div>
 </div></header>
 
 <main class="wrap">
@@ -242,7 +242,7 @@
   <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></symbol>
   <symbol id="i-popup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="8" width="10" height="8" rx="1.5"/></symbol>
   <symbol id="i-embed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10"/><rect x="7" y="15" width="10" height="3" rx="1"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
 </svg>
 
 <script src="config.js"></script>
