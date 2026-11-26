@@ -23,3 +23,5 @@ Intermediarul permite doar: pornirea generării, urmărirea ei, citirea fișiere
    Deschide adresa workerului în browser: trebuie să vezi `{"ok":true,...,"token":true}`.
 
 Când expiră tokenul, faci unul nou și îl înlocuiești doar la pasul 4.
+
+Cloudflare republică worker-ul doar când se schimbă ceva în acest folder (Build watch paths: `worker/*`).
