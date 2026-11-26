@@ -122,6 +122,13 @@ class Patcher:
                     tag = re.sub(r"max-width:\s*\d+px", f"max-width:{self.logo_w}px", tag)
                     tag = re.sub(r"(?<![-\w])width:\s*\d+px", f"width:{self.logo_w}px", tag)
                     tag = re.sub(r'alt="[^"]*"', f'alt="{esc(self.b["name"])}"', tag)
+                    lg = self.b.get("logo") or {}
+                    if lg.get("light_parts") and not lg.get("recolored"):
+                        # a white logo would vanish on the white pop-up: give it a tile in the brand colour
+                        bgc = lg.get("header_bg") or (self.b.get("colors") or {}).get("dark") or "#222222"
+                        tile = f"background-color:{bgc};padding:12px;border-radius:12px;"
+                        tag = re.sub(r'style="', 'style="' + tile, tag, count=1) if 'style="' in tag \
+                            else tag.replace("<img", f'<img style="{tile}"', 1)
                     if self.kind == "form" and "margin-bottom" not in tag:
                         tag = re.sub(r'style="', 'style="margin-bottom:20px;', tag, count=1) if 'style="' in tag \
                             else tag.replace("<img", '<img style="margin-bottom:20px"', 1)
@@ -286,6 +293,10 @@ def fix_bee(page, brand, patch):
                 cs = d.setdefault("computedStyle", {})
                 cs["class"] = "center fixedwidth"
                 cs["width"] = f'{logo["display_width"]}px'
+                if logo.get("light_parts") and not logo.get("recolored"):
+                    # white logo: the row behind it takes the brand colour, as in the site's own header
+                    bgc = logo.get("header_bg") or (brand.get("colors") or {}).get("dark") or "#222222"
+                    col.setdefault("style", {})["background-color"] = bgc
                 st = d.setdefault("style", {})
                 if patch.kind == "form":
                     st["padding-bottom"] = "20px"
