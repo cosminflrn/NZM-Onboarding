@@ -91,6 +91,7 @@ def m_text(html, padding=None, color=INK, link_color=None, lh="160%"):
 
 
 RADIUS = "12px"
+CARD_BG = "#f5f5f7"
 
 
 def m_image(src, width, height, display_width, href="", alt="", padding=None, dynamic=None, full=False, radius=None):
@@ -332,10 +333,10 @@ class Kit:
         for p in prods:
             name = p["name"] if len(p["name"]) <= 55 else p["name"][:52].rstrip() + "…"
             mods = [
-                m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600, 176,
-                        href=p["url"], alt=name, padding=pad(0, 8, 12, 8), radius=RADIUS),
+                m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600, 168,
+                        href=p["url"], alt=name, padding=pad(0, 10, 12, 10), radius=RADIUS),
                 m_text(wrap([para(link(esc(name), p["url"], INK, underline=False), 15, INK, lh=1.4)]),
-                       padding=pad(0, 8, 4, 8), link_color=INK),
+                       padding=pad(0, 10, 4, 10), link_color=INK),
             ]
             if all(q.get("price") for q in prods):  # prices only when every card has one, so the row stays even
                 mods.append(m_text(wrap([para(esc(p["price"]), 16, self.accent, weight="bold", lh=1.4)]),
@@ -343,8 +344,34 @@ class Kit:
             mods.append(m_button("Vezi produsul", p["url"], "transparent", INK, border=f"1px solid {LINE}", size=13,
                                  px=16, py=8, weight="600", padding=pad(6, 8, 8, 8)))
             cols.append(mods)
-        return [self.heading(title, top=36, bottom=12),
-                row(cols, bg=WHITE, col_pad=pad(0, 8, 8, 8))]
+        return [self.heading(title, top=36, bottom=12), self._card_row(cols, top=14, bottom=10), row([[m_spacer(8)]], bg=WHITE)]
+
+    def _card_row(self, cols, top=22, bottom=22, tint=None):
+        """Columns as soft cards with white gutters: rounded pictures stand out even on white product shots."""
+        r = row(cols, bg=WHITE, col_pad=pad(top, 2, bottom, 2), grid=[12 // len(cols)] * len(cols),
+                col_style={"background-color": tint or CARD_BG, "border-left": "6px solid #ffffff",
+                           "border-right": "6px solid #ffffff"})
+        r["columns"][0]["style"]["border-left"] = "28px solid #ffffff"
+        r["columns"][-1]["style"]["border-right"] = "28px solid #ffffff"
+        return r
+
+    def _text_cards(self, items, title):
+        """Sections without a picture of their own: clean text cards, so pages don't look like products."""
+        from .colors import mix
+        cols = []
+        for it in items:
+            mods = [m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(0, 14, 6, 14))]
+            if it.get("desc"):
+                mods.append(m_text(wrap([para(esc(it["desc"]), 14, MUTED, lh=1.5)]), padding=pad(0, 14, 6, 14), color=MUTED))
+            mods.append(m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
+                                 padding=pad(4, 14, 0, 14)))
+            cols.append(mods)
+        return [self.heading(title, top=36, bottom=16), self._card_row(cols, tint=mix(self.accent, "#ffffff", 0.92)),
+                row([[m_spacer(8)]], bg=WHITE)]
+
+    @staticmethod
+    def _own_pictures(items):
+        return all(i.get("image") and i.get("image_from", "page") == "page" for i in items)
 
     @staticmethod
     def _label(it):
@@ -356,6 +383,8 @@ class Kit:
         items = [i for i in items if i.get("label") and i.get("url")][:3]
         if not items:
             return []
+        if not self._own_pictures(items):
+            return self._text_cards(items, title)
         cols = []
         for it in items:
             mods = []
@@ -376,6 +405,8 @@ class Kit:
         items = [i for i in items if i.get("label") and i.get("url")][:3]
         if not items:
             return []
+        if not self._own_pictures(items):
+            return self._text_cards(items, intro_title)
         first, rest = items[0], items[1:]
         mods = []
         if first.get("image"):

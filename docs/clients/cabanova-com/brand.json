@@ -17,22 +17,25 @@
     "terms": "https://www.cabanova.com/p/ro/termeni-si-conditii.html",
     "privacy": "https://www.cabanova.com/p/ro/politica-de-confidentialitate.html",
     "contact": "https://www.cabanova.com/p/ro/contact.html",
-    "promo": "https://www.cabanova.com/p/ro/black-friday.html",
+    "promo": "https://www.cabanova.com/p/ro/profita-acum-de-super-reducerea-de-50.html",
     "menu": [
       {
         "label": "PREȚURI",
         "url": "https://www.cabanova.com/p/ro/preturi.html",
+        "image_from": "home",
         "image": "https://www.cabanova.com/p/ro/files/im1i-32fvyp7qr8jj-g3yzo.jpg"
       },
       {
         "label": "DOMENII",
         "url": "https://www.cabanova.com/p/ro/domenii.html",
+        "image_from": "home",
         "image": "https://www.cabanova.com/p/ro/files/im1i-wgpiflduv4u-p7epu.jpg"
       },
       {
-        "label": "BLACK FRIDAY",
-        "url": "https://www.cabanova.com/p/ro/black-friday.html",
-        "image": "https://www.cabanova.com/p/ro/files/im1i-3417ov3h4rli-tu1y0.jpg"
+        "label": "ACTIVARE SSL",
+        "url": "https://www.cabanova.com/p/ro/activare-ssl-21122021.html",
+        "image_from": "home",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-1ebeuxtyxtlq-mklur.jpg"
       }
     ],
     "cart_found": false
@@ -90,7 +93,7 @@
     "404 https://www.cabanova.com/sitemap.xml",
     "404 https://www.cabanova.com/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-26 10:05 UTC",
+  "generated_at": "2026-11-26 10:23 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cabanova!",

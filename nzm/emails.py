@@ -187,7 +187,14 @@ def news_email(k):
         target = (b.get("links") or {}).get("promo") or k.home
         rows.append(k.cta("Vezi toate noutățile", target, top=20, bottom=32))
     else:
-        rows.append(k.featured((b.get("links") or {}).get("menu") or [], "Câteva locuri de unde să începi"))
+        menu = (b.get("links") or {}).get("menu") or []
+        if not k._own_pictures([m for m in menu if m.get("label") and m.get("url")][:3]):
+            # sections without pictures of their own: the site's banner and a few words keep the email from feeling empty
+            rows.append(k.banner())
+            rows.append(k.body(clean_description(b.get("description"), b["name"]) or
+                               f"Pe site-ul {b['name']} găsești tot ce ai nevoie, explicat simplu.",
+                               top=32, bottom=0))
+        rows.append(k.featured(menu, "Câteva locuri de unde să începi"))
         rows.append(k.cta("Vizitează site-ul", k.home, top=24, bottom=32, outline=True))
     rows.append(k.help())
     return k.assemble(rows), f"Descoperă {b['name']} ✨", "Câteva lucruri pe care merită să le vezi."
@@ -196,15 +203,41 @@ def news_email(k):
 def newsletter_email(k):
     """Non-ecommerce draft: a regular newsletter, ready to be edited and sent."""
     t, b = k.t, k.b
+    menu = (b.get("links") or {}).get("menu") or []
+    blog = next((m["url"] for m in menu if re.search(r"blog|articol|nout[aă][tț]i|stiri|știri", m.get("label", "") + m["url"], re.I)), None)
     rows = [k.header(nav=False),
             k.hero("Newsletter", t["newsletter_title"], t["newsletter_subtitle"]),
             k.banner(),
-            k.body(clean_description(b.get("description"), b["name"]) or
-                   "Scrie aici câteva rânduri despre noutățile pe care vrei să le împărtășești.", top=36, bottom=8),
-            k.cards((b.get("links") or {}).get("menu") or [], t["cards_title"]),
+            k.body("Scrie aici câteva rânduri de început: ce s-a întâmplat nou și de ce merită citit acest newsletter.",
+                   top=36, bottom=8),
+            article_block(k, blog or k.home),
+            k.benefits(NEWS_TIPS),
+            k.cards(menu, t["cards_title"]),
             k.cta(t["cta_label"], k.home, top=24, bottom=32),
             k.help()]
     return k.assemble(rows)
+
+
+# editable starting points for a real newsletter (the client replaces them before sending)
+NEWS_TIPS = [("Sfat rapid", "Un sfat scurt și util pentru cititorii tăi."),
+             ("Știai că?", "O curiozitate din domeniul vostru."),
+             ("De reținut", "O dată, un anunț sau o noutate importantă.")]
+STOCK_ARTICLE = "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=700&fit=crop&q=80&auto=format"
+
+
+def article_block(k, url):
+    """Main story of the newsletter: picture, title, a few lines and 'read more' (all placeholders to edit)."""
+    pics = [m.get("image") for m in ((k.b.get("links") or {}).get("menu") or []) if m.get("image")]
+    pic = next((p for p in pics if p != (k.b.get("banner") or {}).get("url")), None) or STOCK_ARTICLE
+    return D.row([[
+        D.m_image(pic, 1200, 700, D.WIDTH - 64, href=url, alt="Articolul principal", padding=D.pad(28, 32, 16, 32),
+                  radius=D.RADIUS),
+        D.m_text(D.wrap([D.para("Titlul articolului principal", 22, D.INK, weight="bold", lh=1.3, align="left")]),
+                 padding=D.pad(0, 32, 6, 32)),
+        D.m_text(D.wrap([D.para("Două-trei rânduri care rezumă articolul și îl fac pe cititor curios să afle mai mult.",
+                                16, D.MUTED, lh=1.6, align="left")]), padding=D.pad(0, 32, 10, 32), color=D.MUTED),
+        D.m_button("Citește mai mult →", url, k.accent, "#ffffff", size=15, align="left", padding=D.pad(4, 32, 12, 32)),
+    ]], bg=D.WHITE)
 
 
 def cart_email(k, n, condition):
@@ -224,7 +257,9 @@ def cart_email(k, n, condition):
     else:
         hero = ("Ultima amintire", "Coșul tău expiră curând", "Produsele sunt încă rezervate pentru tine, dar nu pentru mult timp.")
         subject, pre = "Ultima amintire: coșul tău te așteaptă", "Finalizează comanda cât produsele sunt pe stoc."
-    rows = [k.header(nav=True), k.hero(*hero), k.stock_banner(CART_BANNERS[n - 1], "Produsele tale te așteaptă")]
+    # the shop's own banner fits its theme; free stock pictures only when the site has none
+    top_pic = k.banner() or k.stock_banner(CART_BANNERS[n - 1], "Produsele tale te așteaptă")
+    rows = [k.header(nav=True), k.hero(*hero), top_pic]
     if n >= 2 and code:
         rows.append(k.discount(code, "Aplică-l la finalizarea comenzii."))
     rows.append(k.heading("Produsele din coșul tău", top=36, bottom=12))

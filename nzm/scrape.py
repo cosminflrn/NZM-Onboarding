@@ -38,6 +38,8 @@ TERMS_RE = re.compile(r"termen|condi[tț]i|terms|tc\b", re.I)
 PRIVACY_RE = re.compile(r"confiden[tț]ialitat|privacy|gdpr|prelucrarea datelor|protec[tț]ia datelor|cookie", re.I)
 CONTACT_RE = re.compile(r"^contact|contacteaz|contact\b", re.I)
 CART_HREF_RE = re.compile(r"/(cart|cos|cosul|cos-de-cumparaturi|cos-cumparaturi|basket|shopping-cart|checkout/cart|cosul-meu)(/|\?|$|\.html)", re.I)
+# seasonal / dated campaign pages go stale (e.g. a "Black Friday" page from 2012)
+SEASONAL_RE = re.compile(r"black.?friday|cyber.?monday|cr[aă]ciun|pa[sș]te|valentine|\b20\d\d\b", re.I)
 MENU_SKIP_RE = re.compile(
     r"cont|account|login|logare|autentific|inregistr|register|cos\b|co[sș]ul|cart|wishlist|favorit|caut|search|contact|"
     r"blog|despre|about|track|urmar|retur|faq|intrebari|ajutor|help|livrare|termen|confiden|gdpr|anpc|newsletter|compar|"
@@ -247,11 +249,13 @@ class Scraper:
         self.banner_src = (brand["banner"] or {}).get("source_url")
         brand["colors"] = self.colors(logo_colors)
         brand["products"] = self.products(6)
-        self.section_images(links.get("menu") or [], logo)
         brand["options"] = {"discount_code": "", "sender_email": contact.get("email") or "", "sender_name": brand["name"],
                             "form_type": "popup", "site_type": "auto"}
         from .emails import detect_ecommerce
         brand["site_type"] = "ecommerce" if detect_ecommerce(brand) else "non-ecommerce"
+        if brand["site_type"] == "non-ecommerce" and getattr(self, "regular_menu", None):
+            links["menu"] = self.regular_menu  # a presentation site: its sections, not a "discounts" shortcut
+        self.section_images(links.get("menu") or [], logo)
         if brand["site_type"] == "ecommerce" and not brand["products"]:
             self.warnings.append("Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder.")
         brand["warnings"] = self.warnings
@@ -330,7 +334,7 @@ class Scraper:
                 res["privacy"] = u
             if not res["contact"] and (CONTACT_RE.search(label) or re.search(r"/contact", u, re.I)):
                 res["contact"] = u
-            if not res["promo"] and PROMO_RE.search(label) and len(label) < 40:
+            if not res["promo"] and PROMO_RE.search(label) and len(label) < 40 and not SEASONAL_RE.search(label + " " + u):
                 res["promo"] = u
         res["cart_found"] = bool(res["cart"])
         if not res["cart"]:
@@ -372,6 +376,8 @@ class Scraper:
                     continue
                 if "_" in label or re.search(r"^(acas[aă]|home|prima pagin[aă]|start)$", label, re.I):
                     continue  # internal page names ("ACASĂ_SSL") and links back home
+                if SEASONAL_RE.search(label + " " + u):
+                    continue  # seasonal / dated campaign pages go stale (e.g. a Black Friday page from 2012)
                 key = label.lower()
                 if key in seen:
                     continue
@@ -388,7 +394,8 @@ class Scraper:
                     if absolute(self.ref, href) == promo and txt and len(txt) <= 28:
                         promo_item["label"] = txt.upper()
                         break
-        regular = [i for i in items if i is not promo_item][: (2 if promo_item else 3)]
+        self.regular_menu = [i for i in items if i is not promo_item][:3]
+        regular = self.regular_menu[: (2 if promo_item else 3)]
         result = regular + ([promo_item] if promo_item else [])
         if not result:
             self.warnings.append("Meniu: nu am găsit linkuri de meniu; am pus doar HOME.")
@@ -613,6 +620,13 @@ class Scraper:
             final, soup = self.page(item["url"])
             cands = self.page_images(soup, final)[:12] if soup is not None else []
             pick = next((u for u in cands if u not in used and self.good_image(u)), None)
+            item["image_from"] = "page" if pick else "home"
+            if soup is not None:
+                m = soup.find("meta", attrs={"name": "description"}) or soup.find("meta", property="og:description")
+                d = re.sub(r"\s+", " ", (m.get("content") if m else "") or "").strip()
+                sent = re.match(r"(.{20,150}?[.!?])(\s|$)", d)
+                if sent:
+                    item["desc"] = sent.group(1)
             if not pick:
                 # pictures loaded by JavaScript are invisible to us: borrow one from the homepage
                 if pool is None:
