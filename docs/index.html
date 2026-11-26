@@ -639,7 +639,7 @@ function render() {
         <button class="dl" onclick="askDownload('${c.slug}')">${icon("dl")}Descarcă</button>
         <button onclick="preview('${c.slug}')">${icon("eye")}Previzualizare</button>
         <button onclick="edit('${c.slug}')">${icon("edit")}Editează</button>
-        <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul">${icon("refresh")}Recitește site</button>
+        <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul, doar dacă s-a schimbat ceva pe el. Pentru corecturi folosește Editează (nu mai citește site-ul).">${icon("refresh")}Recitește site</button>
       </div></div>`);
   const all = (q ? [] : pending).concat(cards);
   box.innerHTML = all.length ? all.join("") : `<div class="empty">Niciun client${q ? " găsit" : " încă"}.</div>`;

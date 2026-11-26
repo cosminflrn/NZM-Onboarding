@@ -377,9 +377,14 @@ class Kit:
         return [self.heading(title, top=36, bottom=16), self._card_row(cols, tint=mix(self.accent, "#ffffff", 0.92)),
                 row([[m_spacer(24)]], bg=WHITE)]
 
-    @staticmethod
-    def _own_pictures(items):
-        return all(i.get("image") and i.get("image_from", "page") == "page" for i in items)
+    def _own_pictures(self, items):
+        """Picture cards when most of the site's sections have a picture of their own (a section without one
+        borrows a home-page photo); text cards when most have none, so pages never look like products."""
+        if not all(i.get("image") for i in items):
+            return False
+        menu = [m for m in (self.b.get("links") or {}).get("menu") or [] if m.get("label") and m.get("url")][:3] or items
+        own = sum(1 for m in menu if m.get("image") and m.get("image_from", "page") == "page")
+        return own * 2 > len(menu)
 
     @staticmethod
     def _label(it):
