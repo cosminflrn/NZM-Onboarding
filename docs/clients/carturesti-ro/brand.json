@@ -1,0 +1,124 @@
+{
+  "url": "https://carturesti.ro/",
+  "domain": "carturesti.ro",
+  "slug": "carturesti-ro",
+  "platform": "wordpress",
+  "name": "Cărturești",
+  "description": "Noul cărturești.ro este acum mai prietenos și mai plin de viață. Bine ai venit în punctul de întâlnire pentru iubitorii de cărti, ceai, muzică, dichis.",
+  "contact": {
+    "phone": "0376 448 000",
+    "phone_href": "tel:0376448000",
+    "email": "ecomenzi@carturesti.ro"
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/CarturestiOnline",
+    "instagram": "https://www.instagram.com/librariile_carturesti",
+    "tiktok": "https://www.tiktok.com/@carturesti_official",
+    "youtube": "https://www.youtube.com/user/CarturestiTube"
+  },
+  "links": {
+    "home": "https://carturesti.ro/",
+    "cart": "https://carturesti.ro/",
+    "terms": "https://carturesti.ro/info/termeni-si-conditii",
+    "privacy": "https://carturesti.ro/info/politica-confidentialitate",
+    "contact": null,
+    "promo": "https://carturesti.ro/offer",
+    "menu": [
+      {
+        "label": "PREȚURI PRIETENOASE",
+        "url": "https://carturesti.ro/offer/raftul-cu-preturi-super-prietenoase-5470",
+        "image_from": "page",
+        "desc": "Noul cărturești.ro este acum mai prietenos și mai plin de viață.",
+        "image": "https://media.dc5.ro/banner-images/21336_banner_7d9f9d1f4823.jpg"
+      },
+      {
+        "label": "MANGA",
+        "url": "https://carturesti.ro/raft/manga-1191097",
+        "image_from": "page",
+        "desc": "<p>Dacă te pasionează <strong>benzile desenate japoneze</strong>, locul tău este aici, în lumea Manga!",
+        "image": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/scr-01.jpg"
+      },
+      {
+        "label": "SCOLARESTI",
+        "url": "https://carturesti.ro/raft/scolaresti-1141",
+        "image_from": "page",
+        "desc": "<p>La Cărturești, te ajutăm să crești, cu <strong>produse școlărești</strong> adaptate vârstei, materiei și bibliografiei școlare.",
+        "image": "https://media.dc5.ro/banner-images/206_D-sc-noi-26.jpg"
+      }
+    ],
+    "cart_found": false
+  },
+  "logo": {
+    "url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/applePay.png",
+    "source_url": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/applePay.png",
+    "width": 70,
+    "height": 45,
+    "display_width": 70,
+    "found_by": "img",
+    "recolored": false,
+    "light_parts": true
+  },
+  "banner": {
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/banner-f119ec06.jpg",
+    "source_url": "https://media.dc5.ro/banner-images/24766_banner_579da02d1fc9.jpg",
+    "width": 1170,
+    "height": 400
+  },
+  "colors": {
+    "accent": "#dd2c00",
+    "accent_original": "#dd2c00",
+    "accent_text": "#ffffff",
+    "dark": "#000000",
+    "light": "#fceae6",
+    "muted": "#666666",
+    "candidates": [
+      "#dd2c00",
+      "#ff9e80",
+      "#8bc34a",
+      "#aed581",
+      "#558b2f",
+      "#f4511e"
+    ],
+    "logo_colors": [
+      "#000000",
+      "#848484",
+      "#545454",
+      "#e4e4e4",
+      "#9c9c9c",
+      "#cccccc"
+    ]
+  },
+  "products": [],
+  "options": {
+    "discount_code": "",
+    "sender_email": "ecomenzi@carturesti.ro",
+    "sender_name": "Cărturești",
+    "form_type": "popup",
+    "site_type": "auto",
+    "lang": "auto"
+  },
+  "site_type": "non-ecommerce",
+  "lang_detected": "ro",
+  "warnings": [],
+  "fetch_log": [
+    "403 https://carturesti.ro/wp-json/wc/store/v1/products?per_page=40"
+  ],
+  "generated_at": "2026-11-26 14:14 UTC",
+  "texts_default": {
+    "hero_eyebrow": "Bine ai venit",
+    "hero_title": "Bine ai venit în comunitatea Cărturești!",
+    "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
+    "intro": "Noul cărturești.ro este acum mai prietenos și mai plin de viață.\n\nDe acum ești primul care află noutățile Cărturești. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+    "cta_label": "Vizitează site-ul",
+    "products_title": "Am ales câteva produse pentru tine",
+    "cards_title": "Ce găsești la noi",
+    "discount_note": "Aplică-l la finalizarea comenzii.",
+    "form_title": "Abonează-te la newsletter",
+    "form_subtitle": "Fii primul care află noutățile Cărturești.",
+    "news_title": "Descoperă Cărturești",
+    "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
+    "newsletter_title": "Noutăți de la Cărturești",
+    "newsletter_subtitle": "Iată ce am pregătit pentru tine în perioada aceasta."
+  },
+  "texts": {}
+}

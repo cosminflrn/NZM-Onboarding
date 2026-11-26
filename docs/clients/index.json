@@ -1,5 +1,28 @@
 [
  {
+  "slug": "carturesti-ro",
+  "name": "Cărturești",
+  "domain": "carturesti.ro",
+  "url": "https://carturesti.ro/",
+  "generated_at": "2026-11-26 14:14 UTC",
+  "logo": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/applePay.png",
+  "colors": {
+   "accent": "#dd2c00",
+   "dark": "#000000",
+   "light": "#fceae6"
+  },
+  "warnings": [],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "files": [
+   "carturesti-ro-automatizare-bun-venit.json",
+   "carturesti-ro-formular-pop-up.json",
+   "carturesti-ro-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
