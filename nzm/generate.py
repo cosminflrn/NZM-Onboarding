@@ -428,6 +428,16 @@ def _image_ok(url):
         return False
 
 
+def _image_size(url):
+    import io, requests
+    from PIL import Image
+    try:
+        r = requests.get(url, timeout=25, headers={"User-Agent": "Mozilla/5.0 NZM-Onboarding image check"})
+        return Image.open(io.BytesIO(r.content)).size
+    except Exception:
+        return (None, None)
+
+
 def verify_images(b):
     """Open every picture the emails will show. One that does not load (hotlink protection, deleted file,
     image CDN refusing it) is left out, so a client never gets a broken-image box. Off with NZM_CHECK_IMAGES=0."""
@@ -463,7 +473,11 @@ def verify_images(b):
         if b.get("logo"):
             b["logo"]["url"] = swap(b["logo"]["url"])
         for p in b.get("products") or []:
-            p["image"] = swap(p.get("image"))
+            if p.get("image") in direct:
+                p["image"] = direct[p["image"]]
+                p["img_w"], p["img_h"] = _image_size(p["image"])
+            else:
+                p.pop("img_w", None), p.pop("img_h", None)
         for m in (b.get("links") or {}).get("menu") or []:
             if m.get("image"):
                 m["image"] = swap(m["image"])

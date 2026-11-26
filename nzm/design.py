@@ -247,7 +247,7 @@ class Kit:
         else:
             mods.append(m_text(wrap([para(esc(self.b["name"]), 22, INK, weight="bold")]), padding=pad(20, 24, 12, 24)))
         items = (self.L.get("menu") or [])[:3] if (nav and self.ecom) else []
-        head_bg = self.dark if logo.get("light_parts") and not logo.get("recolored") else WHITE
+        head_bg = (logo.get("header_bg") or self.dark) if logo.get("light_parts") and not logo.get("recolored") else WHITE
         if items:
             sep = f'<span style="color:{LINE};">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>'
             links = sep.join(link(esc(m["label"]), m["url"], MUTED, underline=False, weight="600") for m in items)
@@ -329,6 +329,13 @@ class Kit:
         while len(prods) < 3:
             prods.append({"name": "Nume produs", "price": "199,00 lei", "url": self.home, "image": PLACEHOLDER_IMG,
                           "placeholder": True})
+        # pictures the image service could not square (shop CDN refuses it): same height for all three,
+        # each as wide as its own proportions allow, so the cards still line up
+        dims = [(p.get("img_w"), p.get("img_h")) for p in prods]
+        even_h = None
+        if all(w and h for w, h in dims):
+            col_w = WIDTH // 3 - 28
+            even_h = int(min(col_w * h / w for w, h in dims + [(1, 1.45)]))
         cols = []
         for p in prods:
             # at most ~2 lines in a 3-column row, so the buttons under the cards stay on one line
@@ -336,11 +343,17 @@ class Kit:
             if name.isupper():  # "SEMANATOARE PROSEM K" reads like shouting and takes a line more
                 name = name[:1] + name[1:].lower()
             name = name if len(name) <= 38 else name[:36].rsplit(" ", 1)[0].rstrip(" |,-–") + "…"
+            if even_h:
+                dw = int(even_h * p["img_w"] / p["img_h"])
+                pic = m_image(p["image"], p["img_w"], p["img_h"], dw, href=p["url"], alt=name,
+                              padding=pad(0, 0, 12, 0), radius=RADIUS)
+            else:
+                pic = m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600,
+                              WIDTH, href=p["url"], alt=name, padding=pad(0, 0, 12, 0), radius=RADIUS, full=True)
             mods = [
-                m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600, WIDTH,
-                        href=p["url"], alt=name, padding=pad(0, 0, 12, 0), radius=RADIUS, full=True),
+                pic,
                 # short names get an empty second line, so every card's button sits at the same height
-                m_text(wrap([para(link(esc(name), p["url"], INK, underline=False) + ("<br/>&nbsp;" if len(name) <= 20 else ""),
+                m_text(wrap([para(link(esc(name), p["url"], INK, underline=False) + ("<br/>&nbsp;" if len(name) <= 22 else ""),
                                   15, INK, lh=1.4)]),
                        padding=pad(0, 10, 4, 10), link_color=INK),
             ]
