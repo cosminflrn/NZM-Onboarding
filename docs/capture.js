@@ -16,8 +16,8 @@
   close.onclick = () => note.remove();
   note.append(msg, close);
   const say = (t) => { msg.textContent = t; };
-  say("NewsMAN Onboarding: preiau pagina…");
-  document.body.appendChild(note);
+  let shown = false;
+  const show = () => { if (!shown) { document.body.appendChild(note); shown = true; } };
 
   const items = {};
   let budget = 10e6;
@@ -99,7 +99,7 @@
   });
   document.querySelectorAll("svg image[href]").forEach((el) => add(el.getAttribute("href")));
   say(`NewsMAN Onboarding: preiau ${imgs.length} imagini…`);
-  for (let i = 0; i < imgs.length; i += 6) await Promise.all(imgs.slice(i, i + 6).map(getImage));
+  for (let i = 0; i < imgs.length; i += 12) await Promise.all(imgs.slice(i, i + 12).map(getImage));
 
   // stub: true when the bookmark is the self-updating one (it loads this file fresh every time)
   const data = { type: "nzm-capture", url: location.href.split("#")[0], items, v: 3, stub: !!window.__nzmStub };
@@ -120,6 +120,7 @@
     a.href = URL.createObjectURL(new Blob([JSON.stringify(data)], { type: "application/json" }));
     a.download = "newsman-" + location.host.replace(/^www\./, "") + ".json";
     document.body.appendChild(a); a.click();
+    show();
     say("NewsMAN Onboarding: am salvat un fișier. Încarcă-l în aplicație cu „Încarcă pagina salvată”.");
   }, 8000);
 })();

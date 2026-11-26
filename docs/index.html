@@ -112,7 +112,8 @@
   dialog .view { height:calc(92vh - 100px); overflow:hidden; background:#fff; }
   dialog .view .phone { width:390px; height:calc(100% - 32px); margin:16px auto; border:10px solid #1d1d21; border-radius:36px;
     overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.25); animation:pop .3s ease; }
-  dialog .view:has(.phone) { background:#ececf0; }
+  dialog .view:has(.phone) { background:#ececf0; overscroll-behavior:contain; }
+  body:has(dialog[open]) { overflow:hidden; }
   @media (max-width: 700px) {  /* already on a phone: no phone-in-a-phone, no toggle */
     dialog .bar .seg.dev { display:none; }
     dialog .view .phone { width:100%; height:100%; margin:0; border:0; border-radius:0; box-shadow:none; }
@@ -141,7 +142,10 @@
   details.blocked summary { cursor:pointer; color:var(--muted); list-style:none; display:inline-flex; align-items:center; gap:6px; }
   details.blocked summary::before { content:"›"; display:inline-block; transition:transform .2s ease; font-size:16px; line-height:1; }
   details.blocked[open] summary::before { transform:rotate(90deg); }
-  .bl-body { display:grid; gap:10px; padding:12px 0 2px 14px; animation:rise .25s ease; }
+  .bl-body { display:grid; gap:10px; padding:12px 0 2px 0; animation:rise .25s ease; }
+  .bl-actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .bl-list { margin:0; padding-left:18px; color:var(--muted); line-height:1.6; font-size:13px; }
+  kbd { font:12px/1 ui-monospace, monospace; padding:2px 5px; border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; background:#fafafa; color:var(--ink); }
   .bl-step { line-height:1.9; } .bl-step > a.bm, .bl-step > label.btn { margin-left:4px; vertical-align:middle; }
   .seg .sm { display:none; }
   a.bm { display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:999px; background:var(--red); color:#fff;
@@ -150,7 +154,9 @@
   label.btn.up { display:inline-flex; margin:0; color:var(--ink); font-size:13px; padding:6px 12px; cursor:pointer; }
   @media (max-width: 900px) {
     form.gen, .grid { grid-template-columns:minmax(0, 1fr); }
-    .client { grid-template-columns:20px minmax(0, 1fr); } .client > .logo { display:none; } .client .actions { grid-column:1/-1; }
+    .client { grid-template-columns:20px 84px minmax(0, 1fr); gap:12px; } .client > .logo { width:84px; height:64px; padding:6px; }
+    .client .logo img { max-width:72px; max-height:50px; }
+    .client .actions { grid-column:1/-1; }
     .switches { flex-wrap:wrap; } .switches > div { min-width:0; max-width:100%; }
     .seg .lg { display:none; } .seg .sm { display:inline; }
     h2 { flex-wrap:wrap; } .search { flex:1; width:auto; min-width:0; }
@@ -203,14 +209,18 @@
       <svg class="i"><use href="#i-check"/></svg><span id="capText"></span>
       <button type="button" class="link" id="capClear" title="Renunță la pagina preluată"><svg class="i"><use href="#i-x"/></svg></button>
     </div>
-    <details class="blocked" id="blockedHelp">
-      <summary>Site-ul refuză citirea automată? Preia-l din browserul tău</summary>
+    <details class="blocked" id="blockedHelp" open>
+      <summary>Site blocat? Preia-l din browserul tău</summary>
       <div class="bl-body">
-        <div class="bl-step"><b>1.</b> Trage butonul acesta în bara de favorite (o singură dată; se actualizează singur):
-          <a class="bm" id="bmLink" href="#" onclick="return false" draggable="true"><img src="favicon.ico" alt="">NZM Onboarding</a></div>
-        <div class="bl-step"><b>2.</b> Deschide site-ul clientului și apasă butonul din bara de favorite. Pagina se preia și apare aici, gata de generat.</div>
-        <div class="bl-step"><b>Rezervă:</b> pe site-ul clientului apasă <b>Ctrl+S</b> („Pagină web, doar HTML”), apoi
-          <label class="btn up"><input type="file" id="capFile" accept=".html,.htm,.json,text/html,application/json" hidden><svg class="i"><use href="#i-dl"/></svg>Încarcă pagina salvată</label></div>
+        <div class="bl-actions">
+          <a class="bm" id="bmLink" href="#" onclick="return false" draggable="true"><img src="favicon.ico" alt="">NZM Onboarding</a>
+          <label class="btn up"><input type="file" id="capFile" accept=".html,.htm,.json,text/html,application/json" hidden><svg class="i"><use href="#i-upload"/></svg>Încarcă pagina salvată</label>
+        </div>
+        <ol class="bl-list">
+          <li>Trage <b>NZM Onboarding</b> în bookmark bar (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> dacă nu o vezi). O singură dată, se actualizează singur.</li>
+          <li>Pe site-ul clientului apasă butonul din bookmark bar: generarea pornește singură, aici.</li>
+          <li>Nu merge? Pe site apasă <kbd>Ctrl</kbd>+<kbd>S</kbd> („doar HTML”) și încarcă fișierul.</li>
+        </ol>
       </div>
     </details>
   </div>
@@ -268,7 +278,7 @@
   <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></symbol>
   <symbol id="i-popup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="8" width="10" height="8" rx="1.5"/></symbol>
   <symbol id="i-embed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10"/><rect x="7" y="15" width="10" height="3" rx="1"/></symbol>
-  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-desktop" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-desktop" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
 </svg>
 
 <script src="config.js"></script>
@@ -449,7 +459,6 @@ function setCapture(cap) {
   if (cap.url) $("url").value = cap.url;
   $("capText").textContent = `Preluat din browser: ${domOf(cap.url)} · ${pages} ${pages === 1 ? "pagină" : "pagini"}, ${imgs} ${imgs === 1 ? "imagine" : "imagini"}. Apasă Generează.`;
   $("capBar").hidden = false;
-  $("blockedHelp").open = false;
   $("url").scrollIntoView({ behavior: "smooth", block: "center" });
 }
 $("capClear").onclick = () => setCapture(null);
@@ -459,10 +468,12 @@ function validCapture(d) {
 window.addEventListener("message", (e) => {
   if (!validCapture(e.data)) return;
   setCapture({ url: e.data.url, items: e.data.items });
-  if (!e.data.stub) {
-    $("capText").textContent += " Butonul tău din bara de favorite e o versiune veche: trage-l din nou o dată (de acum se actualizează singur).";
-  }
   try { e.source && e.source.postMessage("nzm-received", e.origin); } catch {}
+  if (!e.data.stub) {
+    $("capText").textContent += " Butonul tău din bookmark bar e o versiune veche: trage-l din nou o dată (de acum se actualizează singur).";
+  } else {
+    $("gen").requestSubmit();  // no extra click: the generation starts as soon as the page arrives
+  }
 });
 if (location.hash === "#capture") {
   history.replaceState(null, "", location.pathname);
@@ -522,7 +533,7 @@ async function runJob(inputs, cap) {
   delete inputs.bundle; delete inputs.bundle_key;
   const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
   setJob(slug, { state: "run", text: cap ? "trimit pagina preluată" : "în curs", name: inputs.name || slug, url, inputs, cap });
-  document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
   try {
     if (cap) {
       // encrypted with a one-time key: the public repo only ever holds unreadable bytes
@@ -786,6 +797,7 @@ async function preview(slug) {
   show(0);
   $("pv").showModal();
   requestAnimationFrame(() => placePill(tabs.querySelector(".dev")));  // sizes are known only once the dialog is open
+  $("view").onwheel = (e) => e.preventDefault();  // only the email itself scrolls (inside the frame)
 }
 
 // =============================================================== edit

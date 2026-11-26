@@ -337,8 +337,8 @@ class Kit:
                 name = name[:1] + name[1:].lower()
             name = name if len(name) <= 38 else name[:36].rsplit(" ", 1)[0].rstrip(" |,-–") + "…"
             mods = [
-                m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600, 168,
-                        href=p["url"], alt=name, padding=pad(0, 10, 12, 10), radius=RADIUS),
+                m_image(p["image"], 400 if p.get("placeholder") else 600, 300 if p.get("placeholder") else 600, WIDTH,
+                        href=p["url"], alt=name, padding=pad(0, 0, 12, 0), radius=RADIUS, full=True),
                 # short names get an empty second line, so every card's button sits at the same height
                 m_text(wrap([para(link(esc(name), p["url"], INK, underline=False) + ("<br/>&nbsp;" if len(name) <= 20 else ""),
                                   15, INK, lh=1.4)]),
@@ -350,7 +350,8 @@ class Kit:
             mods.append(m_button("Vezi produsul", p["url"], "transparent", INK, border=f"1px solid {LINE}", size=13,
                                  px=16, py=8, weight="600", padding=pad(6, 8, 8, 8)))
             cols.append(mods)
-        return [self.heading(title, top=36, bottom=12), row(cols, bg=WHITE, col_pad=pad(0, 10, 8, 10))]
+        return [self.heading(title, top=36, bottom=16), row(cols, bg=WHITE, col_pad=pad(0, 14, 12, 14)),
+                row([[m_spacer(12)]], bg=WHITE)]
 
     def _card_row(self, cols, top=22, bottom=22, tint=None):
         """Columns as soft cards with white gutters: rounded pictures stand out even on white product shots."""
@@ -374,7 +375,7 @@ class Kit:
                                  padding=pad(4, 14, 0, 14)))
             cols.append(mods)
         return [self.heading(title, top=36, bottom=16), self._card_row(cols, tint=mix(self.accent, "#ffffff", 0.92)),
-                row([[m_spacer(8)]], bg=WHITE)]
+                row([[m_spacer(24)]], bg=WHITE)]
 
     @staticmethod
     def _own_pictures(items):
@@ -396,8 +397,8 @@ class Kit:
         for it in items:
             mods = []
             if it.get("image"):
-                mods.append(m_image(it["image"], 600, 400, 200, href=it["url"], alt=self._label(it),
-                                    padding=pad(0, 3, 12, 3), radius=RADIUS))
+                mods.append(m_image(it["image"], 600, 400, WIDTH, href=it["url"], alt=self._label(it),
+                                    padding=pad(0, 0, 12, 0), radius=RADIUS, full=True))
             mods += [
                 m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
                 m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
@@ -405,7 +406,7 @@ class Kit:
             ]
             cols.append(mods)
         return [self.heading(title, top=36, bottom=16),
-                row(cols, bg=WHITE, col_pad=pad(0, 4, 8, 4))]
+                row(cols, bg=WHITE, col_pad=pad(0, 14, 12, 14)), row([[m_spacer(12)]], bg=WHITE)]
 
     def featured(self, items, intro_title):
         """One section large (picture + title + button), the others as a 2-column row."""
@@ -421,20 +422,20 @@ class Kit:
                                 padding=pad(0, 0, 16, 0), radius=RADIUS, full=True))
         mods += [m_text(wrap([para(esc(self._label(first)), 22, INK, weight="bold", lh=1.3)]), padding=pad(4, 40, 4, 40)),
                  m_button(f"Descoperă {self._label(first).lower()} →", first["url"], self.accent, "#ffffff", size=15,
-                          padding=pad(8, 24, 16, 24))]
+                          padding=pad(10, 24, 28, 24))]
         out = [self.heading(intro_title, top=36, bottom=16), row([mods], bg=WHITE)]
         if rest:
             cols = []
             for it in rest:
                 cm = []
                 if it.get("image"):
-                    cm.append(m_image(it["image"], 600, 400, 264, href=it["url"], alt=self._label(it),
-                                      padding=pad(0, 8, 12, 8), radius=RADIUS))
+                    cm.append(m_image(it["image"], 600, 400, WIDTH, href=it["url"], alt=self._label(it),
+                                      padding=pad(0, 0, 12, 0), radius=RADIUS, full=True))
                 cm += [m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
                        m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
                                 padding=pad(0, 12, 16, 12))]
                 cols.append(cm)
-            out.append(row(cols, bg=WHITE, col_pad=pad(8, 24, 8, 24)))
+            out.append(row(cols, bg=WHITE, col_pad=pad(8, 20, 20, 20)))
         return out
 
     def benefits(self, items):
@@ -449,7 +450,7 @@ class Kit:
                 m_text(wrap([para(esc(desc), 14, MUTED, lh=1.5)]), padding=pad(0, 14, 0, 14), color=MUTED),
             ])
         cards = self._card_row(cols, top=26, bottom=26, tint=tint)
-        return [row([[m_spacer(6)]], bg=WHITE), cards, row([[m_spacer(4)]], bg=WHITE)]
+        return [row([[m_spacer(12)]], bg=WHITE), cards, row([[m_spacer(24)]], bg=WHITE)]
 
     def social_cta(self):
         """Big Beefree social icons: the networks' own colours, or dark ones on a very colourful brand."""

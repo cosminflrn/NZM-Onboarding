@@ -147,6 +147,7 @@ def social_email(k):
         rows = [k.header(nav=False),
                 k.hero("Hai să rămânem în contact", "Ne găsești și pe social media",
                        f"Urmărește {b['name']} pe {D_join(nets)} pentru noutăți, culise și idei, în fiecare zi."),
+                k.banner(),
                 k.body("Acolo vezi primul noutățile, părerile celor care ne cunosc deja și răspunsuri rapide la întrebările tale.",
                        top=32, bottom=8),
                 k.social_cta(),
@@ -304,7 +305,7 @@ def cart_contact(k):
 
 
 def cart_products_row(k, condition):
-    img = D.m_image(D.PLACEHOLDER_IMG, 400, 300, 220, href="{{url}}", alt="{{name}}", dynamic="{{img}}",
+    img = D.m_image(D.PLACEHOLDER_IMG, 400, 300, D.WIDTH, href="{{url}}", alt="{{name}}", dynamic="{{img}}", full=True,
                     padding=D.pad(10, 12, 10, 0), radius=D.RADIUS)
     name = D.m_text(D.wrap([D.para(D.link("{{name}}", "{{url}}", D.INK, underline=False), 18, D.INK, align="left",
                                    weight="bold", lh=1.4)]), padding=D.pad(28, 0, 10, 4), link_color=D.INK)
