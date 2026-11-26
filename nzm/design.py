@@ -395,9 +395,9 @@ class Kit:
         borrows a home-page photo); text cards when most have none, so pages never look like products."""
         if not all(i.get("image") for i in items):
             return False
-        menu = [m for m in (self.b.get("links") or {}).get("menu") or [] if m.get("label") and m.get("url")][:3] or items
-        own = sum(1 for m in menu if m.get("image") and m.get("image_from", "page") == "page")
-        return own * 2 > len(menu)
+        # every card has a real photo of the site, none repeated and none the banner already shown above
+        pics = [i["image"] for i in items]
+        return len(set(pics)) == len(pics) and (self.b.get("banner") or {}).get("url") not in pics
 
     @staticmethod
     def _label(it):
