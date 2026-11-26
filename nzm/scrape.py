@@ -177,7 +177,10 @@ def fmt_price(price, currency=None, domain=""):
         return f"{s} lei"
     if cur == "EUR":
         return f"{s} €"
-    return f"{s} {cur}".strip()
+    # other currencies: written the international way ($6.00, £12.50, 1,200.00 CHF)
+    intl = f"{p:,.2f}"
+    sym = {"USD": "$", "GBP": "£", "CAD": "CA$", "AUD": "A$"}.get(cur)
+    return f"{sym}{intl}" if sym else f"{intl} {cur}".strip()
 
 
 # ----------------------------------------------------------------- main class
