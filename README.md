@@ -1,11 +1,24 @@
-# NewsMAN Onboarding
+<p align="center">
+  <img src="docs/newsman-logo.png" alt="NewsMAN" height="40">
+</p>
 
-Pui linkul site-ului unui client și primești 3 fișiere gata de importat în NewsMAN: formular, automatizare și newsletter, cu logo-ul, culorile, linkurile și produsele lui.
+<h1 align="center">NewsMAN Onboarding</h1>
 
-**Pagina:** https://cosminflrn.github.io/NZM-Onboarding/ (utilizator și parolă comune echipei)
+<p align="center">
+  Linkul site-ului clientului → formular, automatizare și newsletter gata de importat în NewsMAN,<br>
+  cu logo-ul, culorile, linkurile și produsele lui.
+</p>
 
-![NewsMAN Onboarding](docs/screenshot.png)
+<p align="center">
+  <a href="https://cosminflrn.github.io/NZM-Onboarding/"><b>Deschide aplicația →</b></a>
+</p>
 
-**Cum merge:** pagina e pe GitHub Pages (`docs/`). Generarea rulează în GitHub Actions (`nzm/`), iar login-ul trece prin Cloudflare (`worker/`). Template-urile de bază sunt exporturi NewsMAN, în `templates/`.
+<p align="center">
+  <img src="docs/screenshot.png" alt="NewsMAN Onboarding" width="860">
+</p>
 
-**Întreținere:** tokenul GitHub și parola se schimbă doar din Cloudflare ([cum](worker/README.md)). Pentru template-uri noi, le pui în `templates/` cu aceleași nume și toți clienții se regenerează singuri.
+| 1. Generează | 2. Verifică | 3. Importă |
+|---|---|---|
+| Pui linkul site-ului și apeși **Generează**. | **Previzualizare** pe desktop și mobil, **Editează** pentru corecturi. | **Descarcă** cele 3 fișiere și le imporți în NewsMAN. |
+
+<sub>Rulează pe GitHub Pages (`docs/`), GitHub Actions (`nzm/`) și Cloudflare (`worker/`). Template-urile de bază sunt în `templates/`.</sub>
