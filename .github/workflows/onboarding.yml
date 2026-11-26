@@ -67,6 +67,8 @@ jobs:
       - name: Citire site și generare fișiere
         id: gen
         if: github.event_name == 'workflow_dispatch'
+        # a site we cannot read is shown in the app, not as a failed run (so GitHub sends no failure e-mail)
+        continue-on-error: true
         env:
           IN_URL: ${{ inputs.url }}
           IN_NAME: ${{ inputs.name }}
@@ -94,6 +96,7 @@ jobs:
           fi
 
       - name: Salvare
+        if: steps.gen.outcome != 'failure'
         env:
           SLUG: ${{ steps.gen.outputs.slug }}
         run: |

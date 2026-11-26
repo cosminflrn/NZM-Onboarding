@@ -210,7 +210,10 @@ class Scraper:
     def run(self):
         final, soup = self.page(self.start_url)
         if soup is None:
-            raise RuntimeError(f"Nu am putut descărca {self.start_url} ({'; '.join(self.f.log[-3:])})")
+            if any(x.split(" ")[0] in ("401", "403", "406", "429", "503") for x in self.f.log):
+                raise RuntimeError(f"{self.start_url} nu permite citirea automată de pe serverele GitHub "
+                                   "(răspuns 403 de la firewall-ul site-ului).")
+            raise RuntimeError(f"Nu am putut deschide {self.start_url} ({'; '.join(self.f.log[-3:])})")
         p = urlparse(final)
         self.base = f"{p.scheme}://{p.netloc}/"
         self.domain = p.netloc.lower().removeprefix("www.")

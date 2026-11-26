@@ -86,7 +86,7 @@
   .tag { display:inline-flex; align-items:center; gap:5px; font-size:12px; padding:3px 9px; border-radius:999px; background:#f0f0f3; color:#3f3f46; }
   .sw { display:inline-block; width:18px; height:18px; border-radius:50%; border:1px solid rgba(0,0,0,.1); }
   .status { font-size:12px; padding:3px 9px; border-radius:999px; display:inline-flex; align-items:center; gap:5px; }
-  .status.run { background:#fff4d6; color:var(--run); } .status.ok { background:#e6f6ea; color:var(--ok); } .status.err { background:#fde8e7; color:var(--err); }
+  .status.run { background:#fff4d6; color:var(--run); } .status.ok { background:#e6f6ea; color:var(--ok); } .status.err { background:#fde8e7; color:var(--err); border-radius:10px; line-height:1.45; align-items:flex-start; padding:5px 10px; } .status.err svg.i { flex:none; margin-top:2px; }
   .status svg.i { width:13px; height:13px; }
   .spin { width:12px; height:12px; border:2px solid currentColor; border-right-color:transparent; border-radius:50%; animation:sp .8s linear infinite; }
   @keyframes sp { to { transform:rotate(360deg); } }
@@ -333,7 +333,10 @@ async function follow(run) {
       const jobs = await ghJson(`/actions/runs/${run.id}/jobs`);
       let notes = [];
       if (jobs.jobs[0]) { try { notes = await ghJson(`/check-runs/${jobs.jobs[0].id}/annotations`); } catch {} }
-      return { ok: r.conclusion === "success", run: r, notes };
+      // the generate step may fail "softly" (continue-on-error): success only if it reported the client slug
+      const failed = notes.some((n) => n.annotation_level === "failure");
+      const slugged = notes.some((n) => n.title === "slug");
+      return { ok: r.conclusion === "success" && (slugged || !failed), run: r, notes };
     }
     await sleep(4000);
   }
@@ -384,7 +387,7 @@ async function runJob(inputs) {
   let slug = slugOf(url);
   inputs = { ...inputs, rid: Math.random().toString(36).slice(2, 8) };
   const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
-  setJob(slug, { state: "run", text: "în curs", name: inputs.name || slug, url });
+  setJob(slug, { state: "run", text: "în curs", name: inputs.name || slug, url, inputs });
   document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
   try {
     await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs }) });
@@ -396,11 +399,16 @@ async function runJob(inputs) {
       await load();
       setJob(slug, { state: "ok", text: "finalizat" });
     } else {
-      const err = res.notes.find((n) => n.annotation_level === "failure" && n.title !== "slug");
+      const fails = res.notes.filter((n) => n.annotation_level === "failure" && n.title !== "slug");
+      const err = fails.find((n) => n.title === "Eroare generare") || fails.find((n) => !/exit code/i.test(n.message)) || fails[0];
       setJob(slug, { state: "err", text: err ? err.message : "a eșuat", link: res.run.html_url });
     }
   } catch (err) { setJob(slug, { state: "err", text: err.message }); }
 }
+
+const domOf = (u) => { try { return new URL(/^https?:/.test(u) ? u : "https://" + u).hostname.replace(/^www\./, ""); } catch { return ""; } };
+function dropJob(slug) { delete JOBS[slug]; render(); }
+function retryJob(slug) { const j = JOBS[slug]; if (j && j.inputs) { delete JOBS[slug]; runJob(j.inputs); } }
 
 // =============================================================== history
 let CLIENTS = [];
@@ -418,7 +426,7 @@ function statusHtml(slug) {
   if (!j) return "";
   if (j.state === "run") return `<span class="status run"><span class="spin"></span>${esc(j.text)}</span>`;
   if (j.state === "ok") return `<span class="status ok">${icon("check")}${esc(j.text)}</span>`;
-  return `<span class="status err" title="${esc(j.text)}">${icon("x")}eroare: ${esc(String(j.text).slice(0, 80))}${j.link ? ` · <a href="${esc(j.link)}" target="_blank">detalii</a>` : ""}</span>`;
+  return `<span class="status err" title="${esc(j.text)}">${icon("x")}<span>${esc(String(j.text).slice(0, 180))}${j.link ? ` · <a href="${esc(j.link)}" target="_blank">detalii</a>` : ""}</span></span>`;
 }
 
 function render() {
@@ -429,7 +437,10 @@ function render() {
   const pending = Object.entries(JOBS).filter(([s, j]) => !known.has(s) && j.state !== "ok").map(([s, j]) => `
     <div class="card client pending" id="c-${s}">
       <span></span><div class="logo"></div>
-      <div><h3>${esc(j.name || s)}</h3><div class="dom">${esc(j.url || "")}</div><div class="tags">${statusHtml(s)}</div></div><div></div>
+      <div><h3>${esc(domOf(j.url) || j.name || s)}</h3><div class="dom">${j.state === "err" ? "nu a putut fi generat" : "se generează…"}</div><div class="tags">${statusHtml(s)}</div></div>
+      <div class="actions">${j.state === "err" ? `
+        <button class="dl" onclick="retryJob('${s}')">${icon("refresh")}Încearcă din nou</button>
+        <button onclick="dropJob('${s}')">${icon("x")}Ascunde</button>` : ""}</div>
     </div>`);
   const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));
   const cards = list.map((c) => `
