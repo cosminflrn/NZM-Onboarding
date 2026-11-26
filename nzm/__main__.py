@@ -14,6 +14,7 @@ import shutil
 import sys
 
 from . import emails as E
+from .i18n import lang_of
 from . import generate as G
 from .scrape import Scraper
 
@@ -78,7 +79,7 @@ def update_index():
             "warnings": b.get("warnings", []),
             "products": len([p for p in b.get("products") or []]),
             "site_type": E.site_type(b), "form_type": E.form_type(b),
-            "lang": (b.get("options") or {}).get("lang") or "ro",
+            "lang": lang_of(b),
             "files": sorted(os.path.basename(p) for p in output_files(folder)
                             if not p.endswith("brand.json")),
         })
@@ -187,7 +188,7 @@ def main(argv=None):
     s.add_argument("--public-base", default="", help="ex. https://user.github.io/repo")
     s.add_argument("--form-type", default="", choices=["", "popup", "embed"])
     s.add_argument("--site-type", default="", choices=["", "auto", "ecommerce", "non-ecommerce"])
-    s.add_argument("--lang", default="", choices=["", "ro", "en"], help="limba emailurilor și a formularului")
+    s.add_argument("--lang", default="", choices=["", "auto", "ro", "en"], help="limba emailurilor și a formularului")
     s.add_argument("--github-output", action="store_true")
     s.add_argument("--bundle", default="", help="pagini salvate din browser (JSON {items:{url:{type,text|b64}}})")
     s.set_defaults(fn=cmd_scrape)

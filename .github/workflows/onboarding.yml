@@ -25,9 +25,9 @@ on:
         required: false
         default: auto
       lang:
-        description: Limba (ro / en)
+        description: Limba (auto / ro / en)
         required: false
-        default: ro
+        default: auto
       delete:
         description: Clienți de șters din istoric (slug1,slug2)
         required: false
@@ -93,7 +93,7 @@ jobs:
           IN_BUNDLE: ${{ inputs.bundle }}
         run: |
           python -m nzm scrape "$IN_URL" --name "$IN_NAME" --discount "$IN_DISCOUNT" \
-            --sender-email "$IN_SENDER" --form-type "${IN_FORM:-popup}" --site-type "${IN_SITE:-auto}" --lang "${IN_LANG:-ro}" \
+            --sender-email "$IN_SENDER" --form-type "${IN_FORM:-popup}" --site-type "${IN_SITE:-auto}" --lang "${IN_LANG:-auto}" \
             --public-base "$PUBLIC_BASE" --github-output $(
               [[ "$IN_BUNDLE" =~ ^inbox/[a-z0-9]{4,12}\.json$ && -f "$IN_BUNDLE" ]] && echo --bundle "$IN_BUNDLE")
 

@@ -253,6 +253,7 @@ class Scraper:
                             "form_type": "popup", "site_type": "auto"}
         from .emails import detect_ecommerce
         brand["site_type"] = "ecommerce" if detect_ecommerce(brand) else "non-ecommerce"
+        brand["lang_detected"] = self.detect_lang()
         if brand["site_type"] == "non-ecommerce" and getattr(self, "regular_menu", None):
             links["menu"] = self.regular_menu  # a presentation site: its sections, not a "discounts" shortcut
         self.section_images(links.get("menu") or [], logo)
@@ -263,6 +264,24 @@ class Scraper:
         return brand
 
     # -- platform
+    def detect_lang(self):
+        """Romanian or English for the emails: the page's declared language first, then its words."""
+        soup = self.soup
+        html_tag = soup.find("html")
+        declared = ((html_tag.get("lang") if html_tag else "") or "").strip().lower()[:2]
+        if not declared:
+            m = soup.find("meta", property="og:locale") or soup.find("meta", attrs={"http-equiv": re.compile("content-language", re.I)})
+            declared = ((m.get("content") if m else "") or "").strip().lower()[:2]
+        text = " ".join(soup.get_text(" ").split()).lower()[:20000]
+        ro = len(re.findall(r"[ăâîșțşţ]", text)) + 3 * len(re.findall(r"\b(și|pentru|este|sunt|despre|acasă|coș|produse|livrare|contul)\b", text))
+        en = 3 * len(re.findall(r"\b(the|and|for|with|your|our|you|about|home|cart|shipping|account)\b", text))
+        if declared == "ro" or (not declared and ro >= en):
+            return "ro"
+        if declared == "en":
+            # a Romanian site with a careless template lang="en" still reads Romanian
+            return "ro" if ro > 2 * en and ro > 30 else "en"
+        return "en" if declared or en > ro else "ro"  # any other language: English is the safer choice
+
     def detect_platform(self):
         h = self.html.lower()
         if "cdn.shopify.com" in h or "shopify.theme" in h:

@@ -10,8 +10,12 @@ LANGS = ("ro", "en")
 
 
 def lang_of(brand):
-    lang = ((brand or {}).get("options") or {}).get("lang") or "ro"
-    return lang if lang in LANGS else "ro"
+    """The language chosen in the app, or (Automat) the one detected on the site."""
+    lang = ((brand or {}).get("options") or {}).get("lang") or "auto"
+    if lang in LANGS:
+        return lang
+    det = (brand or {}).get("lang_detected")
+    return det if det in LANGS else "ro"
 
 
 def _and(s):

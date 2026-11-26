@@ -107,7 +107,7 @@
   dialog .bar { display:flex; gap:6px; padding:10px; border-bottom:1px solid var(--line); flex-wrap:wrap; align-items:center; position:sticky; top:0; background:#fff; z-index:2; }
   dialog .bar .tab.on { background:var(--ink); color:#fff; border-color:var(--ink); }
   dialog .bar .push { margin-left:auto; }
-  dialog .bar > button:last-child { position:sticky; right:0; background:#fff; box-shadow:-8px 0 8px #fff; }
+  dialog.pv .bar > button:last-child { position:sticky; right:0; background:#fff; box-shadow:-8px 0 8px #fff; }
   dialog .subj { padding:8px 16px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--line); }
   dialog .view { height:calc(92vh - 100px); overflow:hidden; background:#fff; }
   dialog .view .phone { width:390px; height:calc(100% - 32px); margin:16px auto; border:10px solid #1d1d21; border-radius:36px;
@@ -117,8 +117,13 @@
     dialog .bar .seg.dev { display:none; }
     dialog .view .phone { width:100%; height:100%; margin:0; border:0; border-radius:0; box-shadow:none; }
     dialog.pv { width:100vw; height:100dvh; max-width:100vw; max-height:100dvh; margin:0; border-radius:0; }
-    dialog .bar { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; } dialog .bar::-webkit-scrollbar { display:none; }
-    dialog .bar .tab { flex:none; padding:7px 11px; font-size:13px; }
+    dialog.pv .bar { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; } dialog.pv .bar::-webkit-scrollbar { display:none; }
+    dialog.pv .bar .tab { flex:none; padding:7px 11px; font-size:13px; }
+    /* edit form on a phone: one field per row, buttons under the title */
+    dialog.ed { width:100vw; max-width:100vw; max-height:100dvh; height:100dvh; margin:0; border-radius:0; }
+    dialog.ed .bar #edTitle { width:100%; } dialog.ed .bar .push { display:none; }
+    dialog.ed .bar button { flex:1; }
+    .grid > * { grid-column:1 / -1 !important; }
     dialog .view { height:calc(100dvh - 92px); }
   }
   .seg.dev button { display:inline-flex; align-items:center; gap:5px; } .seg.dev svg.i { width:14px; height:14px; }
@@ -190,7 +195,7 @@
         <div><label>Tip site</label><div class="seg" data-name="site_type">
           <button type="button" data-v="auto" class="on"><span class="lg">Detectează automat</span><span class="sm">Automat</span></button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
         <div><label>Limbă</label><div class="seg" data-name="lang">
-          <button type="button" data-v="ro" class="on">Română</button><button type="button" data-v="en">English</button></div></div>
+          <button type="button" data-v="auto" class="on">Automat</button><button type="button" data-v="ro">Română</button><button type="button" data-v="en">English</button></div></div>
       </div>
     </form>
     <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Starea apare direct în istoric.</div>
@@ -506,7 +511,7 @@ $("gen").addEventListener("submit", async (e) => {
   const inputs = { url, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
     form_type: segValue("form_type"), site_type: segValue("site_type"), lang: segValue("lang") };
   const cap = CAPTURE && domOf(CAPTURE.url) === domOf(url) ? CAPTURE : null;
-  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setSeg("lang", "ro"); setCapture(null);
+  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setSeg("lang", "auto"); setCapture(null);
   runJob(inputs, cap);
 });
 
@@ -711,7 +716,7 @@ async function rescrape(slug) {
   let o = {};
   try { o = (await readFile(`clients/${slug}/brand.json`)).options || {}; } catch {}
   await runJob({ url: c.url, name: "", discount: o.discount_code || "", sender_email: o.sender_email || "",
-    form_type: o.form_type || "popup", site_type: o.site_type || "auto", lang: o.lang || "ro" });
+    form_type: o.form_type || "popup", site_type: o.site_type || "auto", lang: o.lang || "auto" });
 }
 
 // =============================================================== preview
@@ -801,7 +806,7 @@ async function edit(slug) {
     `<h4>General</h4>`, F("name", "Nume brand", b.name, "w2"), F("opt.discount_code", "Cod discount", O.discount_code),
     F("opt.sender_email", "Email expeditor", O.sender_email), F("opt.sender_name", "Nume expeditor", O.sender_name, "w2"),
     `<div><label>Formular</label>${sel("opt.form_type", O.form_type || "popup", [["popup", "Pop-up"], ["embed", "Embed (fix)"]])}</div>`,
-    `<div><label>Limbă</label>${sel("opt.lang", O.lang || "ro", [["ro", "Română"], ["en", "English"]])}</div>`,
+    `<div><label>Limbă</label>${sel("opt.lang", O.lang || "auto", [["auto", `Automat (${b.lang_detected === "en" ? "English" : "Română"})`], ["ro", "Română"], ["en", "English"]])}</div>`,
     `<div><label>Tip site</label>${sel("opt.site_type", O.site_type || "auto", [["auto", `Automat (${b.site_type === "ecommerce" ? "e-commerce" : "non-e-commerce"})`], ["ecommerce", "E-commerce"], ["non-ecommerce", "Non-e-commerce"]])}</div>`,
     `<h4>Texte (gol = textul automat, afișat gri)</h4>`,
     ...[["hero_title", "Titlu mare", "w4"], ["hero_subtitle", "Subtitlu", "w4"], ["intro", "Text de bun venit", "w4", "area"],
@@ -854,7 +859,7 @@ $("edSave").onclick = async () => {
   try {
     b.name = v.name || b.name;
     Object.assign(b.options, { discount_code: v["opt.discount_code"], sender_email: v["opt.sender_email"], sender_name: v["opt.sender_name"] || b.name,
-      form_type: v["opt.form_type"] || "popup", site_type: v["opt.site_type"] || "auto", lang: v["opt.lang"] || "ro" });
+      form_type: v["opt.form_type"] || "popup", site_type: v["opt.site_type"] || "auto", lang: v["opt.lang"] || "auto" });
     b.texts = Object.fromEntries(Object.entries(v).filter(([k, x]) => k.startsWith("txt.") && x).map(([k, x]) => [k.slice(4), x]));
     if (files["logo.file"]) {
       const up = await uploadAsset(slug, files["logo.file"], "logo");
