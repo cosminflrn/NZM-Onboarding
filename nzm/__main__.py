@@ -54,7 +54,8 @@ def write_report(brand, out_dir, files):
 
 
 def finish(brand, out_dir):
-    brand["texts_default"] = E.default_texts(brand, E.site_type(brand) == "ecommerce")
+    from .i18n import lang_of, tr
+    brand["texts_default"] = tr(E.default_texts(brand, E.site_type(brand) == "ecommerce"), lang_of(brand))
     brand.setdefault("texts", {})
     files = G.generate(brand, out_dir)
     with open(os.path.join(out_dir, "brand.json"), "w", encoding="utf-8") as f:
@@ -77,6 +78,7 @@ def update_index():
             "warnings": b.get("warnings", []),
             "products": len([p for p in b.get("products") or []]),
             "site_type": E.site_type(b), "form_type": E.form_type(b),
+            "lang": (b.get("options") or {}).get("lang") or "ro",
             "files": sorted(os.path.basename(p) for p in output_files(folder)
                             if not p.endswith("brand.json")),
         })
@@ -119,7 +121,7 @@ def cmd_scrape(a):
         brand["options"]["sender_email"] = a.sender_email.strip()
     if a.sender_name:
         brand["options"]["sender_name"] = a.sender_name.strip()
-    for key, val in (("form_type", a.form_type), ("site_type", a.site_type)):
+    for key, val in (("form_type", a.form_type), ("site_type", a.site_type), ("lang", a.lang)):
         if val:
             brand["options"][key] = val
     if a.name:
@@ -161,6 +163,18 @@ def cmd_regen_all(a):
         cmd_regen(argparse.Namespace(brand=bj))
 
 
+def cmd_delete(a):
+    """Remove clients from the history (their folder and their entry in index.json)."""
+    for slug in [x.strip() for x in a.slugs.split(",") if x.strip()]:
+        if not re.fullmatch(r"[a-z0-9-]+", slug) or slug.startswith("_"):
+            raise SystemExit(f"nume invalid: {slug}")
+        folder = os.path.join(CLIENTS, slug)
+        if os.path.isdir(folder):
+            shutil.rmtree(folder)
+            print("șters:", slug)
+    update_index()
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="nzm")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -173,6 +187,7 @@ def main(argv=None):
     s.add_argument("--public-base", default="", help="ex. https://user.github.io/repo")
     s.add_argument("--form-type", default="", choices=["", "popup", "embed"])
     s.add_argument("--site-type", default="", choices=["", "auto", "ecommerce", "non-ecommerce"])
+    s.add_argument("--lang", default="", choices=["", "ro", "en"], help="limba emailurilor și a formularului")
     s.add_argument("--github-output", action="store_true")
     s.add_argument("--bundle", default="", help="pagini salvate din browser (JSON {items:{url:{type,text|b64}}})")
     s.set_defaults(fn=cmd_scrape)
@@ -181,6 +196,9 @@ def main(argv=None):
     r.set_defaults(fn=cmd_regen)
     ra = sub.add_parser("regen-all")
     ra.set_defaults(fn=cmd_regen_all)
+    dl = sub.add_parser("delete")
+    dl.add_argument("slugs", help="slug1,slug2")
+    dl.set_defaults(fn=cmd_delete)
     a = ap.parse_args(argv)
     try:
         a.fn(a)

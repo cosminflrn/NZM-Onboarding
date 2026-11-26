@@ -66,9 +66,14 @@
   .clients { display:grid; gap:14px; }
   .client { display:grid; grid-template-columns: 20px 120px 1fr 300px; gap:20px; align-items:center; }
   .client.sel { border-color:var(--red); box-shadow:0 0 0 1px var(--red); }
+  .client { position:relative; }
+  .client > button.del { position:absolute; top:8px; right:8px; padding:5px; border:0; background:transparent; color:#b4b4bd; box-shadow:none; opacity:0; transition:opacity .15s ease, color .15s ease; }
+  .client:hover > button.del, .client > button.del:focus-visible { opacity:1; }
+  .client > button.del:hover { color:var(--red); box-shadow:none; }
+  @media (hover: none) { .client > button.del { opacity:1; } }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
   .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
-  .selbar #selCount { color:var(--muted); margin-right:4px; }
+  .selbar #selCount { color:var(--muted); margin-right:4px; white-space:nowrap; }
   input.pick:disabled { opacity:.35; cursor:not-allowed; }
   .selbar button { padding:8px 12px; font-size:13px; }
   .selbar button.dl { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; }
@@ -184,6 +189,8 @@
           <button type="button" data-v="popup" class="on">Pop-up</button><button type="button" data-v="embed">Embed<span class="lg"> (fix în pagină)</span></button></div></div>
         <div><label>Tip site</label><div class="seg" data-name="site_type">
           <button type="button" data-v="auto" class="on"><span class="lg">Detectează automat</span><span class="sm">Automat</span></button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
+        <div><label>Limbă</label><div class="seg" data-name="lang">
+          <button type="button" data-v="ro" class="on">Română</button><button type="button" data-v="en">English</button></div></div>
       </div>
     </form>
     <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Starea apare direct în istoric.</div>
@@ -207,9 +214,10 @@
     <span class="search" id="searchBox"><input id="filter" placeholder="caută…" autocomplete="off"><button type="button" id="clearFilter" title="Șterge căutarea"><svg class="i"><use href="#i-x"/></svg></button></span>
     <span class="selbar" id="selbar">
       <span id="selCount">selectează max. 3</span>
-      <button type="button" class="dl" id="dlSel" disabled><svg class="i"><use href="#i-dl"/></svg>Descarcă selecția</button>
-      <button type="button" id="rsSel" disabled><svg class="i"><use href="#i-refresh"/></svg>Recitește selecția</button>
-      <button type="button" id="clrSel" disabled title="Debifează tot"><svg class="i"><use href="#i-x"/></svg>Resetează selecția</button>
+      <button type="button" class="dl" id="dlSel" disabled><svg class="i"><use href="#i-dl"/></svg>Descarcă</button>
+      <button type="button" id="rsSel" disabled><svg class="i"><use href="#i-refresh"/></svg>Recitește</button>
+      <button type="button" id="delSel" disabled title="Șterge clienții selectați din istoric"><svg class="i"><use href="#i-trash"/></svg>Șterge</button>
+      <button type="button" id="clrSel" disabled title="Debifează tot"><svg class="i"><use href="#i-x"/></svg>Resetează</button>
     </span>
   </h2>
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
@@ -255,7 +263,7 @@
   <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></symbol>
   <symbol id="i-popup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="8" width="10" height="8" rx="1.5"/></symbol>
   <symbol id="i-embed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10"/><rect x="7" y="15" width="10" height="3" rx="1"/></symbol>
-  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-desktop" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-desktop" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
 </svg>
 
 <script src="config.js"></script>
@@ -496,9 +504,9 @@ $("gen").addEventListener("submit", async (e) => {
   const url = $("url").value.trim();
   if (!slugOf(url)) return alert("Link invalid");
   const inputs = { url, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
-    form_type: segValue("form_type"), site_type: segValue("site_type") };
+    form_type: segValue("form_type"), site_type: segValue("site_type"), lang: segValue("lang") };
   const cap = CAPTURE && domOf(CAPTURE.url) === domOf(url) ? CAPTURE : null;
-  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setCapture(null);
+  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setSeg("lang", "ro"); setCapture(null);
   runJob(inputs, cap);
 });
 
@@ -587,6 +595,7 @@ function render() {
   const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));
   const cards = list.map((c) => `
     <div class="card client${SEL.has(c.slug) ? " sel" : ""}" id="c-${c.slug}">
+      <button class="del" title="Șterge din istoric" onclick="askDelete(['${c.slug}'])">${icon("trash")}</button>
       <input type="checkbox" class="pick" title="${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "Poți selecta maximum 3" : "Selectează"}" ${SEL.has(c.slug) ? "checked" : ""} ${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "disabled" : ""} onchange="toggleSel('${c.slug}', this.checked)">
       <a class="logo" href="${esc(c.url)}" target="_blank" title="Deschide site-ul">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</a>
       <div><h3><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a></h3>
@@ -594,6 +603,7 @@ function render() {
         <div class="tags">
           ${c.site_type === "non-ecommerce" ? `<span class="tag">${icon("globe")}Non-e-commerce</span>` : `<span class="tag">${icon("cart")}E-commerce</span>`}
           ${c.form_type === "embed" ? `<span class="tag">${icon("embed")}Formular embed</span>` : `<span class="tag">${icon("popup")}Formular pop-up</span>`}
+          ${c.lang === "en" ? `<span class="tag">${icon("globe")}English</span>` : ""}
           ${statusHtml(c.slug)}
         </div></div>
       <div class="actions">
@@ -615,11 +625,37 @@ function toggleSel(slug, on) { if (on && SEL.size >= MAX_SEL) return render(); o
 function syncSel(list) {
   for (const s of [...SEL]) if (!CLIENTS.some((c) => c.slug === s)) SEL.delete(s);
   const n = SEL.size;
-  $("selCount").textContent = n ? `${n} din ${MAX_SEL} selectate` : `selectează max. ${MAX_SEL}`;
-  $("dlSel").disabled = $("rsSel").disabled = $("clrSel").disabled = !n;
+  $("selCount").textContent = n ? `${n} din ${MAX_SEL} selectate:` : `selectează max. ${MAX_SEL}`;
+  $("dlSel").disabled = $("rsSel").disabled = $("clrSel").disabled = $("delSel").disabled = !n;
   $("selbar").style.display = CLIENTS.length ? "" : "none";
 }
 $("clrSel").onclick = () => { SEL.clear(); render(); };
+$("delSel").onclick = () => askDelete(CLIENTS.filter((c) => SEL.has(c.slug)).map((c) => c.slug));
+
+// --- delete from the history (the run removes their folders; nothing else is touched)
+function askDelete(slugs) {
+  const names = slugs.map((s) => (CLIENTS.find((c) => c.slug === s) || {}).domain || s);
+  $("dlgTitle").textContent = slugs.length === 1 ? "Ștergi " + names[0] + "?" : `Ștergi ${slugs.length} clienți?`;
+  $("dlgBody").innerHTML = `<p style="margin:2px 2px 8px;line-height:1.5;color:var(--muted)">${slugs.length === 1 ? "Clientul dispare" : esc(names.join(", ")) + " dispar"} din istoric, cu tot cu fișierele generate. Poți oricând să-l generezi din nou.</p>
+    <button class="dl" id="delYes">${icon("trash")}Șterge</button><button id="delNo">Renunță</button>`;
+  $("delNo").onclick = () => $("dlg").close();
+  $("delYes").onclick = () => { $("dlg").close(); runDelete(slugs); };
+  $("dlg").showModal();
+  $("delNo").focus();
+}
+async function runDelete(slugs) {
+  if (!(await checkToken())) return;
+  const rid = Math.random().toString(36).slice(2, 8);
+  const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
+  slugs.forEach((s) => { SEL.delete(s); setJob(s, { state: "run", text: "se șterge…" }); });
+  try {
+    await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs: { url: "", delete: slugs.join(","), rid } }) });
+    const res = await follow(await findRun((r) => (r.display_title || "").includes(`[${rid}]`), since));
+    slugs.forEach((s) => delete JOBS[s]);
+    if (!res.ok) slugs.forEach((s) => setJob(s, { state: "err", text: "ștergerea a eșuat", link: res.run.html_url }));
+    await load();
+  } catch (e) { slugs.forEach((s) => setJob(s, { state: "err", text: e.message })); }
+}
 $("dlSel").onclick = async () => {
   const slugs = CLIENTS.filter((c) => SEL.has(c.slug)).map((c) => c.slug);
   $("dlSel").disabled = true;
@@ -675,7 +711,7 @@ async function rescrape(slug) {
   let o = {};
   try { o = (await readFile(`clients/${slug}/brand.json`)).options || {}; } catch {}
   await runJob({ url: c.url, name: "", discount: o.discount_code || "", sender_email: o.sender_email || "",
-    form_type: o.form_type || "popup", site_type: o.site_type || "auto" });
+    form_type: o.form_type || "popup", site_type: o.site_type || "auto", lang: o.lang || "ro" });
 }
 
 // =============================================================== preview
@@ -765,6 +801,7 @@ async function edit(slug) {
     `<h4>General</h4>`, F("name", "Nume brand", b.name, "w2"), F("opt.discount_code", "Cod discount", O.discount_code),
     F("opt.sender_email", "Email expeditor", O.sender_email), F("opt.sender_name", "Nume expeditor", O.sender_name, "w2"),
     `<div><label>Formular</label>${sel("opt.form_type", O.form_type || "popup", [["popup", "Pop-up"], ["embed", "Embed (fix)"]])}</div>`,
+    `<div><label>Limbă</label>${sel("opt.lang", O.lang || "ro", [["ro", "Română"], ["en", "English"]])}</div>`,
     `<div><label>Tip site</label>${sel("opt.site_type", O.site_type || "auto", [["auto", `Automat (${b.site_type === "ecommerce" ? "e-commerce" : "non-e-commerce"})`], ["ecommerce", "E-commerce"], ["non-ecommerce", "Non-e-commerce"]])}</div>`,
     `<h4>Texte (gol = textul automat, afișat gri)</h4>`,
     ...[["hero_title", "Titlu mare", "w4"], ["hero_subtitle", "Subtitlu", "w4"], ["intro", "Text de bun venit", "w4", "area"],
@@ -817,7 +854,7 @@ $("edSave").onclick = async () => {
   try {
     b.name = v.name || b.name;
     Object.assign(b.options, { discount_code: v["opt.discount_code"], sender_email: v["opt.sender_email"], sender_name: v["opt.sender_name"] || b.name,
-      form_type: v["opt.form_type"] || "popup", site_type: v["opt.site_type"] || "auto" });
+      form_type: v["opt.form_type"] || "popup", site_type: v["opt.site_type"] || "auto", lang: v["opt.lang"] || "ro" });
     b.texts = Object.fromEntries(Object.entries(v).filter(([k, x]) => k.startsWith("txt.") && x).map(([k, x]) => [k.slice(4), x]));
     if (files["logo.file"]) {
       const up = await uploadAsset(slug, files["logo.file"], "logo");

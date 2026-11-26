@@ -362,6 +362,8 @@ def build_form(brand, tpl, kind):
     # the remaining strings (rendered html, labels, modal colors...)
     doc["data"]["form"] = deep_map(form, lambda s: s if s.startswith('{"page"') else patch(s))
     doc["exported_at"] = int(time.time())
+    from .i18n import lang_of, tr
+    doc = tr(doc, lang_of(brand))
     return doc
 
 
@@ -415,10 +417,53 @@ def neutral_images(brand):
     return b
 
 
+def _image_ok(url):
+    import requests
+    try:
+        r = requests.get(url, timeout=25, stream=True, headers={"User-Agent": "Mozilla/5.0 NZM-Onboarding image check"})
+        ok = r.status_code == 200 and r.headers.get("content-type", "").lower().startswith("image/")
+        r.close()
+        return ok
+    except Exception:
+        return False
+
+
+def verify_images(b):
+    """Open every picture the emails will show. One that does not load (hotlink protection, deleted file,
+    image CDN refusing it) is left out, so a client never gets a broken-image box. Off with NZM_CHECK_IMAGES=0."""
+    if os.environ.get("NZM_CHECK_IMAGES", "1") == "0":
+        return b
+    from concurrent.futures import ThreadPoolExecutor
+    urls = set()
+    logo, ban = b.get("logo") or {}, b.get("banner") or {}
+    for u in [logo.get("url"), ban.get("url")] + [p.get("image") for p in b.get("products") or []] + \
+             [m.get("image") for m in (b.get("links") or {}).get("menu") or []]:
+        if isinstance(u, str) and u.startswith("http"):
+            urls.add(u)
+    if not urls:
+        return b
+    with ThreadPoolExecutor(8) as ex:
+        status = dict(zip(urls, ex.map(_image_ok, urls)))
+    if status.get(ban.get("url")) is False:
+        b["banner"] = None
+    for m in (b.get("links") or {}).get("menu") or []:
+        if status.get(m.get("image")) is False:
+            m.pop("image", None)
+            m["image_from"] = "home"  # becomes a clean text card
+    if b.get("products"):
+        b["products"] = [p for p in b["products"] if status.get(p.get("image")) is not False]
+    if status.get(logo.get("url")) is False and str(logo.get("source_url", "")).startswith("http"):
+        logo["url"] = logo["source_url"]  # the image CDN refused it: the site's own file is the last chance
+    bad = sorted(u for u, ok in status.items() if not ok)
+    if bad:
+        print("imagini care nu se încarcă (scoase din emailuri):", *bad, sep="\n  ")
+    return b
+
+
 def generate(brand, out_dir, templates=None):
     from . import emails
     templates = templates or load_templates()
-    brand = neutral_images(brand)
+    brand = verify_images(neutral_images(brand))
     os.makedirs(out_dir, exist_ok=True)
     slug = brand["slug"]
     kind = emails.form_type(brand)

@@ -6,6 +6,7 @@ import re
 import time
 
 from . import design as D
+from .i18n import lang_of, tr
 
 FORM_TYPES = ("popup", "embed")
 SITE_TYPES = ("ecommerce", "non-ecommerce")
@@ -356,9 +357,9 @@ def build_cart_automation(brand, tpl):
     data = doc["data"]
     k = kit(brand)
     cond = _find_condition(tpl)
-    data["workflow"]["name"] = f'{brand["name"]} - Coș abandonat'
+    data["workflow"]["name"] = tr(f'{brand["name"]} - Coș abandonat', lang_of(brand))
     for n, (did, draft) in enumerate(sorted(data["draft_meta"]["meta"].items(), key=lambda x: x[1]["trigger_id"]), 1):
-        bee, subject, pre = cart_email(k, min(n, 3), cond)
+        bee, subject, pre = tr(cart_email(k, min(n, 3), cond), lang_of(brand))
         _draft_payload(draft, bee, subject, subject)
         _set_actions(data, did, subject, pre, brand)
     doc["exported_at"] = int(time.time())
@@ -369,12 +370,12 @@ def build_welcome_automation(brand, tpl):
     doc = copy.deepcopy(tpl)
     data = doc["data"]
     k = kit(brand)
-    data["workflow"]["name"] = f'{brand["name"]} - Bun venit'
+    data["workflow"]["name"] = tr(f'{brand["name"]} - Bun venit', lang_of(brand))
     builders = [lambda: (welcome_email(k), f"Bine ai venit la {brand['name']}! 👋", "Ne bucurăm că ești aici."),
                 lambda: social_email(k),
                 lambda: news_email(k)]
     for n, (did, draft) in enumerate(sorted(data["draft_meta"]["meta"].items(), key=lambda x: x[1]["trigger_id"])):
-        bee, subject, pre = builders[min(n, 2)]()
+        bee, subject, pre = tr(builders[min(n, 2)](), lang_of(brand))
         _draft_payload(draft, bee, subject, subject)
         _set_actions(data, did, subject, pre, brand)
     doc["exported_at"] = int(time.time())
@@ -385,6 +386,6 @@ def build_newsletter(brand, tpl):
     """Draft: welcome newsletter with products (ecommerce) or a regular newsletter (non-ecommerce)."""
     doc = copy.deepcopy(tpl)
     k = kit(brand)
-    doc["data"] = welcome_email(k) if k.ecom else newsletter_email(k)
+    doc["data"] = tr(welcome_email(k) if k.ecom else newsletter_email(k), lang_of(brand))
     doc["exported_at"] = int(time.time())
     return doc
