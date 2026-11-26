@@ -147,6 +147,8 @@ class Patcher:
 
     # -- socials in rendered html
     def fix_social_html(self, s):
+        if not self.socials:
+            return drop_social_html(s)
         if "social-networks-icon-sets" not in s:
             return s
         cell = (r'(<(td|span)\b[^>]*>)\s*<a href="[^"]*"[^>]*>\s*<img\b[^>]*social-networks-icon-sets/[^/"]+/'
@@ -230,8 +232,47 @@ def mtype(m):
     return m["type"].replace("mailup-bee-newsletter-modules-", "")
 
 
+SOCIAL_TEXT_RE = re.compile(r"social[ -]?media|urm[ăa]re[șs]te-ne|follow us", re.I)
+
+
+def drop_social_html(s):
+    """No social profiles: remove 'Follow us on social media:', its separator and the empty icons block."""
+    if "bee-popup-social" not in s and not SOCIAL_TEXT_RE.search(s):
+        return s
+    block = r'<div class="bee-popup-block [^"]*bee-popup-{kind}">'
+    s = re.sub(block.format(kind="social") + r'\s*<div class="content">(?:(?!</div>).)*</div>\s*</div>', "", s, flags=re.S)
+    s = re.sub(block.format(kind="text") + r'\s*<div[^>]*>\s*<p[^>]*>(?:(?!</p>).)*?(?:social media|rm[ăa]re[șs]te-ne)(?:(?!</p>).)*?</p>\s*</div>\s*</div>',
+               "", s, flags=re.S | re.I)
+    # a separator left as the last block of its column now leads nowhere
+    s = re.sub(block.format(kind="divider") + r'\s*<div class="center bee-popup-separator"[^>]*></div>\s*</div>(\s*</div>\s*</div>\s*</div>)',
+               r"\1", s)
+    return s
+
+
+def drop_social_modules(page):
+    """Same in the editor JSON: social block, the text inviting to it, and the divider right before."""
+    for row in page["page"]["rows"]:
+        for col in row["columns"]:
+            mods = col["modules"]
+            keep = []
+            for m in mods:
+                t = mtype(m)
+                if t == "social":
+                    continue
+                if t in ("text", "paragraph", "heading"):
+                    txt = json.dumps(m["descriptor"], ensure_ascii=False)
+                    if SOCIAL_TEXT_RE.search(re.sub(r"<[^>]+>", " ", txt)) and len(re.sub(r"<[^>]+>|\\[nt]", "", txt)) < 1500:
+                        if keep and mtype(keep[-1]) == "divider":
+                            keep.pop()
+                        continue
+                keep.append(m)
+            col["modules"] = keep
+
+
 def fix_bee(page, brand, patch):
     """Structural changes valid for every Beefree page."""
+    if not brand.get("socials"):
+        drop_social_modules(page)
     logo = brand.get("logo") or {}
     banner = (brand.get("banner") or {}) if use_site_banner(brand) else {}
     for row, col, m in modules(page):

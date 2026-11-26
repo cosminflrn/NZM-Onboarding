@@ -1,37 +1,10 @@
 [
  {
-  "slug": "cabanova-com",
-  "name": "Cabanova",
-  "domain": "cabanova.com",
-  "url": "https://www.cabanova.com/p/ro/acasa.html",
-  "generated_at": "2026-11-26 11:00 UTC",
-  "logo": "https://www.cabanova.com/p/ro/files/im1i-304nmimgqynz-xtps0.jpg",
-  "colors": {
-   "accent": "#3c6ca8",
-   "dark": "#111922",
-   "light": "#ecf0f6"
-  },
-  "warnings": [
-   "Telefon: nu am găsit niciun număr pe site.",
-   "Email: nu am găsit nicio adresă de contact pe site.",
-   "Social media: nu am găsit niciun profil.",
-   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
-  ],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "files": [
-   "cabanova-com-automatizare-bun-venit.json",
-   "cabanova-com-formular-pop-up.json",
-   "cabanova-com-newsletter-noutati.json"
-  ]
- },
- {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
   "url": "https://alunis.ro/",
-  "generated_at": "2026-11-26 10:50 UTC",
+  "generated_at": "2026-11-26 11:09 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
   "colors": {
    "accent": "#9e7e52",
@@ -51,11 +24,37 @@
   ]
  },
  {
+  "slug": "cabanova-com",
+  "name": "Cabanova",
+  "domain": "cabanova.com",
+  "url": "https://www.cabanova.com/p/ro/acasa.html",
+  "generated_at": "2026-11-26 11:09 UTC",
+  "logo": "https://www.cabanova.com/p/ro/files/im1i-304nmimgqynz-xtps0.jpg",
+  "colors": {
+   "accent": "#2b6aad",
+   "dark": "#363636",
+   "light": "#eaf0f7"
+  },
+  "warnings": [
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Social media: nu am găsit niciun profil."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "files": [
+   "cabanova-com-automatizare-bun-venit.json",
+   "cabanova-com-formular-pop-up.json",
+   "cabanova-com-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "techfarm-ro",
   "name": "techfarm.ro",
   "domain": "techfarm.ro",
   "url": "https://www.techfarm.ro/",
-  "generated_at": "2026-11-26 10:50 UTC",
+  "generated_at": "2026-11-26 11:09 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
   "colors": {
    "accent": "#a78a25",
@@ -77,7 +76,7 @@
   "name": "Club Sportiv Yes Swimming",
   "domain": "yesswimming.ro",
   "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-26 10:50 UTC",
+  "generated_at": "2026-11-26 11:09 UTC",
   "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
   "colors": {
    "accent": "#fc3030",

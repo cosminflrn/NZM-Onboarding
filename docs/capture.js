@@ -8,11 +8,19 @@
   const note = document.createElement("div");
   note.style.cssText = "position:fixed;z-index:2147483647;right:16px;bottom:16px;background:#111;color:#fff;" +
     "font:14px/1.4 system-ui,sans-serif;padding:12px 16px;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.3)";
-  note.textContent = "NewsMAN Onboarding: preiau pagina…";
+  const msg = document.createElement("span");
+  const close = document.createElement("button");
+  close.textContent = "✕";
+  close.title = "Închide";
+  close.style.cssText = "margin-left:12px;background:none;border:0;color:#fff;font:16px/1 system-ui,sans-serif;cursor:pointer;opacity:.7;padding:0 2px";
+  close.onclick = () => note.remove();
+  note.append(msg, close);
+  const say = (t) => { msg.textContent = t; };
+  say("NewsMAN Onboarding: preiau pagina…");
   document.body.appendChild(note);
 
   const items = {};
-  let budget = 7e6;
+  let budget = 10e6;
   const abs = (u) => { try { return new URL(u, location.href).href.split("#")[0]; } catch (e) { return ""; } };
   const same = (u) => { try { return new URL(u).host.replace(/^www\./, "") === location.host.replace(/^www\./, ""); } catch (e) { return false; } };
   const getText = async (u, accept) => {
@@ -65,7 +73,32 @@
     }
   });
   document.querySelectorAll('link[rel*="icon"],meta[property="og:image"],meta[name="og:image"]').forEach((el) => add(el.href || el.content));
+  // big pictures set as CSS backgrounds (hero sections, sliders)
+  const bgUrl = (v) => { const m = /url\(["']?([^"')]+)["']?\)/.exec(v || ""); return m && !/^data:/.test(m[1]) ? m[1] : ""; };
+  let bgs = 0;
+  for (const el of document.querySelectorAll("body *")) {
+    if (bgs >= 12) break;
+    const r = el.getBoundingClientRect();
+    if (r.width < 400 || r.height < 150) continue;
+    const u = bgUrl(getComputedStyle(el).backgroundImage) || bgUrl(el.getAttribute("style"));
+    if (u) { add(u); bgs++; }
+  }
+  // pictures of the menu pages we fetched (each section gets its own picture in the emails)
+  links.forEach((u) => {
+    const it = items[u];
+    if (!it || !/html/i.test(it.type || "")) return;
+    const d = new DOMParser().parseFromString(it.text, "text/html");
+    const base = (x) => { try { return new URL(x, u).href; } catch (e) { return ""; } };
+    const og = d.querySelector('meta[property="og:image"]');
+    if (og) add(base(og.content));
+    [...d.querySelectorAll("img")].slice(0, 6).forEach((im) => {
+      const src = im.getAttribute("data-src") || im.getAttribute("data-lazy-src") || im.getAttribute("src");
+      if (src) add(base(src));
+    });
+    [...d.querySelectorAll("[style*=url]")].slice(0, 4).forEach((el) => { const b = bgUrl(el.getAttribute("style")); if (b) add(base(b)); });
+  });
   document.querySelectorAll("svg image[href]").forEach((el) => add(el.getAttribute("href")));
+  say(`NewsMAN Onboarding: preiau ${imgs.length} imagini…`);
   for (let i = 0; i < imgs.length; i += 6) await Promise.all(imgs.slice(i, i + 6).map(getImage));
 
   // stub: true when the bookmark is the self-updating one (it loads this file fresh every time)
@@ -76,10 +109,10 @@
   window.addEventListener("message", (e) => {
     if (e.origin !== APP) return;
     if (e.data === "nzm-ready") send();
-    if (e.data === "nzm-received") { delivered = true; note.textContent = `NewsMAN Onboarding: gata, ${n} elemente trimise. Poți închide acest tab.`; }
+    if (e.data === "nzm-received") { delivered = true; say(`NewsMAN Onboarding: gata, ${n} elemente trimise. Poți închide acest tab.`); }
   });
   send();
-  note.textContent = `NewsMAN Onboarding: ${n} elemente preluate, le trimit…`;
+  say(`NewsMAN Onboarding: ${n} elemente preluate, le trimit…`);
   setTimeout(() => {
     if (delivered) return;
     // the site blocks the link between windows: save a file to upload in the app instead
@@ -87,6 +120,6 @@
     a.href = URL.createObjectURL(new Blob([JSON.stringify(data)], { type: "application/json" }));
     a.download = "newsman-" + location.host.replace(/^www\./, "") + ".json";
     document.body.appendChild(a); a.click();
-    note.textContent = "NewsMAN Onboarding: am salvat un fișier. Încarcă-l în aplicație cu „Încarcă pagina salvată”.";
+    say("NewsMAN Onboarding: am salvat un fișier. Încarcă-l în aplicație cu „Încarcă pagina salvată”.");
   }, 8000);
 })();
