@@ -1,6 +1,7 @@
 """Small HTTP helper with browser-like headers and a per-run cache."""
+import base64
 import time
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urldefrag, urljoin, urlparse
 
 import requests
 
@@ -9,7 +10,7 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 
 
 class Fetcher:
-    def __init__(self, timeout=20, max_requests=80):
+    def __init__(self, timeout=20, max_requests=80, bundle=None):
         self.s = requests.Session()
         self.s.headers.update({
             "User-Agent": UA,
@@ -21,12 +22,32 @@ class Fetcher:
         self.count = 0
         self.max_requests = max_requests
         self.log = []
+        # pages/images captured in the team member's own browser (bookmarklet or saved page)
+        self.bundle = {bkey(k): v for k, v in (bundle or {}).items()}
+
+    def from_bundle(self, url, binary):
+        item = self.bundle.get(bkey(url))
+        if not item:
+            return None
+        ctype = (item.get("type") or "").lower()
+        final = item.get("final") or url
+        if binary:
+            if "b64" in item:
+                return final, base64.b64decode(item["b64"]), ctype
+            return final, (item.get("text") or "").encode("utf-8"), ctype
+        if "text" in item:
+            return final, item["text"], ctype or "text/html"
+        return None
 
     def get(self, url, accept=None, binary=False):
         """Return (final_url, content, content_type) or (url, None, None) on failure."""
         key = (url, binary)
         if key in self.cache:
             return self.cache[key]
+        hit = self.from_bundle(url, binary)
+        if hit:
+            self.cache[key] = hit
+            return hit
         if self.count >= self.max_requests:
             return url, None, None
         self.count += 1
@@ -62,6 +83,15 @@ class Fetcher:
             return json.loads(text)
         except ValueError:
             return None
+
+
+def bkey(url):
+    """Lookup key for captured pages: no fragment, no trailing slash, no www, http == https."""
+    u = urldefrag(url or "")[0].strip()
+    p = urlparse(u)
+    host = p.netloc.lower().removeprefix("www.")
+    path = p.path.rstrip("/")
+    return f"{host}{path}" + (f"?{p.query}" if p.query else "")
 
 
 def absolute(base, href):

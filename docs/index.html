@@ -111,13 +111,38 @@
   code { background:#f0f0f3; padding:1px 5px; border-radius:4px; font-size:13px; }
   .empty { color:var(--muted); }
   #login { display:none; position:fixed; inset:0; background:var(--bg); z-index:50; align-items:center; justify-content:center; }
-  @media (max-width: 900px) { form.gen, .grid { grid-template-columns:1fr; } .client { grid-template-columns:20px 1fr; } .client > .logo { display:none; } .client .actions { grid-column:1/-1; } }
+  .capbar { display:flex; align-items:center; gap:8px; margin-top:12px; padding:9px 12px; border-radius:10px; background:#e6f6ea; color:var(--ok); font-size:13px; animation:rise .3s ease; }
+  .capbar[hidden] { display:none; }
+  .capbar .link { margin-left:auto; border:0; background:transparent; padding:4px; color:inherit; }
+  details.blocked { margin-top:12px; border-top:1px solid var(--line); padding-top:10px; font-size:13px; }
+  details.blocked summary { cursor:pointer; color:var(--muted); list-style:none; display:inline-flex; align-items:center; gap:6px; }
+  details.blocked summary::before { content:"›"; display:inline-block; transition:transform .2s ease; font-size:16px; line-height:1; }
+  details.blocked[open] summary::before { transform:rotate(90deg); }
+  .bl-body { display:grid; gap:10px; padding:12px 0 2px 14px; animation:rise .25s ease; }
+  .bl-step { line-height:1.9; } .bl-step > a.bm, .bl-step > label.btn { margin-left:4px; vertical-align:middle; }
+  .seg .sm { display:none; }
+  a.bm { display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:999px; background:var(--red); color:#fff;
+    text-decoration:none; font-weight:600; cursor:grab; box-shadow:0 2px 10px rgba(166,4,0,.25); }
+  a.bm img { width:16px; height:16px; border-radius:3px; background:#fff; }
+  label.btn.up { display:inline-flex; margin:0; color:var(--ink); font-size:13px; padding:6px 12px; cursor:pointer; }
+  @media (max-width: 900px) {
+    form.gen, .grid { grid-template-columns:minmax(0, 1fr); }
+    .client { grid-template-columns:20px minmax(0, 1fr); } .client > .logo { display:none; } .client .actions { grid-column:1/-1; }
+    .switches { flex-wrap:wrap; } .switches > div { min-width:0; max-width:100%; }
+    .seg .lg { display:none; } .seg .sm { display:inline; }
+    h2 { flex-wrap:wrap; } .search { flex:1; width:auto; min-width:0; }
+    .selbar { width:100%; margin-left:0; flex-wrap:wrap; }
+    .selbar #selCount { width:100%; }
+    .selbar button { flex:1 1 0; min-width:0; padding:8px 6px; font-size:12px; white-space:normal; line-height:1.2; }
+    header .wrap { gap:8px; } header .sub { display:none; }
+    .wrap { padding:0 14px; }
+  }
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <a class="brand" href="./" title="Reîncarcă"><img src="newsman-logo.png" alt="NewsMAN"><span>Onboarding</span></a>
-  <div class="right"><span id="who"></span><button id="tokBtn" title="Acces"><svg class="i"><use href="#i-key"/></svg>Acces</button></div>
+  <div class="right"><span id="who"></span><button id="logoutBtn" title="Ieșire" style="display:none"><svg class="i"><use href="#i-x"/></svg>Ieșire</button><button id="tokBtn" title="Acces"><svg class="i"><use href="#i-key"/></svg>Acces</button></div>
 </div></header>
 
 <main class="wrap">
@@ -143,12 +168,26 @@
       <button class="primary" type="submit" id="genBtn"><svg class="i"><use href="#i-spark"/></svg>Generează</button>
       <div class="switches">
         <div><label>Formular</label><div class="seg" data-name="form_type">
-          <button type="button" data-v="popup" class="on">Pop-up</button><button type="button" data-v="embed">Embed (fix în pagină)</button></div></div>
+          <button type="button" data-v="popup" class="on">Pop-up</button><button type="button" data-v="embed">Embed<span class="lg"> (fix în pagină)</span></button></div></div>
         <div><label>Tip site</label><div class="seg" data-name="site_type">
-          <button type="button" data-v="auto" class="on">Detectează automat</button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
+          <button type="button" data-v="auto" class="on"><span class="lg">Detectează automat</span><span class="sm">Automat</span></button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
       </div>
     </form>
     <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Starea apare direct în istoric.</div>
+    <div class="capbar" id="capBar" hidden>
+      <svg class="i"><use href="#i-check"/></svg><span id="capText"></span>
+      <button type="button" class="link" id="capClear" title="Renunță la pagina preluată"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <details class="blocked" id="blockedHelp">
+      <summary>Site-ul refuză citirea automată? Preia-l din browserul tău</summary>
+      <div class="bl-body">
+        <div class="bl-step"><b>1.</b> Trage butonul acesta în bara de favorite (o singură dată):
+          <a class="bm" id="bmLink" href="#" onclick="return false" draggable="true"><img src="favicon.ico" alt="">NewsMAN Onboarding</a></div>
+        <div class="bl-step"><b>2.</b> Deschide site-ul clientului și apasă butonul din bara de favorite. Pagina se preia și apare aici, gata de generat.</div>
+        <div class="bl-step"><b>Rezervă:</b> pe site-ul clientului apasă <b>Ctrl+S</b> („Pagină web, doar HTML”), apoi
+          <label class="btn up"><input type="file" id="capFile" accept=".html,.htm,.json,text/html,application/json" hidden><svg class="i"><use href="#i-dl"/></svg>Încarcă pagina salvată</label></div>
+      </div>
+    </details>
   </div>
 
   <h2>Istoric
@@ -248,6 +287,7 @@ function showLogin(msg) {
   $("lerr").textContent = msg || "";
   $("lu").focus();
 }
+$("logoutBtn").onclick = () => { localStorage.removeItem("nzm_auth"); AUTH = ""; $("logoutBtn").style.display = "none"; $("who").textContent = ""; showLogin(); };
 $("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const a = b64auth($("lu").value.trim(), $("lp").value);
@@ -288,7 +328,8 @@ const b64 = (s) => btoa(unescape(encodeURIComponent(s)));
 async function checkToken() {
   if (PROXY) {
     $("tokBtn").style.display = "none";
-    if (!AUTH) { showLogin(); return false; }
+    if (!AUTH) { $("logoutBtn").style.display = "none"; showLogin(); return false; }
+    $("logoutBtn").style.display = "";
   }
   if (!TOKEN) { $("setup").style.display = ""; $("who").textContent = "neconfigurat"; return false; }
   try {
@@ -371,6 +412,63 @@ HTMLDialogElement.prototype.close = function (v) {
 document.addEventListener("cancel", (e) => { if (e.target.tagName === "DIALOG") { e.preventDefault(); e.target.close(); } }, true);
 
 // --- new client / re-read
+// --- pages captured in the team member's browser (bookmark button or saved page)
+let CAPTURE = null;
+const APP_ORIGIN = location.origin;
+function setCapture(cap) {
+  CAPTURE = cap;
+  if (!cap) { $("capBar").hidden = true; return; }
+  const vals = Object.values(cap.items || {});
+  const imgs = vals.filter((v) => v.b64).length, pages = vals.length - imgs;
+  if (cap.url) $("url").value = cap.url;
+  $("capText").textContent = `Preluat din browser: ${domOf(cap.url)} · ${pages} ${pages === 1 ? "pagină" : "pagini"}, ${imgs} ${imgs === 1 ? "imagine" : "imagini"}. Apasă Generează.`;
+  $("capBar").hidden = false;
+  $("blockedHelp").open = false;
+  $("url").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+$("capClear").onclick = () => setCapture(null);
+function validCapture(d) {
+  return d && d.type === "nzm-capture" && typeof d.url === "string" && /^https?:\/\//.test(d.url) && d.items && typeof d.items === "object";
+}
+window.addEventListener("message", (e) => {
+  if (!validCapture(e.data)) return;
+  setCapture({ url: e.data.url, items: e.data.items });
+  try { e.source && e.source.postMessage("nzm-received", e.origin); } catch {}
+});
+if (location.hash === "#capture") {
+  history.replaceState(null, "", location.pathname);
+  let tries = 0;
+  const ping = setInterval(() => {
+    if (CAPTURE || ++tries > 40 || !window.opener) return clearInterval(ping);
+    try { window.opener.postMessage("nzm-ready", "*"); } catch { clearInterval(ping); }
+  }, 500);
+}
+$("capFile").onchange = async () => {
+  const f = $("capFile").files[0];
+  $("capFile").value = "";
+  if (!f) return;
+  const text = await f.text();
+  if (/\.json$/i.test(f.name) || text.trim().startsWith("{")) {
+    try { const d = JSON.parse(text); if (validCapture(d)) return setCapture({ url: d.url, items: d.items }); } catch {}
+    return alert("Fișierul nu e o pagină preluată de butonul NewsMAN.");
+  }
+  // saved page: take the address from the page itself, or from the Link field
+  const doc = new DOMParser().parseFromString(text, "text/html");
+  const fromPage = (doc.querySelector('link[rel="canonical"]') || {}).href || (doc.querySelector('meta[property="og:url"]') || {}).content || "";
+  let url = $("url").value.trim() || fromPage;
+  if (url && !/^https?:/.test(url)) url = "https://" + url;
+  if (!url || !slugOf(url)) return alert("Scrie întâi adresa site-ului în câmpul „Link site”, apoi încarcă pagina salvată.");
+  setCapture({ url, items: { [url]: { type: "text/html", final: url, text } } });
+};
+async function initBookmark() {
+  try {
+    const code = await (await fetch("capture.js", { cache: "no-store" })).text();
+    $("bmLink").href = "javascript:" + encodeURIComponent(code.replace(/^\s*\/\/.*$/gm, "").replace(/\n\s*/g, "\n"));
+    $("bmLink").onclick = (e) => { e.preventDefault(); alert("Trage butonul în bara de favorite (Ctrl+Shift+B o afișează), apoi apasă-l pe site-ul clientului."); };
+  } catch {}
+}
+initBookmark();
+
 $("gen").addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!(await checkToken())) return;
@@ -378,18 +476,27 @@ $("gen").addEventListener("submit", async (e) => {
   if (!slugOf(url)) return alert("Link invalid");
   const inputs = { url, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
     form_type: segValue("form_type"), site_type: segValue("site_type") };
-  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto");
-  runJob(inputs);
+  const cap = CAPTURE && domOf(CAPTURE.url) === domOf(url) ? CAPTURE : null;
+  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setCapture(null);
+  runJob(inputs, cap);
 });
 
-async function runJob(inputs) {
+async function runJob(inputs, cap) {
   const url = inputs.url;
   let slug = slugOf(url);
   inputs = { ...inputs, rid: Math.random().toString(36).slice(2, 8) };
+  delete inputs.bundle;
   const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
-  setJob(slug, { state: "run", text: "în curs", name: inputs.name || slug, url, inputs });
+  setJob(slug, { state: "run", text: cap ? "trimit pagina preluată" : "în curs", name: inputs.name || slug, url, inputs, cap });
   document.getElementById("c-" + slug)?.scrollIntoView({ behavior: "smooth", block: "center" });
   try {
+    if (cap) {
+      const path = `inbox/${inputs.rid}.json`;
+      await gh(`/contents/${path}`, { method: "PUT", body: JSON.stringify({
+        message: `Pagină preluată ${domOf(url)}`, content: b64(JSON.stringify({ url: cap.url, items: cap.items })) }) });
+      inputs.bundle = path;
+      setJob(slug, { text: "în curs" });
+    }
     await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs }) });
     const run = await findRun((r) => (r.display_title || "").includes(`[${inputs.rid}]`), since);
     const res = await follow(run);
@@ -408,7 +515,13 @@ async function runJob(inputs) {
 
 const domOf = (u) => { try { return new URL(/^https?:/.test(u) ? u : "https://" + u).hostname.replace(/^www\./, ""); } catch { return ""; } };
 function dropJob(slug) { delete JOBS[slug]; render(); }
-function retryJob(slug) { const j = JOBS[slug]; if (j && j.inputs) { delete JOBS[slug]; runJob(j.inputs); } }
+function retryJob(slug) { const j = JOBS[slug]; if (j && j.inputs) { delete JOBS[slug]; runJob(j.inputs, j.cap); } }
+function captureHelp(slug) {
+  const j = JOBS[slug] || {};
+  $("url").value = j.url || "";
+  $("blockedHelp").open = true;
+  $("blockedHelp").scrollIntoView({ behavior: "smooth", block: "center" });
+}
 
 // =============================================================== history
 let CLIENTS = [];
@@ -439,7 +552,8 @@ function render() {
       <span></span><div class="logo"></div>
       <div><h3>${esc(domOf(j.url) || j.name || s)}</h3><div class="dom">${j.state === "err" ? "nu a putut fi generat" : "se generează…"}</div><div class="tags">${statusHtml(s)}</div></div>
       <div class="actions">${j.state === "err" ? `
-        <button class="dl" onclick="retryJob('${s}')">${icon("refresh")}Încearcă din nou</button>
+        <button class="dl" onclick="captureHelp('${s}')">${icon("dl")}Preia din browser</button>
+        <button onclick="retryJob('${s}')">${icon("refresh")}Încearcă din nou</button>
         <button onclick="dropJob('${s}')">${icon("x")}Ascunde</button>` : ""}</div>
     </div>`);
   const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q));

@@ -27,6 +27,9 @@ on:
       rid:
         description: ID cerere (pus de pagină)
         required: false
+      bundle:
+        description: Pagini preluate din browser (inbox/<id>.json, pus de pagină)
+        required: false
   push:
     branches: [main]
     paths:
@@ -76,10 +79,12 @@ jobs:
           IN_SENDER: ${{ inputs.sender_email }}
           IN_FORM: ${{ inputs.form_type }}
           IN_SITE: ${{ inputs.site_type }}
+          IN_BUNDLE: ${{ inputs.bundle }}
         run: |
           python -m nzm scrape "$IN_URL" --name "$IN_NAME" --discount "$IN_DISCOUNT" \
             --sender-email "$IN_SENDER" --form-type "${IN_FORM:-popup}" --site-type "${IN_SITE:-auto}" \
-            --public-base "$PUBLIC_BASE" --github-output
+            --public-base "$PUBLIC_BASE" --github-output $(
+              [[ "$IN_BUNDLE" =~ ^inbox/[a-z0-9]{4,12}\.json$ && -f "$IN_BUNDLE" ]] && echo --bundle "$IN_BUNDLE")
 
       - name: Regenerare după editare
         if: github.event_name == 'push'
@@ -96,13 +101,17 @@ jobs:
           fi
 
       - name: Salvare
-        if: steps.gen.outcome != 'failure'
+        if: steps.gen.outcome != 'failure' || inputs.bundle != ''
         env:
           SLUG: ${{ steps.gen.outputs.slug }}
+          IN_BUNDLE: ${{ inputs.bundle }}
+          GEN_OUTCOME: ${{ steps.gen.outcome }}
         run: |
           git config user.name "nzm-onboarding-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A docs/clients
+          # the captured page was only needed for this run
+          if [[ "$IN_BUNDLE" =~ ^inbox/[a-z0-9]{4,12}\.json$ && -f "$IN_BUNDLE" ]]; then git rm -q "$IN_BUNDLE"; fi
+          if [ "$GEN_OUTCOME" != "failure" ]; then git add -A docs/clients; fi
           if git diff --cached --quiet; then echo "nimic de salvat"; exit 0; fi
           git commit -m "Onboarding: ${SLUG:-regenerare}"
           for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done

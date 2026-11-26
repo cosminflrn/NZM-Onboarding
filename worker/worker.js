@@ -42,12 +42,12 @@ export default {
     const rules = {
       GET: /^(|\/actions\/workflows\/onboarding\.yml\/runs|\/actions\/runs\/\d+(\/jobs)?|\/check-runs\/\d+\/annotations|\/contents\/docs\/clients\/[\w.\/-]+)$/,
       POST: /^\/actions\/workflows\/onboarding\.yml\/dispatches$/,
-      PUT: /^\/contents\/docs\/clients\/[a-z0-9-]+\/(brand\.json|assets\/[\w.-]+)$/,
+      PUT: /^\/contents\/(docs\/clients\/[a-z0-9-]+\/(brand\.json|assets\/[\w.-]+)|inbox\/[a-z0-9]{4,12}\.json)$/,
     };
     if (!rules[req.method] || !rules[req.method].test(rest) || rest.includes("..")) return deny(cors);
 
     const body = req.method === "GET" ? undefined : await req.text();
-    if (body && body.length > 8_000_000) return deny(cors, "prea mare");
+    if (body && body.length > 20_000_000) return deny(cors, "prea mare");
 
     const gh = await fetch("https://api.github.com" + path + url.search, {
       method: req.method,

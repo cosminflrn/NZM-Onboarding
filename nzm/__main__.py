@@ -91,7 +91,14 @@ def cmd_scrape(a):
     os.makedirs(tmp)
     public_root = (a.public_base or os.environ.get("NZM_PUBLIC_BASE", "")).rstrip("/")
     # slug is only known after redirects, so scrape into _tmp then move
-    probe = Scraper(a.url, tmp, "")
+    fetcher = None
+    if a.bundle:
+        from .net import Fetcher
+        with open(a.bundle, encoding="utf-8") as f:
+            cap = json.load(f)
+        fetcher = Fetcher(bundle=cap.get("items") or {})
+        print(f"pagini preluate din browser: {len(fetcher.bundle)}")
+    probe = Scraper(a.url, tmp, "", fetcher=fetcher)
     brand = probe.run()
     slug = brand["slug"]
     out_dir = os.path.join(CLIENTS, slug)
@@ -152,6 +159,7 @@ def main(argv=None):
     s.add_argument("--form-type", default="", choices=["", "popup", "embed"])
     s.add_argument("--site-type", default="", choices=["", "auto", "ecommerce", "non-ecommerce"])
     s.add_argument("--github-output", action="store_true")
+    s.add_argument("--bundle", default="", help="pagini salvate din browser (JSON {items:{url:{type,text|b64}}})")
     s.set_defaults(fn=cmd_scrape)
     r = sub.add_parser("regen")
     r.add_argument("brand")
