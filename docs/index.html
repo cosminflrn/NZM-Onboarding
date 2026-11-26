@@ -19,7 +19,7 @@
   h2 { font-size:17px; margin:28px 0 12px; display:flex; align-items:center; gap:14px; }
   .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; }
   form.gen { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap:10px; align-items:end; }
-  label { display:block; font-size:12px; color:var(--muted); margin-bottom:4px; }
+  label, span.label { display:block; font-size:12px; color:var(--muted); margin-bottom:4px; }
   input, select, textarea { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:14px; background:#fff; }
   textarea { min-height:84px; resize:vertical; }
   input[type=color] { padding:2px; height:38px; }
@@ -195,11 +195,11 @@
       <div><label>Email expeditor (opțional)</label><input id="sender" type="email" placeholder="din site" autocomplete="off"></div>
       <button class="primary" type="submit" id="genBtn"><svg class="i"><use href="#i-spark"/></svg>Generează</button>
       <div class="switches">
-        <div><label>Formular</label><div class="seg" data-name="form_type">
+        <div><span class="label" id="lb-form_type">Formular</span><div class="seg" data-name="form_type" role="group" aria-labelledby="lb-form_type">
           <button type="button" data-v="popup" class="on">Pop-up</button><button type="button" data-v="embed">Embed<span class="lg"> (fix în pagină)</span></button></div></div>
-        <div><label>Tip site</label><div class="seg" data-name="site_type">
+        <div><span class="label" id="lb-site_type">Tip site</span><div class="seg" data-name="site_type" role="group" aria-labelledby="lb-site_type">
           <button type="button" data-v="auto" class="on"><span class="lg">Detectează automat</span><span class="sm">Automat</span></button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
-        <div><label>Limbă</label><div class="seg" data-name="lang">
+        <div><span class="label" id="lb-lang">Limbă</span><div class="seg" data-name="lang" role="group" aria-labelledby="lb-lang">
           <button type="button" data-v="auto" class="on">Automat</button><button type="button" data-v="ro">Română</button><button type="button" data-v="en">English</button></div></div>
       </div>
     </form>
