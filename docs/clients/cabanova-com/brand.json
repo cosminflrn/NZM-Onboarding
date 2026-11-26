@@ -57,19 +57,19 @@
     "height": 660
   },
   "colors": {
-    "accent": "#2b6aad",
-    "accent_original": "#2b6aad",
+    "accent": "#3c6ca8",
+    "accent_original": "#3c6ca8",
     "accent_text": "#ffffff",
-    "dark": "#363636",
-    "light": "#eaf0f7",
-    "muted": "#868686",
+    "dark": "#111922",
+    "light": "#ecf0f6",
+    "muted": "#70757a",
     "candidates": [
-      "#2b6aad",
-      "#5cafeb",
-      "#375066",
-      "#f26b41",
-      "#a5bfd2",
-      "#ad6e2b"
+      "#3c6ca8",
+      "#50b6e9",
+      "#ed3928",
+      "#2796ce",
+      "#e76049",
+      "#d8452c"
     ],
     "logo_colors": [
       "#3c6ca8"
@@ -81,19 +81,27 @@
     "sender_email": "",
     "sender_name": "Cabanova",
     "form_type": "popup",
-    "site_type": "auto"
+    "site_type": "auto",
+    "lang": "auto"
   },
   "site_type": "non-ecommerce",
+  "lang_detected": "ro",
   "warnings": [
     "Telefon: nu am găsit niciun număr pe site.",
     "Email: nu am găsit nicio adresă de contact pe site.",
     "Social media: nu am găsit niciun profil."
   ],
   "fetch_log": [
-    "404 https://www.cabanova.com/sitemap.xml",
-    "404 https://www.cabanova.com/sitemap_index.xml"
+    "403 https://www.cabanova.com/p/ro/shared/html5/html5.css",
+    "403 https://www.cabanova.com/static/css/style2.css?rev=1",
+    "403 https://www.cabanova.com/sitemap.xml",
+    "403 https://www.cabanova.com/sitemap_index.xml",
+    "403 https://www.cabanova.com/static/images/close.png",
+    "403 https://www.cabanova.com/p/ro/files/im1i-2aay6a38ajhb-kqdkx.jpg",
+    "403 https://www.cabanova.com/p/ro/files/im1i-2fn4dg42aae7-78y3j.jpg",
+    "403 https://www.cabanova.com/p/ro/files/im1i-2mka8wmmjpcv-sb19s.jpg"
   ],
-  "generated_at": "2026-11-26 13:14 UTC",
+  "generated_at": "2026-11-26 13:22 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cabanova!",

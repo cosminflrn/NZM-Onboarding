@@ -1,12 +1,12 @@
 # Cabanova (cabanova.com)
 
-Generat: 2026-11-26 13:14 UTC  ·  Platformă: necunoscut
+Generat: 2026-11-26 13:22 UTC  ·  Platformă: necunoscut
 
 ## Ce am găsit
 
 - **Logo:** https://www.cabanova.com/p/ro/files/im1i-304nmimgqynz-xtps0.jpg
 - **Banner:** https://www.cabanova.com/p/ro/files/im1i-4fo1wj86l13t-7e65b.jpg
-- **Culori:** accent `#2b6aad` · închis `#363636` · deschis `#eaf0f7`
+- **Culori:** accent `#3c6ca8` · închis `#111922` · deschis `#ecf0f6`
 - **Telefon:** —
 - **Email:** —
 - **Social:** —
