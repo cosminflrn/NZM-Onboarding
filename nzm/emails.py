@@ -212,7 +212,9 @@ def newsletter_email(k):
     desc = clean_description(b.get("description"), b["name"])
     rows = [k.header(nav=False),
             k.hero("Newsletter", t["newsletter_title"], t["newsletter_subtitle"]),
-            k.banner(),
+            # the main story's own photo leads the newsletter; the banner only when there is none
+            # (sites often reuse the banner's scene in their section photos, so it would show twice)
+            None if menu and menu[0].get("image") else k.banner(),
             k.body(desc or f"Îți aducem pe scurt cele mai noi lucruri de la {b['name']}.", top=36, bottom=8)]
     if menu:
         rows.append(article_block(k, menu[0]))
@@ -232,7 +234,8 @@ def article_block(k, item):
     pic = pic or (item.get("image") if item.get("image") and item["image"] != ban else None) or STOCK_ARTICLE
     text = item.get("desc") or f"Află tot ce trebuie să știi despre {label.lower()} – pe scurt, direct pe site-ul nostru."
     return D.row([[
-        D.m_image(pic, 1200, 700, D.WIDTH - 64, href=item["url"], alt=label, padding=D.pad(28, 32, 16, 32), radius=D.RADIUS),
+        D.m_image(pic, 1200, 700, D.WIDTH, href=item["url"], alt=label, padding=D.pad(28, 0, 16, 0), radius=D.RADIUS,
+                  full=True),
         D.m_text(D.wrap([D.para(D.esc(label), 22, D.INK, weight="bold", lh=1.3)]), padding=D.pad(0, 40, 6, 40)),
         D.m_text(D.wrap([D.para(D.esc(text), 16, D.MUTED, lh=1.6)]), padding=D.pad(0, 40, 10, 40), color=D.MUTED),
         D.m_button(f"Descoperă {label.lower()} →", item["url"], k.accent, "#ffffff", size=15,
