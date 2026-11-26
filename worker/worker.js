@@ -1,4 +1,4 @@
-// NZM Onboarding – intermediar Cloudflare Worker.
+// NewsMAN Onboarding – intermediar Cloudflare Worker.
 // Ține tokenul GitHub ca secret și lasă pagina să facă DOAR operațiile de care are nevoie:
 // pornește generarea, urmărește progresul, citește fișierele generate, salvează editări în docs/clients/.
 //

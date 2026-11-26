@@ -15,7 +15,7 @@ Intermediarul permite doar: pornirea generării, a recitirii sau a ștergerii un
 
 ## Schimbarea tokenului sau a parolei
 
-1. GitHub → Settings → Developer settings → Fine-grained tokens. Deschide tokenul „NZM Onboarding” → **Regenerate token**, sau fă unul nou cu permisiunile de mai sus.
+1. GitHub → Settings → Developer settings → Fine-grained tokens. Deschide tokenul „NewsMAN Onboarding” → **Regenerate token**, sau fă unul nou cu permisiunile de mai sus.
 2. Cloudflare → worker `nzm-onboarding` → Settings → Variables and Secrets. Editează `GITHUB_TOKEN` sau `APP_PASSWORD`, apoi **Deploy**.
 
 Verificare: deschide adresa worker-ului în browser. Trebuie să apară `{"ok":true, … "token":true}`.

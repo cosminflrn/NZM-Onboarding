@@ -1,6 +1,6 @@
 """Modern email design: Beefree JSON builders, email layouts and an HTML renderer.
 
-Every email is described once as Beefree JSON (what the Newsman editor opens)
+Every email is described once as Beefree JSON (what the NewsMAN editor opens)
 and rendered from that same JSON to email-safe HTML (what is stored/sent), so
 the two never drift apart.
 """

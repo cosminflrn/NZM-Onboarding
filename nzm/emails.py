@@ -238,7 +238,7 @@ def article_block(k, item):
 
 
 def cart_email(k, n, condition):
-    """Abandoned cart #1-3. `condition` is the Newsman NZCart repeat block."""
+    """Abandoned cart #1-3. `condition` is the NewsMAN NZCart repeat block."""
     b = k.b
     code = (b.get("options") or {}).get("discount_code")
     cart = (b.get("links") or {}).get("cart") or k.home

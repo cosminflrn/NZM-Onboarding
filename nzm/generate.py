@@ -1,6 +1,6 @@
-"""Apply a brand profile (brand.json) to the Newsman export templates.
+"""Apply a brand profile (brand.json) to the NewsMAN export templates.
 
-Every template is a Newsman export (popup form, welcome template, abandoned-cart
+Every template is a NewsMAN export (popup form, welcome template, abandoned-cart
 workflow). Each one stores the Beefree design as JSON (sometimes JSON inside a
 string, sometimes base64) and, for forms/automations, the rendered HTML too.
 We change the JSON structurally and patch the HTML with the same values so the
