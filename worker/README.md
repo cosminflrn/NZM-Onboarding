@@ -1,27 +1,21 @@
-# Intermediar Cloudflare (o singură dată, ~10 minute, gratuit)
+# Intermediarul Cloudflare
 
-Ca pagina să meargă pentru colegi fără token GitHub, tokenul stă aici, ca secret. Pagina cere un utilizator și o parolă comune; fără ele nu se poate porni nimic.
-Intermediarul permite doar: pornirea generării, urmărirea ei, citirea fișierelor generate și salvarea editărilor în `docs/clients/`. Nu poate modifica codul și nu poate șterge nimic.
+Leagă pagina de GitHub, ca echipa să folosească unealta doar cu utilizator și parolă, fără token. Tokenul GitHub și parola stau numai aici, ca secrete Cloudflare, niciodată în repo.
 
-1. **Token GitHub:** https://github.com/settings/personal-access-tokens/new
-   - Repository access: *Only select repositories* → `NZM-Onboarding`
-   - Permissions: **Actions: Read and write**, **Contents: Read and write**
-   - Generate token și copiază-l.
-2. **Cloudflare:** cont gratuit pe https://dash.cloudflare.com → **Workers & Pages → Create → Create Worker** (Hello World) → nume `nzm-onboarding` → **Deploy**.
-3. **Edit code** → șterge tot, lipește conținutul din `worker/worker.js` → **Deploy**.
-4. Worker → **Settings → Variables and Secrets → Add**:
-   - `GITHUB_TOKEN` = tokenul de la pasul 1 (tip **Secret**)
-   - `REPO` = `cosminflrn/NZM-Onboarding`
-   - `ALLOWED_ORIGIN` = `https://cosminflrn.github.io`
-   - `APP_USER` = utilizatorul comun (tip **Text**)
-   - `APP_PASSWORD` = parola comună (tip **Secret** — nu o pune niciodată în repo)
-   → **Deploy**.
-5. Copiază adresa workerului (ex. `https://nzm-onboarding.<cont>.workers.dev`) și pune-o în `docs/config.js`:
-   ```js
-   window.NZM_PROXY = "https://nzm-onboarding.<cont>.workers.dev";
-   ```
-   Deschide adresa workerului în browser: trebuie să vezi `{"ok":true,...,"token":true}`.
+Intermediarul permite doar: pornirea generării, a recitirii sau a ștergerii unui client, urmărirea lor, citirea fișierelor generate și salvarea editărilor în `docs/clients/`. Nu poate modifica codul.
 
-Când expiră tokenul, faci unul nou și îl înlocuiești doar la pasul 4.
+## Cum e configurat
 
-Cloudflare republică worker-ul doar când se schimbă ceva în acest folder (Build watch paths: `worker/*`).
+- **Worker:** `nzm-onboarding` (Cloudflare → Workers & Pages), legat la acest repo. Root directory `/worker`, deploy command `npx wrangler deploy`, build watch paths `worker/*`. Se republică singur când se schimbă ceva în acest folder.
+- **Setări publice:** în `wrangler.toml` (`REPO`, `ALLOWED_ORIGIN`, `APP_USER`).
+- **Secrete:** în Cloudflare, la worker → Settings → Variables and Secrets, ambele de tip **Secret**:
+  - `GITHUB_TOKEN`: token GitHub *fine-grained*, doar pentru repo-ul `NZM-Onboarding`, cu **Actions** și **Contents** pe *Read and write*;
+  - `APP_PASSWORD`: parola comună a echipei.
+- **Adresa:** e scrisă în `docs/config.js` (`window.NZM_PROXY`).
+
+## Schimbarea tokenului sau a parolei
+
+1. GitHub → Settings → Developer settings → Fine-grained tokens. Deschide tokenul „NZM Onboarding” → **Regenerate token**, sau fă unul nou cu permisiunile de mai sus.
+2. Cloudflare → worker `nzm-onboarding` → Settings → Variables and Secrets. Editează `GITHUB_TOKEN` sau `APP_PASSWORD`, apoi **Deploy**.
+
+Verificare: deschide adresa worker-ului în browser. Trebuie să apară `{"ok":true, … "token":true}`.

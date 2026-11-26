@@ -475,7 +475,50 @@ def generate(brand, out_dir, templates=None):
              else emails.build_welcome_automation(brand, templates["welcome_auto"])),
         f"{slug}-newsletter-{'bun-venit' if ecom else 'noutati'}.json": emails.build_newsletter(brand, templates["newsletter"]),
     }
+    problems = [f"{name}: {p}" for name, doc in files.items() for p in check_output(doc)]
+    if problems:  # nothing is saved: a broken file never reaches the history
+        raise RuntimeError("Fișierele generate au probleme, nu le salvez: " + "; ".join(problems[:5]))
     for name, doc in files.items():
         with open(os.path.join(out_dir, name), "w", encoding="utf-8") as f:
             json.dump(doc, f, ensure_ascii=False, indent="\t")
     return list(files)
+
+
+ALLOWED_VARS = {"url", "name", "img", "#each NZCart.products", "/each"}
+MODULE_TYPES = {"text", "image", "button", "divider", "social", "form", "heading", "paragraph", "properties", "spacer"}
+
+
+def check_output(doc):
+    """Safety net run on every generated file before it is saved (the checks done by hand so far)."""
+    out = []
+    raw = json.dumps(doc, ensure_ascii=False)
+    flat = raw.replace('\\"', '"').replace("\\/", "/")
+    for bad, why in ((r"<script", "cod JavaScript"), (r"javascript:", "link javascript:"),
+                     (r"\son(?:click|error|load|mouseover)\s*=", "atribut de eveniment"),
+                     (r"github\.io|githubusercontent\.com|github\.com/cosminflrn", "link spre GitHub"),
+                     (r"example\.com|\(link\)|lorem ipsum", "text de exemplu rămas")):
+        if re.search(bad, flat, re.I):
+            out.append(why)
+    for var in set(re.findall(r"\{\{\s*([^}]+?)\s*\}\}", flat)):
+        if var not in ALLOWED_VARS:
+            out.append(f"variabilă necunoscută {{{{{var}}}}}")
+    types = set(re.findall(r"mailup-bee-[a-z]+-modules?-([a-z-]+)", flat)) | set(re.findall(r"mailup-bee-page-([a-z]+)", flat))
+    unknown = types - MODULE_TYPES
+    if unknown:
+        out.append("module necunoscute: " + ", ".join(sorted(unknown)))
+    data = doc.get("data") or {}
+    meta = ((data.get("draft_meta") or {}).get("meta") or {}) if isinstance(data, dict) else {}
+    for key, d in meta.items():  # automation emails: the hidden editor copy must match the design
+        try:
+            import base64
+            params = d["params"]
+            b64 = re.search(r">([A-Za-z0-9+/=]{100,})<", params["txt_editor"]).group(1)
+            if json.loads(base64.b64decode(b64)) != json.loads(params["json"]):
+                out.append(f"email {key}: copia din editor diferă de design")
+        except Exception:
+            out.append(f"email {key}: date de editor lipsă")
+    for u in re.findall(r'"(?:src|href)"\s*:\s*"([^"]*)"', flat):
+        if u and not (u.startswith(("http://", "https://", "mailto:", "tel:", "#", "{{", "[")) or u in ("", "/")):
+            out.append(f"link invalid: {u[:60]}")
+            break
+    return out

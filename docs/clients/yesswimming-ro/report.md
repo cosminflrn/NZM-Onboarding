@@ -1,6 +1,6 @@
 # Club Sportiv Yes Swimming (yesswimming.ro)
 
-Generat: 2026-11-26 13:37 UTC  ·  Platformă: wordpress
+Generat: 2026-11-26 13:39 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
