@@ -234,6 +234,25 @@
     .client { grid-template-columns:20px 84px minmax(0, 1fr); gap:12px; } .client > .logo { width:84px; height:64px; padding:6px; }
     .client .logo img { max-width:72px; max-height:50px; }
     .client .actions { grid-column:1/-1; }
+  }
+  @media (max-width: 600px) {
+    /* phones: compact card - tick, small logo and name on one row, tags under the name, 2 x 2 actions */
+    .card.client { padding:14px; }
+    .client { grid-template-columns:22px 60px minmax(0, 1fr); gap:10px 12px; align-items:center; }
+    .client > .logo { width:60px; height:60px; padding:5px; border-radius:10px; }
+    .client .logo img { max-width:50px; max-height:44px; }
+    .client h3 { font-size:15px; padding-right:58px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .client .dom { font-size:12px; }
+    .client .tags { gap:5px; margin-top:6px; }
+    .client .tag { font-size:11px; padding:2px 8px; }
+    .client .tag .lgw { display:none; }
+    .client .tag .cap { display:inline-block; } .client .tag .cap::first-letter { text-transform:uppercase; }
+    /* the bookmark is a computer thing (drag to the bookmarks bar, Ctrl+S): on phones only a short note */
+    #blockedHelp .bl-body { display:none; }
+    #blockedHelp .bl-title::after { content:" Se face de pe calculator."; font-weight:400; color:var(--muted); }
+    .client .actions { gap:8px; margin-top:2px; }
+    .client .actions button { padding:9px 8px; font-size:14px; }
+    .client > button.del { top:10px; }
     .switches { flex-wrap:wrap; } .switches > div { min-width:0; max-width:100%; }
     .seg .lg { display:none; } .seg .sm { display:inline; }
     h2 { flex-wrap:wrap; } .search { flex:1; width:auto; min-width:0; }
@@ -770,7 +789,7 @@ function render() {
         <div class="dom">${esc(fmtDate(c.generated_at))}</div>
         <div class="tags">
           ${c.site_type === "non-ecommerce" ? `<span class="tag">${icon("globe")}Non-e-commerce</span>` : `<span class="tag">${icon("cart")}E-commerce</span>`}
-          ${c.form_type === "embed" ? `<span class="tag">${icon("embed")}Formular embed</span>` : `<span class="tag">${icon("popup")}Formular pop-up</span>`}
+          ${c.form_type === "embed" ? `<span class="tag">${icon("embed")}<span class="lgw">Formular </span><span class="cap">embed</span></span>` : `<span class="tag">${icon("popup")}<span class="lgw">Formular </span><span class="cap">pop-up</span></span>`}
           ${c.lang === "en" ? `<span class="tag">${icon("globe")}English</span>` : ""}
           ${statusHtml(c.slug)}
         </div></div>
