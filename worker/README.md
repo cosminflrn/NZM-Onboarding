@@ -19,3 +19,17 @@ Intermediarul permite doar: pornirea generării, a recitirii sau a ștergerii un
 2. Cloudflare → worker `nzm-onboarding` → Settings → Variables and Secrets. Editează `GITHUB_TOKEN` sau `APP_PASSWORD`, apoi **Deploy**.
 
 Verificare: deschide adresa worker-ului în browser. Trebuie să apară `{"ok":true, … "token":true}`.
+
+## Brandfetch NewsMAN (opțional)
+
+Pentru comutatorul „Sursă brand → Brandfetch NewsMAN” adaugă în Worker → Settings → Variables and Secrets:
+
+| Nume | Tip | Valoare |
+|---|---|---|
+| `BRAND_API_TOKEN` | Secret | token-ul normal de la Brandfetch NewsMAN |
+| `BRAND_WEBHOOK_SECRET` | Secret | secretul de semnare a webhook-ului |
+| `BRAND_API_URL` | Text (opțional) | implicit `https://brandfetch.newsman.eu/api/brand` |
+| `BRAND_INSTANCE` | Text (opțional) | implicit `cosmin` |
+
+Adresa de webhook care trebuie trecută la Brandfetch pentru instanța `cosmin`: `https://<worker>/brandfetchwebhook`.
+Comutatorul apare în pagină doar după ce primele două sunt setate.
