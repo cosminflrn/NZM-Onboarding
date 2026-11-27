@@ -228,7 +228,9 @@
     h2 { flex-wrap:wrap; } .search { flex:1; width:auto; min-width:0; }
     .selbar { width:100%; margin-left:0; flex-wrap:wrap; }
     .selbar:not(.has) { display:none !important; }
-    .selbar button { padding:9px 6px; }
+    .selbar { display:grid; grid-template-columns:1fr 1fr; }
+    .selbar #selCount { grid-column:1 / -1; }
+    .selbar button { padding:10px 8px; font-size:13px; }
     .selbar #selCount { width:100%; }
     .selbar button { flex:1 1 0; min-width:0; padding:8px 6px; font-size:12px; white-space:normal; line-height:1.2; }
     header .wrap { gap:8px; } #who { display:none; } header .right .lbl { display:none; } header .right button { padding:8px 10px; }
