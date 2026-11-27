@@ -90,7 +90,37 @@
   h2 .count { font-size:12px; font-weight:600; color:var(--muted); background:#eef0f3; border-radius:999px; padding:3px 9px; }
   .histtools { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
   .histtools label { display:flex; align-items:center; gap:6px; }
-  .histtools select { font:inherit; color:var(--ink, #111); padding:5px 26px 5px 10px; border:1px solid var(--line, #e3e5e8); border-radius:8px; background:#fff; cursor:pointer; }
+  .histtools select { display:none; }
+  body > main { min-height:calc(100vh - 64px - 140px); }  /* the footer stays at the bottom on short pages */
+  .site-foot { border-top:1px solid var(--line, #e3e5e8); margin-top:40px; background:#fff; font-size:13px; color:var(--muted); }
+  .site-foot .wrap { max-width:1060px; margin:0 auto; padding:22px 20px; display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .site-foot .brand { display:flex; align-items:center; gap:8px; color:var(--red); font-weight:700; }
+  .site-foot .brand b { color:var(--muted); font-weight:500; }
+  .site-foot .brand img { height:20px; }
+  .site-foot .links { display:flex; gap:16px; }
+  .site-foot a { color:var(--muted); text-decoration:none; } .site-foot a:hover { color:var(--red); }
+  .site-foot .copy { margin-left:auto; }
+  @media (max-width: 700px) { .site-foot .copy { margin-left:0; width:100%; } }
+  /* dropdowns: native selects drawn as small animated menus, each option with how many sites it would show */
+  .dd { position:relative; }
+  .dd-btn { display:inline-flex; align-items:center; gap:8px; font:inherit; font-size:13px; color:var(--ink, #111); padding:6px 10px 6px 12px;
+    border:1px solid var(--line, #e3e5e8); border-radius:9px; background:#fff; cursor:pointer; transition:border-color .15s, box-shadow .15s; }
+  .dd-btn:hover { border-color:#c9cdd3; }
+  .dd-btn:focus { outline:none; } .dd-btn:focus-visible { box-shadow:0 0 0 3px rgba(166,0,0,.18); }
+  .dd-btn .chev { width:14px; height:14px; transition:transform .2s ease; opacity:.6; }
+  .dd.open .dd-btn { border-color:var(--red); box-shadow:0 0 0 3px rgba(166,0,0,.10); }
+  .dd.open .dd-btn .chev { transform:rotate(180deg); }
+  .dd-menu { position:absolute; top:calc(100% + 6px); left:0; min-width:100%; z-index:30; background:#fff; border:1px solid var(--line, #e3e5e8);
+    border-radius:12px; box-shadow:0 12px 32px rgba(17,17,17,.12); padding:5px; opacity:0; transform:translateY(-6px) scale(.98);
+    transform-origin:top left; pointer-events:none; transition:opacity .16s ease, transform .18s ease; }
+  .dd.right .dd-menu { left:auto; right:0; transform-origin:top right; }
+  .dd.open .dd-menu { opacity:1; transform:none; pointer-events:auto; }
+  .dd-menu button { display:flex; align-items:center; justify-content:space-between; gap:18px; width:100%; border:0; background:transparent;
+    font:inherit; font-size:13px; color:var(--ink, #111); padding:8px 10px; border-radius:8px; cursor:pointer; white-space:nowrap; text-align:left; }
+  .dd-menu button:hover, .dd-menu button:focus-visible { background:#f4f5f7; outline:none; }
+  .dd-menu button.on { color:var(--red); font-weight:600; }
+  .dd-menu button[disabled] { opacity:.4; cursor:default; background:transparent; }
+  .dd-menu .n { font-size:11px; font-weight:600; color:var(--muted); background:#eef0f3; border-radius:999px; padding:2px 7px; }
   .histtools .sortl { margin-left:auto; }
   .histtools [hidden] { display:none !important; }
   .histtools .link { border:0; background:transparent; color:var(--red); font:inherit; cursor:pointer; padding:0; }
@@ -235,8 +265,6 @@
           <button type="button" data-v="auto" class="on"><span class="lg">Detectează automat</span><span class="sm">Automat</span></button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
         <div><span class="label" id="lb-lang">Limbă</span><div class="seg" data-name="lang" role="group" aria-labelledby="lb-lang">
           <button type="button" data-v="auto" class="on">Automat</button><button type="button" data-v="ro">Română</button><button type="button" data-v="en">English</button></div></div>
-        <div id="srcSwitch" hidden><span class="label" id="lb-source">Metodă brand fetch</span><div class="seg" data-name="source" role="group" aria-labelledby="lb-source">
-          <button type="button" data-v="brandfetch" class="on" title="Brand fetch NewsMAN (oficial): logo, culori, banner, linkuri; produsele și meniul din site">NewsMAN</button><button type="button" data-v="nzm" title="Varianta experimentală: Claude citește tot site-ul (brand, produse, meniu)">Claude</button></div></div>
       </div>
     </form>
     <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Starea apare direct în istoric.</div>
@@ -273,7 +301,6 @@
   </h2>
   <div class="histtools">
     <label>Tip <select id="fType"><option value="">toate</option><option value="ecommerce">E-commerce</option><option value="non-ecommerce">Non-e-commerce</option></select></label>
-    <label>Metodă <select id="fSrc"><option value="">toate</option><option value="brandfetch">NewsMAN</option><option value="nzm">Claude</option></select></label>
     <label>Formular <select id="fForm"><option value="">toate</option><option value="popup">Pop-up</option><option value="embed">Embed</option></select></label>
     <label>Limbă <select id="fLang"><option value="">toate</option><option value="ro">Română</option><option value="en">English</option></select></label>
     <label class="sortl">Sortare <select id="fSort"><option value="new">ultima modificare</option><option value="old">cele mai vechi</option><option value="az">nume A–Z</option><option value="za">nume Z–A</option></select></label>
@@ -282,6 +309,17 @@
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
   <div class="pager" id="pager"></div>
 </main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span class="brand"><img src="newsman-logo.png" alt="NewsMAN"><b>Onboarding</b></span>
+    <span class="links">
+      <a href="https://newsman.app" target="_blank" rel="noopener">newsman.app</a>
+      <a href="https://github.com/cosminflrn/NZM-Onboarding#readme" target="_blank" rel="noopener">Cum funcționează</a>
+      <a href="https://github.com/cosminflrn/NZM-Onboarding/blob/main/texte/variante.json" target="_blank" rel="noopener">Texte</a>
+    </span>
+    <span class="copy">© <span id="year"></span> NewsMAN · instrument intern</span>
+  </div>
+</footer>
 
 <dialog id="dlg" class="dlg" tabindex="-1">
   <div class="bar"><b id="dlgTitle"></b><span class="push"></span><button type="button" onclick="$('dlg').close()" title="Închide"><svg class="i"><use href="#i-x"/></svg></button></div>
@@ -306,7 +344,6 @@
 
 <dialog id="ed" class="ed">
   <div class="bar"><b id="edTitle"></b><span class="push"></span>
-    <button id="edSrc" hidden title="Citește din nou site-ul, cu brandul din cealaltă sursă (editările de aici nu se păstrează)"></button>
     <button onclick="ed.close()">Renunță</button><button class="primary" id="edSave">Salvează și regenerează</button></div>
   <form id="edForm" class="grid" onsubmit="return false"></form>
 </dialog>
@@ -577,9 +614,9 @@ $("gen").addEventListener("submit", async (e) => {
   if (!slugOf(url)) return alert("Link invalid");
   const inputs = { url, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
     form_type: segValue("form_type"), site_type: segValue("site_type"), lang: segValue("lang"),
-    source: $("srcSwitch").hidden ? "nzm" : segValue("source") };
+    source: BRANDFETCH ? "brandfetch" : "nzm" };
   const cap = CAPTURE && domOf(CAPTURE.url) === domOf(url) ? CAPTURE : null;
-  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setSeg("lang", "auto"); setSeg("source", "brandfetch"); setCapture(null);
+  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setSeg("lang", "auto"); setCapture(null);
   runJob(inputs, cap);
 });
 
@@ -615,7 +652,7 @@ async function runJob(inputs, cap) {
       const d = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(d.message || `brand fetch NewsMAN: ${r.status}`);
       inputs.brandfetch = d.path;
-      setJob(slug, { text: d.ready ? "în curs" : "aștept brandul din brand fetch NewsMAN" });
+      setJob(slug, { text: d.ready ? "în curs" : "pregătim brandul" });
     }
     await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs }) });
     const run = await findRun((r) => (r.display_title || "").includes(`[${inputs.rid}]`), since);
@@ -713,7 +750,6 @@ function render() {
           ${c.site_type === "non-ecommerce" ? `<span class="tag">${icon("globe")}Non-e-commerce</span>` : `<span class="tag">${icon("cart")}E-commerce</span>`}
           ${c.form_type === "embed" ? `<span class="tag">${icon("embed")}Formular embed</span>` : `<span class="tag">${icon("popup")}Formular pop-up</span>`}
           ${c.lang === "en" ? `<span class="tag">${icon("globe")}English</span>` : ""}
-          <span class="tag" title="De unde vine brandul (logo, culori, banner)">${icon("spark")}${c.brand_source === "brandfetch" ? "Brand fetch NewsMAN" : "Claude"}</span>
           ${statusHtml(c.slug)}
         </div></div>
       <div class="actions">
@@ -725,22 +761,56 @@ function render() {
   const all = (q || FILTERS_ON() || PAGE > 1 ? [] : pending).concat(cards);
   box.innerHTML = all.length ? all.join("") : `<div class="empty">Niciun client${q || FILTERS_ON() ? " găsit" : " încă"}.</div>`;
   syncSel(list);
+  document.querySelectorAll(".histtools select").forEach(ddRefresh);
 }
 
 // --- selection
 const SEL = new Set();
 const MAX_SEL = 3;   // keep the load on GitHub small
+// --- dropdowns for the history filters (the real <select> keeps the value; this draws it)
+const SORT_IDS = ["fSort"];
+function ddCount(id, v) { return SORT_IDS.includes(id) ? null : visible({ [ { fType: "type", fForm: "form", fLang: "lang" }[id] ]: v }).length; }
+function ddRefresh(sel) {
+  const dd = sel.nextElementSibling;
+  if (!dd || !dd.classList.contains("dd")) return;
+  const cur = sel.options[sel.selectedIndex];
+  dd.querySelector(".dd-btn span").textContent = cur ? cur.text : "";
+  dd.querySelector(".dd-menu").innerHTML = [...sel.options].map((o) => {
+    const n = ddCount(sel.id, o.value);
+    return `<button type="button" data-v="${esc(o.value)}" class="${o.value === sel.value ? "on" : ""}" ${n === 0 && o.value ? "disabled" : ""}>` +
+      `<span>${esc(o.text)}</span>${n === null ? "" : `<span class="n">${n}</span>`}</button>`;
+  }).join("");
+}
+function ddClose(except) { document.querySelectorAll(".dd.open").forEach((d) => d !== except && d.classList.remove("open")); }
+function ddMake(sel) {
+  const dd = document.createElement("span");
+  dd.className = "dd" + (sel.closest(".sortl") ? " right" : "");
+  dd.innerHTML = `<button type="button" class="dd-btn" aria-haspopup="listbox"><span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-menu" role="listbox"></span>`;
+  sel.after(dd);
+  const btn = dd.querySelector(".dd-btn");
+  btn.onclick = () => { ddRefresh(sel); ddClose(dd); dd.classList.toggle("open"); if (!dd.classList.contains("open")) btn.blur(); };
+  dd.querySelector(".dd-menu").onclick = (e) => {
+    const b = e.target.closest("button[data-v]");
+    if (!b || b.disabled) return;
+    sel.value = b.dataset.v; dd.classList.remove("open"); btn.blur();
+    sel.onchange && sel.onchange();
+  };
+  ddRefresh(sel);
+}
+document.addEventListener("click", (e) => { if (!e.target.closest(".dd")) ddClose(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") ddClose(); });
+
 // --- history: filters, sorting, pages
 const PER_PAGE = 10;
 let PAGE = 1;
-const FILTER_IDS = ["fType", "fSrc", "fForm", "fLang"];
+const FILTER_IDS = ["fType", "fForm", "fLang"];
 const FILTERS_ON = () => FILTER_IDS.some((id) => $(id).value);
-function visible() {
+let BRANDFETCH = false;
+function visible(over) {
   const q = $("filter").value.toLowerCase();
-  const f = { type: $("fType").value, src: $("fSrc").value, form: $("fForm").value, lang: $("fLang").value };
+  const f = { type: $("fType").value, form: $("fForm").value, lang: $("fLang").value, ...(over || {}) };
   const list = CLIENTS.filter((c) => (!q || (c.name + c.domain).toLowerCase().includes(q))
     && (!f.type || c.site_type === f.type)
-    && (!f.src || (c.brand_source || "nzm") === f.src)
     && (!f.form || (c.form_type || "popup") === f.form)
     && (!f.lang || (c.lang || "ro") === f.lang));
   const sort = $("fSort").value;
@@ -757,6 +827,8 @@ function goPage(n) { PAGE = n; render(); $("histCount").scrollIntoView({ behavio
   try { const v = localStorage.getItem("nzm-" + id); if (v !== null) $(id).value = v; } catch {}
   $(id).onchange = () => { try { localStorage.setItem("nzm-" + id, $(id).value); } catch {} PAGE = 1; render(); };
 });
+document.querySelectorAll(".histtools select").forEach(ddMake);
+$("year").textContent = new Date().getFullYear();
 $("fReset").onclick = () => {
   FILTER_IDS.forEach((id) => { $(id).value = ""; try { localStorage.removeItem("nzm-" + id); } catch {} });
   $("filter").value = ""; $("searchBox").classList.remove("has"); PAGE = 1; render();
@@ -868,14 +940,14 @@ async function download(slug, file) {
   } catch (e) { alert("Descărcare eșuată: " + e.message); }
 }
 
-async function rescrape(slug, source) {
+async function rescrape(slug) {
   const c = CLIENTS.find((x) => x.slug === slug);
   if (!(await checkToken())) return;
   let o = {};
   try { o = (await readFile(`clients/${slug}/brand.json`)).options || {}; } catch {}
   await runJob({ url: c.url, name: "", discount: o.discount_code || "", sender_email: o.sender_email || "",
     form_type: o.form_type || "popup", site_type: o.site_type || "auto", lang: o.lang || "auto",
-    source: source || (o.brand_source === "brandfetch" && !$("srcSwitch").hidden ? "brandfetch" : "nzm") });
+    source: BRANDFETCH ? "brandfetch" : "nzm" });
 }
 
 // =============================================================== preview
@@ -1000,11 +1072,6 @@ async function edit(slug) {
   if (!(await checkToken())) return;
   const b = await readFile(`clients/${slug}/brand.json`);
   EDIT = { slug, b };
-  // the brand's source can be switched from here: the site is read again with the other one
-  const other = (b.options || {}).brand_source === "brandfetch" ? "nzm" : "brandfetch";
-  $("edSrc").hidden = $("srcSwitch").hidden;
-  $("edSrc").innerHTML = `${icon("refresh")}Refă cu ${other === "brandfetch" ? "brand fetch NewsMAN" : "Claude"}`;
-  $("edSrc").onclick = () => { $("ed").close(); rescrape(slug, other); };
   $("edTitle").textContent = `${b.name} — editare`;
   const L = b.links || {}, C = b.colors, ct = b.contact || {}, S = b.socials || {}, O = b.options || {};
   const menu = [0, 1, 2].map((i) => (L.menu || [])[i] || {});
@@ -1110,7 +1177,8 @@ $("edSave").onclick = async () => {
 // =============================================================== start
 checkToken().then((ok) => { if (ok || !PROXY) load(); });
 // the brand fetch NewsMAN switch shows only once its keys are set in Cloudflare
-if (PROXY) fetch(PROXY + "/").then((r) => r.json()).then((d) => { $("srcSwitch").hidden = !d.brandfetch; if (d.brandfetch) placePill(document.querySelector('.seg[data-name="source"]')); }).catch(() => {});
+// brand fetch NewsMAN is used whenever its keys are set in Cloudflare
+if (PROXY) fetch(PROXY + "/").then((r) => r.json()).then((d) => { BRANDFETCH = !!d.brandfetch; }).catch(() => {});
 </script>
 </body>
 </html>
