@@ -6,6 +6,7 @@ Worker's /brandfetchwebhook, which stores it as inbox/bf-<job_id>.json. Here tha
 products, menu and the rest still come from the site itself.
 """
 import html
+import re
 import json
 
 
@@ -36,7 +37,9 @@ def hints(data):
     return {
         "name": (b.get("name") or "").strip() or None,
         "description": (b.get("description") or b.get("longDescription") or "").strip() or None,
-        "logos": [u for u in (_src(l) for l in order) if u],
+        # a favicon service's square icon is a fallback, not the logo: the site's own logo is better then
+        "logos": [u for u in (_src(l) for l in order)
+                  if u and not re.search(r"google\.com/s2/favicons|favicon|apple-touch-icon", u, re.I)],
         "accent": colors.get("accent") or colors.get("brand") or colors.get("primary"),
         "dark": colors.get("dark"),
         "banner": banner,

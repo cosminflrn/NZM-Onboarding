@@ -81,6 +81,8 @@ def in_tag(el, names, depth=12):
             return False
         if cur.name in names:
             return True
+        if cur.name in ("main", "body", "html"):
+            return False  # page-wide classes ("has-app-install-banner-header") say nothing about the element
         cls = " ".join(cur.get("class", [])) if cur.get("class") else ""
         ident = cur.get("id", "") or ""
         for n in names:
@@ -603,6 +605,13 @@ class Scraper:
                 continue
             if in_tag(img, ["header"]):
                 score += 15
+            # the brand mark links home and is named after the site ("eMAG" on emag.ro): beats other logos nearby
+            home = img.find_parent("a", href=re.compile(r"^(/|%s/?)$" % re.escape(self.base.rstrip("/"))))
+            root = re.sub(r"[^a-z0-9]", "", self.domain.split(".")[0])
+            if home is not None:
+                score += 20
+            if root and root in re.sub(r"[^a-z0-9]", "", (img.get("alt") or "").lower()):
+                score += 10
             if idx < total * 0.25:
                 score += 10
             if in_tag(img, ["footer"]):
@@ -1036,10 +1045,14 @@ class Scraper:
             box, price = a, None
             for _ in range(5):  # the card around the picture link
                 txt = " ".join(box.get_text(" ").split())
+                txt = re.sub(r"(\d)\s*([.,])\s+(\d{2})\b", r"\1\2\3", txt)  # "114 , 99 Lei" (decimal mark in its own tag)
                 txt = re.sub(r"(\d)\s+([.,]\d{2})\b", r"\1\2", txt)  # "43 .00 lei" (decimals in their own tag)
                 # "1.299<sup>99</sup> Lei": small raised decimals right after the amount
                 txt = re.sub(r"(\d)\s+(\d{2})\s*(lei|ron)\b", r"\1,\2 \3", txt, flags=re.I)
-                found = [x.group(0) for x in PRICE_TEXT_RE.finditer(txt)]
+                # installment amounts ("12 rate x 50,01 lei/lună") are not the price
+                found = [x.group(0) for x in PRICE_TEXT_RE.finditer(txt)
+                         if not re.search(r"\brat[ae]\b|lun[aă]|/lun|month|/mo\b|installment|pre[tț]\s*/|/\s*(kg|l|buc|spalare|sp[ăa]lare|bucat)|per unit|unitar",
+                                          txt[max(0, x.start() - 30):x.end() + 15], re.I)]
                 if found and len(txt) < 900:   # big shops' cards also carry ratings, badges, delivery estimates
                     # an old (crossed-out / recommended) price often comes first: the price paid is the lowest
                     price = min(found, key=lambda x: amount(x) or 1e12)
@@ -1049,7 +1062,28 @@ class Scraper:
                 box = box.parent
             if not price:
                 continue
-            name = (img.get("alt") or a.get("title") or "").strip()
+            # the shop's own "price you pay" element, when it marks one, beats any other amount in the card
+            main, up = None, box
+            for _ in range(3):   # the price block can sit next to the part holding the picture
+                main = up.find(class_=re.compile(r"new-price|sale-price|special-price|price--sale|current-price|final-price|price-new", re.I))
+                if main or not up.parent or len(up.parent.get_text(" ")) > 1500:
+                    break
+                up = up.parent
+            if main:
+                mt = " ".join(main.get_text(" ").split())
+                mt = re.sub(r"(\d)\s*([.,])\s+(\d{2})\b", r"\1\2\3", mt)
+                mt = re.sub(r"(\d)\s+(\d{2})\s*(lei|ron)\b", r"\1,\2 \3", mt, flags=re.I)
+                mm = PRICE_TEXT_RE.search(mt)
+                if mm:
+                    price = mm.group(0)
+            name = (img.get("alt") or a.get("title") or a.get("aria-label") or "").strip()
+            if len(name) < 4:
+                # the card's title: another link to the same product, or its heading
+                path = u.split("?")[0]
+                same = [" ".join(x.get_text(" ").split()) for x in box.find_all("a", href=True)
+                        if x is not a and (absolute(self.ref, x["href"]) or "").split("?")[0] == path]
+                heads = [" ".join(x.get_text(" ").split()) for x in box.find_all(["h2", "h3", "h4"])]
+                name = next((t for t in same + heads if 4 <= len(t) <= 160 and not PRICE_TEXT_RE.search(t)), "")
             if len(name) < 4:
                 texts = [" ".join(x.get_text(" ").split()) for x in box.find_all(["a", "h2", "h3", "h4", "p", "span"])]
                 texts = [t for t in texts if 4 <= len(t) <= 120 and not PRICE_TEXT_RE.search(t)]

@@ -1,23 +1,22 @@
 [
  {
   "slug": "emag-ro",
-  "name": "Emag",
+  "name": "eMAG.ro",
   "domain": "emag.ro",
   "url": "https://www.emag.ro/",
-  "generated_at": "2026-11-27 13:59 UTC",
-  "logo": "https://www.google.com/s2/favicons?domain=emag.ro&sz=128",
+  "generated_at": "2026-11-27 14:02 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/emag-ro/assets/logo-34f11278.png",
   "colors": {
-   "accent": "#3b82f6",
-   "dark": "#333333",
-   "light": "#ebf2fe"
+   "accent": "#0082e6",
+   "dark": "#090171",
+   "light": "#e6f2fc"
   },
   "warnings": [
    "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
    "Telefon: nu am găsit niciun număr pe site.",
-   "Email: nu am găsit nicio adresă de contact pe site.",
-   "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
+   "Email: nu am găsit nicio adresă de contact pe site."
   ],
-  "products": 0,
+  "products": 6,
   "site_type": "ecommerce",
   "form_type": "popup",
   "lang": "ro",
