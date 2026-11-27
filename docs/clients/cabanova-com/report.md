@@ -1,6 +1,6 @@
 # Cabanova (cabanova.com)
 
-Generat: 2026-11-27 10:20 UTC  ·  Platformă: necunoscut
+Generat: 2026-11-27 10:49 UTC  ·  Platformă: necunoscut
 
 ## Ce am găsit
 
