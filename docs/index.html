@@ -90,6 +90,7 @@
   h2 .count { font-size:12px; font-weight:600; color:var(--muted); background:#eef0f3; border-radius:999px; padding:3px 9px; }
   .histtools { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
   .histtools label { display:flex; align-items:center; gap:6px; }
+  .search input:focus { outline:none; border-color:var(--red); box-shadow:0 0 0 3px rgba(166,0,0,.10); }
   .histtools select { display:none; }
   body > main { min-height:calc(100vh - 64px - 140px); }  /* the footer stays at the bottom on short pages */
   .site-foot { border-top:1px solid var(--line, #e3e5e8); margin-top:40px; background:#fff; font-size:13px; color:var(--muted); }
@@ -317,7 +318,7 @@
       <a href="https://github.com/cosminflrn/NZM-Onboarding#readme" target="_blank" rel="noopener">Cum funcționează</a>
       <a href="https://github.com/cosminflrn/NZM-Onboarding/blob/main/texte/variante.json" target="_blank" rel="noopener">Texte</a>
     </span>
-    <span class="copy">© <span id="year"></span> NewsMAN · instrument intern</span>
+    <span class="copy">© <span id="year"></span> NewsMAN</span>
   </div>
 </footer>
 
@@ -701,6 +702,10 @@ async function load() {
   setTimeout(() => $("clients").classList.remove("anim"), 600);
   openLinkedPreview();
 }
+// a second click on the (empty) search box leaves it
+$("filter").addEventListener("mousedown", (e) => {
+  if (document.activeElement === $("filter") && !$("filter").value) { e.preventDefault(); $("filter").blur(); }
+});
 $("filter").oninput = () => { $("searchBox").classList.toggle("has", !!$("filter").value); PAGE = 1; render(); };
 $("clearFilter").onclick = () => { $("filter").value = ""; $("searchBox").classList.remove("has"); render(); $("filter").focus(); };
 
