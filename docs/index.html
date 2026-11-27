@@ -664,6 +664,7 @@ function render() {
           ${c.site_type === "non-ecommerce" ? `<span class="tag">${icon("globe")}Non-e-commerce</span>` : `<span class="tag">${icon("cart")}E-commerce</span>`}
           ${c.form_type === "embed" ? `<span class="tag">${icon("embed")}Formular embed</span>` : `<span class="tag">${icon("popup")}Formular pop-up</span>`}
           ${c.lang === "en" ? `<span class="tag">${icon("globe")}English</span>` : ""}
+          <span class="tag" title="De unde vine brandul (logo, culori, banner)">${icon("spark")}${c.brand_source === "brandfetch" ? "Mănucă" : "Claude"}</span>
           ${statusHtml(c.slug)}
         </div></div>
       <div class="actions">

@@ -80,6 +80,7 @@ def update_index():
             "products": len([p for p in b.get("products") or []]),
             "site_type": E.site_type(b), "form_type": E.form_type(b),
             "lang": lang_of(b),
+            "brand_source": (b.get("options") or {}).get("brand_source") or "nzm",
             "files": sorted(os.path.basename(p) for p in output_files(folder)
                             if not p.endswith("brand.json")),
         })
