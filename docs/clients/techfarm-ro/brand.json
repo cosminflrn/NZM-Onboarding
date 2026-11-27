@@ -3,7 +3,7 @@
   "domain": "techfarm.ro",
   "slug": "techfarm-ro",
   "platform": "gomag",
-  "name": "techfarm.ro",
+  "name": "TechFarm Agro",
   "description": "TechFarm Agro oferă soluții complete pentru agricultură: utilaje performante, sisteme de irigații și service specializat. Creștem productivitatea fermelor !",
   "contact": {
     "phone": "0745643424",
@@ -11,13 +11,13 @@
     "email": "vanzari@techfarm.ro"
   },
   "socials": {
-    "facebook": "https://www.facebook.com/profile.php",
-    "tiktok": "https://www.tiktok.com/@techfarm_agro"
+    "facebook": "https://www.facebook.com/profile.php?id=100063693812925",
+    "tiktok": "https://www.tiktok.com/@techfarm_agro?_t=8qmihCcMbNA&_r=1"
   },
   "links": {
     "home": "https://www.techfarm.ro/",
     "cart": "https://www.techfarm.ro/cos-de-cumparaturi",
-    "terms": "https://www.techfarm.ro/promo",
+    "terms": "https://www.techfarm.ro/termeni-si-conditii",
     "privacy": "https://www.techfarm.ro/politica-de-confidentialitate",
     "contact": "https://www.techfarm.ro/date-contact",
     "promo": "https://www.techfarm.ro/promo",
@@ -25,124 +25,125 @@
       {
         "label": "UTILAJE AGRICOLE",
         "url": "https://www.techfarm.ro/utilaje-agricole",
-        "lead": "Parteneriatul cu Techfarm Agro înseamnă acces la soluții tehnologice care reduc costurile de operare și maximizează randamentul la hectar."
+        "image_from": "page",
+        "desc": "Gama completă de utilaje agricole la Techfarm Agro.",
+        "lead": "Parteneriatul cu Techfarm Agro înseamnă acces la soluții tehnologice care reduc costurile de operare și maximizează randamentul la hectar.",
+        "image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp",
+        "img_w": 5476,
+        "img_h": 3650
       },
       {
         "label": "BALOTIERE",
         "url": "https://www.techfarm.ro/balotiere",
-        "lead": "Balotierele noastre folosesc sisteme avansate de alimentare și presare, garantând o densitate ridicată a baloților."
+        "image_from": "page",
+        "desc": "Descoperă gama de balotiere Sipma și Metal-Fach pentru baloți rotunzi sau paralelipipedici la TechFarm Agro.",
+        "lead": "Balotierele noastre folosesc sisteme avansate de alimentare și presare, garantând o densitate ridicată a baloților.",
+        "image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/presa-de-balotat-paralelipipedica-sipma-pk4000-451053.jpg",
+        "img_w": 450,
+        "img_h": 450
       },
       {
         "label": "PROMOŢII",
         "url": "https://www.techfarm.ro/promo",
-        "lead": "Eficiența în agricultură începe cu alegerea utilajului potrivit. La Techfarm Agro , transformăm performanța în accesibilitate."
+        "image_from": "page",
+        "desc": "Interesat de o ofertă ?",
+        "lead": "Eficiența în agricultură începe cu alegerea utilajului potrivit. La Techfarm Agro , transformăm performanța în accesibilitate.",
+        "image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-prosem-k-gea-elektra-149075.webp",
+        "img_w": 1800,
+        "img_h": 1123
       }
     ],
     "cart_found": true
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
-    "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo-mare-techfarm4509.png",
-    "width": 300,
-    "height": 71,
-    "display_width": 200,
-    "found_by": "img",
+    "url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo8619.png",
+    "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo8619.png",
+    "width": 374,
+    "height": 145,
+    "display_width": 120,
+    "found_by": "brandfetch",
     "recolored": false,
-    "light_parts": false
+    "light_parts": false,
+    "made": "logo-tile.png"
   },
   "banner": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/banner-a3591b49.jpg",
+    "url": "https://gomagcdn.ro/domains2/techfarm.ro/files/banner/bannere-principale-carusel-4-4668.jpg",
     "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/banner/bannere-principale-carusel-4-4668.jpg",
     "width": 1920,
     "height": 800
   },
   "colors": {
-    "accent": "#a78a25",
-    "accent_original": "#fed139",
+    "accent": "#e30613",
+    "accent_original": "#e30613",
     "accent_text": "#ffffff",
-    "dark": "#000000",
-    "light": "#fffaeb",
-    "muted": "#666666",
+    "dark": "#222222",
+    "light": "#fce6e7",
+    "muted": "#7a7a7a",
     "candidates": [
       "#fed139",
       "#286090",
+      "#009c3c",
       "#337ab7",
-      "#0c9c48",
       "#ec971f",
       "#ef8e9f"
     ],
     "logo_colors": [
-      "#0c9c48",
-      "#3ca86c",
-      "#d8f0e4",
+      "#009c3c",
+      "#3cb46c",
       "#9cd8b4",
       "#6cc090",
-      "#f0d884"
+      "#cce4d8",
+      "#fcd86c"
     ]
   },
   "products": [
     {
-      "name": "Utilaj Strip-Till Hawk Easy (prelucrare în benzi)",
-      "url": "https://www.techfarm.ro/utilaje-agricole/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html",
+      "name": "Utilaje Strip-Till (prelucrare în benzi) - Utilaj Strip-Till Hawk Easy (prelucrare în benzi)",
+      "url": "https://www.techfarm.ro/utilaje-strip-till-prelucrare-in-benzi/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html",
       "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-25c08665.jpg",
       "price": "40.000,00 €",
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/strip-till-hawk-4-randuri-cadru-fix-8902292127.jpeg"
     },
     {
-      "name": "Remorcă Transfer BNP-30 | 30 m³ | EGRITECH | Techfarm Agro",
-      "url": "https://www.techfarm.ro/utilaje-agricole/remorc%C4%83-transfer-bnp-30.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-ce0dae7f.jpg",
-      "price": "",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/remorca-transfer-bnp-30-572806.png"
-    },
-    {
-      "name": "SEMANATOARE PROSEM K GEA ELEKTRA",
-      "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-prosem-k-elektra-gea.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-a8d6a7a3.jpg",
-      "price": "75.000,00 €",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/original/semanatoare-prosem-k-gea-elektra-149075.webp"
-    },
-    {
-      "name": "Semănătoare Păioase TRISEM 2110 Disc Dublu | Sola Spania",
-      "url": "https://www.techfarm.ro/semanatori-paioase/semanatoare-de-paioase-trisem-2110-disc-dublu.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-ee65e7fc.jpg",
-      "price": "",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-trisem-2110-disc-dublu-863243.jpg"
-    },
-    {
-      "name": "Semănătoare Prășitoare VELOX | Sola | Distribuitor Techfarm Agro",
-      "url": "https://www.techfarm.ro/semanatori-prasitoare/semanatoare-prasitoare-velox.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-d35f3799.jpg",
-      "price": "",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/large/semanatoare-prasitoare-velox-691558.webp"
-    },
-    {
-      "name": "Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
-      "url": "https://www.techfarm.ro/utilaje-agricole/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
+      "name": "Semănători Prășitoare - Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
+      "url": "https://www.techfarm.ro/semanatori-prasitoare/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
       "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-ca966d52.jpg",
       "price": "35.000,00 €",
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp"
+    },
+    {
+      "name": "Remorci Transfer Cereale - Remorcă de transfer S6 24000 L 2R Boggie",
+      "url": "https://www.techfarm.ro/remorci-transfer-cereale/remorca-de-transfer-s6-24000-2r-boggie.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-8447bf6b.jpg",
+      "price": "44.000,00 €",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/remorca-de-transfer-s6-24000-2r-boggie-637160.png"
     }
   ],
   "options": {
     "discount_code": "",
     "sender_email": "vanzari@techfarm.ro",
-    "sender_name": "techfarm.ro",
+    "sender_name": "TechFarm Agro",
     "form_type": "popup",
-    "site_type": "auto"
+    "site_type": "auto",
+    "brand_source": "brandfetch",
+    "lang": "auto"
+  },
+  "shop_signals": {
+    "prices": 6,
+    "add_to_cart": 0
   },
   "site_type": "ecommerce",
-  "warnings": [],
-  "fetch_log": [
-    "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html",
-    "429 https://www.techfarm.ro/remorci-transfer/remorca-de-transfer-s6-24000-2r-boggie.html",
-    "429 https://www.techfarm.ro/utilaje-agricole",
-    "429 https://www.techfarm.ro/utilaje-agricole"
+  "lang_detected": "ro",
+  "warnings": [
+    "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site."
   ],
-  "generated_at": "2026-11-25 15:33 UTC",
+  "fetch_log": [
+    "429 https://www.techfarm.ro/promo"
+  ],
+  "generated_at": "2026-11-27 14:54 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
-    "hero_title": "Bine ai venit în comunitatea techfarm.ro!",
+    "hero_title": "Bine ai venit în comunitatea TechFarm Agro!",
     "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
     "intro": "TechFarm Agro oferă soluții complete pentru agricultură: utilaje performante, sisteme de irigații și service specializat.\n\nAbonații află primii de produsele noi și primesc ofertele înaintea tuturor.",
     "cta_label": "Intră în magazin",
@@ -150,10 +151,10 @@
     "cards_title": "Ce găsești la noi",
     "discount_note": "Aplică-l la finalizarea comenzii.",
     "form_title": "Abonează-te la newsletter",
-    "form_subtitle": "Află primul de produsele noi și de ofertele techfarm.ro.",
-    "news_title": "Descoperă techfarm.ro",
+    "form_subtitle": "Află primul de produsele noi și de ofertele TechFarm Agro.",
+    "news_title": "Descoperă TechFarm Agro",
     "news_subtitle": "Câteva locuri bune de unde să începi.",
-    "newsletter_title": "Noutăți de la techfarm.ro",
+    "newsletter_title": "Noutăți de la TechFarm Agro",
     "newsletter_subtitle": "Pe scurt, tot ce e nou la noi în ultima vreme."
   },
   "texts": {}
