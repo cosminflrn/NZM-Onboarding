@@ -72,7 +72,8 @@
   .client > button.del:hover { color:var(--red); box-shadow:none; }
   .client > button.share { right:36px; }
   .client > button.share:hover { color:var(--ink, #111); }
-  .client > button.share.done { opacity:1; color:#1a8f4c; }
+  .client > button.share.done, dialog.pv .bar .pvlink.done { opacity:1; color:#1a8f4c; }
+  dialog.pv .bar .pvlink, dialog.pv .bar .pvdl { padding:7px 10px; }
   @media (hover: none) { .client > button.del { opacity:1; } }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
   .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
@@ -125,7 +126,8 @@
     dialog.pv .bar { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; } dialog.pv .bar::-webkit-scrollbar { display:none; }
     dialog.pv .bar .tab { flex:none; padding:7px 11px; font-size:13px; }
     dialog.pv .bar .pvdl { position:sticky; right:46px; flex:none; padding:7px 10px; box-shadow:-8px 0 8px #fff; }
-    dialog.pv .bar .pvdl span { display:none; }
+    dialog.pv .bar .pvdl span, dialog.pv .bar .pvlink span { display:none; }
+    dialog.pv .bar .pvlink { position:sticky; right:92px; flex:none; padding:7px 10px; background:#fff; box-shadow:-8px 0 8px #fff; }
     /* edit form on a phone: one field per row, buttons under the title */
     dialog.ed { width:100vw; max-width:100vw; max-height:100dvh; height:100dvh; margin:0; border-radius:0; }
     dialog.ed .bar #edTitle { width:100%; } dialog.ed .bar .push { display:none; }
@@ -769,24 +771,27 @@ function framed(view, mobile) {
 }
 
 // a link colleagues can open: after signing in, the page opens straight on this client's preview
-function previewLink(slug) { return location.origin + location.pathname + "#preview=" + encodeURIComponent(slug); }
-async function copyPreview(btn, slug) {
-  const link = previewLink(slug);
+function previewLink(slug, tab) { return location.origin + location.pathname + "#preview=" + encodeURIComponent(slug) + (tab ? "/" + tab : ""); }
+const tabKey = (name) => name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+async function copyPreview(btn, slug, tab) {
+  const link = previewLink(slug, tab);
   try { await navigator.clipboard.writeText(link); }
   catch { const t = document.createElement("textarea"); t.value = link; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); }
+  if (btn.classList.contains("done")) return;
+  const was = btn.innerHTML, title = btn.title;
   btn.classList.add("done");
-  btn.innerHTML = icon("check");
   btn.title = "Link copiat";
-  setTimeout(() => { btn.classList.remove("done"); btn.innerHTML = icon("link"); btn.title = "Copiază linkul de previzualizare"; }, 1800);
+  btn.innerHTML = icon("check");
+  setTimeout(() => { btn.classList.remove("done"); btn.innerHTML = was; btn.title = title; }, 1800);
 }
 function openLinkedPreview() {
-  const m = location.hash.match(/^#preview=([a-z0-9-]+)$/);
+  const m = location.hash.match(/^#preview=([a-z0-9-]+)(?:\/([a-z0-9-]+))?$/);
   if (!m) return;
   history.replaceState(null, "", location.pathname);
-  if (CLIENTS.some((c) => c.slug === m[1])) preview(m[1]);
+  if (CLIENTS.some((c) => c.slug === m[1])) preview(m[1], m[2]);
 }
 
-async function preview(slug) {
+async function preview(slug, openTab) {
   const c = CLIENTS.find((x) => x.slug === slug);
   const get = (kind) => { const f = fileOf(c, kind); return f ? readFile(`clients/${slug}/${f}`) : null; };
   const [form, auto, news] = await Promise.all([get("formular"), get("automatizare"), get("newsletter")]);
@@ -808,7 +813,8 @@ async function preview(slug) {
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
     `<span class="push"></span><div class="seg dev" data-name="device"><button type="button" data-v="desktop" class="on">${icon("desktop")}Desktop</button>` +
     `<button type="button" data-v="mobile">${icon("phone")}Mobil</button></div>` +
-    `<button class="dl pvdl" onclick="askDownload('${slug}')" title="Descarcă fișierele pentru NewsMAN">${icon("dl")}<span>Descarcă</span></button>` +
+    `<button class="pvlink" id="pvLink" title="Copiază linkul de previzualizare doar pentru acest email / formular">${icon("link")}</button>` +
+    `<button class="dl pvdl" onclick="askDownload('${slug}')" title="Descarcă fișierele pentru NewsMAN">${icon("dl")}</button>` +
     `<button onclick="pv.close()">${icon("x")}</button>`;
   let current = 0;
   tabs.querySelectorAll(".dev button").forEach((b) => b.onclick = () => {
@@ -821,6 +827,7 @@ async function preview(slug) {
     current = i;
     const mobile = tabs.querySelector(".dev button.on").dataset.v === "mobile" || matchMedia("(max-width: 700px)").matches;
     tabs.querySelectorAll(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.i === i));
+    const on = tabs.querySelector(".tab.on"); if (on) tabs.scrollLeft = Math.max(0, on.offsetLeft - 60);
     $("subj").textContent = "Subiect / nume: " + (views[i].subj || "");
     // rendered inside an iframe so the page's own styles do not leak into the preview
     const frame = document.createElement("iframe");
@@ -834,9 +841,14 @@ async function preview(slug) {
     } else $("view").replaceChildren(frame);
   };
   tabs.querySelectorAll(".tab").forEach((b) => b.onclick = () => show(+b.dataset.i));
-  show(0);
+  $("pvLink").onclick = () => copyPreview($("pvLink"), slug, tabKey(views[current].name));
+  const start = openTab ? views.findIndex((v) => tabKey(v.name) === openTab) : 0;
+  show(Math.max(0, start));
   $("pv").showModal();
-  requestAnimationFrame(() => placePill(tabs.querySelector(".dev")));  // sizes are known only once the dialog is open
+  requestAnimationFrame(() => {
+    placePill(tabs.querySelector(".dev"));
+    const on = tabs.querySelector(".tab.on"); if (on) tabs.scrollLeft = Math.max(0, on.offsetLeft - 60);
+  });  // sizes are known only once the dialog is open
   // only the email itself scrolls (inside its frame); wheel anywhere else in the dialog or on the backdrop does nothing
   if (!$("pv").dataset.wheel) { $("pv").addEventListener("wheel", (e) => e.preventDefault(), { passive: false }); $("pv").dataset.wheel = 1; }
 }
