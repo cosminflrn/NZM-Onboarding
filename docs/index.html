@@ -74,6 +74,7 @@
   .client > button.share:hover { color:var(--ink, #111); }
   .client > button.share.done, dialog.pv .bar .pvlink.done { opacity:1; color:#1a8f4c; }
   dialog.pv .bar .pvlink, dialog.pv .bar .pvdl { padding:7px 10px; }
+  dialog.pv:focus { outline:none; }
   @media (hover: none) { .client > button.del { opacity:1; } }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
   .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
@@ -259,7 +260,7 @@
   </form>
 </div>
 
-<dialog id="pv" class="pv">
+<dialog id="pv" class="pv" autofocus tabindex="-1">
   <div class="bar" id="tabs"></div>
   <div class="subj" id="subj"></div>
   <div class="view" id="view"></div>
@@ -845,7 +846,7 @@ async function preview(slug, openTab) {
   const start = openTab ? views.findIndex((v) => tabKey(v.name) === openTab) : 0;
   show(Math.max(0, start));
   $("pv").showModal();
-  document.activeElement && document.activeElement.blur();  // no focus ring on the first tab when the preview opens
+  $("pv").focus();  // the dialog itself takes focus, so no focus ring on the first tab
   requestAnimationFrame(() => {
     placePill(tabs.querySelector(".dev"));
     const on = tabs.querySelector(".tab.on"); if (on) tabs.scrollLeft = Math.max(0, on.offsetLeft - 60);
