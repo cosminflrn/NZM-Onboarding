@@ -70,6 +70,9 @@
   .client > button.del { position:absolute; top:8px; right:8px; padding:5px; border:0; background:transparent; color:#b4b4bd; box-shadow:none; opacity:0; transition:opacity .15s ease, color .15s ease; }
   .client:hover > button.del, .client > button.del:focus-visible { opacity:1; }
   .client > button.del:hover { color:var(--red); box-shadow:none; }
+  .client > button.share { right:36px; }
+  .client > button.share:hover { color:var(--ink, #111); }
+  .client > button.share.done { opacity:1; color:#1a8f4c; }
   @media (hover: none) { .client > button.del { opacity:1; } }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
   .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
@@ -121,6 +124,8 @@
     dialog.pv { width:100vw; height:100dvh; max-width:100vw; max-height:100dvh; margin:0; border-radius:0; }
     dialog.pv .bar { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; } dialog.pv .bar::-webkit-scrollbar { display:none; }
     dialog.pv .bar .tab { flex:none; padding:7px 11px; font-size:13px; }
+    dialog.pv .bar .pvdl { position:sticky; right:46px; flex:none; padding:7px 10px; box-shadow:-8px 0 8px #fff; }
+    dialog.pv .bar .pvdl span { display:none; }
     /* edit form on a phone: one field per row, buttons under the title */
     dialog.ed { width:100vw; max-width:100vw; max-height:100dvh; height:100dvh; margin:0; border-radius:0; }
     dialog.ed .bar #edTitle { width:100%; } dialog.ed .bar .push { display:none; }
@@ -277,7 +282,7 @@
   <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></symbol>
   <symbol id="i-popup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="8" width="10" height="8" rx="1.5"/></symbol>
   <symbol id="i-embed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10"/><rect x="7" y="15" width="10" height="3" rx="1"/></symbol>
-  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-desktop" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-desktop" viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5M14 10a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
 </svg>
 
 <script src="config.js"></script>
@@ -593,6 +598,7 @@ async function load() {
   $("clients").classList.add("anim");
   render();
   setTimeout(() => $("clients").classList.remove("anim"), 600);
+  openLinkedPreview();
 }
 $("filter").oninput = () => { $("searchBox").classList.toggle("has", !!$("filter").value); render(); };
 $("clearFilter").onclick = () => { $("filter").value = ""; $("searchBox").classList.remove("has"); render(); $("filter").focus(); };
@@ -625,6 +631,7 @@ function render() {
   const cards = list.map((c) => `
     <div class="card client${SEL.has(c.slug) ? " sel" : ""}" id="c-${c.slug}">
       <button class="del" title="Șterge din istoric" onclick="askDelete(['${c.slug}'])">${icon("trash")}</button>
+      <button class="del share" title="Copiază linkul de previzualizare (pentru colegi; cer utilizator și parolă)" onclick="copyPreview(this, '${c.slug}')">${icon("link")}</button>
       <input type="checkbox" class="pick" aria-label="Selectează ${esc(c.domain)}" title="${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "Poți selecta maximum 3" : "Selectează"}" ${SEL.has(c.slug) ? "checked" : ""} ${!SEL.has(c.slug) && SEL.size >= MAX_SEL ? "disabled" : ""} onchange="toggleSel('${c.slug}', this.checked)">
       <a class="logo" href="${esc(c.url)}" target="_blank" title="Deschide site-ul">${c.logo ? `<img src="${esc(fresh(c.logo))}" alt="">` : "<span class=empty>fără logo</span>"}</a>
       <div><h3><a href="${esc(c.url)}" target="_blank">${esc(c.domain)}</a></h3>
@@ -761,6 +768,24 @@ function framed(view, mobile) {
   return html;
 }
 
+// a link colleagues can open: after signing in, the page opens straight on this client's preview
+function previewLink(slug) { return location.origin + location.pathname + "#preview=" + encodeURIComponent(slug); }
+async function copyPreview(btn, slug) {
+  const link = previewLink(slug);
+  try { await navigator.clipboard.writeText(link); }
+  catch { const t = document.createElement("textarea"); t.value = link; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); }
+  btn.classList.add("done");
+  btn.innerHTML = icon("check");
+  btn.title = "Link copiat";
+  setTimeout(() => { btn.classList.remove("done"); btn.innerHTML = icon("link"); btn.title = "Copiază linkul de previzualizare"; }, 1800);
+}
+function openLinkedPreview() {
+  const m = location.hash.match(/^#preview=([a-z0-9-]+)$/);
+  if (!m) return;
+  history.replaceState(null, "", location.pathname);
+  if (CLIENTS.some((c) => c.slug === m[1])) preview(m[1]);
+}
+
 async function preview(slug) {
   const c = CLIENTS.find((x) => x.slug === slug);
   const get = (kind) => { const f = fileOf(c, kind); return f ? readFile(`clients/${slug}/${f}`) : null; };
@@ -782,7 +807,9 @@ async function preview(slug) {
   const tabs = $("tabs");
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
     `<span class="push"></span><div class="seg dev" data-name="device"><button type="button" data-v="desktop" class="on">${icon("desktop")}Desktop</button>` +
-    `<button type="button" data-v="mobile">${icon("phone")}Mobil</button></div><button onclick="pv.close()">${icon("x")}</button>`;
+    `<button type="button" data-v="mobile">${icon("phone")}Mobil</button></div>` +
+    `<button class="dl pvdl" onclick="askDownload('${slug}')" title="Descarcă fișierele pentru NewsMAN">${icon("dl")}<span>Descarcă</span></button>` +
+    `<button onclick="pv.close()">${icon("x")}</button>`;
   let current = 0;
   tabs.querySelectorAll(".dev button").forEach((b) => b.onclick = () => {
     tabs.querySelectorAll(".dev button").forEach((x) => x.classList.toggle("on", x === b));
