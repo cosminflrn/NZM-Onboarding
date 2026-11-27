@@ -56,15 +56,14 @@
     "cart_found": true
   },
   "logo": {
-    "url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo8619.png",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-0bff8de8.png",
     "source_url": "https://gomagcdn.ro/domains2/techfarm.ro/files/company/logo8619.png",
-    "width": 374,
-    "height": 145,
-    "display_width": 120,
+    "width": 300,
+    "height": 71,
+    "display_width": 200,
     "found_by": "brandfetch",
     "recolored": false,
-    "light_parts": false,
-    "made": "logo-tile.png"
+    "light_parts": false
   },
   "banner": {
     "url": "https://gomagcdn.ro/domains2/techfarm.ro/files/banner/bannere-principale-carusel-4-4668.jpg",
@@ -73,27 +72,27 @@
     "height": 800
   },
   "colors": {
-    "accent": "#e30613",
-    "accent_original": "#e30613",
+    "accent": "#a78a25",
+    "accent_original": "#fed139",
     "accent_text": "#ffffff",
-    "dark": "#222222",
-    "light": "#fce6e7",
-    "muted": "#7a7a7a",
+    "dark": "#000000",
+    "light": "#fffaeb",
+    "muted": "#666666",
     "candidates": [
       "#fed139",
       "#286090",
-      "#009c3c",
       "#337ab7",
       "#ec971f",
-      "#ef8e9f"
+      "#ef8e9f",
+      "#449d44"
     ],
     "logo_colors": [
       "#009c3c",
-      "#3cb46c",
+      "#d8f0e4",
+      "#3ca86c",
       "#9cd8b4",
-      "#6cc090",
-      "#cce4d8",
-      "#fcd86c"
+      "#189c54",
+      "#78c09c"
     ]
   },
   "products": [
@@ -105,18 +104,18 @@
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/strip-till-hawk-4-randuri-cadru-fix-8902292127.jpeg"
     },
     {
-      "name": "Semănători Prășitoare - Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
-      "url": "https://www.techfarm.ro/semanatori-prasitoare/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
-      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-ca966d52.jpg",
-      "price": "35.000,00 €",
-      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp"
-    },
-    {
       "name": "Remorci Transfer Cereale - Remorcă de transfer S6 24000 L 2R Boggie",
       "url": "https://www.techfarm.ro/remorci-transfer-cereale/remorca-de-transfer-s6-24000-2r-boggie.html",
       "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-8447bf6b.jpg",
       "price": "44.000,00 €",
       "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/remorca-de-transfer-s6-24000-2r-boggie-637160.png"
+    },
+    {
+      "name": "Semănători Prășitoare - Semănătoare plante prășitoare SOLA PROSEM K Telescopic - 410/8",
+      "url": "https://www.techfarm.ro/semanatori-prasitoare/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8.html",
+      "image": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/product-d03a9604.jpg",
+      "price": "35.000,00 €",
+      "source_image": "https://gomagcdn.ro/domains2/techfarm.ro/files/product/medium/semanatoare-plante-prasitoare-sola-prosem-k-telescopic-410-8-482749.webp"
     }
   ],
   "options": {
@@ -125,8 +124,7 @@
     "sender_name": "TechFarm Agro",
     "form_type": "popup",
     "site_type": "auto",
-    "brand_source": "brandfetch",
-    "lang": "auto"
+    "brand_source": "brandfetch"
   },
   "shop_signals": {
     "prices": 6,
@@ -137,10 +135,8 @@
   "warnings": [
     "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site."
   ],
-  "fetch_log": [
-    "429 https://www.techfarm.ro/promo"
-  ],
-  "generated_at": "2026-11-27 14:54 UTC",
+  "fetch_log": [],
+  "generated_at": "2026-11-27 16:54 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea TechFarm Agro!",

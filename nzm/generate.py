@@ -413,6 +413,12 @@ def tile_light_logo(brand, out_dir):
         im = Image.open(io.BytesIO(r.content)).convert("RGBA")
     except Exception:
         return brand
+    # a logo drawn on its own white box already reads on white: no tile around it
+    w0, h0 = im.size
+    corners = [im.getpixel((x, y)) for x, y in ((0, 0), (w0 - 1, 0), (0, h0 - 1), (w0 - 1, h0 - 1))]
+    if all(c[3] > 240 and min(c[:3]) > 235 for c in corners):
+        logo["light_parts"] = False
+        return brand
     cols = brand.get("colors") or {}
     hexc = (logo.get("header_bg") or cols.get("accent") or cols.get("dark") or "#222222").lstrip("#")
     rgb = tuple(int(hexc[i:i + 2], 16) for i in (0, 2, 4))

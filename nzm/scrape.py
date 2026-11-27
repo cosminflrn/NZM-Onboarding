@@ -193,6 +193,25 @@ LEAD_SKIP_RE = re.compile(r"cookie|gdpr|termeni|confiden|copyright|©|abon|newsl
                           r"toate drepturile|all rights|privacy|log ?in|autentific|co[șs]ul|cart|\bpre[tț]\b.*lei", re.I)
 
 
+def clashes_with_logo(accent, logo_colors):
+    """A brand colour from elsewhere on the page (a red sale badge) that has nothing to do with a clearly
+    coloured logo (green TechFarm): the logo's own colour is the brand's then."""
+    import colorsys
+    def hsv(h):
+        h = h.lstrip("#")
+        r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+        return colorsys.rgb_to_hsv(r, g, b)
+    try:
+        a = hsv(accent)
+        vivid = [hsv(c) for c in logo_colors if hsv(c)[1] > 0.45 and hsv(c)[2] > 0.25]
+    except (ValueError, TypeError):
+        return False
+    if a[1] < 0.35 or not vivid:
+        return False   # a dark/neutral accent or a black-and-white logo: nothing to compare
+    near = lambda x, y: min(abs(x - y), 1 - abs(x - y)) < 0.12   # hue distance under ~45 degrees
+    return not any(near(a[0], v[0]) for v in vivid)
+
+
 def page_lead(soup):
     """The first real sentence(s) a section page says about itself (its intro, not menus, cookies or footers)."""
     main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
@@ -370,7 +389,7 @@ class Scraper:
                 brand["description"] = d
             elif brand.get("description") == d:
                 brand["description"] = None
-        if h.get("accent"):
+        if h.get("accent") and not clashes_with_logo(h["accent"], brand["colors"].get("logo_colors") or []):
             pal = C.palette(h["accent"], h.get("dark"))
             brand["colors"].update(pal)
         for key in ("privacy", "terms", "contact"):
