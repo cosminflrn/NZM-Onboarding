@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795789530,
+	"exported_at": 1795789573,
 	"data": {
 		"page": {
 			"body": {
@@ -34,7 +34,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "62f6d254-20b5-4494-9685-9f3463c47076",
+									"uuid": "eb08e283-300c-4c66-b888-62bde563022f",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -56,7 +56,7 @@
 									}
 								}
 							],
-							"uuid": "6b0ea5b5-f136-41d2-af2b-f47dee885ea3",
+							"uuid": "8675dcb7-7d53-4984-89f0-512c770f36a8",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -99,7 +99,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "c73201ee-eb56-43d9-b838-4c3cc24bfe86"
+					"uuid": "505af40e-7b32-4037-8d3a-6db908393555"
 				},
 				{
 					"columns": [
@@ -109,7 +109,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "0d1d6b1e-098c-4fba-a239-de91d6a988a4",
+									"uuid": "ea41a157-0710-4487-9025-49ad2244ab53",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -133,7 +133,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "559fcc81-e8c7-4bd9-9922-0e0269344c0a",
+									"uuid": "71773da0-1080-4973-9171-8f55d4f2b893",
 									"descriptor": {
 										"image": {
 											"alt": "techfarm.ro",
@@ -162,7 +162,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "803f53e1-4d21-44e9-b7d3-f532e052123b",
+									"uuid": "e2e3b154-2c9a-4a95-b7df-23cc3e9df02e",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\" data-mce-style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\"><a href=\"https://www.techfarm.ro/utilaje-agricole\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">UTILAJE AGRICOLE</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://www.techfarm.ro/balotiere\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">BALOTIERE</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://www.techfarm.ro/promo\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">PROMOŢII</a></span></p></div>",
@@ -187,7 +187,7 @@
 									}
 								}
 							],
-							"uuid": "2861401c-eda9-4413-9ba1-841282808fca",
+							"uuid": "6ce4110d-ecb7-44b5-92b0-0386e864f6fa",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -230,7 +230,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "30cdd8a0-d145-4a88-99f7-252f880b930c"
+					"uuid": "d47b26f0-e60a-44af-a394-7d01fabb46de"
 				},
 				{
 					"columns": [
@@ -240,7 +240,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "fdf526c4-cdde-4aa2-a139-00cc7ea018ea",
+									"uuid": "58cb8229-f233-4880-bfdc-93d9ebf79e28",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -264,7 +264,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "44770870-0a15-4b55-9bd9-cea4679c7a05",
+									"uuid": "1f8e34dc-3b33-4ee6-8de0-a14ff4e09594",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">BINE AI VENIT</span></strong></p></div>",
@@ -291,7 +291,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "4a054a93-bcf5-4301-a72e-3f1889b32d49",
+									"uuid": "5bdd1d0a-f310-44cf-8c69-c527470c24a2",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Bine ai venit în comunitatea techfarm.ro!</span></strong></p></div>",
@@ -318,7 +318,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "97361e94-7e93-47c9-bba6-eb064d73718e",
+									"uuid": "d186baa9-b691-47a7-bfd4-57ed2576f5e5",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.</span></p></div>",
@@ -345,7 +345,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "59779d0f-704c-4c48-ba10-d9c9fce7ab97",
+									"uuid": "dacffabe-e37b-4aaf-92b0-d65cdb4beff6",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -367,7 +367,7 @@
 									}
 								}
 							],
-							"uuid": "7e86a4a3-6eeb-44b6-9352-d76dcdfc16f8",
+							"uuid": "bd367498-b620-46a1-a688-13d9aceaa081",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -410,7 +410,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "028ffbc5-7e89-4d6b-b73d-b72cb749af53"
+					"uuid": "e846ee7a-5068-4c69-805b-3550fb57852b"
 				},
 				{
 					"columns": [
@@ -420,7 +420,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "121e88b0-2dbf-4c5c-bffa-e0cebc02bb8a",
+									"uuid": "ebc1ea6c-5763-4e20-9313-aa8e5a03a531",
 									"descriptor": {
 										"image": {
 											"alt": "techfarm.ro",
@@ -447,7 +447,7 @@
 									}
 								}
 							],
-							"uuid": "f5b9d146-d4e8-4536-9f1e-3bb772540466",
+							"uuid": "358d37e9-f929-42fa-9dc1-9073938c6a54",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -490,7 +490,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "6c846644-5954-4632-8325-71f0688093c9"
+					"uuid": "39e4ebdb-621a-403c-b76b-ed2da87f750b"
 				},
 				{
 					"columns": [
@@ -500,7 +500,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "510075b2-f5af-4278-b086-2e096d6d7d53",
+									"uuid": "6a0e97a3-a5df-4b39-bf9d-4ecafb0f894c",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;margin-bottom:14px;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">TechFarm Agro oferă soluții complete pentru agricultură: utilaje performante, sisteme de irigații și service specializat.</span></p><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Abonații află primii de produsele noi și primesc ofertele înaintea tuturor.</span></p></div>",
@@ -525,7 +525,7 @@
 									}
 								}
 							],
-							"uuid": "058c615a-e1a2-40fb-a653-c95ada527db1",
+							"uuid": "f715160c-7c85-4116-8571-676e38b57953",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -568,7 +568,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "6c723059-41ea-405d-a469-df928b75b56f"
+					"uuid": "5c7fe136-5504-4a77-abc9-68962902752a"
 				},
 				{
 					"columns": [
@@ -578,7 +578,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "4c8fb15e-243f-41ca-bf02-a9b762d55c1e",
+									"uuid": "5e926f7a-81e8-406c-ad3c-0ea689c67d99",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Am ales câteva produse pentru tine</span></strong></p></div>",
@@ -603,7 +603,7 @@
 									}
 								}
 							],
-							"uuid": "f385a832-15ff-47f0-87f1-446fd61da1da",
+							"uuid": "11501819-b84d-4247-98da-b66f90cb2b46",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -646,7 +646,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "fe788638-4063-423a-9fbe-1961964b7a59"
+					"uuid": "2ecf966f-8312-413a-8a88-e7fb3ff42826"
 				},
 				{
 					"columns": [
@@ -656,7 +656,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "41917d3f-1c34-4f2b-a8fb-7f48bb7f8622",
+									"uuid": "1ee8e143-1a3d-4cfa-8df2-46a76761a9b4",
 									"descriptor": {
 										"image": {
 											"alt": "Utilaj Strip-Till Hawk Easy…",
@@ -685,7 +685,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "31abcfcb-b5f0-472a-87c1-64c91a58ca16",
+									"uuid": "45c32e05-bc6e-4a71-bb22-f243fbbf5ef8",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.techfarm.ro/utilaje-agricole/utilaj-strip-till-hawk-easy-prelucrare-in-benzi.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Utilaj Strip-Till Hawk Easy…</a></span></p></div>",
@@ -712,7 +712,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "a4292ff5-c4e6-4f77-bc31-936e01222346",
+									"uuid": "dd79084f-3ec8-404d-892f-8549e6f4d936",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -754,7 +754,7 @@
 									}
 								}
 							],
-							"uuid": "a34a312d-1c92-4415-9dec-2807b48780b3",
+							"uuid": "b398a70f-8952-4be4-a509-3abab28a5211",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -773,7 +773,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "d98acacc-a375-433c-8324-b94f98a5a662",
+									"uuid": "dee8beaa-fc12-4443-8210-e99766559ae5",
 									"descriptor": {
 										"image": {
 											"alt": "Remorcă Transfer BNP-30 | 30 m³…",
@@ -802,7 +802,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "2f8abf09-e159-4102-8ba1-2d5bb025e29f",
+									"uuid": "81710a4e-91ad-48ec-b1fe-3a251b6db67a",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.techfarm.ro/utilaje-agricole/remorc%C4%83-transfer-bnp-30.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Remorcă Transfer BNP-30 | 30 m³…</a></span></p></div>",
@@ -829,7 +829,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "d9a83c65-cc01-43a7-a06c-7a1daa7487bb",
+									"uuid": "6e644eb2-2667-430c-ba6b-6a11ede6ae0a",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -871,7 +871,7 @@
 									}
 								}
 							],
-							"uuid": "a28ab75d-ea40-4d4e-8a7d-3df0ac0f7240",
+							"uuid": "a72082a5-7a4d-4b37-b801-c060eed85795",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -890,7 +890,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "2d2c95d4-7ed1-44a4-9f7d-c898d6e2e684",
+									"uuid": "591fa30e-622c-4c2a-9508-d426071f096c",
 									"descriptor": {
 										"image": {
 											"alt": "Semanatoare prosem k gea elektra",
@@ -919,7 +919,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "944f055c-7399-402d-af4c-99eb49479f37",
+									"uuid": "449d3f46-71ac-448b-a593-5e63fc9e5fb7",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.techfarm.ro/utilaje-agricole/semanatoare-prosem-k-elektra-gea.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Semanatoare prosem k gea elektra</a></span></p></div>",
@@ -946,7 +946,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "e98fd17c-c01d-44aa-bb7b-d9adc9e09b0c",
+									"uuid": "b46ea017-400e-4693-9350-ea09ec350a74",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -988,7 +988,7 @@
 									}
 								}
 							],
-							"uuid": "cb5d41ea-9e59-4d44-9462-83ce9f436761",
+							"uuid": "f984cd82-d188-4395-8ca7-adb266a4b9f0",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1031,7 +1031,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "6fb026be-06d2-4773-9cc8-59b36b6902c7"
+					"uuid": "7b91de5e-b3fe-4061-9442-790572a9f447"
 				},
 				{
 					"columns": [
@@ -1041,7 +1041,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "c1353c50-52a7-4d1c-a593-e32bcccb2e50",
+									"uuid": "c71211fc-2ad5-45a6-8c49-c21a74161f96",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1063,7 +1063,7 @@
 									}
 								}
 							],
-							"uuid": "1f47c9ad-87ea-4d62-8962-5df753389c84",
+							"uuid": "e9764079-5c63-42f5-a678-0f7512ba09ef",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1106,7 +1106,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "c55916b2-84dd-43f1-af84-f776dbc92fb6"
+					"uuid": "6cd9e53c-0793-432d-b4a4-f711c28ec7a6"
 				},
 				{
 					"columns": [
@@ -1116,7 +1116,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "ee2857e1-2881-434b-9485-4a92ad81b53c",
+									"uuid": "154451eb-96c2-4883-a030-267289e616e2",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Intră în magazin</strong></p></div>",
@@ -1158,7 +1158,7 @@
 									}
 								}
 							],
-							"uuid": "b49244f1-baaa-4372-b394-7df092da1250",
+							"uuid": "6defe198-3852-4d01-a360-ff141b0f83fe",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1201,7 +1201,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "73557be2-b6eb-4956-a6f6-044b2c627925"
+					"uuid": "2b4097f9-2397-43fc-aebd-1ac29e4a157b"
 				},
 				{
 					"columns": [
@@ -1211,7 +1211,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "c429a296-97dc-4d13-b157-e5c9d04377a2",
+									"uuid": "ab0b4d37-9ddc-4e5f-9a36-3d3adafad150",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1233,7 +1233,7 @@
 									}
 								}
 							],
-							"uuid": "a46a2bba-be04-4844-9024-cbdc9cab8601",
+							"uuid": "21144ea9-8b2d-47fd-9d3e-9dab2f2b54d1",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1276,7 +1276,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "b0353c8d-d76d-4a6f-9163-cba2df7dcee0"
+					"uuid": "6faf99c0-662b-4bd3-9337-172d4f2e89ff"
 				},
 				{
 					"columns": [
@@ -1286,7 +1286,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "0a2a33c6-c566-4992-88be-9759ba25e198",
+									"uuid": "9bab7ca1-b3e0-4acf-8a73-60f6a7766fc8",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#a78a25;\" data-mce-style=\"font-size:16px;line-height:22px;color:#a78a25;\">Oferte pentru abonați</span></strong></p></div>",
@@ -1313,7 +1313,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "b621bfa5-05bd-4d91-8077-e5ffee424bae",
+									"uuid": "8153f46b-d5cb-45ae-837b-897421537fb9",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Promoții trimise întâi pe email.</span></p></div>",
@@ -1338,7 +1338,7 @@
 									}
 								}
 							],
-							"uuid": "eced3660-75aa-47e0-bbfd-bf28588995ed",
+							"uuid": "9f255532-30c2-4e4a-9087-157275150df6",
 							"style": {
 								"background-color": "#f6f3e9",
 								"border-top": "6px solid #ffffff",
@@ -1357,7 +1357,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "ecb696c5-76e8-4653-8485-11f5a491b5d8",
+									"uuid": "b96f24e4-e981-40fa-979b-477fb9bb088a",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#a78a25;\" data-mce-style=\"font-size:16px;line-height:22px;color:#a78a25;\">Noutăți în avans</span></strong></p></div>",
@@ -1384,7 +1384,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "2fa07a03-a8c9-45ea-9fa4-98982989d5b0",
+									"uuid": "f158301b-4b8e-4945-ab28-e520c88ce4fe",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Afli primul de produsele noi.</span></p></div>",
@@ -1409,7 +1409,7 @@
 									}
 								}
 							],
-							"uuid": "0780a4e6-406a-4c15-a03a-9d1b86edf33a",
+							"uuid": "b044c880-e497-4417-91e0-d8e14d211684",
 							"style": {
 								"background-color": "#f6f3e9",
 								"border-top": "6px solid #ffffff",
@@ -1428,7 +1428,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "d30a0e4a-bd4f-47cf-a837-50fcb88d6d0a",
+									"uuid": "e8b7c971-c078-4478-b63e-e43e6957e2ca",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#a78a25;\" data-mce-style=\"font-size:16px;line-height:22px;color:#a78a25;\">Idei și inspirație</span></strong></p></div>",
@@ -1455,7 +1455,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "68a7ceeb-d56b-484e-bb6f-8d226be2e331",
+									"uuid": "9a053adc-4f1b-4cff-b98c-20f610c69b03",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Recomandări alese pentru tine.</span></p></div>",
@@ -1480,7 +1480,7 @@
 									}
 								}
 							],
-							"uuid": "1dff875b-1c9e-4922-8697-b795843bbf9c",
+							"uuid": "0f7b7b39-69b5-4d30-98e8-2bd197d24c82",
 							"style": {
 								"background-color": "#f6f3e9",
 								"border-top": "6px solid #ffffff",
@@ -1523,7 +1523,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "d4970bd9-61c8-43ff-b0a8-0e5ec469f12e"
+					"uuid": "3c0fc006-4b25-4282-abfa-70da0301d921"
 				},
 				{
 					"columns": [
@@ -1533,7 +1533,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "81881fd5-da53-4ed0-90b3-e276b9e3d8d6",
+									"uuid": "29ea421c-a96d-4192-ad20-89162641e853",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1555,7 +1555,7 @@
 									}
 								}
 							],
-							"uuid": "9ddfad2a-9737-4f39-b3f9-5ec332db0729",
+							"uuid": "9d3ef989-cb1c-4c32-b705-67335bed2b73",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1598,7 +1598,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "5baa4eec-7689-4a64-8b98-a438f99772cc"
+					"uuid": "5b8eff06-9667-4117-be07-669658f7feda"
 				},
 				{
 					"columns": [
@@ -1608,7 +1608,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "b114a6dc-b814-47e1-be48-976c95479100",
+									"uuid": "c407655f-a080-43bb-a6f0-9f73f6a1d80c",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:22px;color:#52525b;\" data-mce-style=\"font-size:15px;line-height:22px;color:#52525b;\">Ai întrebări? Suntem aici pentru tine.</span></p><p style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:24px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:24px;color:#18181b;\"><a href=\"tel:0745643424\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">0745643424</a> &nbsp;·&nbsp; <a href=\"mailto:vanzari@techfarm.ro\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">vanzari@techfarm.ro</a></span></p></div>",
@@ -1633,7 +1633,7 @@
 									}
 								}
 							],
-							"uuid": "d1e25ceb-d489-467a-a185-e3c564fe8af6",
+							"uuid": "665253e2-4036-4fbf-8d52-5aa55953c0ce",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1676,7 +1676,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "d010024a-db1b-4bc3-82e8-b408699d1b65"
+					"uuid": "d9925134-af00-46da-bc24-f6273063c670"
 				},
 				{
 					"columns": [
@@ -1686,7 +1686,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "bc26baed-aa6b-4981-a68b-3e187c458b09",
+									"uuid": "6f8457f4-14f8-4b5e-a42c-dee8f05aad3c",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1710,12 +1710,12 @@
 								{
 									"type": "mailup-bee-newsletter-modules-social",
 									"locked": false,
-									"uuid": "8b51b38a-ffa5-4ef7-be6f-e8d2e09880dc",
+									"uuid": "aefeaf18-5703-486a-aa8a-8390725ce172",
 									"descriptor": {
 										"iconsList": {
 											"icons": [
 												{
-													"id": "d924c4c7-15e7-4e33-a9c7-dee39e36038c",
+													"id": "a7168ff6-9b2e-4147-b812-bc4190a68dd6",
 													"type": "follow",
 													"name": "facebook",
 													"text": "",
@@ -1729,7 +1729,7 @@
 													}
 												},
 												{
-													"id": "0538db6e-6784-4a92-888c-5c6b7aa840b7",
+													"id": "8f397bb7-53e7-4765-b981-a8a8c1b69483",
 													"type": "follow",
 													"name": "tiktok",
 													"text": "",
@@ -1763,7 +1763,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "c3035478-95fc-4846-af93-32976fd24578",
+									"uuid": "c82fa3df-e1ed-42e5-927f-2054b2519781",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> techfarm.ro. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://www.techfarm.ro/promo\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://www.techfarm.ro/politica-de-confidentialitate\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://www.techfarm.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">techfarm.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
@@ -1788,7 +1788,7 @@
 									}
 								}
 							],
-							"uuid": "196f5b82-694e-4405-9b79-4f252f7fcb5c",
+							"uuid": "1aaf1c6b-a965-445d-a623-bae090d72772",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1831,7 +1831,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "508daaa5-1d30-4782-98ce-f7a35269a362"
+					"uuid": "59a113b3-25eb-45a5-a3ea-6927dd937dd1"
 				}
 			],
 			"template": {
