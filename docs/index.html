@@ -489,7 +489,8 @@ window.addEventListener("message", (e) => {
   if (!e.data.stub) {
     $("capText").textContent += " Butonul tău din bookmark bar e o versiune veche: trage-l din nou o dată (de acum se actualizează singur).";
   } else {
-    $("gen").requestSubmit();  // no extra click: the generation starts as soon as the page arrives
+    // the page waits for "Generează": settings (method, discount, form type…) can still be changed
+    $("genBtn").focus({ preventScroll: true });
   }
 });
 if (location.hash === "#capture") {

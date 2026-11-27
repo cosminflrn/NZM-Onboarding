@@ -311,8 +311,9 @@ class Scraper:
             return
         # a page title ("Website sitebuilder") is not a brand name: take it only when it names the domain
         root = re.sub(r"[^a-z0-9]", "", self.domain.split(".")[0])
-        if h.get("name") and root and root in re.sub(r"[^a-z0-9]", "", h["name"].lower()):
-            brand["name"] = h["name"]
+        name = re.split(r"\s+[-–—|:·]\s+", h.get("name") or "")[0].strip()   # "eMAG.ro - Căutarea…" -> "eMAG.ro"
+        if name and root and root in re.sub(r"[^a-z0-9]", "", name.lower()):
+            brand["name"] = name
         if h.get("description"):
             # an English description in a Romanian email reads wrong: only when its language matches the site's
             d = h["description"]
@@ -330,9 +331,11 @@ class Scraper:
         for net, u in (h.get("socials") or {}).items():
             if u:
                 brand["socials"][net] = u
-        if h.get("banner"):
+        # a banner is a wide picture, not a sidebar widget or a pop-up graphic
+        if h.get("banner") and not re.search(r"widget|subscribe|newsletter|popup|pop-up|sidebar|side-|icon|badge|logo",
+                                             h["banner"], re.I):
             im, _ = self.image(h["banner"])
-            if im is not None and im.width >= 400:
+            if im is not None and im.width >= 500 and im.width >= im.height * 1.6:
                 brand["banner"] = {"url": h["banner"], "source_url": h["banner"], "width": im.width, "height": im.height}
                 self.banner_src = h["banner"]
                 self.warnings = [w for w in self.warnings if not w.startswith("Banner:")]
