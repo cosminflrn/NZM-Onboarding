@@ -74,6 +74,9 @@ class Patcher:
         self.socials = brand.get("socials") or {}
         logo = brand.get("logo") or {}
         self.logo_url = logo.get("url")
+        if kind == "form" and logo.get("light_parts") and not logo.get("recolored"):
+            # a white logo vanishes on the white pop-up: the pop-up gets a copy in the brand colour, built in
+            self.logo_url = _logo_in_colour(logo, brand) or self.logo_url
         self.logo_w = logo.get("display_width") or 160
         banner = (brand.get("banner") or {}) if use_site_banner(brand) else {}
         self.banner_url = banner.get("url")
@@ -122,13 +125,6 @@ class Patcher:
                     tag = re.sub(r"max-width:\s*\d+px", f"max-width:{self.logo_w}px", tag)
                     tag = re.sub(r"(?<![-\w])width:\s*\d+px", f"width:{self.logo_w}px", tag)
                     tag = re.sub(r'alt="[^"]*"', f'alt="{esc(self.b["name"])}"', tag)
-                    lg = self.b.get("logo") or {}
-                    if lg.get("light_parts") and not lg.get("recolored"):
-                        # a white logo would vanish on the white pop-up: give it a tile in the brand colour
-                        bgc = lg.get("header_bg") or (self.b.get("colors") or {}).get("dark") or "#222222"
-                        tile = f"background-color:{bgc};padding:12px;border-radius:12px;"
-                        tag = re.sub(r'style="', 'style="' + tile, tag, count=1) if 'style="' in tag \
-                            else tag.replace("<img", f'<img style="{tile}"', 1)
                     if self.kind == "form" and "margin-bottom" not in tag:
                         tag = re.sub(r'style="', 'style="margin-bottom:20px;', tag, count=1) if 'style="' in tag \
                             else tag.replace("<img", '<img style="margin-bottom:20px"', 1)
@@ -447,6 +443,29 @@ def _image_size(url):
         return Image.open(io.BytesIO(r.content)).size
     except Exception:
         return (None, None)
+
+
+def _logo_in_colour(logo, brand):
+    """White logo repainted in the brand colour (transparency kept), as a built-in picture for the pop-up."""
+    import io, requests
+    from PIL import Image
+    try:
+        r = requests.get(logo.get("source_url") or logo["url"], timeout=25,
+                         headers={"User-Agent": "Mozilla/5.0 NZM-Onboarding image check"})
+        im = Image.open(io.BytesIO(r.content)).convert("RGBA")
+        im.thumbnail((logo.get("display_width", 120) * 2, 400))
+        cols = brand.get("colors") or {}
+        hexc = (logo.get("header_bg") or cols.get("accent") or cols.get("dark") or "#222222").lstrip("#")
+        rgb = tuple(int(hexc[i:i + 2], 16) for i in (0, 2, 4))
+        a = im.getchannel("A")
+        # light pixels take the brand colour, dark details stay as they are
+        px = [(rgb + (al,)) if sum(c[:3]) > 600 else c for c, al in zip(im.getdata(), a.getdata())]
+        im.putdata(px)
+        buf = io.BytesIO()
+        im.save(buf, "PNG", optimize=True)
+        return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+    except Exception:
+        return None
 
 
 def verify_images(b):

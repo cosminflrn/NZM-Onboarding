@@ -1,5 +1,28 @@
 [
  {
+  "slug": "carturesti-ro",
+  "name": "Cărturești",
+  "domain": "carturesti.ro",
+  "url": "https://carturesti.ro/",
+  "generated_at": "2026-11-27 07:29 UTC",
+  "logo": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/logo-carturesti.png",
+  "colors": {
+   "accent": "#71984a",
+   "dark": "#000000",
+   "light": "#f1f5ed"
+  },
+  "warnings": [],
+  "products": 6,
+  "site_type": "ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "files": [
+   "carturesti-ro-automatizare-cos-abandonat.json",
+   "carturesti-ro-formular-pop-up.json",
+   "carturesti-ro-newsletter-bun-venit.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
@@ -49,29 +72,6 @@
    "cabanova-com-automatizare-bun-venit.json",
    "cabanova-com-formular-pop-up.json",
    "cabanova-com-newsletter-noutati.json"
-  ]
- },
- {
-  "slug": "carturesti-ro",
-  "name": "Cărturești",
-  "domain": "carturesti.ro",
-  "url": "https://carturesti.ro/",
-  "generated_at": "2026-11-26 15:03 UTC",
-  "logo": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/logo-carturesti.png",
-  "colors": {
-   "accent": "#71984a",
-   "dark": "#000000",
-   "light": "#f1f5ed"
-  },
-  "warnings": [],
-  "products": 6,
-  "site_type": "ecommerce",
-  "form_type": "popup",
-  "lang": "ro",
-  "files": [
-   "carturesti-ro-automatizare-cos-abandonat.json",
-   "carturesti-ro-formular-pop-up.json",
-   "carturesti-ro-newsletter-bun-venit.json"
   ]
  },
  {
