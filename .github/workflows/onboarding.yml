@@ -40,6 +40,9 @@ on:
       bundle_key:
         description: Cheie de unică folosință pentru pagina preluată (pusă de pagină, nu se afișează)
         required: false
+      brandfetch:
+        description: Rezultat Brandfetch NewsMAN (inbox/bf-<id>.json, pus de pagină)
+        required: false
   push:
     branches: [main]
     paths:
@@ -91,11 +94,25 @@ jobs:
           IN_SITE: ${{ inputs.site_type }}
           IN_LANG: ${{ inputs.lang }}
           IN_BUNDLE: ${{ inputs.bundle }}
+          IN_BF: ${{ inputs.brandfetch }}
         run: |
+          BF_ARGS=()
+          if [[ "$IN_BF" =~ ^inbox/bf-[A-Za-z0-9_-]{4,64}\.json$ ]]; then
+            # Brandfetch NewsMAN answers by webhook (Cloudflare saves it in inbox/): wait for it, up to 4 minutes
+            for i in $(seq 1 48); do
+              [ -f "$IN_BF" ] && break
+              sleep 5; git pull -q --rebase origin main 2>/dev/null || true
+            done
+            if [ ! -f "$IN_BF" ]; then
+              echo "::error title=Eroare generare::Brandfetch NewsMAN nu a trimis rezultatul în 4 minute. Încearcă din nou sau folosește sursa NewsMAN Onboarding."
+              exit 1
+            fi
+            BF_ARGS=(--brandfetch "$IN_BF")
+          fi
           python -m nzm scrape "$IN_URL" --name "$IN_NAME" --discount "$IN_DISCOUNT" \
             --sender-email "$IN_SENDER" --form-type "${IN_FORM:-popup}" --site-type "${IN_SITE:-auto}" --lang "${IN_LANG:-auto}" \
             --public-base "$PUBLIC_BASE" --github-output $(
-              [[ "$IN_BUNDLE" =~ ^inbox/[a-z0-9]{4,12}\.json$ && -f "$IN_BUNDLE" ]] && echo --bundle "$IN_BUNDLE")
+              [[ "$IN_BUNDLE" =~ ^inbox/[a-z0-9]{4,12}\.json$ && -f "$IN_BUNDLE" ]] && echo --bundle "$IN_BUNDLE") "${BF_ARGS[@]}"
 
       - name: Ștergere din istoric
         if: github.event_name == 'workflow_dispatch' && inputs.delete != ''
@@ -125,6 +142,7 @@ jobs:
         env:
           SLUG: ${{ steps.gen.outputs.slug }}
           IN_BUNDLE: ${{ inputs.bundle }}
+          IN_BF: ${{ inputs.brandfetch }}
           GEN_OUTCOME: ${{ steps.gen.outcome }}
           IN_DELETE: ${{ inputs.delete }}
         run: |
@@ -132,6 +150,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # the captured page was only needed for this run
           if [[ "$IN_BUNDLE" =~ ^inbox/[a-z0-9]{4,12}\.json$ && -f "$IN_BUNDLE" ]]; then git rm -q "$IN_BUNDLE"; fi
+          if [[ "$IN_BF" =~ ^inbox/bf-[A-Za-z0-9_-]{4,64}\.json$ && -f "$IN_BF" ]]; then git rm -q "$IN_BF"; fi
           # leftovers of runs GitHub cancelled before they started (it keeps only one waiting run): gone after 30 min
           now=$(date +%s)
           for f in inbox/*.json; do

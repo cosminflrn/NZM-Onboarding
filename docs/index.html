@@ -210,6 +210,8 @@
           <button type="button" data-v="auto" class="on"><span class="lg">Detectează automat</span><span class="sm">Automat</span></button><button type="button" data-v="ecommerce">E-commerce</button><button type="button" data-v="non-ecommerce">Non-e-commerce</button></div></div>
         <div><span class="label" id="lb-lang">Limbă</span><div class="seg" data-name="lang" role="group" aria-labelledby="lb-lang">
           <button type="button" data-v="auto" class="on">Automat</button><button type="button" data-v="ro">Română</button><button type="button" data-v="en">English</button></div></div>
+        <div id="srcSwitch" hidden><span class="label" id="lb-source">Sursă brand</span><div class="seg" data-name="source" role="group" aria-labelledby="lb-source">
+          <button type="button" data-v="nzm" class="on" title="Citim noi site-ul: brand, produse, meniu">NewsMAN Onboarding</button><button type="button" data-v="brandfetch" title="Brandul (logo, culori, banner, linkuri) vine din Brandfetch NewsMAN; produsele și meniul tot din site">Brandfetch NewsMAN</button></div></div>
       </div>
     </form>
     <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Starea apare direct în istoric.</div>
@@ -528,19 +530,22 @@ $("gen").addEventListener("submit", async (e) => {
   const url = $("url").value.trim();
   if (!slugOf(url)) return alert("Link invalid");
   const inputs = { url, name: $("name").value.trim(), discount: $("discount").value.trim(), sender_email: $("sender").value.trim(),
-    form_type: segValue("form_type"), site_type: segValue("site_type"), lang: segValue("lang") };
+    form_type: segValue("form_type"), site_type: segValue("site_type"), lang: segValue("lang"),
+    source: $("srcSwitch").hidden ? "nzm" : segValue("source") };
   const cap = CAPTURE && domOf(CAPTURE.url) === domOf(url) ? CAPTURE : null;
-  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setSeg("lang", "auto"); setCapture(null);
+  $("gen").reset(); setSeg("form_type", "popup"); setSeg("site_type", "auto"); setSeg("lang", "auto"); setSeg("source", "nzm"); setCapture(null);
   runJob(inputs, cap);
 });
 
 async function runJob(inputs, cap) {
   const url = inputs.url;
   let slug = slugOf(url);
+  const source = inputs.source || "nzm";
   inputs = { ...inputs, rid: Math.random().toString(36).slice(2, 8) };
-  delete inputs.bundle; delete inputs.bundle_key;
+  delete inputs.bundle; delete inputs.bundle_key; delete inputs.source; delete inputs.brandfetch;
   const since = new Date(Date.now() - 60000).toISOString().slice(0, 19) + "Z";
-  setJob(slug, { state: "run", text: cap ? "trimit pagina preluată" : "în curs", name: inputs.name || slug, url, inputs, cap });
+  setJob(slug, { state: "run", text: cap ? "trimit pagina preluată" : source === "brandfetch" ? "cer brandul din Brandfetch" : "în curs",
+    name: inputs.name || slug, url, inputs: { ...inputs, source }, cap });
   window.scrollTo({ top: 0, behavior: "smooth" });
   try {
     if (cap) {
@@ -556,6 +561,15 @@ async function runJob(inputs, cap) {
       inputs.bundle = path;
       inputs.bundle_key = bytesB64(key);
       setJob(slug, { text: "în curs" });
+    }
+    if (source === "brandfetch") {
+      // Cloudflare asks NewsMAN Brandfetch; the result (now or by webhook) lands in inbox/ for the generator
+      const r = await fetch(PROXY + "/bf/start", { method: "POST", headers: { "Content-Type": "application/json", "X-NZM-Auth": AUTH },
+        body: JSON.stringify({ url, rid: inputs.rid }) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.message || `Brandfetch NewsMAN: ${r.status}`);
+      inputs.brandfetch = d.path;
+      setJob(slug, { text: d.ready ? "în curs" : "aștept brandul din Brandfetch" });
     }
     await gh(`/actions/workflows/${WF}/dispatches`, { method: "POST", body: JSON.stringify({ ref: "main", inputs }) });
     const run = await findRun((r) => (r.display_title || "").includes(`[${inputs.rid}]`), since);
@@ -774,7 +788,8 @@ async function rescrape(slug) {
   let o = {};
   try { o = (await readFile(`clients/${slug}/brand.json`)).options || {}; } catch {}
   await runJob({ url: c.url, name: "", discount: o.discount_code || "", sender_email: o.sender_email || "",
-    form_type: o.form_type || "popup", site_type: o.site_type || "auto", lang: o.lang || "auto" });
+    form_type: o.form_type || "popup", site_type: o.site_type || "auto", lang: o.lang || "auto",
+    source: o.brand_source === "brandfetch" && !$("srcSwitch").hidden ? "brandfetch" : "nzm" });
 }
 
 // =============================================================== preview
@@ -993,6 +1008,8 @@ $("edSave").onclick = async () => {
 
 // =============================================================== start
 checkToken().then((ok) => { if (ok || !PROXY) load(); });
+// the Brandfetch NewsMAN switch shows only once its keys are set in Cloudflare
+if (PROXY) fetch(PROXY + "/").then((r) => r.json()).then((d) => { $("srcSwitch").hidden = !d.brandfetch; if (d.brandfetch) placePill(document.querySelector('.seg[data-name="source"]')); }).catch(() => {});
 </script>
 </body>
 </html>

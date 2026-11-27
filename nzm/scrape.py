@@ -208,10 +208,11 @@ def is_challenge(soup):
 
 
 class Scraper:
-    def __init__(self, url, out_dir, public_base="", seed=None, fetcher=None):
+    def __init__(self, url, out_dir, public_base="", seed=None, fetcher=None, hints=None):
         if not re.match(r"^https?://", url):
             url = "https://" + url
         self.start_url = url
+        self.hints = hints or {}   # brand data from NewsMAN Brandfetch: preferred over what the page suggests
         self.f = fetcher or Fetcher()
         self.assets = I.AssetStore(out_dir, public_base)
         self.warnings = []
@@ -277,6 +278,7 @@ class Scraper:
         brand["banner"] = self.banner(logo)
         self.banner_src = (brand["banner"] or {}).get("source_url")
         brand["colors"] = self.colors(logo_colors)
+        self.apply_hints(brand)
         brand["products"] = self.products(6)
         brand["options"] = {"discount_code": "", "sender_email": contact.get("email") or "", "sender_name": brand["name"],
                             "form_type": "popup", "site_type": "auto"}
@@ -296,6 +298,34 @@ class Scraper:
         brand["warnings"] = self.warnings
         brand["fetch_log"] = self.f.log[-20:]
         return brand
+
+    def apply_hints(self, brand):
+        """NewsMAN Brandfetch results win over our own guesses for identity (name, colours, banner, links)."""
+        h = self.hints
+        if not h:
+            return
+        # a page title ("Website sitebuilder") is not a brand name: take it only when it names the domain
+        root = re.sub(r"[^a-z0-9]", "", self.domain.split(".")[0])
+        if h.get("name") and root and root in re.sub(r"[^a-z0-9]", "", h["name"].lower()):
+            brand["name"] = h["name"]
+        if h.get("description"):
+            brand["description"] = h["description"]
+        if h.get("accent"):
+            pal = C.palette(h["accent"], h.get("dark"))
+            brand["colors"].update(pal)
+        for key in ("privacy", "terms", "contact"):
+            if h.get(key):
+                brand["links"][key] = h[key]
+        for net, u in (h.get("socials") or {}).items():
+            if u:
+                brand["socials"][net] = u
+        if h.get("banner"):
+            im, _ = self.image(h["banner"])
+            if im is not None and im.width >= 400:
+                brand["banner"] = {"url": h["banner"], "source_url": h["banner"], "width": im.width, "height": im.height}
+                self.banner_src = h["banner"]
+                self.warnings = [w for w in self.warnings if not w.startswith("Banner:")]
+        self.warnings.insert(0, "Brand preluat din Brandfetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.")
 
     # -- platform
     def detect_lang(self):
@@ -579,7 +609,8 @@ class Scraper:
 
     def logo(self):
         tried = set()
-        for score, url, src in self.logo_candidates():
+        hinted = [(999, u, "brandfetch") for u in self.hints.get("logos") or []]
+        for score, url, src in hinted + list(self.logo_candidates()):
             if url in tried:
                 continue
             tried.add(url)

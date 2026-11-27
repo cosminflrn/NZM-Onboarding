@@ -103,8 +103,26 @@ def cmd_scrape(a):
             cap = decrypt_bundle(cap)
         fetcher = Fetcher(bundle=cap.get("items") or {})
         print(f"pagini preluate din browser: {len(fetcher.bundle)}")
-    probe = Scraper(a.url, tmp, "", fetcher=fetcher)
-    brand = probe.run()
+    hints, bf = None, None
+    if getattr(a, "brandfetch", None):
+        from . import brandfetch as BF
+        bf = BF.load(a.brandfetch)
+        hints = BF.hints(bf)
+        print(f"brand din Brandfetch NewsMAN: {hints.get('name')} · logo {len(hints['logos'])} · accent {hints.get('accent')}")
+    probe = Scraper(a.url, tmp, "", fetcher=fetcher, hints=hints)
+    try:
+        brand = probe.run()
+    except RuntimeError as err:
+        if not hints:
+            raise
+        # the site itself can't be read (firewall, anti-bot): build the client from the Brandfetch data alone
+        from .net import Fetcher
+        print(f"site-ul nu a putut fi citit ({err}); folosesc doar datele din Brandfetch")
+        url = probe.start_url
+        page = BF.stand_in_page(url, bf, hints)
+        probe = Scraper(url, tmp, "", fetcher=Fetcher(bundle={url: {"type": "text/html", "text": page}}), hints=hints)
+        brand = probe.run()
+        brand["warnings"].append("Site-ul nu a putut fi citit direct: produsele și meniul lipsesc (doar brandul din Brandfetch).")
     slug = brand["slug"]
     out_dir = os.path.join(CLIENTS, slug)
     if os.path.isdir(out_dir):
@@ -122,6 +140,7 @@ def cmd_scrape(a):
         brand["options"]["sender_email"] = a.sender_email.strip()
     if a.sender_name:
         brand["options"]["sender_name"] = a.sender_name.strip()
+    brand["options"]["brand_source"] = "brandfetch" if hints else "nzm"
     for key, val in (("form_type", a.form_type), ("site_type", a.site_type), ("lang", a.lang)):
         if val:
             brand["options"][key] = val
@@ -191,6 +210,7 @@ def main(argv=None):
     s.add_argument("--lang", default="", choices=["", "auto", "ro", "en"], help="limba emailurilor și a formularului")
     s.add_argument("--github-output", action="store_true")
     s.add_argument("--bundle", default="", help="pagini salvate din browser (JSON {items:{url:{type,text|b64}}})")
+    s.add_argument("--brandfetch", default="", help="rezultat Brandfetch NewsMAN (inbox/bf-<job>.json)")
     s.set_defaults(fn=cmd_scrape)
     r = sub.add_parser("regen")
     r.add_argument("brand")
