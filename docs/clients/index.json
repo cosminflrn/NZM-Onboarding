@@ -1,5 +1,39 @@
 [
  {
+  "slug": "cabanova-com",
+  "name": "Website sitebuilder",
+  "domain": "cabanova.com",
+  "url": "https://www.cabanova.com/p/ro/acasa.html",
+  "generated_at": "2026-11-27 13:29 UTC",
+  "logo": null,
+  "colors": {
+   "accent": "#449ac5",
+   "dark": "#0e2d49",
+   "light": "#eef8fd"
+  },
+  "warnings": [
+   "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
+   "Meniu: nu am găsit linkuri de meniu; am pus doar HOME.",
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Social media: nu am găsit niciun profil.",
+   "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
+   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.",
+   "Culori: nu am găsit o culoare de brand clară — am folosit o culoare implicită; verifică.",
+   "Site-ul nu a putut fi citit direct: produsele și meniul lipsesc (doar brandul din Brandfetch)."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "brand_source": "brandfetch",
+  "files": [
+   "cabanova-com-automatizare-bun-venit.json",
+   "cabanova-com-formular-pop-up.json",
+   "cabanova-com-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
@@ -24,34 +58,6 @@
    "alunis-ro-automatizare-bun-venit.json",
    "alunis-ro-formular-pop-up.json",
    "alunis-ro-newsletter-noutati.json"
-  ]
- },
- {
-  "slug": "cabanova-com",
-  "name": "Cabanova",
-  "domain": "cabanova.com",
-  "url": "https://www.cabanova.com/p/ro/acasa.html",
-  "generated_at": "2026-11-27 10:59 UTC",
-  "logo": "https://www.cabanova.com/p/ro/files/im1i-304nmimgqynz-xtps0.jpg",
-  "colors": {
-   "accent": "#3c6ca8",
-   "dark": "#111922",
-   "light": "#ecf0f6"
-  },
-  "warnings": [
-   "Telefon: nu am găsit niciun număr pe site.",
-   "Email: nu am găsit nicio adresă de contact pe site.",
-   "Social media: nu am găsit niciun profil."
-  ],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "lang": "ro",
-  "brand_source": "nzm",
-  "files": [
-   "cabanova-com-automatizare-bun-venit.json",
-   "cabanova-com-formular-pop-up.json",
-   "cabanova-com-newsletter-noutati.json"
   ]
  },
  {

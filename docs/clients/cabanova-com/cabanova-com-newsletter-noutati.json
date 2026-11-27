@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795777187,
+	"exported_at": 1795786169,
 	"data": {
 		"page": {
 			"body": {
@@ -12,7 +12,7 @@
 				},
 				"content": {
 					"computedStyle": {
-						"linkColor": "#3c6ca8",
+						"linkColor": "#449ac5",
 						"messageBackgroundColor": "transparent",
 						"messageWidth": "640px"
 					},
@@ -34,7 +34,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "c00da62f-6ba4-48a4-8616-c60f9c553c15",
+									"uuid": "49d4ace8-7b39-4ba4-818e-516a138d3168",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -56,7 +56,7 @@
 									}
 								}
 							],
-							"uuid": "4fe83b72-b762-40f1-8d3d-11882175507c",
+							"uuid": "5c55abcf-e40f-4905-b554-44e46300255a",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -99,7 +99,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "3c8b8cdc-f3c9-4520-97e9-a6214d4417c6"
+					"uuid": "b78e324e-0fb0-476c-9e39-4f121a7bbed3"
 				},
 				{
 					"columns": [
@@ -109,7 +109,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "44473dfb-8da5-461f-803a-58eaf9b15cdd",
+									"uuid": "92968a45-6709-49b5-8fb6-f76a3f183d95",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -131,30 +131,28 @@
 									}
 								},
 								{
-									"type": "mailup-bee-newsletter-modules-image",
+									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "e974e390-f8e0-4cc4-a07c-76aaac83351f",
+									"uuid": "d3a07b3a-4a51-430f-a101-4f2c3abd9338",
 									"descriptor": {
-										"image": {
-											"alt": "Cabanova",
-											"href": "https://www.cabanova.com/p/ro/acasa.html",
-											"prefix": "",
-											"src": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.cabanova.com%2Fp%2Fro%2Ffiles%2Fim1i-304nmimgqynz-xtps0.jpg&trim=10&w=600&output=png",
-											"target": "_blank",
-											"width": "152px",
-											"height": "33px"
+										"text": {
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:35px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:35px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:35px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:35px;color:#18181b;\">Website sitebuilder</span></strong></p></div>",
+											"style": {
+												"color": "#18181b",
+												"font-family": "inherit",
+												"line-height": "160%"
+											},
+											"computedStyle": {
+												"linkColor": "#18181b"
+											}
 										},
 										"style": {
-											"width": "100%",
-											"border-radius": "0px",
 											"padding-top": "20px",
 											"padding-right": "24px",
 											"padding-bottom": "12px",
 											"padding-left": "24px"
 										},
 										"computedStyle": {
-											"class": "center fixedwidth",
-											"width": "152px",
 											"hideContentOnMobile": false
 										}
 									}
@@ -162,7 +160,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "45faed6b-192e-47c8-a520-63f842fd9941",
+									"uuid": "39bb3395-55a5-475f-9b6f-240ad94992e1",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -184,7 +182,7 @@
 									}
 								}
 							],
-							"uuid": "a4f5f1a5-975f-40a1-9ad5-3148e446f56d",
+							"uuid": "49d6125f-2095-4da7-b82c-e89d0fbd692e",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -227,7 +225,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "3829e797-ee6d-4822-a398-b986b05b826e"
+					"uuid": "5f11f759-886d-4648-9fab-57e1a0900725"
 				},
 				{
 					"columns": [
@@ -237,7 +235,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "08432399-b870-4162-9321-277c4efd7214",
+									"uuid": "5aa15b7b-a620-4e85-9960-e7985b632437",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -261,7 +259,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3cef2a75-2fed-400e-b0f3-040669693c21",
+									"uuid": "1ea45030-eec6-4730-9789-dce1057b9536",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">NEWSLETTER</span></strong></p></div>",
@@ -288,10 +286,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "45176782-6f30-45fe-a491-5355bb7b680b",
+									"uuid": "a5755a2f-f896-4fe0-9da3-2d275c337c29",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Noutăți de la Cabanova</span></strong></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Noutăți de la Website sitebuilder</span></strong></p></div>",
 											"style": {
 												"color": "#ffffff",
 												"font-family": "inherit",
@@ -315,7 +313,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "a83e7b95-bb16-4923-a49e-f0220a06b759",
+									"uuid": "e9dd6974-895b-43e6-800b-721a62c21ef7",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Iată ce am pregătit pentru tine în perioada aceasta.</span></p></div>",
@@ -342,7 +340,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "93408252-9228-40b9-a1d7-3fa516e607d2",
+									"uuid": "c5484a4b-e76c-4185-92c6-6048ec25c996",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -364,7 +362,7 @@
 									}
 								}
 							],
-							"uuid": "19724bcb-9243-4ae3-a5e2-1657f52f58f4",
+							"uuid": "4216a5a7-ce6e-4653-a086-7a33918844ff",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -395,7 +393,7 @@
 							"verticalAlign": "top"
 						},
 						"style": {
-							"background-color": "#3c6ca8",
+							"background-color": "#449ac5",
 							"background-image": "none",
 							"background-position": "top left",
 							"background-repeat": "no-repeat",
@@ -407,7 +405,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "c1f4d63f-548f-42b1-931a-c153c4896cb1"
+					"uuid": "e7559426-d904-4cf8-9bca-3226be28445e"
 				},
 				{
 					"columns": [
@@ -417,10 +415,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "217728ba-44a6-4e55-a7ca-9b1cd9b56b47",
+									"uuid": "d7e645c6-a0ea-470f-909a-0cff5881e64f",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Îți aducem pe scurt cele mai noi lucruri de la Cabanova.</span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Create a free website quickly and easily using our simple drag and drop interface.</span></p></div>",
 											"style": {
 												"color": "#18181b",
 												"font-family": "inherit",
@@ -442,7 +440,7 @@
 									}
 								}
 							],
-							"uuid": "502a1542-96d5-4bf2-a4be-c49cd577fd18",
+							"uuid": "52a13825-4fd6-4866-bf33-88d53966dd2c",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -485,660 +483,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "37fb5374-a792-4326-aa05-2bdd008da37e"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-image",
-									"locked": false,
-									"uuid": "af25f942-8427-4d79-8a51-cc9c5c00582c",
-									"descriptor": {
-										"image": {
-											"alt": "Prețuri",
-											"href": "https://www.cabanova.com/p/ro/preturi.html",
-											"prefix": "",
-											"src": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.cabanova.com%2Fp%2Fro%2Ffiles%2Fim1i-32fvyp7qr8jj-g3yzo.jpg&w=600&h=400&fit=cover&a=attention&output=jpg&q=85",
-											"target": "_blank",
-											"width": "1200px",
-											"height": "700px"
-										},
-										"style": {
-											"width": "100%",
-											"border-radius": "12px",
-											"padding-top": "28px",
-											"padding-right": "0px",
-											"padding-bottom": "16px",
-											"padding-left": "0px"
-										},
-										"computedStyle": {
-											"class": "center autowidth fullwidth",
-											"width": "640px",
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "d6086d1d-7b63-4f5b-8701-c409e8bc707e",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Prețuri</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "40px",
-											"padding-bottom": "6px",
-											"padding-left": "40px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "487810c9-7ed6-4df1-833c-1d9004aa8ec5",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:16px;line-height:26px;color:#52525b;\" data-mce-style=\"font-size:16px;line-height:26px;color:#52525b;\">Află tot ce trebuie să știi despre prețuri – pe scurt, direct pe site-ul nostru.</span></p></div>",
-											"style": {
-												"color": "#52525b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#52525b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "40px",
-											"padding-bottom": "10px",
-											"padding-left": "40px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-button",
-									"locked": false,
-									"uuid": "54b099ee-fbfc-4abf-a85e-225d251f2631",
-									"descriptor": {
-										"button": {
-											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă prețuri →</strong></p></div>",
-											"href": "https://www.cabanova.com/p/ro/preturi.html",
-											"target": "_blank",
-											"style": {
-												"background-color": "#3c6ca8",
-												"border-top": "0px solid transparent",
-												"border-right": "0px solid transparent",
-												"border-bottom": "0px solid transparent",
-												"border-left": "0px solid transparent",
-												"border-radius": "999px",
-												"color": "#ffffff",
-												"direction": "ltr",
-												"font-family": "inherit",
-												"font-size": "15px",
-												"font-weight": "700",
-												"line-height": "150%",
-												"max-width": "100%",
-												"padding-top": "12px",
-												"padding-bottom": "12px",
-												"padding-left": "28px",
-												"padding-right": "28px",
-												"width": "auto"
-											}
-										},
-										"style": {
-											"padding-top": "4px",
-											"padding-right": "32px",
-											"padding-bottom": "12px",
-											"padding-left": "32px",
-											"text-align": "center"
-										},
-										"computedStyle": {
-											"height": 46,
-											"width": 227,
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "df6d2319-0d0f-4e62-b992-15001647254e",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "31b1de84-b5a4-49bd-99a3-d9bd547d5c05"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "e577507f-e301-4e42-8503-841d878e8708",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Mai găsești la noi</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "36px",
-											"padding-right": "32px",
-											"padding-bottom": "16px",
-											"padding-left": "32px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "1eda1fb2-301a-4b49-95f5-c005173e0a1d",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "030559a8-0007-44db-b693-46ec4e215be6"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 6,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-image",
-									"locked": false,
-									"uuid": "f58fa370-ce87-4884-81c0-8857a68f75f3",
-									"descriptor": {
-										"image": {
-											"alt": "Domenii",
-											"href": "https://www.cabanova.com/p/ro/domenii.html",
-											"prefix": "",
-											"src": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.cabanova.com%2Fp%2Fro%2Ffiles%2Fim1i-wgpiflduv4u-p7epu.jpg&w=600&h=400&fit=cover&a=attention&output=jpg&q=85",
-											"target": "_blank",
-											"width": "600px",
-											"height": "400px"
-										},
-										"style": {
-											"width": "100%",
-											"border-radius": "12px",
-											"padding-top": "0px",
-											"padding-right": "0px",
-											"padding-bottom": "12px",
-											"padding-left": "0px"
-										},
-										"computedStyle": {
-											"class": "center autowidth fullwidth",
-											"width": "640px",
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "b2a194b2-88e7-405e-a523-bd10bff46a36",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Domenii</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "4px",
-											"padding-right": "12px",
-											"padding-bottom": "4px",
-											"padding-left": "12px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "938eaf86-ecea-460d-9d55-7d63046b82ac",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Descoperă detaliile pe site.</span></p></div>",
-											"style": {
-												"color": "#52525b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#52525b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "12px",
-											"padding-bottom": "6px",
-											"padding-left": "12px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-button",
-									"locked": false,
-									"uuid": "34715400-bb68-422a-a232-84ab24272676",
-									"descriptor": {
-										"button": {
-											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
-											"href": "https://www.cabanova.com/p/ro/domenii.html",
-											"target": "_blank",
-											"style": {
-												"background-color": "transparent",
-												"border-top": "0px solid transparent",
-												"border-right": "0px solid transparent",
-												"border-bottom": "0px solid transparent",
-												"border-left": "0px solid transparent",
-												"border-radius": "0px",
-												"color": "#3c6ca8",
-												"direction": "ltr",
-												"font-family": "inherit",
-												"font-size": "14px",
-												"font-weight": "700",
-												"line-height": "150%",
-												"max-width": "100%",
-												"padding-top": "4px",
-												"padding-bottom": "4px",
-												"padding-left": "0px",
-												"padding-right": "0px",
-												"width": "auto"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "12px",
-											"padding-bottom": "16px",
-											"padding-left": "12px",
-											"text-align": "center"
-										},
-										"computedStyle": {
-											"height": 29,
-											"width": 92,
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "ebeb222a-9819-432b-92ad-0b57fe4fb26e",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "14px",
-								"padding-bottom": "12px",
-								"padding-left": "14px"
-							}
-						},
-						{
-							"grid-columns": 6,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-image",
-									"locked": false,
-									"uuid": "a777c7e3-1f9f-43e2-8549-b9bf1930bd9c",
-									"descriptor": {
-										"image": {
-											"alt": "Activare ssl",
-											"href": "https://www.cabanova.com/p/ro/activare-ssl-21122021.html",
-											"prefix": "",
-											"src": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.cabanova.com%2Fp%2Fro%2Ffiles%2Fim1i-1ebeuxtyxtlq-mklur.jpg&w=600&h=400&fit=cover&a=attention&output=jpg&q=85",
-											"target": "_blank",
-											"width": "600px",
-											"height": "400px"
-										},
-										"style": {
-											"width": "100%",
-											"border-radius": "12px",
-											"padding-top": "0px",
-											"padding-right": "0px",
-											"padding-bottom": "12px",
-											"padding-left": "0px"
-										},
-										"computedStyle": {
-											"class": "center autowidth fullwidth",
-											"width": "640px",
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "95953b5b-d89d-469c-b2b7-b2b309c99bf1",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Activare ssl</span></strong></p></div>",
-											"style": {
-												"color": "#18181b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#18181b"
-											}
-										},
-										"style": {
-											"padding-top": "4px",
-											"padding-right": "12px",
-											"padding-bottom": "4px",
-											"padding-left": "12px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-text",
-									"locked": false,
-									"uuid": "e26cad43-4f87-4f4c-81b5-b3a62bc92d72",
-									"descriptor": {
-										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Descoperă detaliile pe site.</span></p></div>",
-											"style": {
-												"color": "#52525b",
-												"font-family": "inherit",
-												"line-height": "160%"
-											},
-											"computedStyle": {
-												"linkColor": "#52525b"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "12px",
-											"padding-bottom": "6px",
-											"padding-left": "12px"
-										},
-										"computedStyle": {
-											"hideContentOnMobile": false
-										}
-									}
-								},
-								{
-									"type": "mailup-bee-newsletter-modules-button",
-									"locked": false,
-									"uuid": "4ec642da-f44e-4a8f-9c1c-4d89657bc47b",
-									"descriptor": {
-										"button": {
-											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
-											"href": "https://www.cabanova.com/p/ro/activare-ssl-21122021.html",
-											"target": "_blank",
-											"style": {
-												"background-color": "transparent",
-												"border-top": "0px solid transparent",
-												"border-right": "0px solid transparent",
-												"border-bottom": "0px solid transparent",
-												"border-left": "0px solid transparent",
-												"border-radius": "0px",
-												"color": "#3c6ca8",
-												"direction": "ltr",
-												"font-family": "inherit",
-												"font-size": "14px",
-												"font-weight": "700",
-												"line-height": "150%",
-												"max-width": "100%",
-												"padding-top": "4px",
-												"padding-bottom": "4px",
-												"padding-left": "0px",
-												"padding-right": "0px",
-												"width": "auto"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "12px",
-											"padding-bottom": "16px",
-											"padding-left": "12px",
-											"text-align": "center"
-										},
-										"computedStyle": {
-											"height": 29,
-											"width": 92,
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "eaf7ce67-dcb1-479b-9a1d-18d21311c1f4",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "14px",
-								"padding-bottom": "12px",
-								"padding-left": "14px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "two-columns-empty",
-					"uuid": "d4655054-d5d4-4a97-92ae-87be3bb66be4"
-				},
-				{
-					"columns": [
-						{
-							"grid-columns": 12,
-							"modules": [
-								{
-									"type": "mailup-bee-newsletter-modules-divider",
-									"locked": false,
-									"uuid": "5589d040-7f26-432f-9408-8408b67d3c9a",
-									"descriptor": {
-										"divider": {
-											"style": {
-												"border-top": "0px solid transparent",
-												"width": "100%",
-												"height": "12px"
-											}
-										},
-										"style": {
-											"padding-top": "0px",
-											"padding-right": "0px",
-											"padding-bottom": "0px",
-											"padding-left": "0px"
-										},
-										"computedStyle": {
-											"align": "center",
-											"hideContentOnMobile": false
-										}
-									}
-								}
-							],
-							"uuid": "d5fdc4d4-ef8d-4d81-ba71-2924a8adea9b",
-							"style": {
-								"background-color": "transparent",
-								"border-top": "0px solid transparent",
-								"border-right": "0px solid transparent",
-								"border-bottom": "0px solid transparent",
-								"border-left": "0px solid transparent",
-								"padding-top": "0px",
-								"padding-right": "0px",
-								"padding-bottom": "0px",
-								"padding-left": "0px"
-							}
-						}
-					],
-					"container": {
-						"style": {
-							"background-color": "transparent",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat"
-						}
-					},
-					"content": {
-						"computedStyle": {
-							"hideContentOnDesktop": false,
-							"hideContentOnMobile": false,
-							"rowColStackOnMobile": true,
-							"rowReverseColStackOnMobile": false,
-							"verticalAlign": "top"
-						},
-						"style": {
-							"background-color": "#ffffff",
-							"background-image": "none",
-							"background-position": "top left",
-							"background-repeat": "no-repeat",
-							"color": "#18181b",
-							"width": "640px"
-						}
-					},
-					"empty": false,
-					"locked": false,
-					"synced": false,
-					"type": "one-column-empty",
-					"uuid": "b499e356-e3f2-4b2f-ac33-bd6d54f56b4b"
+					"uuid": "a8b95729-a45f-47a0-be91-3f2023016100"
 				},
 				{
 					"columns": [
@@ -1148,14 +493,14 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "2f543323-8797-410e-b98a-654cc3398d2c",
+									"uuid": "0befac4c-0c24-4ca8-bb3f-d1a150dbcc98",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vizitează site-ul</strong></p></div>",
 											"href": "https://www.cabanova.com/p/ro/acasa.html",
 											"target": "_blank",
 											"style": {
-												"background-color": "#3c6ca8",
+												"background-color": "#449ac5",
 												"border-top": "0px solid transparent",
 												"border-right": "0px solid transparent",
 												"border-bottom": "0px solid transparent",
@@ -1190,7 +535,7 @@
 									}
 								}
 							],
-							"uuid": "cd27e7f3-64a7-42fb-8410-37eb738956f1",
+							"uuid": "5481dfbd-ac16-4820-9558-bbb3c26bf878",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1233,7 +578,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "ffba5a74-afcc-449d-8c5e-355d6c6f3983"
+					"uuid": "82a8f7e7-dcf3-464e-8bed-81df2cc0377a"
 				},
 				{
 					"columns": [
@@ -1243,7 +588,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "0b765a41-576d-4129-ae83-2d23ebd75729",
+									"uuid": "b1772617-88e0-4306-9a43-05ff14e109af",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1267,10 +612,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3cfe6d27-cc02-4321-9bc3-532871c0f6f2",
+									"uuid": "145f714e-702a-4dce-bc51-5bae3adb1015",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Cabanova. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://www.cabanova.com/p/ro/termeni-si-conditii.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://www.cabanova.com/p/ro/politica-de-confidentialitate.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://www.cabanova.com/p/ro/acasa.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">cabanova.com/p/ro/acasa.html</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Website sitebuilder. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://www.cabanova.com/p/en/terms-of-service.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://www.cabanova.com/p/en/privacy-policy.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://www.cabanova.com/p/ro/acasa.html\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">cabanova.com/p/ro/acasa.html</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
 											"style": {
 												"color": "#71717a",
 												"font-family": "inherit",
@@ -1292,7 +637,7 @@
 									}
 								}
 							],
-							"uuid": "6561dc23-8ba5-4f30-843d-fa90c6e66b88",
+							"uuid": "64886b15-a28a-4cab-a5b8-32995f297a21",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1335,7 +680,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "1a8b1e44-99e3-4bd9-88c7-7220efad11f8"
+					"uuid": "f231c5b1-5ebf-4869-a8c0-0f60edefb330"
 				}
 			],
 			"template": {
