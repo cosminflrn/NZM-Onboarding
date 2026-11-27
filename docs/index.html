@@ -75,11 +75,15 @@
   .client > button.share.done, dialog.pv .bar .pvlink.done { opacity:1; color:#1a8f4c; }
   dialog.pv .bar .pvlink, dialog.pv .bar .pvdl { padding:7px 10px; }
   dialog.pv:focus, dialog.dlg:focus { outline:none; }
-  dialog.pv .bar { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; } dialog.pv .bar::-webkit-scrollbar { display:none; }
+
+  dialog.pv .bar { flex-wrap:nowrap; }
   dialog.pv .bar > * { flex:none; }
+  /* the tabs scroll on their own; device switch, link, download and close always stay visible */
+  dialog.pv .bar > .tabscroll { position:relative; flex:1 1 auto; min-width:0; display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; }
+  dialog.pv .bar > .tabscroll::-webkit-scrollbar { display:none; }
+  dialog.pv .bar .tabscroll .tab { flex:none; }
   dialog.pv .bar .tab { padding:8px 13px; }
-  dialog.pv .bar .pvdl, dialog.pv .bar .pvlink { position:sticky; z-index:1; box-shadow:-8px 0 8px #fff; }
-  dialog.pv .bar .pvdl { right:52px; } dialog.pv .bar .pvlink { right:100px; background:#fff; }
+
   dialog.pv .bar .seg.dev button { padding-left:11px; padding-right:11px; }
   @media (hover: none) { .client > button.del { opacity:1; } }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
@@ -119,7 +123,7 @@
   dialog .bar { display:flex; gap:6px; padding:10px; border-bottom:1px solid var(--line); flex-wrap:wrap; align-items:center; position:sticky; top:0; background:#fff; z-index:2; }
   dialog .bar .tab.on { background:var(--ink); color:#fff; border-color:var(--ink); }
   dialog .bar .push { margin-left:auto; }
-  dialog.pv .bar > button:last-child { position:sticky; right:0; background:#fff; box-shadow:-8px 0 8px #fff; }
+
   dialog .subj { padding:8px 16px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--line); }
   dialog .view { height:calc(92vh - 100px); overflow:hidden; background:#fff; }
   dialog .view .phone { width:390px; height:calc(100% - 32px); margin:16px auto; border:10px solid #1d1d21; border-radius:36px;
@@ -131,11 +135,11 @@
     dialog .bar .seg.dev { display:none; }
     dialog .view .phone { width:100%; height:100%; margin:0; border:0; border-radius:0; box-shadow:none; }
     dialog.pv { width:100vw; height:100dvh; max-width:100vw; max-height:100dvh; margin:0; border-radius:0; }
-    dialog.pv .bar { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; } dialog.pv .bar::-webkit-scrollbar { display:none; }
+
     dialog.pv .bar .tab { flex:none; padding:7px 11px; font-size:13px; }
-    dialog.pv .bar .pvdl { position:sticky; right:42px; flex:none; padding:7px 10px; box-shadow:-8px 0 8px #fff; }
+
     dialog.pv .bar .pvdl span, dialog.pv .bar .pvlink span { display:none; }
-    dialog.pv .bar .pvlink { position:sticky; right:84px; flex:none; padding:7px 10px; background:#fff; box-shadow:-8px 0 8px #fff; }
+
     /* edit form on a phone: one field per row, buttons under the title */
     dialog.ed { width:100vw; max-width:100vw; max-height:100dvh; height:100dvh; margin:0; border-radius:0; }
     dialog.ed .bar #edTitle { width:100%; } dialog.ed .bar .push { display:none; }
@@ -869,8 +873,8 @@ async function preview(slug, openTab) {
     .forEach((d, i) => views.push({ kind: "automatizare", one: "Doar acest email", name: `${autoName} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
   if (news) views.push({ kind: "newsletter", name: "Newsletter", subj: "draft newsletter", bee: news.data });
   const tabs = $("tabs");
-  tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
-    `<span class="push"></span><div class="seg dev" data-name="device"><button type="button" data-v="desktop" class="on">${icon("desktop")}Desktop</button>` +
+  tabs.innerHTML = `<div class="tabscroll">` + views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
+    `</div><div class="seg dev" data-name="device"><button type="button" data-v="desktop" class="on">${icon("desktop")}Desktop</button>` +
     `<button type="button" data-v="mobile">${icon("phone")}Mobil</button></div>` +
     `<button class="pvlink" id="pvLink" title="Copiază linkul de previzualizare doar pentru acest email / formular">${icon("link")}</button>` +
     `<button class="dl pvdl" id="pvDl" title="Descarcă pentru NewsMAN">${icon("dl")}</button>` +
@@ -886,8 +890,9 @@ async function preview(slug, openTab) {
     current = i;
     const mobile = tabs.querySelector(".dev button.on").dataset.v === "mobile" || matchMedia("(max-width: 700px)").matches;
     tabs.querySelectorAll(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.i === i));
-    const on = tabs.querySelector(".tab.on");
-    if (on && on.offsetLeft + on.offsetWidth > tabs.clientWidth - 170) tabs.scrollLeft = Math.max(0, on.offsetLeft - 12);
+    const on = tabs.querySelector(".tab.on"), sc = tabs.querySelector(".tabscroll");
+    if (on && sc && (on.offsetLeft < sc.scrollLeft || on.offsetLeft + on.offsetWidth > sc.scrollLeft + sc.clientWidth))
+      sc.scrollLeft = Math.max(0, on.offsetLeft - 12);
     $("subj").textContent = "Subiect / nume: " + (views[i].subj || "");
     // rendered inside an iframe so the page's own styles do not leak into the preview
     const frame = document.createElement("iframe");
@@ -910,8 +915,9 @@ async function preview(slug, openTab) {
   requestAnimationFrame(() => {
     placePill(tabs.querySelector(".dev"));
     // only when the open tab is hidden behind the buttons on the right (narrow screens)
-    const on = tabs.querySelector(".tab.on");
-    if (on && on.offsetLeft + on.offsetWidth > tabs.clientWidth - 170) tabs.scrollLeft = Math.max(0, on.offsetLeft - 12);
+    const on = tabs.querySelector(".tab.on"), sc = tabs.querySelector(".tabscroll");
+    if (on && sc && (on.offsetLeft < sc.scrollLeft || on.offsetLeft + on.offsetWidth > sc.scrollLeft + sc.clientWidth))
+      sc.scrollLeft = Math.max(0, on.offsetLeft - 12);
   });  // sizes are known only once the dialog is open
   // only the email itself scrolls (inside its frame); wheel anywhere else in the dialog or on the backdrop does nothing
   if (!$("pv").dataset.wheel) { $("pv").addEventListener("wheel", (e) => e.preventDefault(), { passive: false }); $("pv").dataset.wheel = 1; }
