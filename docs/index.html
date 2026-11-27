@@ -91,6 +91,10 @@
   .histtools { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
   .histtools label { display:flex; align-items:center; gap:6px; }
   .search input:focus { outline:none; border-color:var(--red); box-shadow:0 0 0 3px rgba(166,0,0,.10); }
+  /* every control of the history area has the same height */
+  .search input, .selbar button, .dd-btn, .client .actions button { height:38px; box-sizing:border-box; }
+  .dd-btn, .selbar button, .client .actions button { padding-top:0; padding-bottom:0; }
+  @media (max-width: 700px) { .search input, .selbar button, .dd-btn, .client .actions button { height:44px; font-size:14px !important; } }
   .histtools select { display:none; }
   body > main { min-height:calc(100vh - 64px - 140px); }  /* the footer stays at the bottom on short pages */
   .site-foot { border-top:1px solid var(--line, #e3e5e8); margin-top:40px; background:#fff; font-size:13px; color:var(--muted); }
@@ -135,7 +139,7 @@
     .histtools label { flex-direction:column; align-items:stretch; gap:5px; font-size:12px; font-weight:600; letter-spacing:.02em; }
     .histtools .sortl { margin-left:0; }
     .histtools .dd, .histtools .dd-btn { width:100%; }
-    .histtools .dd-btn { justify-content:space-between; padding:10px 12px; font-size:14px; border-radius:10px; }
+    .histtools .dd-btn { justify-content:space-between; padding:0 12px; font-size:14px; }
     .histtools .dd-menu { min-width:100%; }
     .histtools .dd-menu button { padding:11px 12px; font-size:14px; }
     .histtools .dd.right .dd-menu { left:auto; right:0; }
@@ -249,9 +253,9 @@
     .client .tag .cap { display:inline-block; } .client .tag .cap::first-letter { text-transform:uppercase; }
     /* the bookmark is a computer thing (drag to the bookmarks bar, Ctrl+S): on phones only a short note */
     #blockedHelp .bl-body { display:none; }
-    #blockedHelp .bl-title::after { content:" Se face de pe calculator."; font-weight:400; color:var(--muted); }
+    #blockedHelp .bl-title::after { content:". Se face de pe calculator."; font-weight:400; color:var(--muted); }
     .client .actions { gap:8px; margin-top:2px; }
-    .client .actions button { padding:9px 8px; font-size:14px; }
+    .client .actions button { padding:0 8px; font-size:14px; }
     .client > button.del { top:10px; }
     .switches { flex-wrap:wrap; } .switches > div { min-width:0; max-width:100%; }
     .seg .lg { display:none; } .seg .sm { display:inline; }
@@ -260,7 +264,7 @@
     .selbar:not(.has) { display:none !important; }
     .selbar { display:grid; grid-template-columns:1fr 1fr; }
     .selbar #selCount { grid-column:1 / -1; }
-    .selbar button { padding:10px 8px; font-size:13px; }
+    .selbar button { padding:0 8px; font-size:14px; }
     .selbar #selCount { width:100%; }
     .selbar button { flex:1 1 0; min-width:0; padding:8px 6px; font-size:12px; white-space:normal; line-height:1.2; }
     header .wrap { gap:8px; } #who { display:none; } header .right .lbl { display:none; } header .right button { padding:8px 10px; }
@@ -865,14 +869,14 @@ function visible(over) {
 }
 function goPage(n) { PAGE = n; render(); $("histCount").scrollIntoView({ behavior: "smooth", block: "start" }); }
 [...FILTER_IDS, "fSort"].forEach((id) => {
-  try { const v = localStorage.getItem("nzm-" + id); if (v !== null) $(id).value = v; } catch {}
-  $(id).onchange = () => { try { localStorage.setItem("nzm-" + id, $(id).value); } catch {} PAGE = 1; render(); };
+  try { localStorage.removeItem("nzm-" + id); } catch {}   // filters start fresh on every page load
+  $(id).onchange = () => { PAGE = 1; render(); };
 });
 document.querySelectorAll(".histtools select").forEach(ddMake);
 $("year").textContent = new Date().getFullYear();
 $("fReset").onclick = () => {
-  FILTER_IDS.forEach((id) => { $(id).value = ""; try { localStorage.removeItem("nzm-" + id); } catch {} });
-  $("fSort").value = "new"; try { localStorage.removeItem("nzm-fSort"); } catch {}
+  FILTER_IDS.forEach((id) => { $(id).value = ""; });
+  $("fSort").value = "new";
   $("filter").value = ""; $("searchBox").classList.remove("has"); PAGE = 1; render();
 };
 function toggleSel(slug, on) { if (on && SEL.size >= MAX_SEL) return render(); on ? SEL.add(slug) : SEL.delete(slug); render(); }
