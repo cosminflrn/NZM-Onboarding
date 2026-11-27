@@ -169,6 +169,19 @@ function same(a, b) {
 }
 
 async function brandWebhook(req, env) {
+  const res = await brandWebhookInner(req, env);
+  // a refused delivery leaves a short note (no secrets, no payload) so it can be checked without server logs
+  if (res.status >= 400) {
+    try {
+      const note = { at: new Date().toISOString(), status: res.status, reason: (await res.clone().json()).message,
+        headers: [...req.headers.keys()].filter((k) => /brand|webhook|signature|timestamp|content-type/i.test(k)) };
+      await ghPut(env, "inbox/bf-last-error.json", JSON.stringify(note, null, 1), "Brandfetch: livrare refuzată");
+    } catch {}
+  }
+  return res;
+}
+
+async function brandWebhookInner(req, env) {
   if (!env.BRAND_WEBHOOK_SECRET) return json({ message: "neconfigurat" }, 503);
   const h = (...names) => names.map((n) => req.headers.get(n)).find((v) => v) || "";
   const ts = h("X-Brand-Timestamp", "X-Brandfetch-Timestamp", "X-Webhook-Timestamp").trim();

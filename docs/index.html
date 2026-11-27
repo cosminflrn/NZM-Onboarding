@@ -277,6 +277,7 @@
 
 <dialog id="ed" class="ed">
   <div class="bar"><b id="edTitle"></b><span class="push"></span>
+    <button id="edSrc" hidden title="Citește din nou site-ul, cu brandul din cealaltă sursă (editările de aici nu se păstrează)"></button>
     <button onclick="ed.close()">Renunță</button><button class="primary" id="edSave">Salvează și regenerează</button></div>
   <form id="edForm" class="grid" onsubmit="return false"></form>
 </dialog>
@@ -789,14 +790,14 @@ async function download(slug, file) {
   } catch (e) { alert("Descărcare eșuată: " + e.message); }
 }
 
-async function rescrape(slug) {
+async function rescrape(slug, source) {
   const c = CLIENTS.find((x) => x.slug === slug);
   if (!(await checkToken())) return;
   let o = {};
   try { o = (await readFile(`clients/${slug}/brand.json`)).options || {}; } catch {}
   await runJob({ url: c.url, name: "", discount: o.discount_code || "", sender_email: o.sender_email || "",
     form_type: o.form_type || "popup", site_type: o.site_type || "auto", lang: o.lang || "auto",
-    source: o.brand_source === "brandfetch" && !$("srcSwitch").hidden ? "brandfetch" : "nzm" });
+    source: source || (o.brand_source === "brandfetch" && !$("srcSwitch").hidden ? "brandfetch" : "nzm") });
 }
 
 // =============================================================== preview
@@ -914,6 +915,11 @@ async function edit(slug) {
   if (!(await checkToken())) return;
   const b = await readFile(`clients/${slug}/brand.json`);
   EDIT = { slug, b };
+  // the brand's source can be switched from here: the site is read again with the other one
+  const other = (b.options || {}).brand_source === "brandfetch" ? "nzm" : "brandfetch";
+  $("edSrc").hidden = $("srcSwitch").hidden;
+  $("edSrc").innerHTML = `${icon("refresh")}Refă cu ${other === "brandfetch" ? "Mănucă" : "Claude"}`;
+  $("edSrc").onclick = () => { $("ed").close(); rescrape(slug, other); };
   $("edTitle").textContent = `${b.name} — editare`;
   const L = b.links || {}, C = b.colors, ct = b.contact || {}, S = b.socials || {}, O = b.options || {};
   const menu = [0, 1, 2].map((i) => (L.menu || [])[i] || {});
