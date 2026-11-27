@@ -1,6 +1,6 @@
 # Cărturești (carturesti.ro)
 
-Generat: 2026-11-27 08:05 UTC  ·  Platformă: wordpress
+Generat: 2026-11-27 08:06 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
