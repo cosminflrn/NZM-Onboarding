@@ -223,6 +223,7 @@
     <div class="hint" style="margin-top:10px">Durează de obicei 1–2 minute. Starea apare direct în istoric.</div>
     <div class="capbar" id="capBar" hidden>
       <svg class="i"><use href="#i-check"/></svg><span id="capText"></span>
+      <button type="button" class="link" id="capSave" title="Salvează pagina preluată (de trimis când ceva nu iese bine)"><svg class="i"><use href="#i-dl"/></svg></button>
       <button type="button" class="link" id="capClear" title="Renunță la pagina preluată"><svg class="i"><use href="#i-x"/></svg></button>
     </div>
     <div class="blocked" id="blockedHelp">
@@ -479,6 +480,15 @@ function setCapture(cap) {
   $("url").scrollIntoView({ behavior: "smooth", block: "center" });
 }
 $("capClear").onclick = () => setCapture(null);
+// the captured page as a file: what the bookmark saw, to send when a client comes out wrong
+$("capSave").onclick = () => {
+  if (!CAPTURE) return;
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify({ type: "nzm-capture", url: CAPTURE.url, items: CAPTURE.items })], { type: "application/json" }));
+  a.download = `pagina-preluata-${slugOf(CAPTURE.url)}.json`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+};
 function validCapture(d) {
   return d && d.type === "nzm-capture" && typeof d.url === "string" && /^https?:\/\//.test(d.url) && d.items && typeof d.items === "object";
 }

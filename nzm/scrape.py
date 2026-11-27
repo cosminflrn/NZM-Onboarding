@@ -187,6 +187,19 @@ def fmt_price(price, currency=None, domain=""):
     return f"{sym}{intl}" if sym else f"{intl} {cur}".strip()
 
 
+def amount(text):
+    """'4.999,99 Lei' / '1,299.99' / '43.00' -> 4999.99 / 1299.99 / 43.0 (None if no number)."""
+    t = re.sub(r"[^\d.,]", "", text or "")
+    if not t:
+        return None
+    m = re.search(r"[.,](\d{2})$", t)
+    whole, dec = (t[:m.start()], m.group(1)) if m else (t, "00")
+    try:
+        return float(re.sub(r"[.,]", "", whole) + "." + dec)
+    except ValueError:
+        return None
+
+
 PRICE_TEXT_RE = re.compile(r"\d{1,3}(?:[.\s]\d{3})*(?:[.,]\d{2})?\s?(?:lei|ron|€|eur)\b|(?:€|\$|£)\s?\d+(?:[.,]\d{2})?", re.I)
 
 # ----------------------------------------------------------------- main class
@@ -1024,9 +1037,12 @@ class Scraper:
             for _ in range(5):  # the card around the picture link
                 txt = " ".join(box.get_text(" ").split())
                 txt = re.sub(r"(\d)\s+([.,]\d{2})\b", r"\1\2", txt)  # "43 .00 lei" (decimals in their own tag)
-                m = PRICE_TEXT_RE.search(txt)
-                if m and len(txt) < 500:
-                    price = m.group(0)
+                # "1.299<sup>99</sup> Lei": small raised decimals right after the amount
+                txt = re.sub(r"(\d)\s+(\d{2})\s*(lei|ron)\b", r"\1,\2 \3", txt, flags=re.I)
+                found = [x.group(0) for x in PRICE_TEXT_RE.finditer(txt)]
+                if found and len(txt) < 900:   # big shops' cards also carry ratings, badges, delivery estimates
+                    # an old (crossed-out / recommended) price often comes first: the price paid is the lowest
+                    price = min(found, key=lambda x: amount(x) or 1e12)
                     break
                 if not box.parent or box.parent.name in ("body", "html"):
                     break
@@ -1046,7 +1062,7 @@ class Scraper:
             tag = box.find(attrs={"content": re.compile(r"^\d+(\.\d+)?$")}, class_=re.compile(r"pric|pret|suma|amount", re.I)) \
                 or box.find(attrs={"itemprop": "price"})
             cur = "EUR" if "€" in price or "eur" in price.lower() else ("USD" if "$" in price else ("GBP" if "£" in price else "RON"))
-            num = tag.get("content") if tag else re.sub(r"[^\d.,]", "", price)
+            num = tag.get("content") if tag else amount(price)
             out.append({"name": name, "url": u, "image": src, "price": fmt_price(num, cur, self.domain) if num else ""})
             if len(out) >= limit:
                 break
