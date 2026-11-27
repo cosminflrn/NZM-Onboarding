@@ -181,7 +181,9 @@ def decrypt_bundle(box):
 def cmd_regen(a):
     with open(a.brand, encoding="utf-8") as f:
         brand = json.load(f)
-    brand["generated_at"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    # an edit counts as a change; rebuilding every client after an update of the generator does not
+    if not getattr(a, "keep_date", False) or not brand.get("generated_at"):
+        brand["generated_at"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     out_dir = os.path.dirname(os.path.abspath(a.brand))
     for old in output_files(out_dir) + glob.glob(os.path.join(out_dir, "*__*.json")) + glob.glob(os.path.join(out_dir, "*.zip")):
         os.remove(old)
@@ -190,7 +192,7 @@ def cmd_regen(a):
 
 def cmd_regen_all(a):
     for bj in glob.glob(os.path.join(CLIENTS, "*", "brand.json")):
-        cmd_regen(argparse.Namespace(brand=bj))
+        cmd_regen(argparse.Namespace(brand=bj, keep_date=True))
 
 
 def cmd_delete(a):

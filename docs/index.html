@@ -87,6 +87,18 @@
   dialog.pv .bar .seg.dev button { padding-left:11px; padding-right:11px; }
   @media (hover: none) { .client > button.del { opacity:1; } }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
+  h2 .count { font-size:12px; font-weight:600; color:var(--muted); background:#eef0f3; border-radius:999px; padding:3px 9px; }
+  .histtools { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
+  .histtools label { display:flex; align-items:center; gap:6px; }
+  .histtools select { font:inherit; color:var(--ink, #111); padding:5px 26px 5px 10px; border:1px solid var(--line, #e3e5e8); border-radius:8px; background:#fff; cursor:pointer; }
+  .histtools .sortl { margin-left:auto; }
+  .histtools [hidden] { display:none !important; }
+  .histtools .link { border:0; background:transparent; color:var(--red); font:inherit; cursor:pointer; padding:0; }
+  .pager { display:flex; justify-content:center; gap:6px; margin:16px 0 8px; flex-wrap:wrap; }
+  .pager:empty { display:none; }
+  .pager button { min-width:36px; padding:7px 11px; }
+  .pager button.on { background:var(--ink, #111); color:#fff; border-color:var(--ink, #111); }
+  @media (max-width: 700px) { .histtools .sortl { margin-left:0; } }
   .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
   .selbar #selCount { color:var(--muted); margin-right:4px; white-space:nowrap; }
   input.pick:disabled { opacity:.35; cursor:not-allowed; }
@@ -249,7 +261,7 @@
     </div>
   </div>
 
-  <h2>Istoric
+  <h2>Istoric <span class="count" id="histCount" title="Site-uri pentru care s-au generat template-uri"></span>
     <span class="search" id="searchBox"><input id="filter" placeholder="caută…" autocomplete="off" aria-label="Caută în istoric"><button type="button" id="clearFilter" title="Șterge căutarea"><svg class="i"><use href="#i-x"/></svg></button></span>
     <span class="selbar" id="selbar">
       <span id="selCount">selectează max. 3</span>
@@ -259,7 +271,16 @@
       <button type="button" id="clrSel" disabled title="Debifează tot"><svg class="i"><use href="#i-x"/></svg>Debifează</button>
     </span>
   </h2>
+  <div class="histtools">
+    <label>Tip <select id="fType"><option value="">toate</option><option value="ecommerce">E-commerce</option><option value="non-ecommerce">Non-e-commerce</option></select></label>
+    <label>Metodă <select id="fSrc"><option value="">toate</option><option value="brandfetch">NewsMAN</option><option value="nzm">Claude</option></select></label>
+    <label>Formular <select id="fForm"><option value="">toate</option><option value="popup">Pop-up</option><option value="embed">Embed</option></select></label>
+    <label>Limbă <select id="fLang"><option value="">toate</option><option value="ro">Română</option><option value="en">English</option></select></label>
+    <label class="sortl">Sortare <select id="fSort"><option value="new">ultima modificare</option><option value="old">cele mai vechi</option><option value="az">nume A–Z</option><option value="za">nume Z–A</option></select></label>
+    <button type="button" class="link" id="fReset" hidden>Șterge filtrele</button>
+  </div>
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
+  <div class="pager" id="pager"></div>
 </main>
 
 <dialog id="dlg" class="dlg" tabindex="-1">
@@ -643,7 +664,7 @@ async function load() {
   setTimeout(() => $("clients").classList.remove("anim"), 600);
   openLinkedPreview();
 }
-$("filter").oninput = () => { $("searchBox").classList.toggle("has", !!$("filter").value); render(); };
+$("filter").oninput = () => { $("searchBox").classList.toggle("has", !!$("filter").value); PAGE = 1; render(); };
 $("clearFilter").onclick = () => { $("filter").value = ""; $("searchBox").classList.remove("has"); render(); $("filter").focus(); };
 
 function statusHtml(slug) {
@@ -668,10 +689,19 @@ function render() {
         <button onclick="retryJob('${s}')">${icon("refresh")}Încearcă din nou</button>
         <button onclick="dropJob('${s}')">${icon("x")}Ascunde</button>` : ""}</div>
     </div>`);
-  const running = (c) => (JOBS[c.slug] || {}).state === "run" ? 1 : 0;
-  const list = CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q))
-    .sort((a, b) => running(b) - running(a));  // a client being generated is always on top
-  const cards = list.map((c) => `
+  const list = visible();
+  // 10 per page; the count next to "Istoric" is every site with templates
+  const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+  PAGE = Math.min(PAGE, pages);
+  const shown = list.slice((PAGE - 1) * PER_PAGE, PAGE * PER_PAGE);
+  const filtered = list.length !== CLIENTS.length;
+  $("histCount").textContent = filtered ? `${list.length} din ${CLIENTS.length}` : String(CLIENTS.length);
+  $("fReset").hidden = !(FILTERS_ON() || q);
+  $("pager").innerHTML = pages < 2 ? "" :
+    `<button ${PAGE === 1 ? "disabled" : ""} onclick="goPage(${PAGE - 1})" aria-label="Pagina anterioară">‹</button>` +
+    Array.from({ length: pages }, (_, i) => `<button class="${i + 1 === PAGE ? "on" : ""}" onclick="goPage(${i + 1})">${i + 1}</button>`).join("") +
+    `<button ${PAGE === pages ? "disabled" : ""} onclick="goPage(${PAGE + 1})" aria-label="Pagina următoare">›</button>`;
+  const cards = shown.map((c) => `
     <div class="card client${SEL.has(c.slug) ? " sel" : ""}" id="c-${c.slug}">
       <button class="del" title="Șterge din istoric" onclick="askDelete(['${c.slug}'])">${icon("trash")}</button>
       <button class="del share" title="Copiază linkul de previzualizare (pentru colegi; cer utilizator și parolă)" onclick="copyPreview(this, '${c.slug}')">${icon("link")}</button>
@@ -692,15 +722,45 @@ function render() {
         <button onclick="edit('${c.slug}')">${icon("edit")}Editează</button>
         <button onclick="rescrape('${c.slug}')" title="Citește din nou site-ul, doar dacă s-a schimbat ceva pe el. Pentru corecturi folosește Editează (nu mai citește site-ul).">${icon("refresh")}Recitește site</button>
       </div></div>`);
-  const all = (q ? [] : pending).concat(cards);
-  box.innerHTML = all.length ? all.join("") : `<div class="empty">Niciun client${q ? " găsit" : " încă"}.</div>`;
+  const all = (q || FILTERS_ON() || PAGE > 1 ? [] : pending).concat(cards);
+  box.innerHTML = all.length ? all.join("") : `<div class="empty">Niciun client${q || FILTERS_ON() ? " găsit" : " încă"}.</div>`;
   syncSel(list);
 }
 
 // --- selection
 const SEL = new Set();
 const MAX_SEL = 3;   // keep the load on GitHub small
-function visible() { const q = $("filter").value.toLowerCase(); return CLIENTS.filter((c) => !q || (c.name + c.domain).toLowerCase().includes(q)); }
+// --- history: filters, sorting, pages
+const PER_PAGE = 10;
+let PAGE = 1;
+const FILTER_IDS = ["fType", "fSrc", "fForm", "fLang"];
+const FILTERS_ON = () => FILTER_IDS.some((id) => $(id).value);
+function visible() {
+  const q = $("filter").value.toLowerCase();
+  const f = { type: $("fType").value, src: $("fSrc").value, form: $("fForm").value, lang: $("fLang").value };
+  const list = CLIENTS.filter((c) => (!q || (c.name + c.domain).toLowerCase().includes(q))
+    && (!f.type || c.site_type === f.type)
+    && (!f.src || (c.brand_source || "nzm") === f.src)
+    && (!f.form || (c.form_type || "popup") === f.form)
+    && (!f.lang || (c.lang || "ro") === f.lang));
+  const sort = $("fSort").value;
+  const name = (c) => (c.domain || c.name || "").toLowerCase();
+  list.sort((a, b) => sort === "az" ? name(a).localeCompare(name(b), "ro")
+    : sort === "za" ? name(b).localeCompare(name(a), "ro")
+    : sort === "old" ? String(a.generated_at).localeCompare(String(b.generated_at))
+    : String(b.generated_at).localeCompare(String(a.generated_at)));
+  const running = (c) => (JOBS[c.slug] || {}).state === "run" ? 1 : 0;
+  return list.sort((a, b) => running(b) - running(a));  // a client being generated is always on top
+}
+function goPage(n) { PAGE = n; render(); $("histCount").scrollIntoView({ behavior: "smooth", block: "start" }); }
+[...FILTER_IDS, "fSort"].forEach((id) => {
+  try { const v = localStorage.getItem("nzm-" + id); if (v !== null) $(id).value = v; } catch {}
+  $(id).onchange = () => { try { localStorage.setItem("nzm-" + id, $(id).value); } catch {} PAGE = 1; render(); };
+});
+$("fReset").onclick = () => {
+  FILTER_IDS.forEach((id) => { $(id).value = ""; try { localStorage.removeItem("nzm-" + id); } catch {} });
+  $("filter").value = ""; $("searchBox").classList.remove("has"); PAGE = 1; render();
+};
 function toggleSel(slug, on) { if (on && SEL.size >= MAX_SEL) return render(); on ? SEL.add(slug) : SEL.delete(slug); render(); }
 function syncSel(list) {
   for (const s of [...SEL]) if (!CLIENTS.some((c) => c.slug === s)) SEL.delete(s);

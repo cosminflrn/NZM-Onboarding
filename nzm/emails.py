@@ -73,13 +73,13 @@ VARIANTS = {
         "De acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
         "Abonații află primii de produsele noi și primesc ofertele înaintea tuturor.",
         "Vei primi din când în când noutăți, recomandări alese și oferte doar pentru abonați.",
-        "Îți scriem când apar produse noi sau oferte bune, fără să-ți umplem inboxul.",
+        "Îți scriem când apar produse noi sau oferte bune, ca să nu le ratezi.",
     ],
     "promise": [
-        "De acum ești primul care află noutățile {n}. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
-        "Vei afla primul ce e nou la {n}, plus sfaturi și informații utile, fără mesaje inutile.",
+        "De acum ești primul care află noutățile {n}, împreună cu idei și informații utile pentru tine.",
+        "Vei afla primul ce e nou la {n}, plus sfaturi și informații alese pentru tine.",
         "Îți vom scrie din când în când cu noutăți de la {n} și lucruri care chiar merită citite.",
-        "De acum primești noutățile {n} direct pe email, doar atunci când avem ceva bun de spus.",
+        "De acum primești noutățile {n} direct pe email: idei, sfaturi și tot ce e nou la noi.",
     ],
     "hero_subtitle": [
         "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
@@ -164,7 +164,7 @@ BENEFITS = {
                   ("Idei și inspirație", "Recomandări alese pentru tine.")],
     "non-ecommerce": [("Noutăți", "Afli primul ce pregătim."),
                       ("Sfaturi utile", "Informații alese cu grijă."),
-                      ("Fără spam", "Îți scriem doar când contează.")],
+                      ("Ales pentru tine", "Doar lucruri care te interesează.")],
 }
 
 

@@ -91,6 +91,11 @@
   [...document.querySelectorAll("a[href]")].filter((a) => { const t = (a.textContent || "").trim(); return t.length >= 2 && t.length <= 28; })
     .map((a) => abs(a.getAttribute("href"))).filter((u) => u && same(u) && u !== home && links.indexOf(u) < 0)
     .filter((u, i, all) => all.indexOf(u) === i).slice(0, 8).forEach((u) => links.push(u));
+  // links of the site's menus (nav bars, header menus): the sections whose own text personalises the emails
+  [...document.querySelectorAll("nav a[href], header a[href], [class*=menu] a[href], [class*=navbar] a[href]")]
+    .filter((a) => { const t = (a.textContent || "").trim(); return t.length >= 2 && t.length <= 40; })
+    .map((a) => abs(a.getAttribute("href"))).filter((u) => u && same(u) && u !== home && links.indexOf(u) < 0 && !want.test(u))
+    .filter((u, i, all) => all.indexOf(u) === i).slice(0, 10).forEach((u) => links.push(u));
   const feeds = ["/sitemap.xml", "/sitemap_index.xml", "/product-sitemap.xml", "/robots.txt",
     "/products.json?limit=12", "/wp-json/wc/store/v1/products?per_page=12", "/wp-json/wc/store/products?per_page=12"]
     .map((p) => location.origin + p);
