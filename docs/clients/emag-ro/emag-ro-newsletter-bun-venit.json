@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795787871,
+	"exported_at": 1795787944,
 	"data": {
 		"page": {
 			"body": {
@@ -34,7 +34,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "e12e8364-3afb-4740-8f46-2318550f7993",
+									"uuid": "c02e3282-07df-476a-ae57-190b37bdab6d",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -56,7 +56,7 @@
 									}
 								}
 							],
-							"uuid": "6fac995d-abb6-41dc-9b8e-2e5ba4d94734",
+							"uuid": "6be819fb-70a6-4ba5-bb23-9afe8babdc2e",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -99,7 +99,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "57dd371a-59d4-45c6-a833-ccd72516f12e"
+					"uuid": "954df82d-46e0-46c6-b815-72a0fb8ad37b"
 				},
 				{
 					"columns": [
@@ -109,7 +109,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "0720fac2-5d05-4737-ac61-4b69315220be",
+									"uuid": "efd89ffe-a19f-4477-abf3-f020e44ae24c",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -133,7 +133,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "d29d72b9-0fc8-4736-9bbc-a3ce16c49f88",
+									"uuid": "fca087f7-f65c-47b1-948b-2d014766738d",
 									"descriptor": {
 										"image": {
 											"alt": "Emag",
@@ -162,7 +162,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "a5159526-6bc6-4438-9d32-d8dbf3ac6712",
+									"uuid": "f458141f-f829-4322-9c70-090bec87e8cb",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\" data-mce-style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\"><a href=\"https://www.emag.ro/genius?ref=hdr_genius\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">GENIUS</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://www.emag.ro/label-campaign/cadouri-pentru-toti?ref=hdr_cadouri-pentru-toti\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">CADOURI PENTRU TOȚI</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://www.emag.ro/asigurari-rca?ref=hdr_rca\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">RCA</a></span></p></div>",
@@ -187,7 +187,7 @@
 									}
 								}
 							],
-							"uuid": "ccafd833-26a9-4263-bcab-eb8d541fd174",
+							"uuid": "69c7d453-4581-4351-ad00-bc2374610c1b",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -230,7 +230,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "2cf9cc12-0ced-4c61-8c1f-393ef8594edb"
+					"uuid": "a89669fa-8563-4be8-91ec-d58d5519bced"
 				},
 				{
 					"columns": [
@@ -240,7 +240,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "ea8a65b4-a741-4689-a0e9-234a6fdd3921",
+									"uuid": "fbfd630c-1600-475c-a3c4-1fe836afa090",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -264,7 +264,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "122107df-9aab-4332-bea6-9a860a38a439",
+									"uuid": "a050bf7e-33cb-4e29-8ba4-704fd4af96e0",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">BINE AI VENIT</span></strong></p></div>",
@@ -291,7 +291,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "52b487f5-fffa-44c4-84aa-a56d198e4f16",
+									"uuid": "c32b43f9-f279-4966-9dfc-6944b28c9d3a",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Bine ai venit în comunitatea Emag!</span></strong></p></div>",
@@ -318,7 +318,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "1ca35b42-e3d5-490a-a809-97fbbb656b99",
+									"uuid": "9c7ee736-ee21-4f6d-89c9-396f66872132",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.</span></p></div>",
@@ -345,7 +345,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "b38dff4d-a062-41eb-b51d-ac984d57c946",
+									"uuid": "fa23cbd7-b7e4-43e2-859d-17ba0569a509",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -367,7 +367,7 @@
 									}
 								}
 							],
-							"uuid": "b5bcd9ef-6000-4f40-8feb-c275e796bc6b",
+							"uuid": "bbf161fc-ab00-45e0-82f0-875f4afa4900",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -410,7 +410,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "e61513f1-750c-42dc-a70a-ee868e79fd4b"
+					"uuid": "9d462f95-4f72-44ba-bec6-732110b34e71"
 				},
 				{
 					"columns": [
@@ -420,7 +420,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "b052d6d2-a2e9-4e9a-b942-434de3af2eb7",
+									"uuid": "df54e9a8-0dc7-4573-ad39-2c14ccaffac6",
 									"descriptor": {
 										"image": {
 											"alt": "Emag",
@@ -447,7 +447,7 @@
 									}
 								}
 							],
-							"uuid": "0d4405e1-6d29-423a-8ec8-49a21da9f11b",
+							"uuid": "93447d7d-01d7-4adc-aa67-1591bbeaa47b",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -490,7 +490,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "0521cd07-387d-47ab-83fb-73f28a74b978"
+					"uuid": "48db00d8-a5d6-4f42-b809-9427970623b3"
 				},
 				{
 					"columns": [
@@ -500,7 +500,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "260a6292-e66c-4606-83d6-5fb6aeacdf6a",
+									"uuid": "4215e51d-61d0-490a-843f-34c7c194def8",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;margin-bottom:14px;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Am detectat trafic neobișnuit de mare din rețeaua de internet în care te afli.</span></p><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">De acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.</span></p></div>",
@@ -525,7 +525,7 @@
 									}
 								}
 							],
-							"uuid": "2e09368a-9268-4f4f-a48f-c79b97d856bc",
+							"uuid": "d1c67918-ba90-467a-8186-ff6c0a3917da",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -568,7 +568,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "01b26237-2c1f-42a4-a9bc-81bc5301fd76"
+					"uuid": "cf6dfd6e-455b-4601-b9bb-b7c973b1771d"
 				},
 				{
 					"columns": [
@@ -578,7 +578,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "2fab0ed7-8e4e-4048-860e-96dd1cb2ba0b",
+									"uuid": "46961acb-4ec2-4011-9ad7-9baec7c1cecc",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Am ales câteva produse pentru tine</span></strong></p></div>",
@@ -603,7 +603,7 @@
 									}
 								}
 							],
-							"uuid": "0e1f275d-090e-44fc-917e-7d489742b80e",
+							"uuid": "dc05ef20-0fa1-4a5e-9167-d85689674e6a",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -646,7 +646,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "9ebaa4e9-5fe4-4254-9c0d-62e8b00aba53"
+					"uuid": "31dc00a6-16f2-49c3-a7a4-61cf3d8b2233"
 				},
 				{
 					"columns": [
@@ -656,7 +656,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "78288118-6852-44b1-aebe-24f3de3c0836",
+									"uuid": "32152d83-7de5-4421-8551-d4de0088d3fb",
 									"descriptor": {
 										"image": {
 											"alt": "Nume produs",
@@ -685,7 +685,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "0579a8b6-ae59-483b-9661-d30fde6ef694",
+									"uuid": "51fb968e-af49-410b-a250-ee7f7147818a",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.emag.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Nume produs</a><br/>&nbsp;</span></p></div>",
@@ -712,7 +712,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "a2123070-c44a-4cd2-93f3-6bdc8bc780f7",
+									"uuid": "e1c1b7be-71e4-4c9d-a6cb-f80674aafb0d",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#3b82f6;\" data-mce-style=\"font-size:16px;line-height:22px;color:#3b82f6;\">199,00 lei</span></strong></p></div>",
@@ -739,7 +739,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "999ba933-3ff0-4461-9745-ad06575d9d80",
+									"uuid": "d766cd4a-64e7-49f0-80e6-6933aab9b616",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -781,7 +781,7 @@
 									}
 								}
 							],
-							"uuid": "70a3dae1-939d-41dc-9fab-e64aa4c487d0",
+							"uuid": "5440a8fe-5317-4461-82de-ea4de455a979",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -800,7 +800,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "3a8b1b75-8b1f-4309-bc40-046aa93b57f9",
+									"uuid": "78fb4bd6-e711-4350-b1d1-8dd62451acc5",
 									"descriptor": {
 										"image": {
 											"alt": "Nume produs",
@@ -829,7 +829,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "a12134e8-855b-405a-bc76-1f583fec6a00",
+									"uuid": "b8171dfc-f487-4677-b24b-d2d05b67797c",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.emag.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Nume produs</a><br/>&nbsp;</span></p></div>",
@@ -856,7 +856,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "8912e3a5-35b3-43a8-b443-cdd0785c733e",
+									"uuid": "7b475ec1-0208-4e25-bea8-588071125261",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#3b82f6;\" data-mce-style=\"font-size:16px;line-height:22px;color:#3b82f6;\">199,00 lei</span></strong></p></div>",
@@ -883,7 +883,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "04a32f57-4589-448a-986a-af0d2deafc85",
+									"uuid": "4e9b4c80-77c5-4224-a998-5ed184c4671c",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -925,7 +925,7 @@
 									}
 								}
 							],
-							"uuid": "dc4d1ca0-e878-48e6-8aac-3ac6d994d22c",
+							"uuid": "ca9bbaab-5d91-401a-82f7-9570449e2cf4",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -944,7 +944,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "ce859e52-70fd-4bf2-ac1a-93d252ba362f",
+									"uuid": "3d259b87-71b8-4847-982f-65ad6b3d7890",
 									"descriptor": {
 										"image": {
 											"alt": "Nume produs",
@@ -973,7 +973,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "b423f1e4-a9d4-48ee-a132-504863695b2b",
+									"uuid": "99dca658-5f60-4b45-9cb8-8df4549de476",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.emag.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Nume produs</a><br/>&nbsp;</span></p></div>",
@@ -1000,7 +1000,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "aec178a3-8645-49ba-9ca9-1bff29e13e56",
+									"uuid": "4c7d99e2-1e14-4ae3-bbf6-c393a8a1d279",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#3b82f6;\" data-mce-style=\"font-size:16px;line-height:22px;color:#3b82f6;\">199,00 lei</span></strong></p></div>",
@@ -1027,7 +1027,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "cb113e41-e95d-4123-a8ae-58622d6be188",
+									"uuid": "9aac52a8-54e8-46ca-9d76-120a1c7f8c6f",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -1069,7 +1069,7 @@
 									}
 								}
 							],
-							"uuid": "d3e5b5fe-5a70-4d53-8535-3a7a39118a16",
+							"uuid": "ed7ac88c-d8d7-434a-9bee-406554fc3e78",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1112,7 +1112,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "356c6076-bdd7-467a-8765-58e3b4465772"
+					"uuid": "b8148498-ac87-424a-8281-ea7d43cc7afa"
 				},
 				{
 					"columns": [
@@ -1122,7 +1122,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "18d8e5f8-c130-41f4-9b46-ba8e5cbc53cc",
+									"uuid": "e24a4e0d-81d4-4503-9cea-9874c87456ac",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1144,7 +1144,7 @@
 									}
 								}
 							],
-							"uuid": "c7ae963c-54c4-4ecd-9dd1-e18e86c0cec0",
+							"uuid": "922289f6-2d29-4946-a248-71ccbd6efac4",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1187,7 +1187,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "8d7625ca-4fec-40fd-b5f3-3916fb51ae48"
+					"uuid": "0630fc59-456d-484e-93b8-79b62e2c2293"
 				},
 				{
 					"columns": [
@@ -1197,7 +1197,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "49cb89c8-5dff-4d47-bfff-24fe9ab32eac",
+									"uuid": "c4556954-8893-4489-af3f-4cd611b8ef4b",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Intră în magazin</strong></p></div>",
@@ -1239,7 +1239,7 @@
 									}
 								}
 							],
-							"uuid": "5779ecbc-7089-4628-9449-ca15c74422f3",
+							"uuid": "e266f310-d5ad-423b-a968-395ceab4654e",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1282,7 +1282,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "fc1d81d7-e1b1-44ad-b82d-9868d3745273"
+					"uuid": "7eb89cf2-1996-4d67-9068-aab309bf1c6a"
 				},
 				{
 					"columns": [
@@ -1292,7 +1292,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "eb1799ac-4e1b-4b87-bb04-3d590b2a033d",
+									"uuid": "52b214a6-8578-4279-a16c-245501337db3",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1314,7 +1314,7 @@
 									}
 								}
 							],
-							"uuid": "ddf671e0-6e54-488d-be92-2f8df7a0172a",
+							"uuid": "5483bae1-283d-4e4b-9fbb-ed1686de118d",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1357,7 +1357,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "7a35079d-d508-4ab8-b887-3621be931049"
+					"uuid": "6cfff184-16b9-4d3f-82c9-ba84017c5714"
 				},
 				{
 					"columns": [
@@ -1367,7 +1367,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "fb49f9be-9646-4d74-b56c-b5703f243bf8",
+									"uuid": "e80bfca6-0308-468a-b3bc-08e292b78628",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#3b82f6;\" data-mce-style=\"font-size:16px;line-height:22px;color:#3b82f6;\">Oferte pentru abonați</span></strong></p></div>",
@@ -1394,7 +1394,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "35b56e13-73a8-4536-be1a-034110c2d3b9",
+									"uuid": "f041dbe0-79fd-4eb8-94fa-f89f0387b401",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Promoții trimise întâi pe email.</span></p></div>",
@@ -1419,7 +1419,7 @@
 									}
 								}
 							],
-							"uuid": "9e43d46a-ceff-4c2a-a353-f53701682b6e",
+							"uuid": "79c84d32-066e-495b-817e-6886da2353c5",
 							"style": {
 								"background-color": "#ebf2fe",
 								"border-top": "6px solid #ffffff",
@@ -1438,7 +1438,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "96b6e8eb-26bc-43ee-a74b-d6367b28ecfa",
+									"uuid": "035ea50e-2a12-4db5-a07c-d1c485437a67",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#3b82f6;\" data-mce-style=\"font-size:16px;line-height:22px;color:#3b82f6;\">Noutăți în avans</span></strong></p></div>",
@@ -1465,7 +1465,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "5a744161-a552-4bfc-9927-44e380915901",
+									"uuid": "60e29953-f11c-4d07-90ed-f6fe0fcf21ad",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Afli primul de produsele noi.</span></p></div>",
@@ -1490,7 +1490,7 @@
 									}
 								}
 							],
-							"uuid": "448f1df8-6ef7-4243-ad68-e7753455d8f8",
+							"uuid": "fd37cfeb-d039-4d76-9f40-fc5052ffbb0e",
 							"style": {
 								"background-color": "#ebf2fe",
 								"border-top": "6px solid #ffffff",
@@ -1509,7 +1509,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "77363208-fc86-4aff-bde4-2144d273ec5d",
+									"uuid": "cef24940-252a-4027-a157-4983e741a5b8",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#3b82f6;\" data-mce-style=\"font-size:16px;line-height:22px;color:#3b82f6;\">Idei și inspirație</span></strong></p></div>",
@@ -1536,7 +1536,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "695f6b68-1190-4e9a-b35d-fd2ff26541e1",
+									"uuid": "cff7b855-ef1d-438f-9e78-f2d72e07512c",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Recomandări alese pentru tine.</span></p></div>",
@@ -1561,7 +1561,7 @@
 									}
 								}
 							],
-							"uuid": "10945796-1fb0-4e97-b65c-730fe7375697",
+							"uuid": "8db21fc0-6a80-4bc6-896f-bacc22137751",
 							"style": {
 								"background-color": "#ebf2fe",
 								"border-top": "6px solid #ffffff",
@@ -1604,7 +1604,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "e176a1ab-8eca-4a04-b398-5b95a705151a"
+					"uuid": "c15a1258-c500-4753-87fe-53b180b9b90f"
 				},
 				{
 					"columns": [
@@ -1614,7 +1614,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "e09691e9-a7fb-40bd-a53e-af10069480a2",
+									"uuid": "e15f676b-3182-40e1-9cb9-dec7647b2913",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1636,7 +1636,7 @@
 									}
 								}
 							],
-							"uuid": "da3aeb72-01bc-4107-817c-7c8e8c327f6a",
+							"uuid": "6d194cc5-d724-4d02-8631-59745187292f",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1679,7 +1679,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "0a541071-f875-441e-99b2-918c78d5207c"
+					"uuid": "dbca4ef0-2ae3-4e10-88d4-949cc922e9f2"
 				},
 				{
 					"columns": [
@@ -1689,7 +1689,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "bfd3a36e-ba37-499c-8bae-3225ce6a0154",
+									"uuid": "0088c2f7-52b9-404a-86a9-7e9a1ca6bc4e",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1713,12 +1713,12 @@
 								{
 									"type": "mailup-bee-newsletter-modules-social",
 									"locked": false,
-									"uuid": "77df528a-f798-42e5-a32c-78442c9467dc",
+									"uuid": "78cd3464-72a9-42c1-8a15-14de8246b43f",
 									"descriptor": {
 										"iconsList": {
 											"icons": [
 												{
-													"id": "6eacbd3e-bee6-4d80-a019-a17792aff8d0",
+													"id": "7d1be583-404d-4051-9966-396af00c8497",
 													"type": "follow",
 													"name": "facebook",
 													"text": "",
@@ -1732,7 +1732,7 @@
 													}
 												},
 												{
-													"id": "c0d78eed-5ee2-4eb0-ae21-64a4875af386",
+													"id": "8be945a9-2291-4405-9a7b-6c1da034b2ac",
 													"type": "follow",
 													"name": "instagram",
 													"text": "",
@@ -1746,7 +1746,7 @@
 													}
 												},
 												{
-													"id": "3c70d060-10c9-4f07-88fa-2d64b91e3efa",
+													"id": "09905300-08b1-4f02-b4e4-0ce527316472",
 													"type": "follow",
 													"name": "youtube",
 													"text": "",
@@ -1760,7 +1760,7 @@
 													}
 												},
 												{
-													"id": "eb8f60b1-d827-4cf7-9419-cfd9fc500c15",
+													"id": "b74a8291-7d2c-404d-be4e-12dc7b24afc8",
 													"type": "follow",
 													"name": "twitter",
 													"text": "",
@@ -1794,7 +1794,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "1ebaebc8-6db9-41f6-9d59-1f4bcd070dca",
+									"uuid": "c1df46be-0baf-4e28-962e-6a601b7556a2",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Emag. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://www.emag.ro/help/conditii-generale-privind-furnizarea-serviciilor-postale/?ref=footer_3_4\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://www.emag.ro/help/prelucrarea-datelor-cu-caracter-personal?ref=footer_4_3\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://www.emag.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">emag.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
@@ -1819,7 +1819,7 @@
 									}
 								}
 							],
-							"uuid": "0f26101e-689a-4f27-99db-0f74a13756d1",
+							"uuid": "ba81e826-5622-47b0-a1db-c50933f1de38",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1862,7 +1862,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "dbee4feb-1b2b-490a-8372-422328a3c5d7"
+					"uuid": "c2bfaae3-b376-4567-8fc4-65308d31480e"
 				}
 			],
 			"template": {

@@ -1,6 +1,6 @@
 # Emag (emag.ro)
 
-Generat: 2026-11-27 13:57 UTC  ·  Platformă: necunoscut
+Generat: 2026-11-27 13:59 UTC  ·  Platformă: necunoscut
 
 ## Ce am găsit
 
