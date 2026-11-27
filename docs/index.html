@@ -227,6 +227,8 @@
     .seg .lg { display:none; } .seg .sm { display:inline; }
     h2 { flex-wrap:wrap; } .search { flex:1; width:auto; min-width:0; }
     .selbar { width:100%; margin-left:0; flex-wrap:wrap; }
+    .selbar:not(.has) { display:none !important; }
+    .selbar button { padding:9px 6px; }
     .selbar #selCount { width:100%; }
     .selbar button { flex:1 1 0; min-width:0; padding:8px 6px; font-size:12px; white-space:normal; line-height:1.2; }
     header .wrap { gap:8px; } #who { display:none; } header .right .lbl { display:none; } header .right button { padding:8px 10px; }
@@ -847,6 +849,7 @@ function syncSel(list) {
   $("selCount").textContent = n ? `${n} din ${MAX_SEL} selectate:` : `selectează max. ${MAX_SEL}`;
   $("dlSel").disabled = $("rsSel").disabled = $("clrSel").disabled = $("delSel").disabled = !n;
   $("selbar").style.display = CLIENTS.length ? "" : "none";
+  $("selbar").classList.toggle("has", n > 0);  // on phones the bar shows only once something is ticked
 }
 $("clrSel").onclick = () => { SEL.clear(); render(); };
 $("delSel").onclick = () => askDelete(CLIENTS.filter((c) => SEL.has(c.slug)).map((c) => c.slug));
