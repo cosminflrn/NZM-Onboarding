@@ -1,11 +1,11 @@
 # Înoată cu Andrei (inoatacuandrei.ro)
 
-Generat: 2026-11-27 09:51 UTC  ·  Platformă: wordpress
+Generat: 2026-11-27 10:09 UTC  ·  Platformă: wordpress
 
 ## Ce am găsit
 
-- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/inoatacuandrei-ro/assets/logo-337e7208.png
-- **Banner:** — (doar blocul colorat)
+- **Logo:** https://cosminflrn.github.io/NZM-Onboarding/clients/inoatacuandrei-ro/assets/logo-0fa17a3f.png
+- **Banner:** https://inoatacuandrei.ro/wp-content/uploads/2026/09/Inotul-pentru-copii-si-drumul-spre-performanta-Bucuresti-FM-1-inoatacuandrei-768x576.jpeg
 - **Culori:** accent `#0077b6` · închis `#0a1628` · deschis `#e6f1f8`
 - **Telefon:** +40739652479
 - **Email:** contact@inoatacuandrei.ro
@@ -20,7 +20,7 @@ Generat: 2026-11-27 09:51 UTC  ·  Platformă: wordpress
 
 ## De verificat
 
-- Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.
+- nimic special
 
 ## Fișiere
 

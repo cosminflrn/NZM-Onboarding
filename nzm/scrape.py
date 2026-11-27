@@ -663,6 +663,8 @@ class Scraper:
         if og and og.get("content"):
             cands.append(absolute(base, og["content"]))
         main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
+        if main is not soup.body and not main.find("img") and len(main.get_text(" ", strip=True)) < 300:
+            main = soup.body or soup  # an empty <main> (content built around it): look at the whole page
         for el in main.find_all(True):
             if el.name in ("header", "footer", "nav") or in_tag(el, ["header", "footer", "nav"], depth=6):
                 continue
@@ -681,7 +683,11 @@ class Scraper:
             if not u or u in seen or not re.search(r"\.(jpe?g|png|webp|avif)(\?|$)", u, re.I):
                 continue
             seen.add(u)
-            if BAD_IMG_WORDS.search(u) or re.search(r"logo|favicon|icon|avatar|-\d{2,3}x\d{2,3}\.", u, re.I):
+            if BAD_IMG_WORDS.search(u) or re.search(r"logo|favicon|icon|avatar", u, re.I):
+                continue
+            # WordPress-style sized copies ("-768x512.jpg"): big ones are fine, small thumbnails are skipped
+            size = re.search(r"-(\d{2,4})x(\d{2,4})\.[a-z]+(\?|$)", u, re.I)
+            if size and int(size.group(1)) < 500:
                 continue
             out.append(u)
         return out

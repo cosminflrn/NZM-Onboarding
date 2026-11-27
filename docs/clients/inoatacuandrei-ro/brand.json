@@ -26,26 +26,29 @@
       {
         "label": "ANTRENORII DE INOT",
         "url": "https://inoatacuandrei.ro/antrenorii-de-inot/",
-        "image_from": "home",
-        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2."
+        "image_from": "page",
+        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2.",
+        "image": "https://inoatacuandrei.ro/wp-content/uploads/2026/09/andrei.jpg"
       },
       {
         "label": "TARIFE",
         "url": "https://inoatacuandrei.ro/tarife/",
-        "image_from": "home",
-        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2."
+        "image_from": "page",
+        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2.",
+        "image": "https://inoatacuandrei.ro/wp-content/uploads/2026/04/Bazin-Alexandreea.webp"
       },
       {
         "label": "ARTICOLE",
         "url": "https://inoatacuandrei.ro/articole/",
-        "image_from": "home",
-        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2."
+        "image_from": "page",
+        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2.",
+        "image": "https://inoatacuandrei.ro/wp-content/uploads/2026/08/De-ce-sa-inoti-la-Bazinul-Lia-Manoliu-Unde-se-antreneaza-David-Popovici-1-Inoatacuadnrei-768x576.jpeg"
       }
     ],
     "cart_found": false
   },
   "logo": {
-    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/inoatacuandrei-ro/assets/logo-337e7208.png",
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/inoatacuandrei-ro/assets/logo-0fa17a3f.png",
     "source_url": "https://inoatacuandrei.ro/wp-content/uploads/2026/03/cropped-cropped-Inoata-cu-Andrei-sigla-2024.png",
     "width": 509,
     "height": 509,
@@ -54,7 +57,12 @@
     "recolored": false,
     "light_parts": false
   },
-  "banner": null,
+  "banner": {
+    "url": "https://inoatacuandrei.ro/wp-content/uploads/2026/09/Inotul-pentru-copii-si-drumul-spre-performanta-Bucuresti-FM-1-inoatacuandrei-768x576.jpeg",
+    "source_url": "https://inoatacuandrei.ro/wp-content/uploads/2026/09/Inotul-pentru-copii-si-drumul-spre-performanta-Bucuresti-FM-1-inoatacuandrei-768x576.jpeg",
+    "width": 768,
+    "height": 576
+  },
   "colors": {
     "accent": "#0077b6",
     "accent_original": "#0077b6",
@@ -75,7 +83,7 @@
       "#003c6c",
       "#000000",
       "#24546c",
-      "#ccc054",
+      "#c0b454",
       "#a8a860"
     ]
   },
@@ -86,6 +94,7 @@
     "sender_name": "Înoată cu Andrei",
     "form_type": "embed",
     "site_type": "non-ecommerce",
+    "brand_source": "nzm",
     "lang": "ro"
   },
   "shop_signals": {
@@ -94,14 +103,12 @@
   },
   "site_type": "non-ecommerce",
   "lang_detected": "ro",
-  "warnings": [
-    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
-  ],
+  "warnings": [],
   "fetch_log": [
     "404 https://inoatacuandrei.ro/wp-json/wc/store/v1/products?per_page=40",
     "404 https://inoatacuandrei.ro/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-27 09:51 UTC",
+  "generated_at": "2026-11-27 10:09 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Înoată cu Andrei!",
