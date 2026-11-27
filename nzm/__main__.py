@@ -128,27 +128,11 @@ def cmd_scrape(a):
         page = BF.stand_in_page(url, bf, hints)
         probe = Scraper(url, tmp, "", fetcher=Fetcher(bundle={url: {"type": "text/html", "text": page}}), hints=hints)
         brand = probe.run()
-        # what an earlier generation found on the site (menu, products, contact) is kept rather than lost
-        old_path = os.path.join(CLIENTS, brand["slug"], "brand.json")
-        kept = []
-        if os.path.exists(old_path):
-            with open(old_path, encoding="utf-8") as f:
-                old = json.load(f)
-            if (old.get("links") or {}).get("menu") and len(brand["links"].get("menu") or []) <= 1:
-                brand["links"]["menu"] = old["links"]["menu"]; kept.append("meniul")
-            if old.get("products") and not brand.get("products"):
-                brand["products"] = old["products"]; brand["site_type"] = old.get("site_type", brand.get("site_type")); kept.append("produsele")
-            for k in ("phone", "phone_href", "email"):
-                if (old.get("contact") or {}).get(k) and not brand["contact"].get(k):
-                    brand["contact"][k] = old["contact"][k]; "contactul" in kept or kept.append("contactul")
-            for net, u in (old.get("socials") or {}).items():
-                brand["socials"].setdefault(net, u)
+        # nothing is borrowed from an earlier generation (it may come from the other method): only this one's data
         brand["warnings"] = [w for w in brand["warnings"] if not w.startswith("Brand preluat din brand fetch")]
-        gone = {"meniul": "Meniu:", "contactul": ("Telefon:", "Email:")}
-        for k in kept:
-            brand["warnings"] = [w for w in brand["warnings"] if not w.startswith(gone.get(k, "\0"))]
-        brand["warnings"].append("Site-ul nu a putut fi citit direct de pe serverele GitHub: brandul vine din brand fetch NewsMAN"
-                                 + (f"; {', '.join(kept)} din generarea anterioară." if kept else "; meniul și produsele lipsesc."))
+        brand["warnings"].append("Site-ul nu permite citirea de pe serverele GitHub: am folosit doar brandul din brand fetch "
+                                 "NewsMAN (fără meniu și produse). Pentru varianta completă: apasă bookmark-ul NZM Onboarding "
+                                 "pe site, cu metoda NewsMAN aleasă.")
     slug = brand["slug"]
     out_dir = os.path.join(CLIENTS, slug)
     if os.path.isdir(out_dir):

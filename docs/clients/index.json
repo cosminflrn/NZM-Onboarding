@@ -1,5 +1,34 @@
 [
  {
+  "slug": "cabanova-com",
+  "name": "Cabanova",
+  "domain": "cabanova.com",
+  "url": "https://www.cabanova.com/p/ro/",
+  "generated_at": "2026-11-27 13:41 UTC",
+  "logo": "https://www.cabanova.com/p/en/files/im1h-eosu127f00k-hglb.jpg",
+  "colors": {
+   "accent": "#449ac5",
+   "dark": "#0e2d49",
+   "light": "#eef8fd"
+  },
+  "warnings": [
+   "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Social media: nu am găsit niciun profil."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "brand_source": "brandfetch",
+  "files": [
+   "cabanova-com-automatizare-bun-venit.json",
+   "cabanova-com-formular-pop-up.json",
+   "cabanova-com-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
@@ -24,35 +53,6 @@
    "alunis-ro-automatizare-bun-venit.json",
    "alunis-ro-formular-pop-up.json",
    "alunis-ro-newsletter-noutati.json"
-  ]
- },
- {
-  "slug": "cabanova-com",
-  "name": "Cabanova",
-  "domain": "cabanova.com",
-  "url": "https://www.cabanova.com",
-  "generated_at": "2026-11-27 13:36 UTC",
-  "logo": "https://www.cabanova.com/p/en/files/im1h-eosu127f00k-hglb.jpg",
-  "colors": {
-   "accent": "#449ac5",
-   "dark": "#0e2d49",
-   "light": "#eef8fd"
-  },
-  "warnings": [
-   "Telefon: nu am găsit niciun număr pe site.",
-   "Email: nu am găsit nicio adresă de contact pe site.",
-   "Social media: nu am găsit niciun profil.",
-   "Site-ul nu a putut fi citit direct de pe serverele GitHub: brandul vine din brand fetch NewsMAN; meniul din generarea anterioară."
-  ],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "lang": "ro",
-  "brand_source": "brandfetch",
-  "files": [
-   "cabanova-com-automatizare-bun-venit.json",
-   "cabanova-com-formular-pop-up.json",
-   "cabanova-com-newsletter-noutati.json"
   ]
  },
  {

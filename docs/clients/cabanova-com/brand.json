@@ -1,10 +1,10 @@
 {
-  "url": "https://www.cabanova.com",
+  "url": "https://www.cabanova.com/p/ro/",
   "domain": "cabanova.com",
   "slug": "cabanova-com",
   "platform": "necunoscut",
   "name": "Cabanova",
-  "description": null,
+  "description": "Creează rapid și ușor un site gratuit folosind interfața simplă",
   "contact": {
     "phone": null,
     "phone_href": null,
@@ -12,26 +12,26 @@
   },
   "socials": {},
   "links": {
-    "home": "https://www.cabanova.com",
+    "home": "https://www.cabanova.com/p/ro/",
     "cart": "https://www.cabanova.com/",
     "terms": "https://www.cabanova.com/p/en/terms-of-service.html",
     "privacy": "https://www.cabanova.com/p/en/privacy-policy.html",
     "contact": "https://www.cabanova.com/p/en/contact-us.html",
-    "promo": null,
+    "promo": "https://www.cabanova.com/p/ro/profita-acum-de-super-reducerea-de-50.html",
     "menu": [
       {
         "label": "PREȚURI",
         "url": "https://www.cabanova.com/p/ro/preturi.html",
         "image_from": "home",
-        "image": "https://www.cabanova.com/p/ro/files/im1i-32fvyp7qr8jj-g3yzo.jpg",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-4fo1wj86l13t-7e65b.jpg",
         "img_w": 1920,
-        "img_h": 720
+        "img_h": 660
       },
       {
         "label": "DOMENII",
         "url": "https://www.cabanova.com/p/ro/domenii.html",
         "image_from": "home",
-        "image": "https://www.cabanova.com/p/ro/files/im1i-wgpiflduv4u-p7epu.jpg",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-32fvyp7qr8jj-g3yzo.jpg",
         "img_w": 1920,
         "img_h": 720
       },
@@ -39,7 +39,7 @@
         "label": "ACTIVARE SSL",
         "url": "https://www.cabanova.com/p/ro/activare-ssl-21122021.html",
         "image_from": "home",
-        "image": "https://www.cabanova.com/p/ro/files/im1i-1ebeuxtyxtlq-mklur.jpg",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-wgpiflduv4u-p7epu.jpg",
         "img_w": 1920,
         "img_h": 720
       }
@@ -70,7 +70,12 @@
     "light": "#eef8fd",
     "muted": "#6e8192",
     "candidates": [
-      "#3c6ca8"
+      "#2b6aad",
+      "#5cafeb",
+      "#375066",
+      "#a5bfd2",
+      "#ad6e2b",
+      "#f26b41"
     ],
     "logo_colors": [
       "#3c6ca8"
@@ -86,19 +91,22 @@
     "brand_source": "brandfetch"
   },
   "shop_signals": {
-    "prices": 0,
+    "prices": 2,
     "add_to_cart": 0
   },
   "site_type": "non-ecommerce",
   "lang_detected": "ro",
   "warnings": [
+    "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
     "Telefon: nu am găsit niciun număr pe site.",
     "Email: nu am găsit nicio adresă de contact pe site.",
-    "Social media: nu am găsit niciun profil.",
-    "Site-ul nu a putut fi citit direct de pe serverele GitHub: brandul vine din brand fetch NewsMAN; meniul din generarea anterioară."
+    "Social media: nu am găsit niciun profil."
   ],
-  "fetch_log": [],
-  "generated_at": "2026-11-27 13:36 UTC",
+  "fetch_log": [
+    "404 https://www.cabanova.com/sitemap.xml",
+    "404 https://www.cabanova.com/sitemap_index.xml"
+  ],
+  "generated_at": "2026-11-27 13:41 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cabanova!",
