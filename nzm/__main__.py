@@ -109,7 +109,7 @@ def cmd_scrape(a):
         from . import brandfetch as BF
         bf = BF.load(a.brandfetch)
         hints = BF.hints(bf)
-        print(f"brand din Brandfetch NewsMAN: {hints.get('name')} · logo {len(hints['logos'])} · accent {hints.get('accent')}")
+        print(f"brand din brand fetch NewsMAN: {hints.get('name')} · logo {len(hints['logos'])} · accent {hints.get('accent')}")
     probe = Scraper(a.url, tmp, "", fetcher=fetcher, hints=hints)
     try:
         brand = probe.run()
@@ -211,7 +211,7 @@ def main(argv=None):
     s.add_argument("--lang", default="", choices=["", "auto", "ro", "en"], help="limba emailurilor și a formularului")
     s.add_argument("--github-output", action="store_true")
     s.add_argument("--bundle", default="", help="pagini salvate din browser (JSON {items:{url:{type,text|b64}}})")
-    s.add_argument("--brandfetch", default="", help="rezultat Brandfetch NewsMAN (inbox/bf-<job>.json)")
+    s.add_argument("--brandfetch", default="", help="rezultat brand fetch NewsMAN (inbox/bf-<job>.json)")
     s.set_defaults(fn=cmd_scrape)
     r = sub.add_parser("regen")
     r.add_argument("brand")

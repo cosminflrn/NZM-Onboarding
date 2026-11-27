@@ -28,7 +28,9 @@
         "label": "PREȚURI PRIETENOASE",
         "url": "https://carturesti.ro/offer/raftul-cu-preturi-super-prietenoase-5470",
         "image_from": "home",
-        "image": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/scr-01.jpg"
+        "image": "https://web-assets.dc5.ro/v2026.11.34/frontend/061bae9cec9775fc6556ab641a1bdea2/img/scr-01.jpg",
+        "img_w": 800,
+        "img_h": 800
       },
       {
         "label": "MANGA",
@@ -140,7 +142,7 @@
   "fetch_log": [
     "403 https://carturesti.ro/Cărturești - Librărie Online - Carte Ceai Muzică Film_files/angular-material.min.css"
   ],
-  "generated_at": "2026-11-27 10:49 UTC",
+  "generated_at": "2026-11-27 10:58 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Cărturești!",

@@ -454,7 +454,7 @@ def neutral_images(brand):
     for item in (b.get("links") or {}).get("menu") or []:
         if isinstance(item.get("image"), str) and item["image"].startswith("http") and WESERV not in item["image"]:
             # portraits keep their top (heads), other pictures their most interesting part
-            w, h = _dims(item["image"])
+            w, h = (item.get("img_w"), item.get("img_h")) if item.get("img_w") else _dims(item["image"])
             focus = "top" if w and h and h >= w else "attention"
             item["image"] = _weserv(item["image"], f"&w=600&h=400&fit=cover&a={focus}&output=jpg&q=85")
     ban = b.get("banner") or {}

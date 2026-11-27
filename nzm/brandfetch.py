@@ -13,7 +13,7 @@ def load(path):
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
     if data.get("status") not in (None, "completed", "done", "ok", "success"):
-        raise RuntimeError(f"Brandfetch NewsMAN nu a putut citi site-ul ({data.get('status')}: "
+        raise RuntimeError(f"brand fetch NewsMAN nu a putut citi site-ul ({data.get('status')}: "
                            f"{data.get('error') or data.get('message') or 'fără detalii'})")
     return data
 

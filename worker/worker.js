@@ -8,8 +8,8 @@
 //   ALLOWED_ORIGIN (Text)    https://cosminflrn.github.io   (opțional; implicit oricine)
 //   APP_USER       (Text)    utilizatorul cerut în pagină
 //   APP_PASSWORD   (Secret)  parola cerută în pagină
-//   BRAND_API_TOKEN      (Secret)  token-ul „normal” de la Brandfetch NewsMAN (opțional: fără el, varianta Brandfetch e oprită)
-//   BRAND_WEBHOOK_SECRET (Secret)  secretul cu care Brandfetch NewsMAN semnează webhook-ul
+//   BRAND_API_TOKEN      (Secret)  token-ul „normal” de la brand fetch NewsMAN (opțional: fără el, varianta Brandfetch e oprită)
+//   BRAND_WEBHOOK_SECRET (Secret)  secretul cu care brand fetch NewsMAN semnează webhook-ul
 //   BRAND_API_URL        (Text)    implicit https://brandfetch.newsman.eu/api/brand
 //   BRAND_INSTANCE       (Text)    implicit cosmin
 
@@ -122,7 +122,7 @@ const usable = (d) => d && !d.error && d.found !== false && !["pending", "proces
   && (d.branding || d.data);
 
 async function brandStart(req, env, cors) {
-  if (!env.BRAND_API_TOKEN || !env.BRAND_WEBHOOK_SECRET) return json({ message: "Brandfetch NewsMAN nu e configurat în Cloudflare" }, 503, cors);
+  if (!env.BRAND_API_TOKEN || !env.BRAND_WEBHOOK_SECRET) return json({ message: "brand fetch NewsMAN nu e configurat în Cloudflare" }, 503, cors);
   let inp = {};
   try { inp = await req.json(); } catch {}
   const host = siteHost(inp.url || "");
@@ -152,7 +152,7 @@ async function brandStart(req, env, cors) {
   let d = {};
   try { d = await r.json(); } catch {}
   const job = String(d.job_id || d.id || "");
-  if (!r.ok || !/^[A-Za-z0-9_-]{4,64}$/.test(job)) return json({ message: `Brandfetch NewsMAN a refuzat cererea (${r.status})` }, 502, cors);
+  if (!r.ok || !/^[A-Za-z0-9_-]{4,64}$/.test(job)) return json({ message: `brand fetch NewsMAN a refuzat cererea (${r.status})` }, 502, cors);
   return json({ ready: false, path: `inbox/bf-${job.replace(/^job-/, "")}.json`, job }, 200, cors);
 }
 

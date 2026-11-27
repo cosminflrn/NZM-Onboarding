@@ -20,13 +20,13 @@ Intermediarul permite doar: pornirea generării, a recitirii sau a ștergerii un
 
 Verificare: deschide adresa worker-ului în browser. Trebuie să apară `{"ok":true, … "token":true}`.
 
-## Brandfetch NewsMAN (opțional)
+## Brand fetch NewsMAN
 
-Pentru comutatorul „Sursă brand → Brandfetch NewsMAN” adaugă în Worker → Settings → Variables and Secrets:
+Pentru comutatorul „Metodă brand fetch” (NewsMAN / Claude) adaugă în Worker → Settings → Variables and Secrets:
 
 | Nume | Tip | Valoare |
 |---|---|---|
-| `BRAND_API_TOKEN` | Secret | token-ul normal de la Brandfetch NewsMAN |
+| `BRAND_API_TOKEN` | Secret | token-ul normal de la brand fetch NewsMAN |
 | `BRAND_WEBHOOK_SECRET` | Secret | secretul de semnare a webhook-ului |
 | `BRAND_API_URL` | Text (opțional) | implicit `https://brandfetch.newsman.eu/api/brand` |
 | `BRAND_INSTANCE` | Text (opțional) | implicit `cosmin` |

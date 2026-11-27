@@ -28,19 +28,25 @@
         "label": "PROGRAM",
         "url": "https://yesswimming.ro/program/",
         "image_from": "page",
-        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/01d4c43d-6855-42a7-8064-81c21e252869.png"
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/01d4c43d-6855-42a7-8064-81c21e252869.png",
+        "img_w": 2120,
+        "img_h": 742
       },
       {
         "label": "COTIZAȚII",
         "url": "https://yesswimming.ro/cotizatii/",
         "image_from": "home",
-        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/6b11bc4d-babb-413b-98c5-f673724a64ea.png"
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/6b11bc4d-babb-413b-98c5-f673724a64ea.png",
+        "img_w": 1254,
+        "img_h": 1254
       },
       {
         "label": "ANTRENORI",
         "url": "https://yesswimming.ro/antrenori/",
         "image_from": "page",
-        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/Vlad-Anastasescu.png"
+        "image": "https://yesswimming.ro/wp-content/uploads/2026/09/Vlad-Anastasescu.png",
+        "img_w": 1200,
+        "img_h": 1600
       }
     ],
     "cart_found": false
@@ -101,7 +107,7 @@
     "404 https://yesswimming.ro/wp-json/wc/store/v1/products?per_page=40",
     "404 https://yesswimming.ro/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-27 10:49 UTC",
+  "generated_at": "2026-11-27 10:58 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Club Sportiv Yes Swimming!",

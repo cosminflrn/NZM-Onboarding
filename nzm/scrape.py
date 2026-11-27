@@ -325,7 +325,7 @@ class Scraper:
                 brand["banner"] = {"url": h["banner"], "source_url": h["banner"], "width": im.width, "height": im.height}
                 self.banner_src = h["banner"]
                 self.warnings = [w for w in self.warnings if not w.startswith("Banner:")]
-        self.warnings.insert(0, "Brand preluat din Brandfetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.")
+        self.warnings.insert(0, "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.")
 
     # -- platform
     def detect_lang(self):
@@ -731,6 +731,9 @@ class Scraper:
             if pick:
                 used.add(pick)
                 item["image"] = pick
+                im, _ = self.image(pick)   # its size decides how it is cropped later (portraits keep their top)
+                if im is not None:
+                    item["img_w"], item["img_h"] = im.size
 
     # -- banner
     def banner(self, logo):
