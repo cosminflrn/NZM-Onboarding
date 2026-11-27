@@ -66,6 +66,56 @@ def clean_description(desc, name):
     return ""
 
 
+# several ways to say the same thing: each client gets its own (always the same one for that client),
+# so two clients' emails never read word for word alike
+VARIANTS = {
+    "promise_ecom": [
+        "De acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
+        "Abonații află primii de produsele noi și primesc ofertele înaintea tuturor.",
+        "Vei primi din când în când noutăți, recomandări alese și oferte doar pentru abonați.",
+        "Îți scriem când apar produse noi sau oferte bune, fără să-ți umplem inboxul.",
+    ],
+    "promise": [
+        "De acum ești primul care află noutățile {n}. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+        "Vei afla primul ce e nou la {n}, plus sfaturi și informații utile, fără mesaje inutile.",
+        "Îți vom scrie din când în când cu noutăți de la {n} și lucruri care chiar merită citite.",
+        "De acum primești noutățile {n} direct pe email, doar atunci când avem ceva bun de spus.",
+    ],
+    "hero_subtitle": [
+        "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
+        "Mulțumim pentru încredere. Ne bucurăm că ești aici.",
+        "Ne bucurăm că ți-ai făcut loc pentru noi în inbox.",
+    ],
+    "form_subtitle_ecom": [
+        "Fii primul care află noutățile și ofertele {n}.",
+        "Află primul de produsele noi și de ofertele {n}.",
+        "Primește ofertele {n} înaintea tuturor.",
+    ],
+    "form_subtitle": [
+        "Fii primul care află noutățile {n}.",
+        "Primește noutățile {n} direct pe email.",
+        "Află primul ce e nou la {n}.",
+    ],
+    "newsletter_subtitle": [
+        "Iată ce am pregătit pentru tine în perioada aceasta.",
+        "Câteva noutăți pe care am vrut să le afli primul.",
+        "Pe scurt, tot ce e nou la noi în ultima vreme.",
+    ],
+    "news_subtitle": [
+        "Am adunat câteva lucruri pe care merită să le vezi.",
+        "Câteva locuri bune de unde să începi.",
+        "Iată ce te așteaptă la noi.",
+    ],
+}
+
+
+def variant(brand, key, **kw):
+    import hashlib
+    options = VARIANTS[key]
+    i = int(hashlib.md5(f"{brand.get('slug') or brand.get('domain')}:{key}".encode()).hexdigest(), 16) % len(options)
+    return options[i].format(**kw)
+
+
 def default_texts(brand, ecom):
     n = brand["name"]
     menu = [m for m in (brand.get("links") or {}).get("menu") or [] if m.get("label")]
@@ -75,28 +125,28 @@ def default_texts(brand, ecom):
         about = f"La {n} găsești {_join(cats)}." if cats else ""
         intro = "\n\n".join(x for x in [
             desc or about,
-            "De acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
+            variant(brand, "promise_ecom"),
         ] if x)
     else:
         intro = "\n\n".join(x for x in [
             desc,
-            f"De acum ești primul care află noutățile {n}. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+            variant(brand, "promise", n=n),
         ] if x)
     return {
         "hero_eyebrow": "Bine ai venit",
         "hero_title": f"Bine ai venit în comunitatea {n}!",
-        "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
+        "hero_subtitle": variant(brand, "hero_subtitle"),
         "intro": intro,
         "cta_label": "Intră în magazin" if ecom else "Vizitează site-ul",
         "products_title": "Am ales câteva produse pentru tine",
         "cards_title": "Ce găsești la noi",
         "discount_note": "Aplică-l la finalizarea comenzii.",
         "form_title": "Abonează-te la newsletter",
-        "form_subtitle": f"Fii primul care află noutățile și ofertele {n}." if ecom else f"Fii primul care află noutățile {n}.",
+        "form_subtitle": variant(brand, "form_subtitle_ecom" if ecom else "form_subtitle", n=n),
         "news_title": f"Descoperă {n}",
-        "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
+        "news_subtitle": variant(brand, "news_subtitle"),
         "newsletter_title": f"Noutăți de la {n}",
-        "newsletter_subtitle": "Iată ce am pregătit pentru tine în perioada aceasta.",
+        "newsletter_subtitle": variant(brand, "newsletter_subtitle"),
     }
 
 
