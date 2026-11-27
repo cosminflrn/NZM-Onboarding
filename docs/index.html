@@ -886,9 +886,14 @@ async function preview(slug, openTab) {
     show(current);
   });
   placePill(tabs.querySelector(".dev"));
+  let shownNarrow = null;
+  // the window can change size while the preview is open (DevTools phone mode on/off): follow it
+  window.onresize = () => { if ($("pv").open && matchMedia("(max-width: 700px)").matches !== shownNarrow) show(current); };
   const show = (i) => {
     current = i;
-    const mobile = tabs.querySelector(".dev button.on").dataset.v === "mobile" || matchMedia("(max-width: 700px)").matches;
+    const narrow = matchMedia("(max-width: 700px)").matches;
+    const mobile = tabs.querySelector(".dev button.on").dataset.v === "mobile" || narrow;
+    shownNarrow = narrow;
     tabs.querySelectorAll(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.i === i));
     const on = tabs.querySelector(".tab.on"), sc = tabs.querySelector(".tabscroll");
     if (on && sc && (on.offsetLeft < sc.scrollLeft || on.offsetLeft + on.offsetWidth > sc.scrollLeft + sc.clientWidth))
