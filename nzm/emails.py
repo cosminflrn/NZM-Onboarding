@@ -232,7 +232,7 @@ def article_block(k, item):
     ban = (k.b.get("banner") or {}).get("url")
     pic = item.get("image") if item.get("image") and item.get("image_from", "page") == "page" else None
     pic = pic or (item.get("image") if item.get("image") and item["image"] != ban else None) or STOCK_ARTICLE
-    text = item.get("desc") or f"Află tot ce trebuie să știi despre {label.lower()} – pe scurt, direct pe site-ul nostru."
+    text = D.section_desc(k.b, item) or f"Află tot ce trebuie să știi despre {label.lower()} – pe scurt, direct pe site-ul nostru."
     return D.row([[
         D.m_image(pic, 1200, 700, D.WIDTH, href=item["url"], alt=label, padding=D.pad(28, 0, 16, 0), radius=D.RADIUS,
                   full=True),

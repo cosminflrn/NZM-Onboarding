@@ -221,6 +221,22 @@ def page(rows, link_color, title=""):
 
 # ====================================================================== building blocks
 
+
+def section_desc(brand, item):
+    """A section's own description, or None when it is just the site's general one repeated
+    (many sites put the same meta description on every page)."""
+    d = (item.get("desc") or "").strip()
+    if not d:
+        return None
+    norm = lambda x: re.sub(r"\W+", " ", (x or "").lower()).strip()
+    menu = (brand.get("links") or {}).get("menu") or []
+    if sum(1 for m in menu if norm(m.get("desc")) == norm(d)) > 1:
+        return None
+    site = norm(brand.get("description"))
+    if site and (norm(d) in site or site in norm(d)):
+        return None
+    return d
+
 class Kit:
     """Brand-aware blocks shared by all emails."""
 
@@ -382,7 +398,7 @@ class Kit:
         cols = []
         for it in items:
             mods = [m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(0, 14, 6, 14))]
-            if it.get("desc"):
+            if section_desc(self.b, it):
                 mods.append(m_text(wrap([para(esc(it["desc"]), 14, MUTED, lh=1.5)]), padding=pad(0, 14, 6, 14), color=MUTED))
             mods.append(m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
                                  padding=pad(4, 14, 0, 14)))
