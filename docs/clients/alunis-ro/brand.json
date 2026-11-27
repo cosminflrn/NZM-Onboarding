@@ -4,7 +4,7 @@
   "slug": "alunis-ro",
   "platform": "wordpress",
   "name": "Aluniș",
-  "description": "",
+  "description": "Ascuns între păduri, sate cu tradiții vii și unele dintre cele mai spectaculoase peisaje ale Ținutului Buzăului, Aluniș este mai mult decât un loc de cazare. Este un spațiu creat pentru cei care își doresc să încetinească, să respire și să redescopere bucuria lucrurilor simple.",
   "contact": {
     "phone": "+40 736 732 588",
     "phone_href": "tel:+40736732588",
@@ -12,7 +12,7 @@
   },
   "socials": {
     "facebook": "https://www.facebook.com/AlunisRetreat",
-    "instagram": "https://www.instagram.com/alunis_retreat"
+    "instagram": "https://www.instagram.com/alunis_retreat/?hl=en"
   },
   "links": {
     "home": "https://alunis.ro/",
@@ -49,7 +49,7 @@
     "width": 388,
     "height": 112,
     "display_width": 200,
-    "found_by": "img",
+    "found_by": "brandfetch",
     "recolored": true,
     "light_parts": false
   },
@@ -60,11 +60,11 @@
     "height": 919
   },
   "colors": {
-    "accent": "#9e7e52",
-    "accent_original": "#9e7e52",
+    "accent": "#9d8668",
+    "accent_original": "#caad86",
     "accent_text": "#ffffff",
     "dark": "#221b11",
-    "light": "#f5f2ee",
+    "light": "#faf7f3",
     "muted": "#7a7670",
     "candidates": [
       "#9e7e52",
@@ -85,11 +85,17 @@
     "sender_name": "Aluniș",
     "form_type": "popup",
     "site_type": "auto",
+    "brand_source": "brandfetch",
     "lang": "auto"
+  },
+  "shop_signals": {
+    "prices": 0,
+    "add_to_cart": 0
   },
   "site_type": "non-ecommerce",
   "lang_detected": "ro",
   "warnings": [
+    "Brand preluat din Brandfetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
     "Logo: logo-ul de pe site e alb; l-am colorat închis ca să se vadă pe fundal alb — verifică."
   ],
   "fetch_log": [
@@ -97,12 +103,12 @@
     "404 https://alunis.ro/sitemap.xml",
     "404 https://alunis.ro/sitemap_index.xml"
   ],
-  "generated_at": "2026-11-27 10:20 UTC",
+  "generated_at": "2026-11-27 10:37 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea Aluniș!",
     "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
-    "intro": "De acum ești primul care află noutățile Aluniș. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+    "intro": "Ascuns între păduri, sate cu tradiții vii și unele dintre cele mai spectaculoase peisaje ale Ținutului Buzăului, Aluniș este mai mult decât un loc de cazare.\n\nDe acum ești primul care află noutățile Aluniș. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
     "cta_label": "Vizitează site-ul",
     "products_title": "Am ales câteva produse pentru tine",
     "cards_title": "Ce găsești la noi",
