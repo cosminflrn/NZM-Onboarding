@@ -129,7 +129,18 @@
   .pager:empty { display:none; }
   .pager button { min-width:36px; padding:7px 11px; }
   .pager button.on { background:var(--ink, #111); color:#fff; border-color:var(--ink, #111); }
-  @media (max-width: 700px) { .histtools .sortl { margin-left:0; } }
+  @media (max-width: 700px) {
+    /* phones: a tidy 2 x 2 grid, label above each menu, menus full width */
+    .histtools { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:2px 0 14px; }
+    .histtools label { flex-direction:column; align-items:stretch; gap:5px; font-size:12px; font-weight:600; letter-spacing:.02em; }
+    .histtools .sortl { margin-left:0; }
+    .histtools .dd, .histtools .dd-btn { width:100%; }
+    .histtools .dd-btn { justify-content:space-between; padding:10px 12px; font-size:14px; border-radius:10px; }
+    .histtools .dd-menu { min-width:100%; }
+    .histtools .dd-menu button { padding:11px 12px; font-size:14px; }
+    .histtools .dd.right .dd-menu { left:auto; right:0; }
+    .histtools #fReset { grid-column:1 / -1; justify-self:start; padding:2px 0; }
+  }
   .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
   .selbar #selCount { color:var(--muted); margin-right:4px; white-space:nowrap; }
   input.pick:disabled { opacity:.35; cursor:not-allowed; }
@@ -744,7 +755,7 @@ function render() {
   const shown = list.slice((PAGE - 1) * PER_PAGE, PAGE * PER_PAGE);
   const filtered = list.length !== CLIENTS.length;
   $("histCount").textContent = filtered ? `${list.length} din ${CLIENTS.length}` : String(CLIENTS.length);
-  $("fReset").hidden = !(FILTERS_ON() || q);
+  $("fReset").hidden = !(FILTERS_ON() || q || $("fSort").value !== "new");
   $("pager").innerHTML = pages < 2 ? "" :
     `<button ${PAGE === 1 ? "disabled" : ""} onclick="goPage(${PAGE - 1})" aria-label="Pagina anterioară">‹</button>` +
     Array.from({ length: pages }, (_, i) => `<button class="${i + 1 === PAGE ? "on" : ""}" onclick="goPage(${i + 1})">${i + 1}</button>`).join("") +
@@ -842,6 +853,7 @@ document.querySelectorAll(".histtools select").forEach(ddMake);
 $("year").textContent = new Date().getFullYear();
 $("fReset").onclick = () => {
   FILTER_IDS.forEach((id) => { $(id).value = ""; try { localStorage.removeItem("nzm-" + id); } catch {} });
+  $("fSort").value = "new"; try { localStorage.removeItem("nzm-fSort"); } catch {}
   $("filter").value = ""; $("searchBox").classList.remove("has"); PAGE = 1; render();
 };
 function toggleSel(slug, on) { if (on && SEL.size >= MAX_SEL) return render(); on ? SEL.add(slug) : SEL.delete(slug); render(); }
