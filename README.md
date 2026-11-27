@@ -10,6 +10,6 @@
 2. **Verifică:** **Previzualizare** pe desktop și mobil. **Editează** pentru texte, imagini sau culori, fără să mai citească site-ul.
 3. **Importă:** **Descarcă** cele 3 fișiere și le imporți în NewsMAN (Formulare, Automatizări, Newslettere).
 
-**Site blocat?** Butonul **NZM Onboarding** din bookmark bar preia site-ul din browserul tău și generarea pornește singură.
+**Site blocat?** Butonul **NZM Onboarding** din bookmark bar preia site-ul din browserul tău; alegi setările și apeși Generează.
 
 <sub>Rulează pe GitHub Pages (`docs/`), GitHub Actions (`nzm/`) și Cloudflare (`worker/`). Template-urile de bază sunt în `templates/`.</sub>

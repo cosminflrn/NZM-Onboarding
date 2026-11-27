@@ -189,6 +189,39 @@ def fmt_price(price, currency=None, domain=""):
     return f"{sym}{intl}" if sym else f"{intl} {cur}".strip()
 
 
+LEAD_SKIP_RE = re.compile(r"cookie|gdpr|termeni|confiden|copyright|©|abon|newsletter|javascript|browser|"
+                          r"toate drepturile|all rights|privacy|log ?in|autentific|co[șs]ul|cart|\bpre[tț]\b.*lei", re.I)
+
+
+def page_lead(soup):
+    """The first real sentence(s) a section page says about itself (its intro, not menus, cookies or footers)."""
+    main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
+    if not main.find("p") or len(main.get_text(" ", strip=True)) < 200:
+        main = soup.body or soup
+    for p in main.find_all("p"):
+        if in_tag(p, ["header", "nav", "footer", "aside", "form"]):
+            continue
+        t = re.sub(r"\s+", " ", p.get_text(" ")).strip()
+        if len(t) < 50 or LEAD_SKIP_RE.search(t) or t.count("|") > 1:
+            continue
+        sents = []
+        for x in re.findall(r"[^.!?]+[.!?]", t) or [t]:
+            # "dvs.", "etc.", "nr." end a word, not the sentence
+            if sents and re.search(r"\b(dvs|dv|etc|nr|str|ex|ș\.a|sf|dl|dna|art|pag|vs|e\.g|i\.e)\.$", sents[-1], re.I):
+                sents[-1] += x
+            else:
+                sents.append(x)
+        out = ""
+        for x in sents:
+            if len(out) + len(x) > 170:
+                break
+            out += x
+        out = out.strip()
+        if 40 <= len(out) <= 170:
+            return out
+    return None
+
+
 def amount(text):
     """'4.999,99 Lei' / '1,299.99' / '43.00' -> 4999.99 / 1299.99 / 43.0 (None if no number)."""
     t = re.sub(r"[^\d.,]", "", text or "")
@@ -759,6 +792,9 @@ class Scraper:
                 sent = re.match(r"(.{20,150}?[.!?])(\s|$)", d)
                 if sent:
                     item["desc"] = sent.group(1)
+                lead = page_lead(soup)
+                if lead:
+                    item["lead"] = lead
             if not pick:
                 # pictures loaded by JavaScript are invisible to us: borrow one from the homepage
                 if pool is None:

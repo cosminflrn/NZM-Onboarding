@@ -253,13 +253,33 @@ CARD_NOTES = [
     (r"eveniment|event", "Evenimentele care urmează.", "Upcoming events."),
     (r"cazare|camer|rooms|accommodation", "Camerele și facilitățile noastre.", "Our rooms and facilities."),
     (r"meniu|menu|preparate|bucat", "Preparatele noastre, pe alese.", "Our dishes, for every taste."),
+    (r"\bssl\b|securit|https|certificat", "Conexiune sigură pentru site-ul tău.", "A secure connection for your site."),
+    (r"domen|domain", "Adresa site-ului tău, pe numele tău.", "Your site's address, in your name."),
     (r"drume[tț]|atrac[tț]|activit|atelier|experien", "Ce poți face și ce poți descoperi.", "Things to do and discover."),
 ]
 
 
+def section_lead(brand, item):
+    """The first sentence(s) of the section's own page, unless every section repeats the same text."""
+    lead = (item.get("lead") or "").strip()
+    if not lead:
+        return None
+    from .i18n import lang_of
+    english = re.search(r"\b(the|and|your|you|with|our|if|then|must)\b", lead, re.I) and not re.search("[ăâîșțşţ]", lead, re.I)
+    if bool(english) != (lang_of(brand) == "en"):
+        return None   # a section page in another language than the emails
+    menu = (brand.get("links") or {}).get("menu") or []
+    if sum(1 for m in menu if (m.get("lead") or "").strip() == lead) > 1:
+        return None
+    site = re.sub(r"\W+", " ", (brand.get("description") or "").lower()).strip()
+    if site and re.sub(r"\W+", " ", lead.lower()).strip() in site:
+        return None
+    return lead
+
+
 def card_text(brand, item):
     """The section's own description, or a few fitting words chosen by its name."""
-    own = section_desc(brand, item)
+    own = section_desc(brand, item) or section_lead(brand, item)
     if own:
         return own
     from .i18n import lang_of
@@ -452,7 +472,12 @@ class Kit:
     @staticmethod
     def _label(it):
         lab = re.sub(r"^[\s→›»>\-–•·|]+|[\s→›»>\-–•·|]+$", "", it["label"])
-        return lab[:1].upper() + lab[1:].lower() if lab.isupper() else lab
+        if not lab.isupper():
+            return lab
+        acr = {"SSL", "SEO", "RCA", "FAQ", "GPS", "TV", "PC", "AI", "SMS", "PDF", "VIP", "IT", "UE", "B2B", "B2C", "ITP", "SPA", "DIY"}
+        words = [w if w in acr else w.lower() for w in lab.split(" ")]
+        out = " ".join(words)
+        return out[:1].upper() + out[1:]
 
     def cards(self, items, title):
         """Non-ecommerce: up to 3 sections/pages of the site as cards (with their picture when found)."""

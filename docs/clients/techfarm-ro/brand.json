@@ -24,15 +24,18 @@
     "menu": [
       {
         "label": "UTILAJE AGRICOLE",
-        "url": "https://www.techfarm.ro/utilaje-agricole"
+        "url": "https://www.techfarm.ro/utilaje-agricole",
+        "lead": "Parteneriatul cu Techfarm Agro înseamnă acces la soluții tehnologice care reduc costurile de operare și maximizează randamentul la hectar."
       },
       {
         "label": "BALOTIERE",
-        "url": "https://www.techfarm.ro/balotiere"
+        "url": "https://www.techfarm.ro/balotiere",
+        "lead": "Balotierele noastre folosesc sisteme avansate de alimentare și presare, garantând o densitate ridicată a baloților."
       },
       {
         "label": "PROMOŢII",
-        "url": "https://www.techfarm.ro/promo"
+        "url": "https://www.techfarm.ro/promo",
+        "lead": "Eficiența în agricultură începe cu alegerea utilajului potrivit. La Techfarm Agro , transformăm performanța în accesibilitate."
       }
     ],
     "cart_found": true
@@ -136,7 +139,7 @@
     "429 https://www.techfarm.ro/utilaje-agricole",
     "429 https://www.techfarm.ro/utilaje-agricole"
   ],
-  "generated_at": "2026-11-27 13:36 UTC",
+  "generated_at": "2026-11-27 14:21 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
     "hero_title": "Bine ai venit în comunitatea techfarm.ro!",

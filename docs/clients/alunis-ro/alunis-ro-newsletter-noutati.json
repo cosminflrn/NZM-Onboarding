@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795786570,
+	"exported_at": 1795789286,
 	"data": {
 		"page": {
 			"body": {
@@ -34,7 +34,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "1414a7b1-9101-404a-903c-9dc918db59c8",
+									"uuid": "f8d4d7b7-0e37-436b-a98d-5dec90cc7e15",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -56,7 +56,7 @@
 									}
 								}
 							],
-							"uuid": "a91f4d47-4841-467c-80de-32f0f5fee967",
+							"uuid": "e931953a-9c18-48c1-9e6f-ead2db1b3566",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -99,7 +99,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "e310f799-152d-42e2-8f94-db7fb86f6ccb"
+					"uuid": "48a160d7-a23e-4793-be04-7af828fa8516"
 				},
 				{
 					"columns": [
@@ -109,7 +109,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "be2cb9dc-b713-42d1-a01b-ce92054c6a8c",
+									"uuid": "762d0345-6ac9-453c-b797-2ba420577aa3",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -133,7 +133,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "09b22155-1c7d-491d-bcca-ac154beac8ff",
+									"uuid": "a36af91e-cace-4792-971d-88db4a2004d2",
 									"descriptor": {
 										"image": {
 											"alt": "Aluniș",
@@ -162,7 +162,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "2862f662-8d46-4e82-84c2-7dc198fd9a18",
+									"uuid": "1d8f6cba-6f65-45b6-b972-f0dc9807144a",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -184,7 +184,7 @@
 									}
 								}
 							],
-							"uuid": "ae4d743a-58bf-4421-b838-3d9845f271cd",
+							"uuid": "75a336b7-f34e-4937-b87d-6c2697964643",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -227,7 +227,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "353c05fb-bbc8-4683-b5fc-cf3df2bf343d"
+					"uuid": "8361cabd-fac1-4246-ab81-12324766b2f6"
 				},
 				{
 					"columns": [
@@ -237,7 +237,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "eba0611a-03ec-4d8c-8633-783fdca02806",
+									"uuid": "8666ce0c-e234-4ab8-abc7-dc220b2620db",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -261,7 +261,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3d1fc541-a1b3-4a04-9a7c-b60f7c97b5c6",
+									"uuid": "6e1e4dbd-ee8e-463b-8aa2-abfbf0f914ff",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">NEWSLETTER</span></strong></p></div>",
@@ -288,7 +288,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "ad5bf232-5425-4340-8f37-0cd747a0c6c6",
+									"uuid": "fa0f7e70-86ad-4742-b7de-438bbb66b159",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Noutăți de la Aluniș</span></strong></p></div>",
@@ -315,7 +315,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3dbadb7f-4d80-41f6-a9c4-b0bcec234de6",
+									"uuid": "ea7f6f97-2559-4f3c-939f-b0285a6ad72b",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Iată ce am pregătit pentru tine în perioada aceasta.</span></p></div>",
@@ -342,7 +342,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "8cf5a704-1b95-4fee-b1ed-d14648958db5",
+									"uuid": "f2d0a742-1c04-44be-9704-d7be67b90e50",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -364,7 +364,7 @@
 									}
 								}
 							],
-							"uuid": "b03d9ec9-0a42-45e5-a1e8-e6a6b93a7fec",
+							"uuid": "fdfbaa54-927a-4a21-979c-eaee0fdcb144",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -407,7 +407,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "38feb061-6808-4f5a-bdea-af7700dee8d8"
+					"uuid": "601c1b39-c9a5-4648-9a71-9813ddbd491b"
 				},
 				{
 					"columns": [
@@ -417,7 +417,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "b5be7500-1874-4efa-a174-1795fed60958",
+									"uuid": "d08b02ce-2abe-4d33-a52c-5876c1c337a0",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Ascuns între păduri, sate cu tradiții vii și unele dintre cele mai spectaculoase peisaje ale Ținutului Buzăului, Aluniș este mai mult decât un loc de cazare.</span></p></div>",
@@ -442,7 +442,7 @@
 									}
 								}
 							],
-							"uuid": "af328d88-f456-49bd-814f-941b7a53029d",
+							"uuid": "04f04718-d7d7-417a-94f3-19755bd3bfbb",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -485,7 +485,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "7f89521f-5fc5-434e-b6ce-970496f80e4f"
+					"uuid": "9b54d1a1-9cf7-4e68-b493-75c0f870807d"
 				},
 				{
 					"columns": [
@@ -495,7 +495,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "adc93a26-c554-4378-8ad5-09bb789c174d",
+									"uuid": "805de2b3-f2e9-4b88-b874-4bb04ef463e5",
 									"descriptor": {
 										"image": {
 											"alt": "Ateliere și activități",
@@ -524,7 +524,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "b7b20704-907f-4059-8901-13a1321cd12c",
+									"uuid": "777c2176-9073-4c39-b92b-5692bb60ddb0",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Ateliere și activități</span></strong></p></div>",
@@ -551,10 +551,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "5b60b6ee-86c4-41e6-9e1b-08907418f901",
+									"uuid": "131aae6d-2d4a-420f-8884-32755a7308f7",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:16px;line-height:26px;color:#52525b;\" data-mce-style=\"font-size:16px;line-height:26px;color:#52525b;\">Află tot ce trebuie să știi despre ateliere și activități – pe scurt, direct pe site-ul nostru.</span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:16px;line-height:26px;color:#52525b;\" data-mce-style=\"font-size:16px;line-height:26px;color:#52525b;\">Adaugă experiențe inedite sejurului tău în natură.</span></p></div>",
 											"style": {
 												"color": "#52525b",
 												"font-family": "inherit",
@@ -578,7 +578,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "793c1eca-c505-4f7a-846d-83143dfbdb7d",
+									"uuid": "f521b08a-bc48-4cf2-b14f-39e0c69e4517",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă ateliere și activități →</strong></p></div>",
@@ -620,7 +620,7 @@
 									}
 								}
 							],
-							"uuid": "60916da2-a18e-4d48-9492-f48641291056",
+							"uuid": "5178a6f1-adc7-4a4a-8cb6-de2df25f0392",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -663,7 +663,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "8f85cf94-0dfc-4fd4-bff2-073658accf0b"
+					"uuid": "d9fa5b5f-79cc-4891-9ba6-191a48dc3eb7"
 				},
 				{
 					"columns": [
@@ -673,7 +673,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "f3adaa55-5f5a-4f80-9ba4-f684d926f515",
+									"uuid": "70620473-f7dd-44a4-9a30-c9dd3cc3fa90",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Mai găsești la noi</span></strong></p></div>",
@@ -698,7 +698,7 @@
 									}
 								}
 							],
-							"uuid": "fa37083f-ac8c-460d-a314-e8e7f2748b2d",
+							"uuid": "fff9cfcc-df61-405c-8f26-fe76514aca1b",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -741,7 +741,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "ceb885e0-5a9b-42b4-be3f-6a52267d5cb6"
+					"uuid": "c662d6e3-69b5-414b-84c2-c3dc7761e74e"
 				},
 				{
 					"columns": [
@@ -751,7 +751,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "5e88d5b9-824c-47e3-9ca0-7f1660cab1ec",
+									"uuid": "3f71a96e-470f-4d89-8077-a4d804bade8c",
 									"descriptor": {
 										"image": {
 											"alt": "Drumeții & atracții",
@@ -780,7 +780,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "548c1ee8-aa67-4e3c-988f-8fa13c745112",
+									"uuid": "839da792-d06f-4413-9610-5834a17c1163",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Drumeții &amp; atracții</span></strong></p></div>",
@@ -807,10 +807,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "59592e84-7bc0-4415-af57-f05db87d1006",
+									"uuid": "37ddc84c-2850-4d65-bd44-f4ba9a4743fa",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Ce poți face și ce poți descoperi.</span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Drumețiile au loc în weekend specificul acestora depinzând de sezon, condiții meteo sau cererea participanților.</span></p></div>",
 											"style": {
 												"color": "#52525b",
 												"font-family": "inherit",
@@ -834,7 +834,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "6aad08a6-6ed4-445c-a6cd-994ca36004ef",
+									"uuid": "99a65ed8-e973-4820-bd27-2ef5ca119291",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
@@ -876,7 +876,7 @@
 									}
 								}
 							],
-							"uuid": "e4660ee0-b2fd-4566-aa48-1a8fcf868211",
+							"uuid": "a08b4f54-b364-4b61-9872-b8e430ad1093",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -895,7 +895,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "a1872ee1-3c45-471c-b6da-c00548ac37cf",
+									"uuid": "4bcd0150-be89-464b-bda2-d53c0449c314",
 									"descriptor": {
 										"image": {
 											"alt": "Echipa",
@@ -924,7 +924,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "913d0bf6-b6f8-4ef9-9a57-15444d8a92b0",
+									"uuid": "ba0cb42b-1f40-46a4-987c-35c2a1815993",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:23px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:17px;line-height:23px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:23px;color:#18181b;\">Echipa</span></strong></p></div>",
@@ -951,10 +951,10 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "019ea923-8a62-4e39-a8cc-b4497204f5ed",
+									"uuid": "743f6799-5184-40b6-b1c7-3a6cc57a16eb",
 									"descriptor": {
 										"text": {
-											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Oamenii din spatele a tot ce facem.</span></p></div>",
+											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">În spatele fiecărei inițiative frumoase stă o echipă dedicată, pasionată și unită de aceleași valori.</span></p></div>",
 											"style": {
 												"color": "#52525b",
 												"font-family": "inherit",
@@ -978,7 +978,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "c3fd8846-783d-4595-8a61-b043ca740402",
+									"uuid": "614eac10-a23f-419c-9060-e214039cf834",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Descoperă →</strong></p></div>",
@@ -1020,7 +1020,7 @@
 									}
 								}
 							],
-							"uuid": "f5aee828-7864-4815-b0ca-0d6941c93ba8",
+							"uuid": "4280bf4a-30f1-40a2-a882-df15ab391600",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1063,7 +1063,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "two-columns-empty",
-					"uuid": "fd1d5c57-1b13-4509-a210-fcf65815bfb5"
+					"uuid": "01d099d4-8093-4e5c-9399-4cf8e197a3f0"
 				},
 				{
 					"columns": [
@@ -1073,7 +1073,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "be1d040c-9fe5-4a42-9e5b-f23ad5a86b3f",
+									"uuid": "d50fea4c-611c-4b4b-ae57-94ac26bab50e",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1095,7 +1095,7 @@
 									}
 								}
 							],
-							"uuid": "bd0486fe-a44e-41aa-bdf1-c2e2a807a98c",
+							"uuid": "ca38e4b1-60f7-4c57-89d9-f3de92f5d0d2",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1138,7 +1138,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "ec00d999-c75b-440c-a76b-70903d8fd216"
+					"uuid": "9fb31966-41e4-4df0-8ee3-2b327361681b"
 				},
 				{
 					"columns": [
@@ -1148,7 +1148,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "1952ae71-73a7-439d-8c0c-3ee160677136",
+									"uuid": "9fb4fdee-c83b-4829-a11f-c0fbcbcfd467",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vizitează site-ul</strong></p></div>",
@@ -1190,7 +1190,7 @@
 									}
 								}
 							],
-							"uuid": "b8f65234-db9e-4c2c-8b94-41c6ada8e615",
+							"uuid": "ff409f9f-b811-457e-bf48-6d75c0990e6f",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1233,7 +1233,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "dd873776-f4ca-4fae-850b-8f2d221f16bc"
+					"uuid": "bb6f576a-aa91-4889-b9fb-8ef84a186fa6"
 				},
 				{
 					"columns": [
@@ -1243,7 +1243,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "fd4dafd0-6b17-42ee-a962-3e6698ebf4d4",
+									"uuid": "2e9e06ac-2487-4f8f-9a2f-0112a89e7ae9",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:22px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:22px;color:#52525b;\" data-mce-style=\"font-size:15px;line-height:22px;color:#52525b;\">Ai întrebări? Suntem aici pentru tine.</span></p><p style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:24px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:24px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:24px;color:#18181b;\"><a href=\"tel:+40736732588\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">+40 736 732 588</a> &nbsp;·&nbsp; <a href=\"mailto:rezervari@alunis.ro\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:underline;font-weight:600;\">rezervari@alunis.ro</a></span></p></div>",
@@ -1268,7 +1268,7 @@
 									}
 								}
 							],
-							"uuid": "8f66d372-6d76-4e0b-a6e5-5c3d5e0f9507",
+							"uuid": "638cf77e-9121-479e-aea6-c9c869dc8393",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1311,7 +1311,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "fd2b9c47-3864-4594-955a-5c5fe8ab541e"
+					"uuid": "e1884c7e-38a4-4d28-89ad-be2c225044cd"
 				},
 				{
 					"columns": [
@@ -1321,7 +1321,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "0a6672b0-2c64-435d-b12f-633fc89d5aad",
+									"uuid": "10f68cb9-f5af-4d31-896d-ffe14f0c8240",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1345,12 +1345,12 @@
 								{
 									"type": "mailup-bee-newsletter-modules-social",
 									"locked": false,
-									"uuid": "0c0fc658-535f-4bfd-b0a8-5f52d4331bcd",
+									"uuid": "ddceca50-0e22-48f0-895d-b873889a84fe",
 									"descriptor": {
 										"iconsList": {
 											"icons": [
 												{
-													"id": "6049c6fa-e1d8-45a1-9548-656280ab6472",
+													"id": "f8edb347-b727-4795-8df2-52e232bf1adf",
 													"type": "follow",
 													"name": "facebook",
 													"text": "",
@@ -1364,7 +1364,7 @@
 													}
 												},
 												{
-													"id": "54d9c052-0d8e-4d09-b700-ca684dce7a2e",
+													"id": "4eae8d36-6d06-4983-a144-060aede0c864",
 													"type": "follow",
 													"name": "instagram",
 													"text": "",
@@ -1398,7 +1398,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "8a50e8dd-4bf6-4f13-b15e-412e574343c7",
+									"uuid": "454b642d-aab7-4012-8e7a-d544125d4245",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Aluniș. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://alunis.ro/termeni-conditii/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://alunis.ro/politica-gdpr-regulament/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://alunis.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">alunis.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
@@ -1423,7 +1423,7 @@
 									}
 								}
 							],
-							"uuid": "b4706ab9-f20c-4de8-9543-7b2d93a16511",
+							"uuid": "ff437999-2e09-465e-a689-e0c9a4682402",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1466,7 +1466,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "d85727e0-b7a8-4000-880a-7781ee17e5bc"
+					"uuid": "e855a4e8-61a2-40a9-ac13-31b3c414e984"
 				}
 			],
 			"template": {
