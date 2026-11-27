@@ -237,6 +237,39 @@ def section_desc(brand, item):
         return None
     return d
 
+
+# a few words under a section card when the site gives none of its own (by what the section is about)
+CARD_NOTES = [
+    (r"tarif|pre[tț]|price|pricing|abonament|cotiza|tax[eă]|fees|plat[aă]", "Prețuri clare și pachete pentru fiecare nevoie.", "Clear prices and packages for every need."),
+    (r"articol|blog|nout|news|[sș]tiri|jurnal", "Sfaturi, povești și noutăți de la noi.", "Tips, stories and news from us."),
+    (r"antrenor|instructor|echip|team|despre|about|cine suntem|poveste", "Oamenii din spatele a tot ce facem.", "The people behind everything we do."),
+    (r"ofert|promo|reduc|deal|sale|discount", "Ofertele și reducerile momentului.", "Current offers and discounts."),
+    (r"rezerv|book|programar", "Rezervă-ți locul în câteva clicuri.", "Book your spot in a few clicks."),
+    (r"orar|program|schedule|calendar", "Programul și orele disponibile.", "Our schedule and available times."),
+    (r"servic|curs|clas|lec[tț]i|services|classes|courses", "Tot ce îți oferim, pe scurt.", "Everything we offer, at a glance."),
+    (r"galer|foto|gallery|portofoliu|portfolio|proiect", "Imagini din activitatea noastră.", "A look at our work."),
+    (r"contact|loca[tț]|adres|unde|find us", "Unde ne găsești și cum ne poți scrie.", "Where to find us and how to reach us."),
+    (r"faq|[îi]ntreb[aă]ri|questions", "Răspunsuri la întrebările frecvente.", "Answers to common questions."),
+    (r"eveniment|event", "Evenimentele care urmează.", "Upcoming events."),
+    (r"cazare|camer|rooms|accommodation", "Camerele și facilitățile noastre.", "Our rooms and facilities."),
+    (r"meniu|menu|preparate|bucat", "Preparatele noastre, pe alese.", "Our dishes, for every taste."),
+    (r"drume[tț]|atrac[tț]|activit|atelier|experien", "Ce poți face și ce poți descoperi.", "Things to do and discover."),
+]
+
+
+def card_text(brand, item):
+    """The section's own description, or a few fitting words chosen by its name."""
+    own = section_desc(brand, item)
+    if own:
+        return own
+    from .i18n import lang_of
+    en = lang_of(brand) == "en"
+    label = (item.get("label") or "").lower()
+    for pat, ro, eng in CARD_NOTES:
+        if re.search(pat, label):
+            return eng if en else ro
+    return "See the details on our site." if en else "Descoperă detaliile pe site."
+
 class Kit:
     """Brand-aware blocks shared by all emails."""
 
@@ -398,8 +431,9 @@ class Kit:
         cols = []
         for it in items:
             mods = [m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(0, 14, 6, 14))]
-            if section_desc(self.b, it):
-                mods.append(m_text(wrap([para(esc(it["desc"]), 14, MUTED, lh=1.5)]), padding=pad(0, 14, 6, 14), color=MUTED))
+            note = card_text(self.b, it)
+            if note:
+                mods.append(m_text(wrap([para(esc(note), 14, MUTED, lh=1.5)]), padding=pad(0, 14, 6, 14), color=MUTED))
             mods.append(m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
                                  padding=pad(4, 14, 0, 14)))
             cols.append(mods)
@@ -435,6 +469,7 @@ class Kit:
                                     padding=pad(0, 0, 12, 0), radius=RADIUS, full=True))
             mods += [
                 m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
+                m_text(wrap([para(esc(card_text(self.b, it)), 14, MUTED, lh=1.5)]), padding=pad(0, 12, 6, 12), color=MUTED),
                 m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
                          padding=pad(0, 12, 16, 12)),
             ]
@@ -466,6 +501,8 @@ class Kit:
                     cm.append(m_image(it["image"], 600, 400, WIDTH, href=it["url"], alt=self._label(it),
                                       padding=pad(0, 0, 12, 0), radius=RADIUS, full=True))
                 cm += [m_text(wrap([para(esc(self._label(it)), 17, INK, weight="bold", lh=1.35)]), padding=pad(4, 12, 4, 12)),
+                       m_text(wrap([para(esc(card_text(self.b, it)), 14, MUTED, lh=1.5)]), padding=pad(0, 12, 6, 12),
+                              color=MUTED),
                        m_button("Descoperă →", it["url"], "transparent", self.accent, size=14, px=0, py=4, radius="0px",
                                 padding=pad(0, 12, 16, 12))]
                 cols.append(cm)

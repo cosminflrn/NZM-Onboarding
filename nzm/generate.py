@@ -453,7 +453,10 @@ def neutral_images(brand):
             p["image"] = _weserv(src, "&w=600&h=600&fit=contain&cbg=white&bg=white&output=jpg&q=85")
     for item in (b.get("links") or {}).get("menu") or []:
         if isinstance(item.get("image"), str) and item["image"].startswith("http") and WESERV not in item["image"]:
-            item["image"] = _weserv(item["image"], "&w=600&h=400&fit=cover&a=attention&output=jpg&q=85")
+            # portraits keep their top (heads), other pictures their most interesting part
+            w, h = _image_size(item["image"])
+            focus = "top" if w and h and h >= w else "attention"
+            item["image"] = _weserv(item["image"], f"&w=600&h=400&fit=cover&a={focus}&output=jpg&q=85")
     ban = b.get("banner") or {}
     bsrc = ban.get("source_url") if str(ban.get("source_url", "")).startswith("http") else ban.get("url")
     if isinstance(bsrc, str) and bsrc.startswith("http") and not ours(bsrc) and WESERV not in str(ban.get("url")):
