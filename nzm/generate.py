@@ -396,6 +396,40 @@ def _weserv(src, params):
     return WESERV + quote(src, safe="") + params
 
 
+PICS = os.environ.get("NZM_PICS", "https://nzm-onboarding.cosmin-54b.workers.dev")
+
+
+def tile_light_logo(brand, out_dir):
+    """A white logo vanishes on white: put it on its brand-colour square (as most such sites do) once,
+    save it with the client's files, and use that picture everywhere."""
+    import io, requests
+    from PIL import Image
+    logo = brand.get("logo") or {}
+    if not logo.get("light_parts") or logo.get("recolored") or logo.get("made"):
+        return brand
+    try:
+        r = requests.get(logo.get("source_url") or logo["url"], timeout=25,
+                         headers={"User-Agent": "Mozilla/5.0 NZM-Onboarding image check"})
+        im = Image.open(io.BytesIO(r.content)).convert("RGBA")
+    except Exception:
+        return brand
+    cols = brand.get("colors") or {}
+    hexc = (logo.get("header_bg") or cols.get("accent") or cols.get("dark") or "#222222").lstrip("#")
+    rgb = tuple(int(hexc[i:i + 2], 16) for i in (0, 2, 4))
+    im.thumbnail((520, 520))
+    padn = max(im.width, im.height) // 8
+    tile = Image.new("RGBA", (im.width + 2 * padn, im.height + 2 * padn), rgb + (255,))
+    tile.alpha_composite(im, (padn, padn))
+    name = "logo-tile.png"
+    os.makedirs(os.path.join(out_dir, "assets"), exist_ok=True)
+    tile.convert("RGB").save(os.path.join(out_dir, "assets", name), optimize=True)
+    w = min(logo.get("display_width") or 110, 120)
+    logo.update(made=name, light_parts=False, width=tile.width, height=tile.height,
+                display_width=w)
+    logo.pop("header_bg", None)
+    return brand
+
+
 def neutral_images(brand):
     """Replace images hosted on our GitHub Pages with an image-CDN URL that points
     to the client's own original file (no trace of this tool in the editor)."""
@@ -406,7 +440,10 @@ def neutral_images(brand):
     # every picture goes through the image CDN: some sites refuse to show their files on other sites (hotlink protection)
     if not (src and src.startswith("http")) and str(logo.get("url", "")).startswith("http") and not ours(logo.get("url")):
         src = logo["url"]
-    if src and src.startswith("http") and WESERV not in str(logo.get("url")):
+    if logo.get("made"):
+        # a picture the generator made itself: served by the NewsMAN Onboarding Cloudflare address
+        logo["url"] = f'{PICS}/img/{b["slug"]}/{logo["made"]}'
+    elif src and src.startswith("http") and WESERV not in str(logo.get("url")):
         recolored = logo["recolored"] if "recolored" in logo else any("colorat închis" in w for w in b.get("warnings") or [])
         logo["url"] = _weserv(src, "&trim=10&w=600&output=png" + ("&filt=negate" if recolored else ""))
     for p in b.get("products") or []:
@@ -476,7 +513,7 @@ def verify_images(b):
     from concurrent.futures import ThreadPoolExecutor
     urls = set()
     logo, ban = b.get("logo") or {}, b.get("banner") or {}
-    for u in [logo.get("url"), ban.get("url")] + [p.get("image") for p in b.get("products") or []] + \
+    for u in [None if logo.get("made") else logo.get("url"), ban.get("url")] + [p.get("image") for p in b.get("products") or []] + \
              [m.get("image") for m in (b.get("links") or {}).get("menu") or []]:
         if isinstance(u, str) and u.startswith("http"):
             urls.add(u)
@@ -530,7 +567,7 @@ def verify_images(b):
 def generate(brand, out_dir, templates=None):
     from . import emails
     templates = templates or load_templates()
-    brand = verify_images(neutral_images(brand))
+    brand = verify_images(neutral_images(tile_light_logo(brand, out_dir)))
     os.makedirs(out_dir, exist_ok=True)
     slug = brand["slug"]
     kind = emails.form_type(brand)

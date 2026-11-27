@@ -20,6 +20,17 @@ export default {
     if (req.method === "OPTIONS") return new Response(null, { headers: cors });
 
     const url = new URL(req.url);
+    // public pictures made by the generator (e.g. a white logo set on its brand colour), served from the site's files
+    const pic = url.pathname.match(/^\/img\/([a-z0-9-]+)\/([a-z0-9-]+\.(png|jpg))$/);
+    if (pic && req.method === "GET") {
+      const owner = String(env.REPO || "").split("/")[0].toLowerCase();
+      const name = String(env.REPO || "").split("/")[1] || "";
+      const r = await fetch(`https://${owner}.github.io/${name}/clients/${pic[1]}/assets/${pic[2]}`, { cf: { cacheTtl: 86400 } });
+      if (!r.ok) return new Response("not found", { status: 404 });
+      return new Response(r.body, { headers: {
+        "Content-Type": pic[3] === "png" ? "image/png" : "image/jpeg",
+        "Cache-Control": "public, max-age=86400", "Access-Control-Allow-Origin": "*" } });
+    }
     const authed = await checkAuth(req, env);
     if (url.pathname === "/login") {
       return new Response(JSON.stringify({ ok: authed }), {
