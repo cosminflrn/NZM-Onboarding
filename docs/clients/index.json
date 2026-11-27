@@ -1,44 +1,10 @@
 [
  {
-  "slug": "cabanova-com",
-  "name": "Website sitebuilder",
-  "domain": "cabanova.com",
-  "url": "https://www.cabanova.com/p/ro/acasa.html",
-  "generated_at": "2026-11-27 13:29 UTC",
-  "logo": null,
-  "colors": {
-   "accent": "#449ac5",
-   "dark": "#0e2d49",
-   "light": "#eef8fd"
-  },
-  "warnings": [
-   "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
-   "Meniu: nu am găsit linkuri de meniu; am pus doar HOME.",
-   "Telefon: nu am găsit niciun număr pe site.",
-   "Email: nu am găsit nicio adresă de contact pe site.",
-   "Social media: nu am găsit niciun profil.",
-   "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
-   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.",
-   "Culori: nu am găsit o culoare de brand clară — am folosit o culoare implicită; verifică.",
-   "Site-ul nu a putut fi citit direct: produsele și meniul lipsesc (doar brandul din Brandfetch)."
-  ],
-  "products": 0,
-  "site_type": "non-ecommerce",
-  "form_type": "popup",
-  "lang": "ro",
-  "brand_source": "brandfetch",
-  "files": [
-   "cabanova-com-automatizare-bun-venit.json",
-   "cabanova-com-formular-pop-up.json",
-   "cabanova-com-newsletter-noutati.json"
-  ]
- },
- {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",
   "url": "https://alunis.ro/",
-  "generated_at": "2026-11-27 10:59 UTC",
+  "generated_at": "2026-11-27 13:35 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/alunis-ro/assets/logo-6542fa7c.png",
   "colors": {
    "accent": "#9d8668",
@@ -61,11 +27,40 @@
   ]
  },
  {
+  "slug": "cabanova-com",
+  "name": "Cabanova",
+  "domain": "cabanova.com",
+  "url": "https://www.cabanova.com",
+  "generated_at": "2026-11-27 13:35 UTC",
+  "logo": "https://www.cabanova.com/p/en/files/im1h-eosu127f00k-hglb.jpg",
+  "colors": {
+   "accent": "#449ac5",
+   "dark": "#0e2d49",
+   "light": "#eef8fd"
+  },
+  "warnings": [
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Social media: nu am găsit niciun profil.",
+   "Site-ul nu a putut fi citit direct de pe serverele GitHub: brandul vine din brand fetch NewsMAN; meniul din generarea anterioară."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "brand_source": "brandfetch",
+  "files": [
+   "cabanova-com-automatizare-bun-venit.json",
+   "cabanova-com-formular-pop-up.json",
+   "cabanova-com-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "carturesti-ro",
   "name": "Cărturești",
   "domain": "carturesti.ro",
   "url": "https://carturesti.ro/",
-  "generated_at": "2026-11-27 10:59 UTC",
+  "generated_at": "2026-11-27 13:35 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/carturesti-ro/assets/logo-tile.png",
   "colors": {
    "accent": "#71984a",
@@ -89,7 +84,7 @@
   "name": "Înoată cu Andrei",
   "domain": "inoatacuandrei.ro",
   "url": "https://inoatacuandrei.ro/",
-  "generated_at": "2026-11-27 10:59 UTC",
+  "generated_at": "2026-11-27 13:35 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/inoatacuandrei-ro/assets/logo-0fa17a3f.png",
   "colors": {
    "accent": "#0077b6",
@@ -113,7 +108,7 @@
   "name": "techfarm.ro",
   "domain": "techfarm.ro",
   "url": "https://www.techfarm.ro/",
-  "generated_at": "2026-11-27 10:59 UTC",
+  "generated_at": "2026-11-27 13:35 UTC",
   "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/techfarm-ro/assets/logo-d01c186a.png",
   "colors": {
    "accent": "#a78a25",
@@ -137,7 +132,7 @@
   "name": "Club Sportiv Yes Swimming",
   "domain": "yesswimming.ro",
   "url": "https://yesswimming.ro/",
-  "generated_at": "2026-11-27 10:59 UTC",
+  "generated_at": "2026-11-27 13:35 UTC",
   "logo": "https://yesswimming.ro/wp-content/uploads/2026/09/logo-yes-swimming.png",
   "colors": {
    "accent": "#fc3030",

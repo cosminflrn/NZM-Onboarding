@@ -12,6 +12,7 @@ import os
 import re
 import shutil
 import sys
+from urllib.parse import urlparse
 
 from . import emails as E
 from .i18n import lang_of
@@ -120,10 +121,34 @@ def cmd_scrape(a):
         from .net import Fetcher
         print(f"site-ul nu a putut fi citit ({err}); folosesc doar datele din Brandfetch")
         url = probe.start_url
+        # a page title ("Website sitebuilder") is no brand name: then the domain stands in for it
+        root = re.sub(r"[^a-z0-9]", "", urlparse(url).netloc.lower().removeprefix("www.").split(".")[0])
+        if not hints.get("name") or root not in re.sub(r"[^a-z0-9]", "", hints["name"].lower()):
+            hints["name"] = urlparse(url).netloc.lower().removeprefix("www.").split(".")[0].replace("-", " ").title()
         page = BF.stand_in_page(url, bf, hints)
         probe = Scraper(url, tmp, "", fetcher=Fetcher(bundle={url: {"type": "text/html", "text": page}}), hints=hints)
         brand = probe.run()
-        brand["warnings"].append("Site-ul nu a putut fi citit direct: produsele și meniul lipsesc (doar brandul din Brandfetch).")
+        # what an earlier generation found on the site (menu, products, contact) is kept rather than lost
+        old_path = os.path.join(CLIENTS, brand["slug"], "brand.json")
+        kept = []
+        if os.path.exists(old_path):
+            with open(old_path, encoding="utf-8") as f:
+                old = json.load(f)
+            if (old.get("links") or {}).get("menu") and len(brand["links"].get("menu") or []) <= 1:
+                brand["links"]["menu"] = old["links"]["menu"]; kept.append("meniul")
+            if old.get("products") and not brand.get("products"):
+                brand["products"] = old["products"]; brand["site_type"] = old.get("site_type", brand.get("site_type")); kept.append("produsele")
+            for k in ("phone", "phone_href", "email"):
+                if (old.get("contact") or {}).get(k) and not brand["contact"].get(k):
+                    brand["contact"][k] = old["contact"][k]; "contactul" in kept or kept.append("contactul")
+            for net, u in (old.get("socials") or {}).items():
+                brand["socials"].setdefault(net, u)
+        brand["warnings"] = [w for w in brand["warnings"] if not w.startswith("Brand preluat din brand fetch")]
+        gone = {"meniul": "Meniu:", "contactul": ("Telefon:", "Email:")}
+        for k in kept:
+            brand["warnings"] = [w for w in brand["warnings"] if not w.startswith(gone.get(k, "\0"))]
+        brand["warnings"].append("Site-ul nu a putut fi citit direct de pe serverele GitHub: brandul vine din brand fetch NewsMAN"
+                                 + (f"; {', '.join(kept)} din generarea anterioară." if kept else "; meniul și produsele lipsesc."))
     slug = brand["slug"]
     out_dir = os.path.join(CLIENTS, slug)
     if os.path.isdir(out_dir):

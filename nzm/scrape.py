@@ -232,6 +232,11 @@ class Scraper:
             return I.load(url[len("inline-svg:"):].encode("utf-8"), "image/svg+xml")
         _, data, ctype = self.f.get(url, binary=True)
         im, fmt = I.load(data, ctype)
+        if im is None and url.startswith("http") and "wsrv.nl" not in url:
+            # the site refuses GitHub's servers: the same picture through the public image service
+            from urllib.parse import quote
+            _, data, ctype = self.f.get("https://wsrv.nl/?url=" + quote(url, safe=""), binary=True)
+            im, fmt = I.load(data, ctype)
         return im, fmt
 
     # -- run
@@ -309,7 +314,13 @@ class Scraper:
         if h.get("name") and root and root in re.sub(r"[^a-z0-9]", "", h["name"].lower()):
             brand["name"] = h["name"]
         if h.get("description"):
-            brand["description"] = h["description"]
+            # an English description in a Romanian email reads wrong: only when its language matches the site's
+            d = h["description"]
+            english = re.search(r"\b(the|and|your|with|our|you)\b", d, re.I) and not re.search("[ăâîșțşţ]", d, re.I)
+            if bool(english) == (self.detect_lang() == "en"):
+                brand["description"] = d
+            elif brand.get("description") == d:
+                brand["description"] = None
         if h.get("accent"):
             pal = C.palette(h["accent"], h.get("dark"))
             brand["colors"].update(pal)

@@ -1,10 +1,10 @@
 {
-  "url": "https://www.cabanova.com/p/ro/acasa.html",
+  "url": "https://www.cabanova.com",
   "domain": "cabanova.com",
   "slug": "cabanova-com",
   "platform": "necunoscut",
-  "name": "Website sitebuilder",
-  "description": "Create a free website quickly and easily using our simple drag and drop interface. Choose from over 1000 templates pre-filled with content for individuals, businesses, clubs and organizations. Hosting is included and you can also go pro with custom domains and premium packages.",
+  "name": "Cabanova",
+  "description": null,
   "contact": {
     "phone": null,
     "phone_href": null,
@@ -12,17 +12,56 @@
   },
   "socials": {},
   "links": {
-    "home": "https://www.cabanova.com/p/ro/acasa.html",
+    "home": "https://www.cabanova.com",
     "cart": "https://www.cabanova.com/",
     "terms": "https://www.cabanova.com/p/en/terms-of-service.html",
     "privacy": "https://www.cabanova.com/p/en/privacy-policy.html",
     "contact": "https://www.cabanova.com/p/en/contact-us.html",
     "promo": null,
-    "menu": [],
+    "menu": [
+      {
+        "label": "PREȚURI",
+        "url": "https://www.cabanova.com/p/ro/preturi.html",
+        "image_from": "home",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-32fvyp7qr8jj-g3yzo.jpg",
+        "img_w": 1920,
+        "img_h": 720
+      },
+      {
+        "label": "DOMENII",
+        "url": "https://www.cabanova.com/p/ro/domenii.html",
+        "image_from": "home",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-wgpiflduv4u-p7epu.jpg",
+        "img_w": 1920,
+        "img_h": 720
+      },
+      {
+        "label": "ACTIVARE SSL",
+        "url": "https://www.cabanova.com/p/ro/activare-ssl-21122021.html",
+        "image_from": "home",
+        "image": "https://www.cabanova.com/p/ro/files/im1i-1ebeuxtyxtlq-mklur.jpg",
+        "img_w": 1920,
+        "img_h": 720
+      }
+    ],
     "cart_found": false
   },
-  "logo": null,
-  "banner": null,
+  "logo": {
+    "url": "https://www.cabanova.com/p/en/files/im1h-eosu127f00k-hglb.jpg",
+    "source_url": "https://www.cabanova.com/p/en/files/im1h-eosu127f00k-hglb.jpg",
+    "width": 152,
+    "height": 33,
+    "display_width": 152,
+    "found_by": "brandfetch",
+    "recolored": false,
+    "light_parts": false
+  },
+  "banner": {
+    "url": "https://www.cabanova.com/p/en/files/im1h-5knjamvm8kw7-5j8z5.jpg",
+    "source_url": "https://www.cabanova.com/p/en/files/im1h-5knjamvm8kw7-5j8z5.jpg",
+    "width": 1920,
+    "height": 660
+  },
   "colors": {
     "accent": "#449ac5",
     "accent_original": "#50b6e9",
@@ -30,18 +69,21 @@
     "dark": "#0e2d49",
     "light": "#eef8fd",
     "muted": "#6e8192",
-    "candidates": [],
-    "logo_colors": []
+    "candidates": [
+      "#3c6ca8"
+    ],
+    "logo_colors": [
+      "#3c6ca8"
+    ]
   },
   "products": [],
   "options": {
     "discount_code": "",
     "sender_email": "",
-    "sender_name": "Website sitebuilder",
+    "sender_name": "Cabanova",
     "form_type": "popup",
     "site_type": "auto",
-    "brand_source": "brandfetch",
-    "lang": "auto"
+    "brand_source": "brandfetch"
   },
   "shop_signals": {
     "prices": 0,
@@ -50,34 +92,27 @@
   "site_type": "non-ecommerce",
   "lang_detected": "ro",
   "warnings": [
-    "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
-    "Meniu: nu am găsit linkuri de meniu; am pus doar HOME.",
     "Telefon: nu am găsit niciun număr pe site.",
     "Email: nu am găsit nicio adresă de contact pe site.",
     "Social media: nu am găsit niciun profil.",
-    "Logo: nu am găsit logo-ul — am păstrat placeholderul din template.",
-    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus.",
-    "Culori: nu am găsit o culoare de brand clară — am folosit o culoare implicită; verifică.",
-    "Site-ul nu a putut fi citit direct: produsele și meniul lipsesc (doar brandul din Brandfetch)."
+    "Site-ul nu a putut fi citit direct de pe serverele GitHub: brandul vine din brand fetch NewsMAN; meniul din generarea anterioară."
   ],
-  "fetch_log": [
-    "403 https://www.cabanova.com/p/en/contact-us.html"
-  ],
-  "generated_at": "2026-11-27 13:29 UTC",
+  "fetch_log": [],
+  "generated_at": "2026-11-27 13:35 UTC",
   "texts_default": {
     "hero_eyebrow": "Bine ai venit",
-    "hero_title": "Bine ai venit în comunitatea Website sitebuilder!",
+    "hero_title": "Bine ai venit în comunitatea Cabanova!",
     "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
-    "intro": "Create a free website quickly and easily using our simple drag and drop interface.\n\nDe acum ești primul care află noutățile Website sitebuilder. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+    "intro": "De acum ești primul care află noutățile Cabanova. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
     "cta_label": "Vizitează site-ul",
     "products_title": "Am ales câteva produse pentru tine",
     "cards_title": "Ce găsești la noi",
     "discount_note": "Aplică-l la finalizarea comenzii.",
     "form_title": "Abonează-te la newsletter",
-    "form_subtitle": "Fii primul care află noutățile Website sitebuilder.",
-    "news_title": "Descoperă Website sitebuilder",
+    "form_subtitle": "Fii primul care află noutățile Cabanova.",
+    "news_title": "Descoperă Cabanova",
     "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
-    "newsletter_title": "Noutăți de la Website sitebuilder",
+    "newsletter_title": "Noutăți de la Cabanova",
     "newsletter_subtitle": "Iată ce am pregătit pentru tine în perioada aceasta."
   },
   "texts": {}
