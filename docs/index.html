@@ -721,8 +721,8 @@ function askDownload(slug, view) {
     // from the preview: just this email, the whole part it belongs to, or everything
     const part = fileOf(c, view.kind);
     $("dlgBody").innerHTML =
-      (view.email ? `<button class="dl" data-email="1">${icon("dl")}Doar acest email<small>template</small></button>` : "") +
-      (part ? `<button ${view.email ? "" : 'class="dl"'} data-f="${esc(part)}">${icon("dl")}${PART_LABEL[view.kind]}<small>${PART_NOTE[view.kind]}</small></button>` : "") +
+      (view.one ? `<button class="dl" data-email="1">${icon("dl")}${view.one}<small>template</small></button>` : "") +
+      (part ? `<button ${view.one ? "" : 'class="dl"'} data-f="${esc(part)}">${icon("dl")}${PART_LABEL[view.kind]}<small>${PART_NOTE[view.kind]}</small></button>` : "") +
       `<button data-all="1">${icon("dl")}Tot clientul<small>${one.length} fișiere</small></button>`;
   } else {
     $("dlgBody").innerHTML = `<button class="dl" data-all="1" autofocus>${icon("dl")}Toate cele ${one.length} fișiere</button>` +
@@ -737,7 +737,7 @@ function askDownload(slug, view) {
   if (view) $("dlg").focus();
 }
 
-// one email on its own, as a NewsMAN template (same format as the newsletter file)
+// one email or form page on its own, as a NewsMAN template (what "Export / import template" in NewsMAN reads)
 function downloadEmail(slug, view) {
   const doc = { type: "newsman_template", format: 2, exported_at: Math.floor(Date.now() / 1000), data: view.bee };
   const a = document.createElement("a");
@@ -826,13 +826,13 @@ async function preview(slug, openTab) {
     const embed = c.form_type === "embed";
     const meta = { frame: embed ? "embed" : "popup", width: +(f.pages.form.bf_width || 620),
       close: (f.modal || {}).close_color, bg: (f.modal || {}).background_color };
-    views.push({ kind: "formular", name: embed ? "Formular embed" : "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json), ...meta });
-    if (f.pages.responder) views.push({ kind: "formular", name: "Mulțumire", subj: "după abonare", bee: JSON.parse(f.pages.responder.responder_json), ...meta });
-    if (f.template && f.template.confirm_email_json) views.push({ kind: "formular", email: true, name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) });
+    views.push({ kind: "formular", one: embed ? "Doar formularul embed" : "Doar pop-up-ul", name: embed ? "Formular embed" : "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json), ...meta });
+    if (f.pages.responder) views.push({ kind: "formular", one: "Doar pagina de mulțumire", name: "Mulțumire", subj: "după abonare", bee: JSON.parse(f.pages.responder.responder_json), ...meta });
+    if (f.template && f.template.confirm_email_json) views.push({ kind: "formular", one: "Doar acest email", name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) });
   }
   const autoName = (fileOf(c, "automatizare") || "").includes("cos-abandonat") ? "Coș" : "Bun venit";
   if (auto) Object.values(auto.data.draft_meta.meta).sort((a, b) => a.trigger_id - b.trigger_id)
-    .forEach((d, i) => views.push({ kind: "automatizare", email: true, name: `${autoName} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
+    .forEach((d, i) => views.push({ kind: "automatizare", one: "Doar acest email", name: `${autoName} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
   if (news) views.push({ kind: "newsletter", name: "Newsletter", subj: "draft newsletter", bee: news.data });
   const tabs = $("tabs");
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
