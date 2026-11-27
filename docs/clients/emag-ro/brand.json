@@ -1,0 +1,156 @@
+{
+  "url": "https://www.emag.ro/",
+  "domain": "emag.ro",
+  "slug": "emag-ro",
+  "platform": "necunoscut",
+  "name": "eMAG.ro - Căutarea nu se oprește niciodată",
+  "description": "Ai libertatea sa alegi din milioane de produse IT, electronice si electrocasnice, gadgeturi, jucarii, imbracaminte si incaltaminte la Super Pret sau cu plata in rate. Livrare rapida la easybox, Instant Money Back la retur, garantia produselor.",
+  "contact": {
+    "phone": null,
+    "phone_href": null,
+    "email": null
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/eMAG.ro",
+    "instagram": "https://www.instagram.com/emagromania",
+    "youtube": "https://www.youtube.com/user/wwweMAGro",
+    "twitter": "https://twitter.com/emag"
+  },
+  "links": {
+    "home": "https://www.emag.ro/",
+    "cart": "https://www.emag.ro/cart/products?ref=skip_links",
+    "terms": "https://www.emag.ro/help/conditii-generale-privind-furnizarea-serviciilor-postale/?ref=footer_3_4",
+    "privacy": "https://www.emag.ro/help/prelucrarea-datelor-cu-caracter-personal?ref=footer_4_3",
+    "contact": "https://www.emag.ro/help/contact/?ref=footer_3_2",
+    "promo": null,
+    "menu": [
+      {
+        "label": "GENIUS",
+        "url": "https://www.emag.ro/genius?ref=hdr_genius",
+        "image_from": "home",
+        "image": "https://s13emagst.akamaized.net/layout/ro/images/db//142/212383.jpg",
+        "img_w": 1260,
+        "img_h": 587
+      },
+      {
+        "label": "CADOURI PENTRU TOȚI",
+        "url": "https://www.emag.ro/label-campaign/cadouri-pentru-toti?ref=hdr_cadouri-pentru-toti",
+        "image_from": "home",
+        "image": "https://s13emagst.akamaized.net/layout/ro/images/db//142/212422.jpg",
+        "img_w": 1260,
+        "img_h": 587
+      },
+      {
+        "label": "RCA",
+        "url": "https://www.emag.ro/asigurari-rca?ref=hdr_rca",
+        "image_from": "home",
+        "image": "https://s13emagst.akamaized.net/layout/ro/images/db//142/212428.jpg",
+        "img_w": 1260,
+        "img_h": 587
+      }
+    ],
+    "cart_found": true
+  },
+  "logo": {
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/emag-ro/assets/logo-915df19b.png",
+    "source_url": "https://s13emagst.akamaized.net/layout/ro/images/logo//59/88362.svg",
+    "width": 600,
+    "height": 160,
+    "display_width": 200,
+    "found_by": "brandfetch",
+    "recolored": false,
+    "light_parts": false
+  },
+  "banner": {
+    "url": "https://s13emagst.akamaized.net/layout/ro/static-upload/widget-subscribe-left-side-homepage2.png",
+    "source_url": "https://s13emagst.akamaized.net/layout/ro/static-upload/widget-subscribe-left-side-homepage2.png",
+    "width": 707,
+    "height": 530
+  },
+  "colors": {
+    "accent": "#0082e6",
+    "accent_original": "#0082e6",
+    "accent_text": "#ffffff",
+    "dark": "#090171",
+    "light": "#e6f2fc",
+    "muted": "#6b67aa",
+    "candidates": [
+      "#0082e6",
+      "#186bd8",
+      "#2d5acc",
+      "#ff1d25",
+      "#7040a4",
+      "#69aff4"
+    ],
+    "logo_colors": [
+      "#0078e4",
+      "#fc1824",
+      "#b4246c",
+      "#5448b4",
+      "#2460cc",
+      "#cc2454"
+    ]
+  },
+  "products": [],
+  "options": {
+    "discount_code": "",
+    "sender_email": "",
+    "sender_name": "eMAG.ro - Căutarea nu se oprește niciodată",
+    "form_type": "popup",
+    "site_type": "auto",
+    "brand_source": "brandfetch",
+    "lang": "auto"
+  },
+  "shop_signals": {
+    "prices": 61,
+    "add_to_cart": 28
+  },
+  "site_type": "ecommerce",
+  "lang_detected": "ro",
+  "warnings": [
+    "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
+    "Telefon: nu am găsit niciun număr pe site.",
+    "Email: nu am găsit nicio adresă de contact pe site.",
+    "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
+  ],
+  "fetch_log": [
+    "511 https://www.emag.ro/phstyles/style-5pcpem1f2w.min.css",
+    "511 https://www.emag.ro/phstyles/style-5pcpem1f2w.min.css",
+    "511 https://www.emag.ro/sitemaps/category-filters-index.xml",
+    "511 https://www.emag.ro/sitemaps/category-filters-index.xml",
+    "511 https://www.emag.ro/sitemaps/categories-index.xml",
+    "511 https://www.emag.ro/sitemaps/categories-index.xml",
+    "511 https://www.emag.ro/sitemaps/offers-available-index.xml",
+    "511 https://www.emag.ro/sitemaps/offers-available-index.xml",
+    "511 https://www.emag.ro/sitemaps/offers-unavailable-index.xml",
+    "511 https://www.emag.ro/sitemaps/offers-unavailable-index.xml",
+    "511 https://www.emag.ro/sitemaps/offers-latest-index.xml",
+    "511 https://www.emag.ro/sitemaps/offers-latest-index.xml",
+    "511 https://www.emag.ro/sitemaps/sub-department-pages-index.xml",
+    "511 https://www.emag.ro/sitemaps/sub-department-pages-index.xml",
+    "511 https://www.emag.ro/genius?ref=hdr_genius",
+    "511 https://www.emag.ro/genius?ref=hdr_genius",
+    "511 https://www.emag.ro/label-campaign/cadouri-pentru-toti?ref=hdr_cadouri-pentru-toti",
+    "511 https://www.emag.ro/label-campaign/cadouri-pentru-toti?ref=hdr_cadouri-pentru-toti",
+    "511 https://www.emag.ro/asigurari-rca?ref=hdr_rca",
+    "511 https://www.emag.ro/asigurari-rca?ref=hdr_rca"
+  ],
+  "generated_at": "2026-11-27 13:48 UTC",
+  "texts_default": {
+    "hero_eyebrow": "Bine ai venit",
+    "hero_title": "Bine ai venit în comunitatea eMAG.ro - Căutarea nu se oprește niciodată!",
+    "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
+    "intro": "Ai libertatea sa alegi din milioane de produse IT, electronice si electrocasnice, gadgeturi, jucarii, imbracaminte si incaltaminte la Super Pret sau cu plata in rate.\n\nDe acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
+    "cta_label": "Intră în magazin",
+    "products_title": "Am ales câteva produse pentru tine",
+    "cards_title": "Ce găsești la noi",
+    "discount_note": "Aplică-l la finalizarea comenzii.",
+    "form_title": "Abonează-te la newsletter",
+    "form_subtitle": "Fii primul care află noutățile și ofertele eMAG.ro - Căutarea nu se oprește niciodată.",
+    "news_title": "Descoperă eMAG.ro - Căutarea nu se oprește niciodată",
+    "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
+    "newsletter_title": "Noutăți de la eMAG.ro - Căutarea nu se oprește niciodată",
+    "newsletter_subtitle": "Iată ce am pregătit pentru tine în perioada aceasta."
+  },
+  "texts": {}
+}

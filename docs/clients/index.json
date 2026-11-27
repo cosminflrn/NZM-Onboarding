@@ -1,5 +1,34 @@
 [
  {
+  "slug": "emag-ro",
+  "name": "eMAG.ro - Căutarea nu se oprește niciodată",
+  "domain": "emag.ro",
+  "url": "https://www.emag.ro/",
+  "generated_at": "2026-11-27 13:48 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/emag-ro/assets/logo-915df19b.png",
+  "colors": {
+   "accent": "#0082e6",
+   "dark": "#090171",
+   "light": "#e6f2fc"
+  },
+  "warnings": [
+   "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site.",
+   "Produse: nu am găsit produse pe site; în emailuri rămân produse placeholder."
+  ],
+  "products": 0,
+  "site_type": "ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "brand_source": "brandfetch",
+  "files": [
+   "emag-ro-automatizare-cos-abandonat.json",
+   "emag-ro-formular-pop-up.json",
+   "emag-ro-newsletter-bun-venit.json"
+  ]
+ },
+ {
   "slug": "cabanova-com",
   "name": "Cabanova",
   "domain": "cabanova.com",
