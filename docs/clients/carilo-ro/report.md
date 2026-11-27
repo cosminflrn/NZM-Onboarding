@@ -1,6 +1,6 @@
 # Carilo.ro (carilo.ro)
 
-Generat: 2026-11-27 14:18 UTC  ·  Platformă: merchantpro
+Generat: 2026-11-27 14:20 UTC  ·  Platformă: merchantpro
 
 ## Ce am găsit
 
