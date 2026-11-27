@@ -74,7 +74,7 @@
   .client > button.share:hover { color:var(--ink, #111); }
   .client > button.share.done, dialog.pv .bar .pvlink.done { opacity:1; color:#1a8f4c; }
   dialog.pv .bar .pvlink, dialog.pv .bar .pvdl { padding:7px 10px; }
-  dialog.pv:focus { outline:none; }
+  dialog.pv:focus, dialog.dlg:focus { outline:none; }
   @media (hover: none) { .client > button.del { opacity:1; } }
   input.pick { width:18px; height:18px; margin:0; accent-color:var(--red); cursor:pointer; }
   .selbar { display:flex; align-items:center; gap:8px; margin-left:auto; font-size:13px; font-weight:normal; }
@@ -87,6 +87,7 @@
   dialog.dlg .body button { justify-content:flex-start; text-align:left; padding:11px 14px; }
   dialog.dlg .body button small { color:var(--muted); margin-left:auto; font-size:12px; }
   dialog.dlg .body button.dl { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; justify-content:center; }
+  dialog.dlg .body button.dl small { color:rgba(255,255,255,.8); margin-left:8px; }
   .client .logo { width:120px; height:120px; display:flex; align-items:center; justify-content:center; border-radius:10px; padding:10px;
     border:1px solid var(--line); background-color:#fff; }
   .client .logo img { max-height:100px; max-width:100px; }
@@ -245,7 +246,7 @@
   <div class="clients" id="clients"><div class="empty">Se încarcă…</div></div>
 </main>
 
-<dialog id="dlg" class="dlg">
+<dialog id="dlg" class="dlg" tabindex="-1">
   <div class="bar"><b id="dlgTitle"></b><span class="push"></span><button type="button" onclick="$('dlg').close()" title="Închide"><svg class="i"><use href="#i-x"/></svg></button></div>
   <div class="body" id="dlgBody"></div>
 </dialog>
@@ -710,17 +711,40 @@ $("rsSel").onclick = async () => {
 
 // --- download dialog: one file or all three
 const KIND_LABEL = { formular: "Formular", automatizare: "Automatizare", newsletter: "Newsletter (draft)" };
-function askDownload(slug) {
+const PART_LABEL = { formular: "Tot formularul", automatizare: "Toată automatizarea", newsletter: "Newsletterul" };
+const PART_NOTE = { formular: "pop-up, mulțumire și email confirmare", automatizare: "toate cele 3 emailuri", newsletter: "draft" };
+function askDownload(slug, view) {
   const c = CLIENTS.find((x) => x.slug === slug);
-  $("dlgTitle").textContent = "Descarcă · " + c.domain;
+  $("dlgTitle").textContent = "Descarcă · " + c.domain + (view ? " · " + view.name : "");
   const one = ["formular", "automatizare", "newsletter"].map((k) => [k, fileOf(c, k)]).filter(([, f]) => f);
-  $("dlgBody").innerHTML = `<button class="dl" data-all="1" autofocus>${icon("dl")}Toate cele ${one.length} fișiere</button>` +
-    one.map(([k, f]) => `<button data-f="${esc(f)}">${icon("dl")}${KIND_LABEL[k]}<small>${esc(f.replace(slug + "-", "").replace(".json", ""))}</small></button>`).join("");
+  if (view) {
+    // from the preview: just this email, the whole part it belongs to, or everything
+    const part = fileOf(c, view.kind);
+    $("dlgBody").innerHTML =
+      (view.email ? `<button class="dl" data-email="1">${icon("dl")}Doar acest email<small>template</small></button>` : "") +
+      (part ? `<button ${view.email ? "" : 'class="dl"'} data-f="${esc(part)}">${icon("dl")}${PART_LABEL[view.kind]}<small>${PART_NOTE[view.kind]}</small></button>` : "") +
+      `<button data-all="1">${icon("dl")}Tot clientul<small>${one.length} fișiere</small></button>`;
+  } else {
+    $("dlgBody").innerHTML = `<button class="dl" data-all="1" autofocus>${icon("dl")}Toate cele ${one.length} fișiere</button>` +
+      one.map(([k, f]) => `<button data-f="${esc(f)}">${icon("dl")}${KIND_LABEL[k]}<small>${esc(f.replace(slug + "-", "").replace(".json", ""))}</small></button>`).join("");
+  }
   $("dlgBody").querySelectorAll("button").forEach((b) => b.onclick = () => {
     $("dlg").close();
+    if (b.dataset.email) return downloadEmail(slug, view);
     b.dataset.all ? downloadAll(slug) : download(slug, b.dataset.f);
   });
   $("dlg").showModal();
+  if (view) $("dlg").focus();
+}
+
+// one email on its own, as a NewsMAN template (same format as the newsletter file)
+function downloadEmail(slug, view) {
+  const doc = { type: "newsman_template", format: 2, exported_at: Math.floor(Date.now() / 1000), data: view.bee };
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(doc, null, "\t")], { type: "application/json" }));
+  a.download = `${slug}-${tabKey(view.name)}.json`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
 }
 
 async function downloadAll(slug) {
@@ -802,20 +826,20 @@ async function preview(slug, openTab) {
     const embed = c.form_type === "embed";
     const meta = { frame: embed ? "embed" : "popup", width: +(f.pages.form.bf_width || 620),
       close: (f.modal || {}).close_color, bg: (f.modal || {}).background_color };
-    views.push({ name: embed ? "Formular embed" : "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json), ...meta });
-    if (f.pages.responder) views.push({ name: "Mulțumire", subj: "după abonare", bee: JSON.parse(f.pages.responder.responder_json), ...meta });
-    if (f.template && f.template.confirm_email_json) views.push({ name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) });
+    views.push({ kind: "formular", name: embed ? "Formular embed" : "Pop-up", subj: f.form_name, bee: JSON.parse(f.pages.form.form_json), ...meta });
+    if (f.pages.responder) views.push({ kind: "formular", name: "Mulțumire", subj: "după abonare", bee: JSON.parse(f.pages.responder.responder_json), ...meta });
+    if (f.template && f.template.confirm_email_json) views.push({ kind: "formular", email: true, name: "Email confirmare", subj: f.template.subject, bee: JSON.parse(f.template.confirm_email_json) });
   }
   const autoName = (fileOf(c, "automatizare") || "").includes("cos-abandonat") ? "Coș" : "Bun venit";
   if (auto) Object.values(auto.data.draft_meta.meta).sort((a, b) => a.trigger_id - b.trigger_id)
-    .forEach((d, i) => views.push({ name: `${autoName} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
-  if (news) views.push({ name: "Newsletter", subj: "draft newsletter", bee: news.data });
+    .forEach((d, i) => views.push({ kind: "automatizare", email: true, name: `${autoName} ${i + 1}`, subj: d.automation_subject, bee: JSON.parse(d.params.json) }));
+  if (news) views.push({ kind: "newsletter", name: "Newsletter", subj: "draft newsletter", bee: news.data });
   const tabs = $("tabs");
   tabs.innerHTML = views.map((v, i) => `<button class="tab" data-i="${i}">${esc(v.name)}</button>`).join("") +
     `<span class="push"></span><div class="seg dev" data-name="device"><button type="button" data-v="desktop" class="on">${icon("desktop")}Desktop</button>` +
     `<button type="button" data-v="mobile">${icon("phone")}Mobil</button></div>` +
     `<button class="pvlink" id="pvLink" title="Copiază linkul de previzualizare doar pentru acest email / formular">${icon("link")}</button>` +
-    `<button class="dl pvdl" onclick="askDownload('${slug}')" title="Descarcă fișierele pentru NewsMAN">${icon("dl")}</button>` +
+    `<button class="dl pvdl" id="pvDl" title="Descarcă pentru NewsMAN">${icon("dl")}</button>` +
     `<button onclick="pv.close()">${icon("x")}</button>`;
   let current = 0;
   tabs.querySelectorAll(".dev button").forEach((b) => b.onclick = () => {
@@ -843,6 +867,7 @@ async function preview(slug, openTab) {
   };
   tabs.querySelectorAll(".tab").forEach((b) => b.onclick = () => show(+b.dataset.i));
   $("pvLink").onclick = () => copyPreview($("pvLink"), slug, tabKey(views[current].name));
+  $("pvDl").onclick = () => askDownload(slug, views[current]);
   const start = openTab ? views.findIndex((v) => tabKey(v.name) === openTab) : 0;
   show(Math.max(0, start));
   $("pv").showModal();
