@@ -1,5 +1,33 @@
 [
  {
+  "slug": "carilo-ro",
+  "name": "Carilo.ro",
+  "domain": "carilo.ro",
+  "url": "https://www.carilo.ro/",
+  "generated_at": "2026-11-27 14:18 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/carilo-ro/assets/logo-435b8d3a.png",
+  "colors": {
+   "accent": "#b78485",
+   "dark": "#212529",
+   "light": "#fff8f8"
+  },
+  "warnings": [
+   "Brand preluat din brand fetch NewsMAN (logo, culori, banner, linkuri); produsele și meniul din site.",
+   "Telefon: nu am găsit niciun număr pe site.",
+   "Email: nu am găsit nicio adresă de contact pe site."
+  ],
+  "products": 6,
+  "site_type": "ecommerce",
+  "form_type": "popup",
+  "lang": "ro",
+  "brand_source": "brandfetch",
+  "files": [
+   "carilo-ro-automatizare-cos-abandonat.json",
+   "carilo-ro-formular-pop-up.json",
+   "carilo-ro-newsletter-bun-venit.json"
+  ]
+ },
+ {
   "slug": "emag-ro",
   "name": "eMAG.ro",
   "domain": "emag.ro",
