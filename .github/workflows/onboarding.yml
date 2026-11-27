@@ -48,9 +48,11 @@ on:
     paths:
       - "docs/clients/*/brand.json"
       - "templates/**"
+      - "texte/**"
       - "nzm/generate.py"
       - "nzm/emails.py"
       - "nzm/design.py"
+      - "nzm/i18n.py"
 
 permissions:
   contents: write
@@ -129,7 +131,7 @@ jobs:
           BEFORE: ${{ github.event.before }}
         run: |
           changed=$(git diff --name-only "$BEFORE" HEAD 2>/dev/null || true)
-          if echo "$changed" | grep -qE '^(templates/|nzm/(generate|emails|design)\.py)'; then
+          if echo "$changed" | grep -qE '^(templates/|texte/|nzm/(generate|emails|design|i18n)\.py)'; then
             python -m nzm regen-all
           else
             for f in $(echo "$changed" | grep -E '^docs/clients/[^/]+/brand.json$'); do

@@ -2,6 +2,7 @@
 import base64
 import copy
 import json
+import os
 import re
 import time
 
@@ -68,45 +69,18 @@ def clean_description(desc, name):
 
 # several ways to say the same thing: each client gets its own (always the same one for that client),
 # so two clients' emails never read word for word alike
-VARIANTS = {
-    "promise_ecom": [
-        "De acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.",
-        "Abonații află primii de produsele noi și primesc ofertele înaintea tuturor.",
-        "Vei primi din când în când noutăți, recomandări alese și oferte doar pentru abonați.",
-        "Îți scriem când apar produse noi sau oferte bune, ca să nu le ratezi.",
-    ],
-    "promise": [
-        "De acum ești primul care află noutățile {n}, împreună cu idei și informații utile pentru tine.",
-        "Vei afla primul ce e nou la {n}, plus sfaturi și informații alese pentru tine.",
-        "Îți vom scrie din când în când cu noutăți de la {n} și lucruri care chiar merită citite.",
-        "De acum primești noutățile {n} direct pe email: idei, sfaturi și tot ce e nou la noi.",
-    ],
-    "hero_subtitle": [
-        "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
-        "Mulțumim pentru încredere. Ne bucurăm că ești aici.",
-        "Ne bucurăm că ți-ai făcut loc pentru noi în inbox.",
-    ],
-    "form_subtitle_ecom": [
-        "Fii primul care află noutățile și ofertele {n}.",
-        "Află primul de produsele noi și de ofertele {n}.",
-        "Primește ofertele {n} înaintea tuturor.",
-    ],
-    "form_subtitle": [
-        "Fii primul care află noutățile {n}.",
-        "Primește noutățile {n} direct pe email.",
-        "Află primul ce e nou la {n}.",
-    ],
-    "newsletter_subtitle": [
-        "Iată ce am pregătit pentru tine în perioada aceasta.",
-        "Câteva noutăți pe care am vrut să le afli primul.",
-        "Pe scurt, tot ce e nou la noi în ultima vreme.",
-    ],
-    "news_subtitle": [
-        "Am adunat câteva lucruri pe care merită să le vezi.",
-        "Câteva locuri bune de unde să începi.",
-        "Iată ce te așteaptă la noi.",
-    ],
-}
+VARIANTS_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "texte", "variante.json")
+
+
+def _variants():
+    """texte/variante.json: wordings colleagues can edit on GitHub ({"key": [{"ro": "...", "en": "..."}]})."""
+    with open(VARIANTS_FILE, encoding="utf-8") as f:
+        data = json.load(f)
+    return {k: [x for x in v if isinstance(x, dict) and x.get("ro")] for k, v in data.items() if not k.startswith("_")}
+
+
+VARIANTS_RAW = _variants()
+VARIANTS = {k: [x["ro"] for x in v] for k, v in VARIANTS_RAW.items()}
 
 
 def variant(brand, key, **kw):

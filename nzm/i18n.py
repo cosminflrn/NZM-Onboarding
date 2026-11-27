@@ -210,6 +210,30 @@ PHRASES = {
     "pentru abonare!": "for subscribing!",
     "Mulțumim": "Thanks",
 }
+# the editable wordings (texte/variante.json) carry their own English
+def _file_variants():
+    import os
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "texte", "variante.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, ValueError):
+        return
+    for key, items in data.items():
+        if key.startswith("_") or not isinstance(items, list):
+            continue
+        for x in items:
+            ro, en = (x or {}).get("ro"), (x or {}).get("en")
+            if not ro or not en:
+                continue
+            if "{n}" in ro:
+                rx = re.escape(ro).replace(re.escape("{n}"), "(.+?)")
+                PATTERNS.insert(0, (rx, (lambda e: lambda m: e.replace("{n}", m[1]))(en)))
+            else:
+                PHRASES[ro] = en
+
+
+_file_variants()
 # eyebrows are written in capitals ("COȘUL TĂU"): the upper-case form of every short phrase too
 PHRASES.update({ro.upper(): en.upper() for ro, en in list(PHRASES.items())
                 if len(ro) <= 40 and ro.upper() != ro and ro.upper() not in PHRASES})

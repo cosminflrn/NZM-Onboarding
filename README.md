@@ -12,4 +12,6 @@
 
 **Site blocat?** Butonul **NZM Onboarding** din bookmark bar preia site-ul din browserul tău; alegi setările și apeși Generează.
 
+**Texte:** formulările din emailuri și din pop-up se pot schimba direct pe GitHub, în [`texte/variante.json`](texte/variante.json). După salvare, toți clienții se regenerează singuri.
+
 <sub>Rulează pe GitHub Pages (`docs/`), GitHub Actions (`nzm/`) și Cloudflare (`worker/`). Template-urile de bază sunt în `templates/`.</sub>
