@@ -156,6 +156,8 @@
   dialog.dlg .body button small { color:var(--muted); margin-left:auto; font-size:12px; }
   dialog.dlg .body button.dl { background:var(--red); border-color:var(--red); color:#fff; font-weight:600; justify-content:center; }
   dialog.dlg .body button.dl small { color:rgba(255,255,255,.8); margin-left:8px; }
+  dialog.dlg .body .confirm { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  dialog.dlg .body .confirm button { justify-content:center; text-align:center; height:44px; padding-top:0; padding-bottom:0; }
   .client .logo { width:120px; height:120px; display:flex; align-items:center; justify-content:center; border-radius:10px; padding:10px;
     border:1px solid var(--line); background-color:#fff; }
   .client .logo img { max-height:100px; max-width:100px; }
@@ -896,11 +898,11 @@ function askDelete(slugs) {
   const names = slugs.map((s) => (CLIENTS.find((c) => c.slug === s) || {}).domain || s);
   $("dlgTitle").textContent = slugs.length === 1 ? "Ștergi " + names[0] + "?" : `Ștergi ${slugs.length} clienți?`;
   $("dlgBody").innerHTML = `<p style="margin:2px 2px 8px;line-height:1.5;color:var(--muted)">${slugs.length === 1 ? "Clientul dispare" : esc(names.join(", ")) + " dispar"} din istoric, cu tot cu fișierele generate. Poți oricând să-l generezi din nou.</p>
-    <button class="dl" id="delYes">${icon("trash")}Șterge</button><button id="delNo">Renunță</button>`;
+    <div class="confirm"><button id="delNo">${icon("x")}Renunță</button><button class="dl" id="delYes">${icon("trash")}Șterge</button></div>`;
   $("delNo").onclick = () => $("dlg").close();
   $("delYes").onclick = () => { $("dlg").close(); runDelete(slugs); };
   $("dlg").showModal();
-  $("delNo").focus();
+  $("dlg").focus();  // the dialog takes focus, so no ring lights up a button on open
 }
 async function runDelete(slugs) {
   if (!(await checkToken())) return;
