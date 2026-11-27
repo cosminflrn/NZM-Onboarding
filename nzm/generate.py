@@ -454,7 +454,7 @@ def neutral_images(brand):
     for item in (b.get("links") or {}).get("menu") or []:
         if isinstance(item.get("image"), str) and item["image"].startswith("http") and WESERV not in item["image"]:
             # portraits keep their top (heads), other pictures their most interesting part
-            w, h = _image_size(item["image"])
+            w, h = _dims(item["image"])
             focus = "top" if w and h and h >= w else "attention"
             item["image"] = _weserv(item["image"], f"&w=600&h=400&fit=cover&a={focus}&output=jpg&q=85")
     ban = b.get("banner") or {}
@@ -473,6 +473,20 @@ def _image_ok(url):
         return ok
     except Exception:
         return False
+
+
+def _dims(url):
+    """Picture size, asked from the image service first (some sites refuse GitHub's servers), then directly."""
+    import requests
+    try:
+        r = requests.get(_weserv(url, "&output=json"), timeout=20)
+        if r.ok:
+            d = r.json()
+            if d.get("width") and d.get("height"):
+                return d["width"], d["height"]
+    except Exception:
+        pass
+    return _image_size(url)
 
 
 def _image_size(url):
