@@ -157,7 +157,10 @@
   #login { display:none; position:fixed; inset:0; background:var(--bg); z-index:50; align-items:center; justify-content:center; }
   .capbar { display:flex; align-items:center; gap:8px; margin-top:12px; padding:9px 12px; border-radius:10px; background:#e6f6ea; color:var(--ok); font-size:13px; animation:rise .3s ease; }
   .capbar[hidden] { display:none; }
-  .capbar .link { margin-left:auto; border:0; background:transparent; padding:4px; color:inherit; }
+  .capbar .link { border:0; background:transparent; padding:4px; color:inherit; }
+  .capbar #capText { flex:1; }
+  #genBtn.ready { animation:readyPulse 1.4s ease 2; }
+  @keyframes readyPulse { 0%,100% { box-shadow:0 0 0 0 rgba(166,0,0,0); } 50% { box-shadow:0 0 0 6px rgba(166,0,0,.18); } }
   .blocked { margin-top:12px; border-top:1px solid var(--line); padding-top:12px; font-size:13px; }
   .blocked .bl-title { color:var(--muted); user-select:none; }
   .bl-body { display:grid; gap:10px; padding:12px 0 2px 0; animation:rise .25s ease; }
@@ -239,7 +242,7 @@
         </div>
         <ol class="bl-list">
           <li>Trage <b>NZM Onboarding</b> în bookmark bar (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> dacă nu o vezi). O singură dată, se actualizează singur.</li>
-          <li>Pe site-ul clientului apasă butonul din bookmark bar: generarea pornește singură, aici.</li>
+          <li>Pe site-ul clientului apasă butonul din bookmark bar: pagina vine aici; alegi setările și apeși Generează.</li>
           <li>Nu merge? Pe site apasă <kbd>Ctrl</kbd>+<kbd>S</kbd> („doar HTML”) și încarcă fișierul.</li>
         </ol>
       </div>
@@ -504,7 +507,7 @@ window.addEventListener("message", (e) => {
     $("capText").textContent += " Butonul tău din bookmark bar e o versiune veche: trage-l din nou o dată (de acum se actualizează singur).";
   } else {
     // the page waits for "Generează": settings (method, discount, form type…) can still be changed
-    $("genBtn").focus({ preventScroll: true });
+    $("genBtn").classList.remove("ready"); void $("genBtn").offsetWidth; $("genBtn").classList.add("ready");
   }
 });
 if (location.hash === "#capture") {
