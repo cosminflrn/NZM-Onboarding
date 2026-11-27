@@ -1,5 +1,30 @@
 [
  {
+  "slug": "inoatacuandrei-ro",
+  "name": "Înoată cu Andrei",
+  "domain": "inoatacuandrei.ro",
+  "url": "https://inoatacuandrei.ro/",
+  "generated_at": "2026-11-27 09:40 UTC",
+  "logo": "https://cosminflrn.github.io/NZM-Onboarding/clients/inoatacuandrei-ro/assets/logo-337e7208.png",
+  "colors": {
+   "accent": "#0077b6",
+   "dark": "#0a1628",
+   "light": "#e6f1f8"
+  },
+  "warnings": [
+   "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
+  ],
+  "products": 0,
+  "site_type": "non-ecommerce",
+  "form_type": "embed",
+  "lang": "ro",
+  "files": [
+   "inoatacuandrei-ro-automatizare-bun-venit.json",
+   "inoatacuandrei-ro-formular-embed.json",
+   "inoatacuandrei-ro-newsletter-noutati.json"
+  ]
+ },
+ {
   "slug": "alunis-ro",
   "name": "Aluniș",
   "domain": "alunis.ro",

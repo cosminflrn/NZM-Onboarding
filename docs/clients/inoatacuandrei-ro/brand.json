@@ -1,0 +1,122 @@
+{
+  "url": "https://inoatacuandrei.ro/",
+  "domain": "inoatacuandrei.ro",
+  "slug": "inoatacuandrei-ro",
+  "platform": "wordpress",
+  "name": "Înoată cu Andrei",
+  "description": "Cursuri de înot pentru copii și adulți în București, Sector 2. Instructori certificați, rezultate rapide.",
+  "contact": {
+    "phone": "+40739652479",
+    "phone_href": "tel:+40739652479",
+    "email": "contact@inoatacuandrei.ro"
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/inoatacuandrei",
+    "instagram": "https://www.instagram.com/inoatacuandrei",
+    "youtube": "https://www.youtube.com/@inoatacuandrei"
+  },
+  "links": {
+    "home": "https://inoatacuandrei.ro/",
+    "cart": "https://inoatacuandrei.ro/",
+    "terms": "https://inoatacuandrei.ro/termeni-si-conditii/",
+    "privacy": "https://inoatacuandrei.ro/politica-de-confidentialitate/",
+    "contact": "https://inoatacuandrei.ro/contact/",
+    "promo": null,
+    "menu": [
+      {
+        "label": "ANTRENORII DE INOT",
+        "url": "https://inoatacuandrei.ro/antrenorii-de-inot/",
+        "image_from": "home",
+        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2."
+      },
+      {
+        "label": "TARIFE",
+        "url": "https://inoatacuandrei.ro/tarife/",
+        "image_from": "home",
+        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2."
+      },
+      {
+        "label": "ARTICOLE",
+        "url": "https://inoatacuandrei.ro/articole/",
+        "image_from": "home",
+        "desc": "Cursuri de înot pentru copii și adulți în București, Sector 2."
+      }
+    ],
+    "cart_found": false
+  },
+  "logo": {
+    "url": "https://cosminflrn.github.io/NZM-Onboarding/clients/inoatacuandrei-ro/assets/logo-337e7208.png",
+    "source_url": "https://inoatacuandrei.ro/wp-content/uploads/2026/03/cropped-cropped-Inoata-cu-Andrei-sigla-2024.png",
+    "width": 509,
+    "height": 509,
+    "display_width": 120,
+    "found_by": "img",
+    "recolored": false,
+    "light_parts": false
+  },
+  "banner": null,
+  "colors": {
+    "accent": "#0077b6",
+    "accent_original": "#0077b6",
+    "accent_text": "#ffffff",
+    "dark": "#0a1628",
+    "light": "#e6f1f8",
+    "muted": "#6c737e",
+    "candidates": [
+      "#0077b6",
+      "#ffb703",
+      "#fcd854",
+      "#005a8c",
+      "#e5a400",
+      "#0096e8"
+    ],
+    "logo_colors": [
+      "#fcd854",
+      "#003c6c",
+      "#000000",
+      "#24546c",
+      "#ccc054",
+      "#a8a860"
+    ]
+  },
+  "products": [],
+  "options": {
+    "discount_code": "",
+    "sender_email": "contact@inoatacuandrei.ro",
+    "sender_name": "Înoată cu Andrei",
+    "form_type": "embed",
+    "site_type": "non-ecommerce",
+    "lang": "ro"
+  },
+  "shop_signals": {
+    "prices": 0,
+    "add_to_cart": 0
+  },
+  "site_type": "non-ecommerce",
+  "lang_detected": "ro",
+  "warnings": [
+    "Banner: nu am găsit un banner potrivit pe site — emailurile au doar blocul colorat de sus."
+  ],
+  "fetch_log": [
+    "404 https://inoatacuandrei.ro/wp-json/wc/store/v1/products?per_page=40",
+    "404 https://inoatacuandrei.ro/sitemap_index.xml"
+  ],
+  "generated_at": "2026-11-27 09:40 UTC",
+  "texts_default": {
+    "hero_eyebrow": "Bine ai venit",
+    "hero_title": "Bine ai venit în comunitatea Înoată cu Andrei!",
+    "hero_subtitle": "Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.",
+    "intro": "Cursuri de înot pentru copii și adulți în București, Sector 2.\n\nDe acum ești primul care află noutățile Înoată cu Andrei. Îți scriem doar când avem ceva cu adevărat util sau interesant pentru tine.",
+    "cta_label": "Vizitează site-ul",
+    "products_title": "Am ales câteva produse pentru tine",
+    "cards_title": "Ce găsești la noi",
+    "discount_note": "Aplică-l la finalizarea comenzii.",
+    "form_title": "Abonează-te la newsletter",
+    "form_subtitle": "Fii primul care află noutățile Înoată cu Andrei.",
+    "news_title": "Descoperă Înoată cu Andrei",
+    "news_subtitle": "Am adunat câteva lucruri pe care merită să le vezi.",
+    "newsletter_title": "Noutăți de la Înoată cu Andrei",
+    "newsletter_subtitle": "Iată ce am pregătit pentru tine în perioada aceasta."
+  },
+  "texts": {}
+}
