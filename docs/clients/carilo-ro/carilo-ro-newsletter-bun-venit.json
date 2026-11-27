@@ -1,7 +1,7 @@
 {
 	"type": "newsman_template",
 	"format": 2,
-	"exported_at": 1795789260,
+	"exported_at": 1795789311,
 	"data": {
 		"page": {
 			"body": {
@@ -34,7 +34,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "69dfb1bc-7a19-4182-96b5-0fe4bdbe0482",
+									"uuid": "cbeab1c1-9dbd-4f11-9878-594b19ef61ab",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -56,7 +56,7 @@
 									}
 								}
 							],
-							"uuid": "e894fd29-5de7-49fa-80a4-b303e54ea0e2",
+							"uuid": "b407c7cd-2986-4fa0-bfcb-a2ab60a3f0a7",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -99,7 +99,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "4fa81d2c-a7ec-4529-98d2-f97282250c4e"
+					"uuid": "2140548a-7f8b-4935-a8a1-ed2d1da0aaf2"
 				},
 				{
 					"columns": [
@@ -109,7 +109,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "0212f535-c339-4979-880b-640f9d724aa4",
+									"uuid": "288af60e-d979-471b-ad09-a2b553a6c50b",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -133,7 +133,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "03ff59b9-85d4-4928-80ae-366446a8ab47",
+									"uuid": "367c2a18-5eb4-4aea-9c8c-541b0f3e4bd8",
 									"descriptor": {
 										"image": {
 											"alt": "Carilo.ro",
@@ -162,7 +162,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "9b01ece8-a5a6-4ead-9f69-7a019f7c4257",
+									"uuid": "1c3ce00a-ef94-4cbd-bf95-5bb292ac6399",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:18px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\" data-mce-style=\"font-size:12px;line-height:18px;color:#52525b;letter-spacing:1px;\"><a href=\"https://www.carilo.ro/catalog/chiloti-186\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">CHILOTI</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://www.carilo.ro/catalog/brazilian-semi-boxer-297\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">BRAZILIAN / SEMI / BOXER</a><span style=\"color:#e4e4e7;\">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><a href=\"https://www.carilo.ro/catalog/promotii-femei-299\" target=\"_blank\" rel=\"noopener\" style=\"color:#52525b;text-decoration:none;font-weight:600;\">PROMOTII FEMEI</a></span></p></div>",
@@ -187,7 +187,7 @@
 									}
 								}
 							],
-							"uuid": "56c3839f-0c51-49e1-83db-3a8211c7612e",
+							"uuid": "cb579085-bd26-4831-8d50-2690714b22dc",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -230,7 +230,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "f169edd0-ea96-4d4b-9db2-32d7c87c8477"
+					"uuid": "8aebb610-068c-44d2-8627-063c8d05e23a"
 				},
 				{
 					"columns": [
@@ -240,7 +240,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "267505e4-d158-4712-959f-6ef084c6d0b7",
+									"uuid": "4a64001c-de49-413b-879c-bf56b24b96f3",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -264,7 +264,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3d674cd2-11f1-4ff8-9341-4d72cffecf8a",
+									"uuid": "79950a8d-314c-4110-bcb0-90dd38c42117",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:17px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\" data-mce-style=\"font-size:12px;line-height:17px;color:#ffffff;letter-spacing:2px;\">BINE AI VENIT</span></strong></p></div>",
@@ -291,7 +291,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3459ee83-613e-40f6-a9e9-572f9ad31bb1",
+									"uuid": "b999b788-c6ad-453a-9a6d-b73bf430d5fe",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:32px;line-height:38px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:32px;line-height:38px;color:#ffffff;\" data-mce-style=\"font-size:32px;line-height:38px;color:#ffffff;\">Bine ai venit în comunitatea Carilo.ro!</span></strong></p></div>",
@@ -318,7 +318,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "2f6b0936-86e6-45e6-b4c4-d39ad07ae466",
+									"uuid": "5593b882-c645-4822-9020-600d3c84a2f1",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:26px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:26px;color:#ffffff;\" data-mce-style=\"font-size:17px;line-height:26px;color:#ffffff;\">Îți mulțumim că te-ai abonat. Ne bucurăm să te avem alături.</span></p></div>",
@@ -345,7 +345,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "47b6100b-e9f4-4e98-ba80-62140a9e8a1a",
+									"uuid": "e67d890a-ed02-4dbd-9d4c-b9cf44c725ab",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -367,7 +367,7 @@
 									}
 								}
 							],
-							"uuid": "89241a07-daff-44ce-a81c-73dee05a99ec",
+							"uuid": "bc949ae0-4b11-41e3-b49e-b58e277f4521",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -410,7 +410,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "443770d4-7299-4614-a631-8309ce954f88"
+					"uuid": "ccd0ebc7-be18-47dc-89cc-2a5b9626963e"
 				},
 				{
 					"columns": [
@@ -420,7 +420,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "8b0439d4-f771-4b8e-b167-b895a4446fc4",
+									"uuid": "30201c93-ba9f-45da-b09b-3925cf444eb5",
 									"descriptor": {
 										"image": {
 											"alt": "Carilo.ro",
@@ -447,7 +447,7 @@
 									}
 								}
 							],
-							"uuid": "d1d7e371-ac77-468b-a7ea-a3e3f86df120",
+							"uuid": "36e6dbfb-c479-4d73-a701-9f246a79d5ae",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -490,7 +490,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "19fe2b46-6a68-44fe-9c83-22d922d4521b"
+					"uuid": "170fd3b2-883e-4af7-a5b6-c3a3281d884b"
 				},
 				{
 					"columns": [
@@ -500,7 +500,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "8c6dd4b2-c109-4820-aea3-07f2f9f644fc",
+									"uuid": "76af3211-ebd9-4491-bbd1-f67e511a5450",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;margin-bottom:14px;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">Carilo.ro - Bine ai venit pe magazinul nostru online, unde iti propunem o gama completa de produse!</span></p><p style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:17px;line-height:28px;text-align:center;word-break:break-word;\"><span style=\"font-size:17px;line-height:28px;color:#18181b;\" data-mce-style=\"font-size:17px;line-height:28px;color:#18181b;\">De acum ești primul care află de produsele noi, de promoțiile pentru abonați și de ofertele pe care nu vrei să le ratezi.</span></p></div>",
@@ -525,7 +525,7 @@
 									}
 								}
 							],
-							"uuid": "6bc8d89a-019a-4484-8aeb-67548cf70ede",
+							"uuid": "615a9790-d4c3-48fa-96ca-7ecb3a68ef6a",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -568,7 +568,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "0261afae-a40a-486b-8127-e4f619421473"
+					"uuid": "bb13ad34-b96f-4f85-9b86-43e8f4c17045"
 				},
 				{
 					"columns": [
@@ -578,7 +578,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "d90a5e74-0f80-46d3-9220-efd28897298a",
+									"uuid": "aa87be8a-06b6-45d0-acdc-31fea159d8b7",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:22px;line-height:29px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:22px;line-height:29px;color:#18181b;\" data-mce-style=\"font-size:22px;line-height:29px;color:#18181b;\">Am ales câteva produse pentru tine</span></strong></p></div>",
@@ -603,7 +603,7 @@
 									}
 								}
 							],
-							"uuid": "9e6b790f-51db-4b3c-91a9-821f71a42666",
+							"uuid": "22959994-554d-463e-a0a8-96add9abb293",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -646,7 +646,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "4fb7b0e6-4ba1-4b62-9d80-69820afab290"
+					"uuid": "549b2523-4d90-479a-8d5d-1d021406b060"
 				},
 				{
 					"columns": [
@@ -656,7 +656,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "a76c5230-95be-41ff-985f-32666ec0adc3",
+									"uuid": "069c2d79-90de-4fb8-9447-85085ec68f11",
 									"descriptor": {
 										"image": {
 											"alt": "Sutien Viviana cupa preformata…",
@@ -685,7 +685,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "5f7532fd-f552-412e-85f5-41144a942120",
+									"uuid": "611504a6-1d2c-4f73-aa98-d2fe250befac",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.carilo.ro/cumpara/sutien-viviana-cupa-preformata-graduala-cupe-b-c-si-d-negru-2836\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Sutien Viviana cupa preformata…</a></span></p></div>",
@@ -712,7 +712,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "fdacd057-f19e-4c15-9b13-7c96750e97ac",
+									"uuid": "4a60d71d-0196-4e7c-8d7e-06005192fb26",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#b78485;\" data-mce-style=\"font-size:16px;line-height:22px;color:#b78485;\">64,00 lei</span></strong></p></div>",
@@ -739,7 +739,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "00a6c362-c89f-44d2-a2de-cae724f9e77c",
+									"uuid": "f8628295-ae31-4d1b-9e08-3d799303ef14",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -781,7 +781,7 @@
 									}
 								}
 							],
-							"uuid": "83b5c2b2-d0fc-4c06-868b-718ff3f88bca",
+							"uuid": "e09170ec-d84b-4a41-bf78-bc00f69caa66",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -800,7 +800,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "48c5e218-81f8-4d3f-8ffb-9e8b7b5ac28e",
+									"uuid": "2622ff97-151c-4257-921a-dc47a1d01086",
 									"descriptor": {
 										"image": {
 											"alt": "Set 2 sutiene Aura - BEJ/NEGRU, din…",
@@ -829,7 +829,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "a829aa8d-1efa-4881-9261-8f4bc65b8571",
+									"uuid": "9ddf9ed2-0e27-455b-9a28-72a112a7c564",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.carilo.ro/cumpara/set-2-sutiene-aura-bej-negru-din-bumbac-cu-insertii-de-dantela-fara-2908\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Set 2 sutiene Aura - BEJ/NEGRU, din…</a></span></p></div>",
@@ -856,7 +856,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "4cdb1462-6d40-4f19-a319-0e661cd5a816",
+									"uuid": "c02109f8-791f-4f89-af39-43728ec267ac",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#b78485;\" data-mce-style=\"font-size:16px;line-height:22px;color:#b78485;\">118,00 lei</span></strong></p></div>",
@@ -883,7 +883,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "e844eb8e-9609-4f57-b964-960d4323d515",
+									"uuid": "6fce7805-ae05-4073-a533-287c09525344",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -925,7 +925,7 @@
 									}
 								}
 							],
-							"uuid": "ca5e385b-dd4f-447e-9ca3-f9c6fa15d282",
+							"uuid": "d01340e8-b06f-40a2-80c7-4d344748b0bb",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -944,7 +944,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-image",
 									"locked": false,
-									"uuid": "806bf46c-304a-48c6-b284-b691b5f7e82e",
+									"uuid": "f60f76a5-baab-4925-acba-184450746710",
 									"descriptor": {
 										"image": {
 											"alt": "Sutien Lina extra confort cupa…",
@@ -973,7 +973,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "9282ae08-d3a0-4499-9ab0-7f7c8d34955d",
+									"uuid": "71d111c4-01b8-4ac9-ba47-d06bfdebfaae",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:15px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:15px;line-height:21px;color:#18181b;\" data-mce-style=\"font-size:15px;line-height:21px;color:#18181b;\"><a href=\"https://www.carilo.ro/cumpara/sutien-lina-extra-confort-cupa-adanca-preformata-microfibra-negru-cupe-2853\" target=\"_blank\" rel=\"noopener\" style=\"color:#18181b;text-decoration:none;\">Sutien Lina extra confort cupa…</a></span></p></div>",
@@ -1000,7 +1000,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "a49d845b-d1db-41ce-9561-ff89aaf29fc2",
+									"uuid": "bb098b3a-d552-45c8-9365-2a0310ea00e6",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#b78485;\" data-mce-style=\"font-size:16px;line-height:22px;color:#b78485;\">65,00 lei</span></strong></p></div>",
@@ -1027,7 +1027,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "182c1af2-fa30-473b-80df-f52b9ba20d4e",
+									"uuid": "09546bce-e3f1-4c26-813c-93c63df960a2",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Vezi produsul</strong></p></div>",
@@ -1069,7 +1069,7 @@
 									}
 								}
 							],
-							"uuid": "bfac373d-6107-4ee2-90b8-5139d5f1453a",
+							"uuid": "18c0fa45-54c0-469c-b0f3-12b4aed5587d",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1112,7 +1112,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "31e87bd9-0ba9-4d90-b07a-f2ce11708236"
+					"uuid": "058af09c-7929-4a88-8fc2-b2246bc34283"
 				},
 				{
 					"columns": [
@@ -1122,7 +1122,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "2efa0a60-c229-4cc9-bc50-f4c986ffbc23",
+									"uuid": "1c8d5847-cbce-4d9f-b3c4-dbd38ee72553",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1144,7 +1144,7 @@
 									}
 								}
 							],
-							"uuid": "4c1e0de2-2685-4175-9bd8-cffa31c54a5d",
+							"uuid": "9261beb6-c1bc-4d8d-a199-2c720028cbf2",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1187,7 +1187,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "61453f51-1c7b-47ae-a47b-0c04664c8dc8"
+					"uuid": "dad319dd-ed8f-4a53-82a6-9c44ad6f54c8"
 				},
 				{
 					"columns": [
@@ -1197,7 +1197,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-button",
 									"locked": false,
-									"uuid": "08054fb0-7eed-40f8-b775-8d7879c2a291",
+									"uuid": "7afd3664-24f5-4848-89c4-505946778c94",
 									"descriptor": {
 										"button": {
 											"label": "<div class=\"txtTinyMce-wrapper\"><p style=\"word-break:break-word;\" data-mce-style=\"word-break:break-word;\"><strong>Intră în magazin</strong></p></div>",
@@ -1239,7 +1239,7 @@
 									}
 								}
 							],
-							"uuid": "ead5db5c-58df-4d8a-b95d-1651c38d0488",
+							"uuid": "bc1c1408-2342-4ac6-b5fd-efad362fe8a2",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1282,7 +1282,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "f09c800c-5436-4e1e-8186-19a17732f5b0"
+					"uuid": "46ec37e3-4f5a-42df-b1d1-09356a941ea4"
 				},
 				{
 					"columns": [
@@ -1292,7 +1292,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "688dc926-2b00-421b-b184-7cd58f6013ca",
+									"uuid": "9d09b5fb-0aad-4c80-bcf5-79eec1be6334",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1314,7 +1314,7 @@
 									}
 								}
 							],
-							"uuid": "efd39efa-114e-4533-a8c2-1bde6571fa27",
+							"uuid": "7dc38784-899d-405f-82d0-aa8e82ce66d5",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1357,7 +1357,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "d2188aa8-797b-4602-8e8b-249ef687640d"
+					"uuid": "e15cd7bb-152c-4b88-93a2-bc0ca119630e"
 				},
 				{
 					"columns": [
@@ -1367,7 +1367,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "f2029e60-7f87-4a2a-9037-acc2c813fcdc",
+									"uuid": "02492444-126a-4de2-8285-bc9fa5e1ce5c",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#b78485;\" data-mce-style=\"font-size:16px;line-height:22px;color:#b78485;\">Oferte pentru abonați</span></strong></p></div>",
@@ -1394,7 +1394,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "8d7f9065-83f3-4d8c-8a44-659879962be2",
+									"uuid": "ae2316e7-d770-4e37-9733-7194e11ec64d",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Promoții trimise întâi pe email.</span></p></div>",
@@ -1419,7 +1419,7 @@
 									}
 								}
 							],
-							"uuid": "0f8aa4ea-d919-4e5c-a110-9fedcc38e026",
+							"uuid": "498f46ac-78c8-4d19-98d5-89ba2e6c0984",
 							"style": {
 								"background-color": "#f8f3f3",
 								"border-top": "6px solid #ffffff",
@@ -1438,7 +1438,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "3a625f95-202b-4f50-b75a-191487516315",
+									"uuid": "a6a81ada-7913-4f73-8291-a9cb79aa694c",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#b78485;\" data-mce-style=\"font-size:16px;line-height:22px;color:#b78485;\">Noutăți în avans</span></strong></p></div>",
@@ -1465,7 +1465,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "ae8af491-c4c3-4def-af64-ba488e44788b",
+									"uuid": "51ff5b1b-c19d-42e2-9913-a3a627e41fae",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Afli primul de produsele noi.</span></p></div>",
@@ -1490,7 +1490,7 @@
 									}
 								}
 							],
-							"uuid": "36a01898-653c-4dc6-ad5d-ffd9458c36d6",
+							"uuid": "c89301ad-d751-4f2f-aaff-ac6c72c5fbf2",
 							"style": {
 								"background-color": "#f8f3f3",
 								"border-top": "6px solid #ffffff",
@@ -1509,7 +1509,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "8d56fc09-e0bc-4634-9fcc-13106ffaa8f6",
+									"uuid": "753f6bf4-0086-4db0-be63-2b991ce6c943",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:16px;line-height:22px;text-align:center;word-break:break-word;\"><strong><span style=\"font-size:16px;line-height:22px;color:#b78485;\" data-mce-style=\"font-size:16px;line-height:22px;color:#b78485;\">Idei și inspirație</span></strong></p></div>",
@@ -1536,7 +1536,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "50c53eae-0dc6-4529-aadc-4e10a8121eea",
+									"uuid": "9431aa91-38a2-445a-9c99-ae35ae61e6ae",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:14px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:14px;line-height:21px;color:#52525b;\" data-mce-style=\"font-size:14px;line-height:21px;color:#52525b;\">Recomandări alese pentru tine.</span></p></div>",
@@ -1561,7 +1561,7 @@
 									}
 								}
 							],
-							"uuid": "95fa4409-cb04-4876-b128-afee1842ee8e",
+							"uuid": "6bcb5544-c706-4635-8665-b73e8d8c6803",
 							"style": {
 								"background-color": "#f8f3f3",
 								"border-top": "6px solid #ffffff",
@@ -1604,7 +1604,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "three-columns-empty",
-					"uuid": "ae61083d-852b-4ecc-b527-b089c90ee4a5"
+					"uuid": "604fb490-f9bb-4fc4-a6cc-bcdb87fd8468"
 				},
 				{
 					"columns": [
@@ -1614,7 +1614,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "230e57bf-efb8-41ab-8692-bd62438dbed6",
+									"uuid": "ba943a29-9062-49fe-b6ab-bcab32c65df2",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1636,7 +1636,7 @@
 									}
 								}
 							],
-							"uuid": "305a16fa-762f-4ad1-8f27-bad26186116e",
+							"uuid": "6a95458b-2434-4419-8fa9-1c6cd65fda82",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1679,7 +1679,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "cc608d6e-3d70-4541-ae83-e165c3d1f150"
+					"uuid": "9d3740e4-8c6b-4ae1-86d6-e8f87d68f8d9"
 				},
 				{
 					"columns": [
@@ -1689,7 +1689,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-divider",
 									"locked": false,
-									"uuid": "22264002-1a93-4f2c-9e8d-143a6559e50b",
+									"uuid": "1118cadd-5b9d-4fec-b7a5-e3ce2bd85291",
 									"descriptor": {
 										"divider": {
 											"style": {
@@ -1713,12 +1713,12 @@
 								{
 									"type": "mailup-bee-newsletter-modules-social",
 									"locked": false,
-									"uuid": "8fd0dc99-628c-43b2-addc-a7f0fd2a68f4",
+									"uuid": "7d22b3d2-171e-4a78-b7a1-77b509747c18",
 									"descriptor": {
 										"iconsList": {
 											"icons": [
 												{
-													"id": "30bd955e-0dd6-4c24-9a51-0481d5598213",
+													"id": "5e84509d-0ddb-4549-9356-1a6548730461",
 													"type": "follow",
 													"name": "facebook",
 													"text": "",
@@ -1752,7 +1752,7 @@
 								{
 									"type": "mailup-bee-newsletter-modules-text",
 									"locked": false,
-									"uuid": "0a3816e8-6ac8-4801-ad4a-c936a09761ea",
+									"uuid": "1156dd92-3815-44d1-b2cb-4a4a8087a6cc",
 									"descriptor": {
 										"text": {
 											"html": "<div class=\"txtTinyMce-wrapper\" style=\"font-size:14px;line-height:21px;font-family:inherit;\" data-mce-style=\"font-size:14px;line-height:21px;font-family:inherit;\"><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\">© <code spellcheck=\"false\" data-bee-type=\"mergetag\" data-bee-code=\"\" data-bee-name=\"##current_year##\" data-bee-preview-value=\"2026\" data-bee-value=\"##current_year##\"><q>no-content</q></code> Carilo.ro. Toate drepturile rezervate.</span></p><p style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:13px;line-height:21px;text-align:center;word-break:break-word;\"><span style=\"font-size:13px;line-height:21px;color:#71717a;\" data-mce-style=\"font-size:13px;line-height:21px;color:#71717a;\"><a href=\"https://www.carilo.ro/info/termeni\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Termeni și condiții</a> &nbsp;·&nbsp; <a href=\"https://www.carilo.ro/info/confidentialitate\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Confidențialitate</a> &nbsp;·&nbsp; <a href=\"https://www.carilo.ro/\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">carilo.ro</a></span></p><p style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\" data-mce-style=\"font-size:12px;line-height:19px;text-align:center;word-break:break-word;\"><span style=\"font-size:12px;line-height:19px;color:#71717a;\" data-mce-style=\"font-size:12px;line-height:19px;color:#71717a;\">Primești acest email pentru că te-ai abonat la newsletter. <a href=\"##NEWSMAN:list_unsubscribe##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Dezabonare</a> &nbsp;·&nbsp; <a href=\"##NEWSMAN:view_online##\" target=\"_blank\" rel=\"noopener\" style=\"color:#71717a;text-decoration:underline;\">Vezi online</a></span></p></div>",
@@ -1777,7 +1777,7 @@
 									}
 								}
 							],
-							"uuid": "df8c6ac6-0ae4-4452-9f2c-ca4c17a1d8f0",
+							"uuid": "772c3846-020d-4249-b3cf-b17c7e8ab430",
 							"style": {
 								"background-color": "transparent",
 								"border-top": "0px solid transparent",
@@ -1820,7 +1820,7 @@
 					"locked": false,
 					"synced": false,
 					"type": "one-column-empty",
-					"uuid": "0e006fe5-82d3-460f-82b9-b94a1c81cd79"
+					"uuid": "03d757f6-b567-4082-8a38-a44ec210c2a3"
 				}
 			],
 			"template": {
